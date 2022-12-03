@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.2
+// @version      0.3
 // @description  Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego
 // @author       anon zdrapkarz
 // @match        *://*.karachan.org/*
@@ -19,7 +19,7 @@
 // ==/UserScript==
 
 ////// shared functions
-const log = function(m) { const lprefix = `[KDeluxe 2023][${Date.now()}] `; console.log(lprefix + m); };
+const log = function(m) { const lprefix = `[KDeluxe 2023] `; console.log(lprefix + m); };
 const filename_from_url = function(u) {return u.split('/').pop().split('#')[0].split('?')[0]; };
 // responsive voice
 if (localStorage.o_kdeluxe_blind_mode_tts == 1)
@@ -28,19 +28,27 @@ if (localStorage.o_kdeluxe_blind_mode_tts == 1)
 const openTab=function(a){if(!a.hasClass("tab-opened")){var e=a.parent().children(".tab-opened");e.removeClass("tab-opened"),$("#"+e.data("tab-ref")).removeClass("opened"),a.addClass("tab-opened"),$("#"+a.data("tab-ref")).addClass("opened")}};
 ////// end shared functions
 
-// anti-bible must be executed before page load
-if (localStorage.o_kdeluxe_anti_bible == 1) {
-    var bsePd = window.addEventListener('beforescriptexecute', e => {
-        e.target.removeEventListener('beforescriptexecute', bsePd);
+// scripts must be prevented from loading before they actually load
+var bsePd = window.addEventListener('beforescriptexecute', e => {
+    e.target.removeEventListener('beforescriptexecute', bsePd);
 
-        let filename = filename_from_url(e.target.src);
+    let filename = filename_from_url(e.target.src);
+    //log(filename);
+
+    if (localStorage.o_kdeluxe_anti_bible == 1) {
         if (filename == "htmlshiv.js") {
             e.preventDefault();
             log("Anti-Bible was executed");
         }
+    }
 
-    });
-}
+    if (localStorage.o_kdeluxe_better_embed == 1) {
+        if (filename == "emblite.js") {
+            e.preventDefault();
+            log("Emblite was rejected because better embeds are on");
+        }
+    }
+});
 
 // suppress meaningless errors
 window.addEventListener("error", (event) => {
@@ -50,6 +58,9 @@ window.addEventListener("error", (event) => {
     if (filename == "emblite.js")
         event.preventDefault();
 });
+
+// array with newly added posts
+var g_new_posts = [];
 
 window.addEventListener('load', function() {
     // count execution time
@@ -79,34 +90,118 @@ window.addEventListener('load', function() {
     // populate settings tab
     {
         let last_id = 0;
-        const add_settings_option = function(option, label, tooltip) {
+        const add_settings_checkbox = function(option, label, tooltip) {
             kdeluxe_settings_tab.append(`<input type="checkbox" name="o_kdeluxe_${option}" id="opt_kdeluxe_${last_id}" checked="checked">`);
             kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${tooltip}">${label}</label>`);
             // imageboardSettings.push( { o_kdexule_${option}: { desktop: 1, mobile: 1} } );
             last_id++;
         }
 
-        add_settings_option("autoscroll", "Auto Scroll", "Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony");
-        add_settings_option("spoiler_revealer", "Spoiler Revealer", "Odkrywa wszystkie spoilery więc nie trzeba na nie najeżdżać");
-        add_settings_option("advanced_filters", "Advanced Filters", "Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne");
-        add_settings_option("anti_bible", "Anti Bible", "Nie pozwala na załadowanie biblii (htmlshiv.js)");
-        add_settings_option("better_embed", "Better Embeds", "Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu");
-        add_settings_option("vibrant_night", "Vibrant Night", "Ukrywa /noc/ kiedy nie jest dostępna"); // , a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
-        add_settings_option("blind_mode_tts", "Blind Mode (TTS)", "Dodaje obok postów opcję text to speech czyli czytania na głos");
-        add_settings_option("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R");
+        add_settings_checkbox("autoscroll", "Auto Scroll", "Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony");
+        add_settings_checkbox("spoiler_revealer", "Spoiler Revealer", "Odkrywa wszystkie spoilery więc nie trzeba na nie najeżdżać");
+        add_settings_checkbox("advanced_filters", "Advanced Filters", "Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne");
+        add_settings_checkbox("anti_bible", "Anti Bible", "Nie pozwala na załadowanie biblii (htmlshiv.js)");
+        add_settings_checkbox("better_embed", "Better Embeds", "Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu");
+        add_settings_checkbox("vibrant_night", "Vibrant Night", "Ukrywa /noc/ kiedy nie jest dostępna"); // , a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
+        add_settings_checkbox("blind_mode_tts", "Blind Mode (TTS)", "Dodaje obok postów opcję text to speech czyli czytania na głos");
+        add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R");
+        add_settings_checkbox("dangerous_bambo", "Dangerous Bambo", "Dodaje biegającego murzynka (bambo) na dole ekranu");
+        add_settings_checkbox("ban_checker", "Ban Checker", "Wyświetla status bana");
+    }
+
+    //// Filters
+    // dont move this lower, this needs to run first
+    if (localStorage.o_kdeluxe_advanced_filters == 1) {
+        let rcount = 0;
+
+        // remove unwanted elements
+        const ele_blacklist = ["#smok", "#jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo", "#regulamin", ".absBotDisclaimer"]
+        ele_blacklist.forEach(function(item, index) {
+            if ($(item).length) {
+                $(item).remove();
+                rcount++;
+            }
+        });
+
+        // hide captcha badget
+        $(".grecaptcha-badge").hide();
+        rcount++;
+
+        // find unknown iframes
+        $("iframe").each(function() {
+            let src = $(this).attr('src');
+            if(src == undefined)
+                return true;
+
+            // skip grecaptcha
+            if (src.indexOf("www.google.com/recaptcha/") >= 0)
+                return true;
+
+            let width = $(this).attr('width');
+            let height = $(this).attr('width');
+
+            if (width < 5 || height < 5) {
+                $(this).remove();
+                rcount++;
+
+                log("Dropped invisible iframe: " + src);
+            }
+        });
+
+        // Anti: Malicious CSS
+        $(`<style type='text/css'>.anti_css { transform: rotate(0deg) !important; }</style>`).appendTo("head");
+
+        const revert_ele = [".board", "body"]
+        revert_ele.forEach(function(item, index) {
+            if ($(item).length) {
+                $(item).addClass("anti_css");
+            }
+        });
+
+        // Anti-wirówka
+        localStorage.xD = 'xD';
+
+        log(`Advanced Filters Loaded...`);
+        log(`Filtered ${rcount} elements!`);
+    }
+
+    //// Ban Checker
+    if(this.localStorage.o_kdeluxe_ban_checker == 1) {
+        $("#postform").after(`<h1 id="banned"></h1>`);
+
+        function update() {
+            fetch("https://karachan.org/banned.php").then((resp) => resp.text()).then((text) => {
+                if(!text.includes("NOT BANNED")) {
+                    $("#banned").text(`Jesteś zbanowany`);
+                    $("#banned").css({"text-align": "center", "color": "red"});
+                }
+            });
+        }
+
+        update();
+        setInterval(update, 10000);
+    }
+
+    //// Dangerous Bambo
+    if (localStorage.o_kdeluxe_dangerous_bambo == 1) {
+        $(`<style type='text/css'>#papaj_pingwin{width:200px;height:190px;position:fixed;animation-iteration-count:2137;background:url("https://i.imgur.com/mB0hqA9.gif");animation-name:pingwin;animation-duration:30s;animation-timing-function:linear;bottom:0;z-index:1000}@keyframes pingwin{0%{right:100%;transform:scaleX(1)}50%{right:-15%;transform:scaleX(1)}51%{right:-15%;transform:scaleX(-1)}100%{transform:scaleX(-1);right:115%}}</style>`).appendTo("head");
+        $("body").append(`<div id="papaj_pingwin"></div>`);
+
+        log("Dangerous Bambo Loaded...");
     }
 
     //// New keyframes
     if (localStorage.o_kdeluxe_new_keyframes == 1) {
-        log("New Keyframe Animations Loaded...");
         $(`<style type='text/css'>@keyframes robert{from{background-color:green;color:#fff}to{background-color:#fff;color:green}}.maxiu{background-color:red;color:#ff0}</style>`).appendTo("head");
 
-        $('.postMessage').each(function(){
-            var _this = $(this);
+        function on_post_loop_new_keyframes(post) {
+            var _this = post;
             var str = _this.html().replace(/#robercik/g, "<span style=\"animation: robert ease-in 500ms infinite alternate; font-weight: bold;\">BRAWO ROBERCIK</span>");
             str = str.replace(/#R/g, "<span class=\"maxiu\" style=\"font-weight: bold;\">#R REVOLUTION</span>");
             _this.html(str);
-        });
+        }
+
+        log("New Keyframe Animations Loaded...");
     }
 
     //// Blind Mode (TTS)
@@ -199,166 +294,168 @@ window.addEventListener('load', function() {
         log(`Spoiler Revealer Loaded...`);
     }
 
-    //// Filters
-    if (localStorage.o_kdeluxe_advanced_filters == 1) {
-        let rcount = 0;
-
-        const ele_blacklist = ["#smok", "#jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo", "#regulamin"]
-        ele_blacklist.forEach(function(item, index) {
-            if ($(item).length) {
-                $(item).remove();
-                rcount++;
-            }
-        });
-        // $('div').each(function(){if(this.className.length==40)this.remove();}); // czerwonka
-        // $(document).ready(function(){$('iframe[src*="https://www.youtube.com/embed/j0aAiKSUzJM?autoplay=1"]').remove();}); // embedy
-
-
-        localStorage.xD = 'xD';
-
-        log(`Advanced Filters Loaded...`);
-        log(`Filtered ${rcount} elements!`);
-    }
-
-
     //// Better Embed
-    {
-        if (localStorage.o_kdeluxe_better_embed == 1) {
-            const embeds = document.querySelectorAll("iframe");
-            if(embeds.length == 0)
-                return;
+    if (localStorage.o_kdeluxe_better_embed == 1) {
+        const embeds = document.querySelectorAll("iframe");
+        if(embeds.length == 0)
+            return;
 
-            log(`Better Embed Loaded...`);
+        log(`Better Embed Loaded...`);
 
-            const fetchVideoTitle = async (id) => {
-                const body = await fetch(
-                    `https://youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`
-                );
+        const fetchVideoTitle = async (id) => {
+            const body = await fetch(
+                `https://youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`
+            );
 
-                if (body.status === 404) return "Film nie istnieje";
-                if (body.status === 401) return "Nie można pobrać tytułu";
-                if (body.status === 403) return "Film prywatny";
+            if (body.status === 404) return "Film nie istnieje";
+            if (body.status === 401) return "Nie można pobrać tytułu";
+            if (body.status === 403) return "Film prywatny";
 
-                const json = await body.json();
+            const json = await body.json();
 
-                return json.title;
-            };
+            return json.title;
+        };
 
-            const createThumbnail = (embed) => {
-                const videoSuffix = embed.src.split("/").pop();
+        const createThumbnail = (embed) => {
+            const videoSuffix = embed.src.split("/").pop();
 
-                const newImage = document.createElement("img");
-                newImage.src = `https://i.ytimg.com/vi/${videoSuffix}/hqdefault.jpg`;
-                newImage.style.cssText = "width:250px;height:250px;object-fit:cover;";
+            const newImage = document.createElement("img");
+            newImage.src = `https://i.ytimg.com/vi/${videoSuffix}/hqdefault.jpg`;
+            newImage.style.cssText = "width:250px;height:250px;object-fit:cover;";
 
-                return newImage;
-            };
+            return newImage;
+        };
 
-            const createTitle = async (embed) => {
-                const title = await fetchVideoTitle(embed.src.split("/").pop());
+        const createTitle = async (embed) => {
+            const title = await fetchVideoTitle(embed.src.split("/").pop());
 
-                const newTitle = document.createElement("div");
-                newTitle.style.cssText = `position: absolute;top: 10px;left: 10px;color: white;
+            const newTitle = document.createElement("div");
+            newTitle.style.cssText = `position: absolute;top: 10px;left: 10px;color: white;
     font-family: Arial, Helvetica, sans-serif;font-weight: bold;
     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;`;
-                newTitle.innerHTML = title;
+            newTitle.innerHTML = title;
 
-                return newTitle;
-            };
+            return newTitle;
+        };
 
-            const createEmbedDiv = (embed) => {
-                const newDiv = document.createElement("div");
-                newDiv.style.cssText = "position: relative;";
+        const createEmbedDiv = (embed) => {
+            const newDiv = document.createElement("div");
+            newDiv.style.cssText = "position: relative;";
 
-                newDiv.addEventListener("click", () => {
-                    newDiv.parentNode.replaceChild(createEmbed(embed), newDiv);
-                });
+            newDiv.addEventListener("click", () => {
+                newDiv.parentNode.replaceChild(createEmbed(embed), newDiv);
+            });
 
-                return newDiv;
+            return newDiv;
+        }
+
+        const createEmbed = (embed) => {
+            const videoSuffix = embed.src.split("/").pop();
+            const newEmbed = document.createElement("iframe");
+            newEmbed.width = 250;
+            newEmbed.height = 250;
+            newEmbed.src = `https://www.youtube.com/embed/${videoSuffix}`;
+            newEmbed.referrerPolicy = "unsafe-url";
+            newEmbed.setAttribute("allowfullscreen", "true");
+            newEmbed.style.border = "none";
+
+            return newEmbed;
+        }
+
+        const createYoutubeIcon = () => {
+            const youtubeIcon = document.createElement("img");
+            youtubeIcon.src = `https://www.freeiconspng.com/uploads/white-youtube-logo-png-28.png`;
+            youtubeIcon.style.cssText = "width:80px;height:60px;";
+
+            return youtubeIcon;
+        };
+
+        const createYoutubeIconDiv = (youtubeIcon) => {
+            const youtubeIconDiv = document.createElement("div");
+            youtubeIconDiv.style.cssText = "position: absolute;top: 193px;left: 5px;";
+
+            youtubeIconDiv.appendChild(youtubeIcon);
+
+            return youtubeIconDiv;
+        };
+
+        const loopThroughEmbeds = async (embeds) => {
+            const thumbnailsArray = [];
+            const ytIcon = createYoutubeIcon();
+
+            for (const embed of embeds) {
+                if (embed.src.includes("youtube")) {
+                    thumbnailsArray.push(createThumbnail(embed));
+                }
             }
 
-            const createEmbed = (embed) => {
-                const videoSuffix = embed.src.split("/").pop();
-                const newEmbed = document.createElement("iframe");
-                newEmbed.width = 250;
-                newEmbed.height = 250;
-                newEmbed.src = `https://www.youtube.com/embed/${videoSuffix}`;
-                newEmbed.referrerPolicy = "unsafe-url";
-                newEmbed.setAttribute("allowfullscreen", "true");
-                newEmbed.style.border = "none";
+            let embedCounter = 0;
 
-                return newEmbed;
+            for (const embed of embeds) {
+                if (embed.src.includes("youtube")) {
+                    const ytDiv = createEmbedDiv(embed);
+                    ytDiv.appendChild(await createTitle(embed));
+                    ytDiv.appendChild(createYoutubeIconDiv(ytIcon.cloneNode()));
+                    ytDiv.appendChild(thumbnailsArray[embedCounter]);
+
+                    embed.parentNode.replaceChild(ytDiv, embed);
+
+                    embedCounter++;
+                }
+
             }
+        };
 
-            const createYoutubeIcon = () => {
-                const youtubeIcon = document.createElement("img");
-                youtubeIcon.src = `https://www.freeiconspng.com/uploads/white-youtube-logo-png-28.png`;
-                youtubeIcon.style.cssText = "width:80px;height:60px;";
-
-                return youtubeIcon;
+        const observeIncomingEmbeds = () => {
+            const threads = document.querySelector(".thread.reqCaptcha");
+            const options = {
+                childList: true
             };
 
-            const createYoutubeIconDiv = (youtubeIcon) => {
-                const youtubeIconDiv = document.createElement("div");
-                youtubeIconDiv.style.cssText = "position: absolute;top: 193px;left: 5px;";
+            const callback = (mutations) => {
+                for (const mutation of mutations) {
+                    if (mutation.type === "childList") {
+                        const incomingEmbeds =
+                              mutation.addedNodes[0].querySelectorAll("iframe");
 
-                youtubeIconDiv.appendChild(youtubeIcon);
-
-                return youtubeIconDiv;
-            };
-
-            const loopThroughEmbeds = async (embeds) => {
-                const thumbnailsArray = [];
-                const ytIcon = createYoutubeIcon();
-
-                for (const embed of embeds) {
-                    if (embed.src.includes("youtube")) {
-                        thumbnailsArray.push(createThumbnail(embed));
+                        loopThroughEmbeds(incomingEmbeds);
                     }
                 }
-
-                let embedCounter = 0;
-
-                for (const embed of embeds) {
-                    if (embed.src.includes("youtube")) {
-                        const ytDiv = createEmbedDiv(embed);
-                        ytDiv.appendChild(await createTitle(embed));
-                        ytDiv.appendChild(createYoutubeIconDiv(ytIcon.cloneNode()));
-                        ytDiv.appendChild(thumbnailsArray[embedCounter]);
-
-                        embed.parentNode.replaceChild(ytDiv, embed);
-
-                        embedCounter++;
-                    }
-
-                }
             };
 
-            const observeIncomingEmbeds = () => {
-                const threads = document.querySelector(".thread.reqCaptcha");
-                const options = {
-                    childList: true
-                };
+            const observer = new MutationObserver(callback);
+            observer.observe(threads, options);
+        };
 
-                const callback = (mutations) => {
-                    for (const mutation of mutations) {
-                        if (mutation.type === "childList") {
-                            const incomingEmbeds =
-                                  mutation.addedNodes[0].querySelectorAll("iframe");
+        loopThroughEmbeds(embeds);
+        observeIncomingEmbeds();
+    }
 
-                            loopThroughEmbeds(incomingEmbeds);
-                        }
-                    }
-                };
+    //
 
-                const observer = new MutationObserver(callback);
-                observer.observe(threads, options);
-            };
+    log(`Finished in ${performance.now() - execution_start_time}ms`);
 
-            loopThroughEmbeds(embeds);
-            observeIncomingEmbeds();
+    // iterate over newly collected posts
+    var process_posts = window.setInterval(function(){
+        let last_post = g_new_posts.pop();
+        // TO-DO: Convert last_post node to actual html element
+        // on_post_loop_new_keyframes(last_post);
+    }, 1000);
+});
+
+// store new posts that appear in DOM into array
+var observer = new MutationObserver(function(mutations, observer) {
+     for(var i=0; i<mutations.length; ++i) {
+        // look through all added nodes of this mutation
+        for(var j=0; j<mutations[i].addedNodes.length; ++j) {
+            let node = mutations[i].addedNodes[j];
+            if (!node.tagName) continue; // skip non-elements
+            if (node.tagName != "BLOCKQUOTE") continue; // skip non-posts
+            g_new_posts.push(node);
+            log("New post node pushed");
         }
     }
 
-    log(`Finished in ${performance.now() - execution_start_time}ms`);
-})
+});
+
+observer.observe(document.documentElement || document.body, {attributes: false, childList: true, characterData: false, subtree:true});
