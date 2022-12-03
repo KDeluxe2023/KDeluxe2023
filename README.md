@@ -1,4 +1,4 @@
-**Karachan Deluxe 2023**
+**Karachan Deluxe 2023 v. 0.2 BETA**
 
 Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego
 Obecnie obsługiwane funkcjonalności to:
