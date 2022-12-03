@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.3
+// @version      0.3.1
 // @description  Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego
 // @author       anon zdrapkarz
 // @match        *://*.karachan.org/*
@@ -151,7 +151,7 @@ window.addEventListener('load', function() {
         // Anti: Malicious CSS
         $(`<style type='text/css'>.anti_css { transform: rotate(0deg) !important; }</style>`).appendTo("head");
 
-        const revert_ele = [".board", "body"]
+        const revert_ele = [".board"]
         revert_ele.forEach(function(item, index) {
             if ($(item).length) {
                 $(item).addClass("anti_css");
