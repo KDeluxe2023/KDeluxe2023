@@ -1,12 +1,15 @@
-**Karachan Deluxe 2023 v. 0.2 BETA**
+<h1 align="center">Karachan Deluxe 2023 v. 0.2 BETA</h1>
 
-Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego
-Obecnie obsługiwane funkcjonalności to:
+<h3 align="center">Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego</h3>
 
-* Autoscroll [Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony]
-* Anti Bible [Nie pozwala na załadowanie biblii (htmlshiv.js)]
-* Advanced Filters [Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne]
-* Better Embeds [Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu]
+**Ficzery**
+* Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony
+* Anti Bible - Nie pozwala na załadowanie biblii (htmlshiv.js)
+* Advanced Filters - Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne
+* Better Embeds - Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu
+* Vibrant Night - Ukrywa /noc/ kiedy nie jest dostępna, [wkrutce] a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
+* Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
+* New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R
 
 **TO-DO**
 
