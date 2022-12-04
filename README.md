@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.3.8 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.3.9 BETA</h1>
 
 <h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 
@@ -23,7 +23,6 @@
 * Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
 
 **TO-DO**
-* dumper z opcją pobierania obrazków oraz z opcją pominięcia ukrytych postujących dobry pomysł
 * statystyki - ilość: napisanych postów, metrów przejechanych myszką, skrawężnikowanych postów, fredów
 * zmiana tytułu deski
 * zintegrować i przepisać [konfident+](https://greasyfork.org/en/scripts/370095-konfident/code)
