@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.3.8
+// @version      0.3.9
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -17,6 +17,7 @@
 // @license      MIT
 // @grant        none
 // @require      https://code.responsivevoice.org/responsivevoice.js?key=ZBLsY9RB
+// @require      https://github.com/niklasvh/html2canvas/releases/download/v1.4.1/html2canvas.min.js
 // ==/UserScript==
 
 ////// shared functions
@@ -178,6 +179,7 @@ window.addEventListener('load', function() {
         add_settings_checkbox("radioradio_player", "Teoria Chaosu™ Integration", "Wyświetla player radioradio podczas audycji claude'a");
         add_settings_checkbox("password_changer", "Password Changer", "Zmienia hasło na losowe przy każdym załadowaniu strony");
         add_settings_checkbox("auto_follow", "Auto Follow", "Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)");
+        add_settings_checkbox("fred_dumper", "Fred Dumper", "Pozwala zapisać obecnie otwarty fred jako pdf lub jpg");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
 
         //add_settings_textbox("override_board_name", "Własny nagłówek na /b/", "Wpisz nową nazwe deski /b/")
@@ -250,6 +252,42 @@ window.addEventListener('load', function() {
         localStorage.KurahenPremium_WatchedThreads_Top = "10px";
         window.location.reload();
     });
+
+
+    // Fred Dumper
+    if(localStorage.o_kdeluxe_fred_dumper == 1 && !g_special_page && g_is_fred_open) {
+        let bar = $('.post').first().find('.postInfo').first();
+        bar.prepend(`<span id="dumper_container">[<a href="#" id="dump_thread"><i class="fa fa-download" aria-hidden="true"></i></a>]</span>`);
+        $("#dumper_container").css({"margin-right":"3px"});
+
+        $("#dump_thread").click(function(e){
+            e.preventDefault();
+            dialogBox('KDeluxe', `Jak chcesz pobrać ten temat?`, ["Screenshot", "Screenshot + Pliki osobno", "Anuluj"], 'fa-download', function(a) {
+                if (a == 2)
+                    return;
+
+                let fred_id = bar.attr("id").replace(/\D/g,'');
+                let fred_time = bar.find(".dateTime").attr("title");
+
+                if (a == 0) {
+                   function downloadURI(e,d){var o=document.createElement("a");o.download=d,o.href=e,document.body.appendChild(o),o.click(),document.body.removeChild(o),delete o};
+
+                    // wait for dialogbox to disappear
+                    setTimeout(function(){
+                        html2canvas(document.body).then(function(canvas) {
+                            var dt = canvas.toDataURL('image/jpeg');
+                            downloadURI(dt, `${fred_id} - ${fred_time}.jpg`);
+                        });
+                    }, 1000);
+                }
+
+                if (a == 1) {
+                    dialogBox('KDeluxe', `Ta opcja zostanie dodana w nastepnej aktualizacji`, ['OK'], 'fa-check');
+                }
+
+            });
+        });
+    }
 
     //// RadioRadio Player
     if(localStorage.o_kdeluxe_radioradio_player == 1 && !g_special_page) {
@@ -375,7 +413,7 @@ window.addEventListener('load', function() {
         });
 
         posts.forEach((el, idx) => {
-            el.innerHTML = `<div><a class="hide" href="#" style="font-size:24px;">[–]</a></div>` + el.innerHTML
+            el.innerHTML = `<div><a class="hide" href="#" style="font-size:21px;">[–]</a></div>` + el.innerHTML
         });
 
         document.querySelectorAll(".hide").forEach((el) => {
