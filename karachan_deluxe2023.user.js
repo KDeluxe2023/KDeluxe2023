@@ -5,7 +5,7 @@
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
-// @description  Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego
+// @description  Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego
 // @author       anon zdrapkarz
 // @match        *://*.karachan.org/*
 // @exclude      http://www.karachan.org/*/src/*
@@ -512,7 +512,7 @@ window.addEventListener('load', function() {
         }
 
         rv_init();
-        //responsiveVoice.CHARACTER_LIMIT = 6000;
+        responsiveVoice.CHARACTER_LIMIT = 6000;
         window.setInterval(rv_add_links, 5000);
     }
 
