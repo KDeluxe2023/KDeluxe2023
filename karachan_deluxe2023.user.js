@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.4.0
+// @version      0.4.1
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -256,6 +256,9 @@ window.addEventListener('load', function() {
                     if (a == 3)
                         return;
 
+                    let fred_id = bar.attr("id").replace(/\D/g,'');
+                    let fred_time = bar.find(".dateTime").attr("title");
+
                     // download files only
                     if (a == 2) {
                         download_all_media_zipped();
@@ -268,9 +271,6 @@ window.addEventListener('load', function() {
                         dialogBox('KDeluxe', `Ten fred przekracza 32,000px wysokości i nie może zostać zeskrinowany`, ['OK'], 'fa-exclamation-triangle');
                         return;
                     }
-
-                    let fred_id = bar.attr("id").replace(/\D/g,'');
-                    let fred_time = bar.find(".dateTime").attr("title");
 
                     function download_all_media_zipped() {
                        function saveToZip(e,t){log("Generating zip...");const n=new JSZip,o=n.folder("project");t.forEach((e=>{const t=fetch(e).then((e=>200===e.status?e.blob():Promise.reject(new Error(e.statusText)))),n=e.substring(e.lastIndexOf("/"));o.file(n,t)})),n.generateAsync({type:"blob"}).then((t=>saveAs(t,e))).catch((e=>console.log(e)))}
