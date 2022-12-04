@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.3.6
+// @version      0.3.7
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -176,6 +176,8 @@ window.addEventListener('load', function() {
         add_settings_checkbox("catalog_curb", "Catalog Curb", "Pozwala krawężnikować z poziomu katalogu");
         add_settings_checkbox("uid_curb", "UID Curb", "Pozwala krawężnikować poszczególnych anonów we fredach");
         add_settings_checkbox("radioradio_player", "Teoria Chaosu™ Integration", "Wyświetla player radioradio podczas audycji claude'a");
+        add_settings_checkbox("password_changer", "Password Changer", "Zmienia hasło na losowe przy każdym załadowaniu strony");
+        add_settings_checkbox("auto_follow", "Auto Follow", "Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
 
         //add_settings_textbox("override_board_name", "Własny nagłówek na /b/", "Wpisz nową nazwe deski /b/")
@@ -238,6 +240,15 @@ window.addEventListener('load', function() {
         log(`Filtered ${rcount} elements!`);
     }
 
+    //// Add Thread Watchlist Position Reset Button
+    $("#settingsSave").after(`<input type="button" value="Fix WatchList OOB" id="resetWatchList">`);
+    $("#resetWatchList").click(function(e){
+        e.preventDefault();
+        localStorage.KurahenPremium_WatchedThreads_Left = "10px";
+        localStorage.KurahenPremium_WatchedThreads_Top = "10px";
+        window.location.reload();
+    });
+
     //// RadioRadio Player
     if(localStorage.o_kdeluxe_radioradio_player == 1 && !g_special_page) {
         log(`Radioradio Player Loaded...`);
@@ -264,6 +275,31 @@ window.addEventListener('load', function() {
             // teoria chaosu
             display_player();
         }
+    }
+
+
+    //// Auto Follow
+    if(localStorage.o_kdeluxe_auto_follow == 1 && !g_special_page && g_is_fred_open) {
+        log(`Auto Follow Loaded...`);
+
+        $('#postform').on('submit', function(e) {
+            e.preventDefault();
+            let watchlink = $(".watch-button-container a")[0];
+            if (watchlink.innerText.trim() == "[Obserwuj]") {
+                watchlink.click();
+                log("Auto Follow Executed");
+            }
+        });
+    }
+
+    //// Password Changer
+    if(localStorage.o_kdeluxe_password_changer == 1 && !g_special_page) {
+        log(`Password Changer Loaded...`);
+
+        function random_str(r){for(var n="",o="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",t=o.length,a=0;a<r;a++)n+=o.charAt(Math.floor(Math.random()*t));return n}
+
+        $.cookie("password", random_str(8));
+        log(`Password changed: ${$.cookie("password")}`);
     }
 
     //// UID Curb
