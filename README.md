@@ -1,6 +1,6 @@
-<h1 align="center">Karachan Deluxe 2023 v0.3.4 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.3.5 BETA</h1>
 
-<h3 align="center">Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego</h3>
+<h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 
 **Ficzery**
 * Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony
@@ -14,9 +14,10 @@
 * Ban Checker - Pokazuje czerwony napis na górze deski jeśli masz bana
 * Lower Default Volume - Obniża domyślną głośność w playerze video, przydatne w FF
 * Jump To Post - Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika [zepsute]
-* Catalog Curb - Pozwala krawężnikować z poziomu katalogu
 * Image Preview Anti-Eyestrain - Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy
-
+* Catalog Curb - Pozwala krawężnikować z poziomu katalogu
+* UID Curb - Pozwala krawężnikować poszczególnych anonów we fredach
+* Teoria Chaosu™ Integration - Wyświetla player radioradio podczas audycji claude'a
 
 **TO-DO**
 * bugfix na listę obserwowanych fredów poza ekranem
@@ -46,3 +47,7 @@
 * opcja pisania tekstem zalgo
 * trójsiła: https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+
 * usprawnienia do wyszukiwarki chanowej
+
+**Changelog**
+
+Pojawi się po zakończeniu bety
