@@ -20,6 +20,7 @@
 
 **TO-DO**
 * bugfix na listę obserwowanych fredów poza ekranem
+* player radioradio osadzony na górze deski w każdy czwartek po 22:00 i piątek po 24:00
 * dumper z opcją pobierania obrazków oraz z opcją pominięcia ukrytych postujących dobry pomysł
 * krawężnik na postującego (ukryj skurwysyna) w oparciu na mutationobserver (z filtrami)
 * auto-zmiana hasła po banie
