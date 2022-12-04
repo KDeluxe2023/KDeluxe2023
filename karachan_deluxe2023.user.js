@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.3.1
+// @version      0.3.3
 // @description  Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego
 // @author       anon zdrapkarz
 // @match        *://*.karachan.org/*
@@ -21,6 +21,7 @@
 ////// shared functions
 const log = function(m) { const lprefix = `[KDeluxe 2023] `; console.log(lprefix + m); };
 const filename_from_url = function(u) {return u.split('/').pop().split('#')[0].split('?')[0]; };
+String.prototype.endsWith=function(t){return -1!==this.indexOf(t,this.length-t.length)};
 // responsive voice
 if (localStorage.o_kdeluxe_blind_mode_tts == 1)
     function rv_text_normalize(e){return e.replace('<img src="https://i.imgur.com/ohFvRES.gif" border="0">',"kul").replace('<img src="https://i.imgur.com/gB7t8a3.gif">',"cześć").replace(/<(?:.|\n)*?>/gm,"").replace("&gt;","").toLowerCase().replace(":3","dwukropek trzy").replace(";_;","płaku płaku").replace("inb4","inbifor")}function rv_line_pre_normalize(e){return e.replace('<i style="font-size:50px" class="wycop wycop-bartoszewski">',"bartoszewski fejs").replace('<i style="font-size:50px" class="wycop wycop-karachan">',"ka ra czan").replace('<i style="font-size:50px" class="wycop wycop-papiez">',"papież fejs")}function rv_speak_line_info(t){if(!(t=rv_line_pre_normalize(t)).startsWith("<"))return[t,{pitch:1}];var a=$(t);if(a.hasClass("quotelink")){var i=a.text().replace(">>","");return i.indexOf("OP")>1&&(i="opa"),["do posta "+i,{pitch:1}]}return a.hasClass("postlink")?["link do strony "+a.text().split("://")[1].split("/")[0],{pitch:1}]:a.hasClass("quote")?[a.text().replace(">",""),{pitch:1.6*Math.random()+.3}]:"IMG"==a[0].tagName?"https://i.imgur.com/ohFvRES.gif"==a.attr("src")?["kul",{pitch:1}]:"https://i.imgur.com/gB7t8a3.gif"==a.attr("src")?["cześć",{pitch:1}]:["obrazek",{pitch:1}]:"S"==a[0].tagName?[a.text(),{pitch:1}]:"U"==a[0].tagName?[a.text(),{pitch:.5}]:"B"==a[0].tagName?[a.text(),{volume:1.5}]:[a.text()]}function rv_rec_speak(e,n){if(0!=e.length){var r=rv_speak_line_info(e[0]),s=rv_text_normalize(r[0]),l=r[1];0==s.length&&rv_rec_speak(e.slice(1,e.length));var t=Object.assign({},{onend:function(){rv_rec_speak(e.slice(1,e.length),n)}},l);responsiveVoice.speak(s,n,t)}}function rv_prepare(e,n){for(var r=e.split("<br>"),s=[],l=0;l<r.length;l++)r[l].length>1&&s.push(r[l]);rv_rec_speak(s.slice(0,s.length-1),n)}
@@ -38,14 +39,14 @@ var bsePd = window.addEventListener('beforescriptexecute', e => {
     if (localStorage.o_kdeluxe_anti_bible == 1) {
         if (filename == "htmlshiv.js") {
             e.preventDefault();
-            log("Anti-Bible was executed");
+            log("Bible was unloaded because Anti-Bible is ON");
         }
     }
 
     if (localStorage.o_kdeluxe_better_embed == 1) {
         if (filename == "emblite.js") {
             e.preventDefault();
-            log("Emblite was rejected because better embeds are on");
+            log("Emblite was unloaded because better embeds are ON");
         }
     }
 });
@@ -59,9 +60,40 @@ window.addEventListener("error", (event) => {
         event.preventDefault();
 });
 
+
+//// globals
 // array with newly added posts
 var g_new_posts = [];
 
+// tells us if we're on a special page like search etc
+var g_special_page = false;
+// tells us if we're in catalog view
+var g_is_in_catalog = false;
+// tells us if we have a topic fully opened
+var g_is_fred_open = false;
+
+// assign those globals above
+let special_pages = ["catalog.html", "search.php", "/rs/", "/*/"];
+let url_path = window.location.pathname;
+for (const item of special_pages) {
+    if (url_path.endsWith(item)) {
+        g_special_page = true;
+
+        // detect if we're in catalog
+        if(url_path.endsWith("catalog.html"))
+            g_is_in_catalog = true;
+    }
+}
+
+if(window.location.toString().includes("/res/"))
+    g_is_fred_open = true;
+
+
+log(`g_special_page = ${g_special_page}`);
+log(`g_is_in_catalog = ${g_is_in_catalog}`);
+log(`g_is_fred_open = ${g_is_fred_open}`);
+
+///// main script logic ////
 window.addEventListener('load', function() {
     // count execution time
     var execution_start_time = performance.now()
@@ -90,11 +122,24 @@ window.addEventListener('load', function() {
     // populate settings tab
     {
         let last_id = 0;
-        const add_settings_checkbox = function(option, label, tooltip) {
-            kdeluxe_settings_tab.append(`<input type="checkbox" name="o_kdeluxe_${option}" id="opt_kdeluxe_${last_id}" checked="checked">`);
+        const add_settings_checkbox = function(internal_name, label, tooltip) {
+            kdeluxe_settings_tab.append(`<input type="checkbox" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}" checked="checked">`);
             kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${tooltip}">${label}</label>`);
             // imageboardSettings.push( { o_kdexule_${option}: { desktop: 1, mobile: 1} } );
             last_id++;
+        }
+
+        const add_settings_textbox = function(internal_name, label, placeholder) {
+            kdeluxe_settings_tab.append(`<input type="text" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}">`);
+            kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${placeholder}">${label}</label>`);
+
+            last_id++;
+        }
+
+        const load_text_data = function(element, variable) {
+            if (variable) {
+                $("#" + element).text(variable);
+            }
         }
 
         add_settings_checkbox("autoscroll", "Auto Scroll", "Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony");
@@ -107,6 +152,12 @@ window.addEventListener('load', function() {
         add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R");
         add_settings_checkbox("dangerous_bambo", "Dangerous Bambo", "Dodaje biegającego murzynka (bambo) na dole ekranu");
         add_settings_checkbox("ban_checker", "Ban Checker", "Wyświetla status bana");
+        add_settings_checkbox("lower_def_volume", "Lower Default Volume", "Obniża domyślną głośność w playerze video, przydatne w FF");
+        //add_settings_checkbox("prev_next", "Jump to post", "Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika");
+        add_settings_checkbox("catalog_curb", "Catalog Curb", "Pozwala krawężnikować z poziomu katalogu");
+
+        //add_settings_textbox("override_board_name", "Własny nagłówek na /b/", "Wpisz nową nazwe deski /b/")
+        //load_text_data("override_board_name", localStorage.o_kdeluxe_override_board_name);
     }
 
     //// Filters
@@ -165,21 +216,118 @@ window.addEventListener('load', function() {
         log(`Filtered ${rcount} elements!`);
     }
 
-    //// Ban Checker
-    if(this.localStorage.o_kdeluxe_ban_checker == 1) {
-        $("#postform").after(`<h1 id="banned"></h1>`);
+    //// Catalog Curb
+    if(this.localStorage.o_kdeluxe_catalog_curb == 1 && g_is_in_catalog) {
+        let board = window.location.toString().split("/")[3];
 
-        function update() {
+        let posts = document.querySelectorAll(".thread");
+
+        function getHideValue(el) {
+            let threadId = el.getAttribute("id").slice(7);
+            return `h_${board}_${threadId}`;
+        }
+
+        posts.forEach((el, idx) => {
+            for (let key in localStorage) {
+                if(key == getHideValue(el)) {
+                    el.remove();
+                    break;
+                }
+            }
+        });
+
+        posts.forEach((el, idx) => {
+            el.innerHTML = `<div><a class="hide" href="#" style="font-size:24px;">[–]</a></div>` + el.innerHTML
+        });
+
+        document.querySelectorAll(".hide").forEach((el) => {
+            el.addEventListener("click", (e) => {
+                e.preventDefault();
+                let hideVal = getHideValue(el.parentElement.parentElement);
+                localStorage.setItem(hideVal, "x");
+                el.parentElement.parentElement.remove();
+            });
+        });
+
+        log(`Catalog Curb Loaded...`);
+    }
+
+    //// Ban Checker
+    if(this.localStorage.o_kdeluxe_ban_checker == 1 && !g_special_page) {
+        $("#postform").after(`<h1 id="banned"></h1>`);
+        var ban_check_func = window.setInterval(function(){
             fetch("https://karachan.org/banned.php").then((resp) => resp.text()).then((text) => {
                 if(!text.includes("NOT BANNED")) {
                     $("#banned").text(`Jesteś zbanowany`);
                     $("#banned").css({"text-align": "center", "color": "red"});
                 }
             });
+        }, 1000*10);
+
+        log(`Ban Checker Loaded...`);
+    }
+
+    //// Prev/Next
+    /*
+    if(this.localStorage.o_kdeluxe_prev_next == 1 && !g_special_page && g_is_fred_open) {
+        let posts = $(".postInfo");
+
+        function searchForPrevious(id, index) {
+            for(let i = index-1; i >= 0; i--) {
+                //if(posts[i].querySelector(".posteruid").getAttribute("id") == id) {
+               //     return posts[i].getAttribute("id").slice(2)
+               // }
+            }
+
+            return null;
         }
 
-        update();
-        setInterval(update, 10000);
+        function searchForNext(id, index) {
+            for(let i = index+1; i < posts.length; i++) {
+                // if(posts[i].querySelector(".posteruid").getAttribute("id") == id) {
+                //    return posts[i].getAttribute("id").slice(2)
+                // }
+                //  if(posts[i].find
+                console.log("xx: " + posts[i]);
+            }
+
+            return null;
+        }
+
+        posts.each(function( idx ) {
+            let el = $(this);
+
+            let id = el.find(".posteruid").attr("id");
+            let previous = searchForPrevious(id, idx);
+            let next = searchForNext(id, idx);
+
+            let OP = posts[0].getAttribute("id").slice(2);
+
+            let prevHref = `<a href="../../b/res/${OP}.html#p${previous}" class="quotelink"><i class="fa fa-arrow-left" aria-hidden="true"></i> ${previous}</a>`
+            let nextHref = `<a href="../../b/res/${OP}.html#p${next}" class="quotelink"><i class="fa fa-arrow-right" aria-hidden="true"></i> ${next}</a>`
+
+            // skip users with one post
+            if(next == null && previous == null)
+                return true;
+
+            if(next == null) {
+                el.innerHTML = el.innerHTML + `<span>[${prevHref}]</span>`
+            } else if(previous == null) {
+                el.innerHTML = el.innerHTML + `<span>[${nextHref}]</span>`
+            } else {
+                el.innerHTML = el.innerHTML + `<span>[${prevHref} | ${nextHref}]</span>`
+            }
+        });
+
+        log(`Prev/Next Loaded...`);
+    }*/
+
+    //// Lower Default Volume
+    if (localStorage.o_kdeluxe_lower_def_volume == 1 && !g_special_page) {
+        let volume = 0.1
+        $("#player").prop("volume", volume);
+
+        log("Lower Default Volume Loaded...");
     }
 
     //// Dangerous Bambo
@@ -191,7 +339,7 @@ window.addEventListener('load', function() {
     }
 
     //// New keyframes
-    if (localStorage.o_kdeluxe_new_keyframes == 1) {
+    if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page) {
         $(`<style type='text/css'>@keyframes robert{from{background-color:green;color:#fff}to{background-color:#fff;color:green}}.maxiu{background-color:red;color:#ff0}</style>`).appendTo("head");
 
         function on_post_loop_new_keyframes(post) {
@@ -205,7 +353,7 @@ window.addEventListener('load', function() {
     }
 
     //// Blind Mode (TTS)
-    if (localStorage.o_kdeluxe_blind_mode_tts == 1) {
+    if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page) {
         function rv_add_links() {
             $('.post').each(function() {
                 var postInfo = $(this).find('.postInfo').first();
@@ -273,7 +421,7 @@ window.addEventListener('load', function() {
     }
 
     //// Auto Scroll
-    if (localStorage.o_kdeluxe_autoscroll == 1) {
+    if (localStorage.o_kdeluxe_autoscroll == 1 && !g_special_page) {
         log(`Autoscroll Loaded...`);
 
         var autoscroll;
@@ -295,7 +443,7 @@ window.addEventListener('load', function() {
     }
 
     //// Better Embed
-    if (localStorage.o_kdeluxe_better_embed == 1) {
+    if (localStorage.o_kdeluxe_better_embed == 1 && !g_special_page) {
         const embeds = document.querySelectorAll("iframe");
         if(embeds.length == 0)
             return;
@@ -431,31 +579,34 @@ window.addEventListener('load', function() {
         observeIncomingEmbeds();
     }
 
-    //
-
+    //dialogBox('KDeluxe', `Sukces kurwo, udało się załadować skrypt w ${performance.now() - execution_start_time}ms`, ['OK'], 'fa-check');
     log(`Finished in ${performance.now() - execution_start_time}ms`);
 
     // iterate over newly collected posts
-    var process_posts = window.setInterval(function(){
-        let last_post = g_new_posts.pop();
-        // TO-DO: Convert last_post node to actual html element
-        // on_post_loop_new_keyframes(last_post);
-    }, 1000);
-});
-
-// store new posts that appear in DOM into array
-var observer = new MutationObserver(function(mutations, observer) {
-     for(var i=0; i<mutations.length; ++i) {
-        // look through all added nodes of this mutation
-        for(var j=0; j<mutations[i].addedNodes.length; ++j) {
-            let node = mutations[i].addedNodes[j];
-            if (!node.tagName) continue; // skip non-elements
-            if (node.tagName != "BLOCKQUOTE") continue; // skip non-posts
-            g_new_posts.push(node);
-            log("New post node pushed");
-        }
+    if(!g_special_page) {
+        var process_posts = window.setInterval(function(){
+            let last_post = g_new_posts.pop();
+            // TO-DO: Convert last_post node to actual html element
+            // on_post_loop_new_keyframes(last_post);
+        }, 1000);
     }
-
 });
 
-observer.observe(document.documentElement || document.body, {attributes: false, childList: true, characterData: false, subtree:true});
+if(!g_special_page) {
+    // store new posts that appear in DOM into array
+    var observer = new MutationObserver(function(mutations, observer) {
+        for(var i=0; i<mutations.length; ++i) {
+            // look through all added nodes of this mutation
+            for(var j=0; j<mutations[i].addedNodes.length; ++j) {
+                let node = mutations[i].addedNodes[j];
+                if (!node.tagName) continue; // skip non-elements
+                if (node.tagName != "BLOCKQUOTE") continue; // skip non-posts
+                g_new_posts.push(node);
+                log("New post node pushed");
+            }
+        }
+
+    });
+
+    observer.observe(document.documentElement || document.body, {attributes: false, childList: true, characterData: false, subtree:true});
+}
