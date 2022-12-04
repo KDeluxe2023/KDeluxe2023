@@ -1,5 +1,4 @@
 <h1 align="center">Karachan Deluxe 2023 v0.4.0 BETA</h1>
-
 <h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 <hr/>
 
@@ -7,7 +6,7 @@
 * Firefox (pełne wsparcie chrome potem)
 * Tampermonkey
 
-**Ficzery**
+**Dostępne funkcje**
 * Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony
 * Anti Bible - Nie pozwala na załadowanie biblii (htmlshiv.js)
 * Advanced Filters - Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne
@@ -30,7 +29,7 @@
 
 Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania, zapraszam do robienia pull requestów
 
-**TO-DO**
+**Do zrobienia**
 * statystyki - ilość: napisanych postów, metrów przejechanych myszką, skrawężnikowanych postów, fredów
 * zmiana tytułu deski
 * zintegrować i przepisać [konfident+](https://greasyfork.org/en/scripts/370095-konfident/code)
@@ -54,6 +53,6 @@ Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania,
 * helper do [trójsiły](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
 * usprawnienia do wyszukiwarki chanowej
 
-**Changelog**
+**Historia wersji**
 
 Pojawi się po zakończeniu bety
