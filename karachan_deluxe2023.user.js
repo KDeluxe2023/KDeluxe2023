@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.3.5
+// @version      0.3.6
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -282,13 +282,14 @@ window.addEventListener('load', function() {
             if(uid === undefined)
                 return true;
 
-            $(this).append(`<a href="#" class="curb_uid">[–]</a>`);
+            $(this).append(`<a href="#" class="curb_uid" uid="${uid}">[–]</a>`);
 
             $(".curb_uid").click(function(e) {
                 e.preventDefault();
 
-                appendToStorage("o_kdeluxe_curbed_uids", uid + ";");
-                $(`span.posteruid[title="${uid}"]`).parents('.post').hide();
+                let x = $(this).attr("uid");
+                appendToStorage("o_kdeluxe_curbed_uids", x + ";");
+                $(`span.posteruid[title="${x}"]`).parents('.post').hide();
             })
         });
 
@@ -304,28 +305,6 @@ window.addEventListener('load', function() {
             }
             log(`Curbed ${count-1} UIDs`);
         }
-    }
-
-    //// Image Preview Anti-Eyestrain
-    if(localStorage.o_kdeluxe_image_preview_anti_eyestrain == 1 && localStorage.o_imgpreview === "1" && !g_special_page) {
-        let toggle = false;
-        let preview_container = $("#imagePreview");
-        preview_container.append(`<a href="#" id="anti-eyestrain"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>`);
-
-        $("#anti-eyestrain").css({"position": "absolute", "top": "0", "right": "0", "font-size": "20px", "background-color": "black"});
-        $("#anti-eyestrain").click(function(e) {
-            e.preventDefault();
-
-            if (toggle) {
-                preview_container.find(">:first-child").css({"filter": ""});
-            } else if (!toggle) {
-                preview_container.find(">:first-child").css({"filter": "hue-rotate(180deg) invert(1)"});
-            }
-
-            toggle = !toggle;
-        });
-
-        log(`Image Preview Anti-Eyestrain Loaded...`);
     }
 
     //// Catalog Curb
@@ -362,6 +341,28 @@ window.addEventListener('load', function() {
         });
 
         log(`Catalog Curb Loaded...`);
+    }
+
+    //// Image Preview Anti-Eyestrain
+    if(localStorage.o_kdeluxe_image_preview_anti_eyestrain == 1 && localStorage.o_imgpreview === "1" && !g_special_page) {
+        let toggle = false;
+        let preview_container = $("#imagePreview");
+        preview_container.append(`<a href="#" id="anti-eyestrain"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>`);
+
+        $("#anti-eyestrain").css({"position": "absolute", "top": "0", "right": "0", "font-size": "20px", "background-color": "black"});
+        $("#anti-eyestrain").click(function(e) {
+            e.preventDefault();
+
+            if (toggle) {
+                preview_container.find(">:first-child").css({"filter": ""});
+            } else if (!toggle) {
+                preview_container.find(">:first-child").css({"filter": "hue-rotate(180deg) invert(1)"});
+            }
+
+            toggle = !toggle;
+        });
+
+        log(`Image Preview Anti-Eyestrain Loaded...`);
     }
 
     //// Ban Checker
