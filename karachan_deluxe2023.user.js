@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.3.7
+// @version      0.3.8
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -199,8 +199,10 @@ window.addEventListener('load', function() {
         });
 
         // hide captcha badget
-        $(".grecaptcha-badge").hide();
-        rcount++;
+        if ($(".grecaptcha-badge").length) {
+            $(".grecaptcha-badge").hide();
+            rcount++;
+        }
 
         // remove invisible iframes
         $("iframe").each(function() {
@@ -240,9 +242,9 @@ window.addEventListener('load', function() {
         log(`Filtered ${rcount} elements!`);
     }
 
-    //// Add Thread Watchlist Position Reset Button
-    $("#settingsSave").after(`<input type="button" value="Fix WatchList OOB" id="resetWatchList">`);
-    $("#resetWatchList").click(function(e){
+    //// Add ThreadWatcher Position Reset Button
+    $("#settingsSave").after(`<input type="button" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
+    $("#resetThreadWatcher").click(function(e){
         e.preventDefault();
         localStorage.KurahenPremium_WatchedThreads_Left = "10px";
         localStorage.KurahenPremium_WatchedThreads_Top = "10px";
@@ -298,7 +300,7 @@ window.addEventListener('load', function() {
 
         function random_str(r){for(var n="",o="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",t=o.length,a=0;a<r;a++)n+=o.charAt(Math.floor(Math.random()*t));return n}
 
-        $.cookie("password", random_str(8));
+        $.cookie("password", random_str(8), { path: '/' });
         log(`Password changed: ${$.cookie("password")}`);
     }
 
@@ -306,14 +308,23 @@ window.addEventListener('load', function() {
     if(localStorage.o_kdeluxe_uid_curb == 1 && !g_special_page) {
         log(`UID Curb Initialized...`);
 
-        function appendToStorage(name, data){
-            var old = localStorage.getItem(name);
-            if(old === null) old = "";
-            localStorage.setItem(name, old + data);
-        }
+        // add clear button
+        $("#settingsSave").after(`<input type="button" value="Clear Curbed UIDs" id="clear_curb_list">`);
+        $("#clear_curb_list").click(function(e){
+            e.preventDefault();
+            localStorage.o_kdeluxe_curbed_uids = "";
+            window.location.reload();
+        });
+
+        function appendToStorage(name, data){var old=localStorage.getItem(name);if(old === null){old = "";}localStorage.setItem(name, old + data);}
 
         // TO-DO: move this loop to shared post iteration loop
         $('.postInfo').each(function() {
+            // skip main post, mitsuba already lets you curb it
+            if ($(this).find("span.subject").length)
+                return true;
+
+            // fetch id
             let uid = $(this).find(".posteruid").attr("title");
             if(uid === undefined)
                 return true;
