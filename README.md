@@ -9,11 +9,11 @@
 * Better Embeds - Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu
 * Vibrant Night - Ukrywa /noc/ kiedy nie jest dostępna, [wkrutce] a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
 * Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
-* New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R [zepsute]
+* <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
 * Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
 * Ban Checker - Pokazuje czerwony napis na górze deski jeśli masz bana
 * Lower Default Volume - Obniża domyślną głośność w playerze video, przydatne w FF
-* Jump To Post - Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika [zepsute]
+* <del>Jump To Post - Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika</del>
 * Image Preview Anti-Eyestrain - Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy
 * Catalog Curb - Pozwala krawężnikować z poziomu katalogu
 * UID Curb - Pozwala krawężnikować poszczególnych anonów we fredach
@@ -22,6 +22,8 @@
 * Auto Follow - Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)
 * Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
 * Fred Dumper" - Pozwala zapisać obecnie otwarty fred jako jpg, dodatkowo pozwala pobrać też obrazki osobno w zipie
+
+Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania, zapraszam do robienia pull requestów
 
 **TO-DO**
 * statystyki - ilość: napisanych postów, metrów przejechanych myszką, skrawężnikowanych postów, fredów
@@ -32,6 +34,7 @@
 * możliwośc wpisania nicku w formularzu wysyłania posta, za pomocą nicku można spingować kogoś np. wpisujemy do posta @stały_słuchacz i wtedy u tego anona pojawia się [powiadomienie](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) z dźwiękiem, można to oprzeć na odpytywanie search.php ajaxem
 * poprawienie pobierania plików żeby nie pobrać thumbnaila albo dodanie jakiegoś downloader żeby pobrać całą nitkę lub bobrazki z nitki
 * uproszczone sagowanie
+* <b>przesunąć wszystkie pętle iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
 * spoilerowanie obrazka na stałe (po hashu)
 * ulepszone tytuły stron
 * content freeze (usunięte posty są oznaczane jako usunięte i nie znikają po odświezeniu strony (trzeba mieć otwartego freda))
