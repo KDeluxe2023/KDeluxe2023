@@ -1,7 +1,10 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.3.4
+// @version      0.3.5
+// @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
+// @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
+
 // @description  Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego
 // @author       anon zdrapkarz
 // @match        *://*.karachan.org/*
@@ -13,23 +16,30 @@
 // @run-at       document-start
 // @license      MIT
 // @grant        none
-// @require      https://code.responsivevoice.org/responsivevoice.js
-// @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
-// @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
+// @require      https://code.responsivevoice.org/responsivevoice.js?key=ZBLsY9RB
 // ==/UserScript==
 
 ////// shared functions
 const log = function(m) { const lprefix = `[KDeluxe 2023] `; console.log(lprefix + m); };
 const filename_from_url = function(u) {return u.split('/').pop().split('#')[0].split('?')[0]; };
 String.prototype.endsWith=function(t){return -1!==this.indexOf(t,this.length-t.length)};
-// responsive voice
-if (localStorage.o_kdeluxe_blind_mode_tts == 1)
-    function rv_text_normalize(e){return e.replace('<img src="https://i.imgur.com/ohFvRES.gif" border="0">',"kul").replace('<img src="https://i.imgur.com/gB7t8a3.gif">',"cześć").replace(/<(?:.|\n)*?>/gm,"").replace("&gt;","").toLowerCase().replace(":3","dwukropek trzy").replace(";_;","płaku płaku").replace("inb4","inbifor")}function rv_line_pre_normalize(e){return e.replace('<i style="font-size:50px" class="wycop wycop-bartoszewski">',"bartoszewski fejs").replace('<i style="font-size:50px" class="wycop wycop-karachan">',"ka ra czan").replace('<i style="font-size:50px" class="wycop wycop-papiez">',"papież fejs")}function rv_speak_line_info(t){if(!(t=rv_line_pre_normalize(t)).startsWith("<"))return[t,{pitch:1}];var a=$(t);if(a.hasClass("quotelink")){var i=a.text().replace(">>","");return i.indexOf("OP")>1&&(i="opa"),["do posta "+i,{pitch:1}]}return a.hasClass("postlink")?["link do strony "+a.text().split("://")[1].split("/")[0],{pitch:1}]:a.hasClass("quote")?[a.text().replace(">",""),{pitch:1.6*Math.random()+.3}]:"IMG"==a[0].tagName?"https://i.imgur.com/ohFvRES.gif"==a.attr("src")?["kul",{pitch:1}]:"https://i.imgur.com/gB7t8a3.gif"==a.attr("src")?["cześć",{pitch:1}]:["obrazek",{pitch:1}]:"S"==a[0].tagName?[a.text(),{pitch:1}]:"U"==a[0].tagName?[a.text(),{pitch:.5}]:"B"==a[0].tagName?[a.text(),{volume:1.5}]:[a.text()]}function rv_rec_speak(e,n){if(0!=e.length){var r=rv_speak_line_info(e[0]),s=rv_text_normalize(r[0]),l=r[1];0==s.length&&rv_rec_speak(e.slice(1,e.length));var t=Object.assign({},{onend:function(){rv_rec_speak(e.slice(1,e.length),n)}},l);responsiveVoice.speak(s,n,t)}}function rv_prepare(e,n){for(var r=e.split("<br>"),s=[],l=0;l<r.length;l++)r[l].length>1&&s.push(r[l]);rv_rec_speak(s.slice(0,s.length-1),n)}
-// mitsuba cog
+// mitsuba
 const openTab=function(a){if(!a.hasClass("tab-opened")){var e=a.parent().children(".tab-opened");e.removeClass("tab-opened"),$("#"+e.data("tab-ref")).removeClass("opened"),a.addClass("tab-opened"),$("#"+a.data("tab-ref")).addClass("opened")}};
-////// end shared functions
 
-log("Initialized");
+////// load responsive voice dependency
+/*
+if (localStorage.o_kdeluxe_blind_mode_tts == 1) {
+    var script = document.createElement('script');
+    script.src = `https://code.responsivevoice.org/responsivevoice.js?key=ZBLsY9RB`;
+
+    script.onload = function() {
+        log("Responsive Voice Library Loaded!");
+    };
+    document.head.appendChild(script);
+}*/
+
+// action starts below this point
+log("Main Script Initialized");
 
 // scripts must be prevented from loading before they actually load
 var bsePd = window.addEventListener('beforescriptexecute', e => {
@@ -90,7 +100,6 @@ for (const item of special_pages) {
 if(window.location.toString().includes("/res/"))
     g_is_fred_open = true;
 
-
 log(`g_special_page = ${g_special_page}`);
 log(`g_is_in_catalog = ${g_is_in_catalog}`);
 log(`g_is_fred_open = ${g_is_fred_open}`);
@@ -100,7 +109,14 @@ window.addEventListener('load', function() {
     // count execution time
     var execution_start_time = performance.now()
 
-    log(`jQuery v.${jQuery.fn.jquery} was detected`);
+    if (!window.jQuery) {
+        // jQuery should be loaded at this point, something is wrong...
+        log("jQuery absent, aborting!");
+        return;
+    } else {
+        log(`jQuery v.${jQuery.fn.jquery} was detected`);
+    }
+
     log(`Pageload is finished, loading features!`);
     //// write code below this line ////
 
@@ -158,6 +174,8 @@ window.addEventListener('load', function() {
         add_settings_checkbox("lower_def_volume", "Lower Default Volume", "Obniża domyślną głośność w playerze video, przydatne w FF");
         //add_settings_checkbox("prev_next", "Jump To Post", "Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika");
         add_settings_checkbox("catalog_curb", "Catalog Curb", "Pozwala krawężnikować z poziomu katalogu");
+        add_settings_checkbox("uid_curb", "UID Curb", "Pozwala krawężnikować poszczególnych anonów we fredach");
+        add_settings_checkbox("radioradio_player", "Teoria Chaosu™ Integration", "Wyświetla player radioradio podczas audycji claude'a");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
 
         //add_settings_textbox("override_board_name", "Własny nagłówek na /b/", "Wpisz nową nazwe deski /b/")
@@ -220,6 +238,74 @@ window.addEventListener('load', function() {
         log(`Filtered ${rcount} elements!`);
     }
 
+    //// RadioRadio Player
+    if(localStorage.o_kdeluxe_radioradio_player == 1 && !g_special_page) {
+        log(`Radioradio Player Loaded...`);
+
+        const d = new Date();
+        let day = d.getDay();
+        let hour = d.getHours();
+
+        function display_player() {
+            $(`#postform`).after(`
+        <div id="radioradio_player">
+        <figure>
+           <figcaption>SŁUCHAJ TEORII CHAOSU, TERAZ NA ŻYWO:</figcaption>
+           <audio controls src="https://c16.radioboss.fm:18014/stream"></audio>
+        </figure>
+        </div>`);
+            $("#radioradio_player").css({"text-align": "center"});
+        }
+
+        if (day == 4 && hour >= 22 && hour <= 5) {
+            // info tydzień
+            display_player();
+        } else if (day == 5 && hour >= 0 && hour <= 6) {
+            // teoria chaosu
+            display_player();
+        }
+    }
+
+    //// UID Curb
+    if(localStorage.o_kdeluxe_uid_curb == 1 && !g_special_page) {
+        log(`UID Curb Initialized...`);
+
+        function appendToStorage(name, data){
+            var old = localStorage.getItem(name);
+            if(old === null) old = "";
+            localStorage.setItem(name, old + data);
+        }
+
+        // TO-DO: move this loop to shared post iteration loop
+        $('.postInfo').each(function() {
+            let uid = $(this).find(".posteruid").attr("title");
+            if(uid === undefined)
+                return true;
+
+            $(this).append(`<a href="#" class="curb_uid">[–]</a>`);
+
+            $(".curb_uid").click(function(e) {
+                e.preventDefault();
+
+                appendToStorage("o_kdeluxe_curbed_uids", uid + ";");
+                $(`span.posteruid[title="${uid}"]`).parents('.post').hide();
+            })
+        });
+
+        // read hidden UIDs from localstorage
+        let hidden_posters = localStorage.getItem('o_kdeluxe_curbed_uids');
+        if (hidden_posters != null) {
+            const hiden_posters_arr = hidden_posters.split(";");
+            // hide posts with blacklisted UIDs
+            let count = 0;
+            for (const hidden_uid of hiden_posters_arr) {
+                $(`span.posteruid[title="${hidden_uid}"]`).parents('.post').hide();
+                count++;
+            }
+            log(`Curbed ${count-1} UIDs`);
+        }
+    }
+
     //// Image Preview Anti-Eyestrain
     if(localStorage.o_kdeluxe_image_preview_anti_eyestrain == 1 && localStorage.o_imgpreview === "1" && !g_special_page) {
         let toggle = false;
@@ -238,6 +324,8 @@ window.addEventListener('load', function() {
 
             toggle = !toggle;
         });
+
+        log(`Image Preview Anti-Eyestrain Loaded...`);
     }
 
     //// Catalog Curb
@@ -378,6 +466,12 @@ window.addEventListener('load', function() {
 
     //// Blind Mode (TTS)
     if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page) {
+        if (responsiveVoice === undefined)
+            return true;
+
+        function rv_text_normalize(e){return e.replace(/<(?:.|\n)*?>/gm,"").replace("&gt;","").toLowerCase().replace(":3","dwukropek trzy").replace(";_;","płaku płaku").replace("inb4","inbifor")}function rv_line_pre_normalize(e){return e.replace('<i style="font-size:50px" class="wycop wycop-bartoszewski">',"bartoszewski fejs").replace('<i style="font-size:50px" class="wycop wycop-karachan">',"ka ra czan").replace('<i style="font-size:50px" class="wycop wycop-papiez">',"papież fejs")}function rv_speak_line_info(e){if(!(e=rv_line_pre_normalize(e)).startsWith("<"))return[e,{pitch:1}];var t=$(e);if(t.hasClass("quotelink")){var r=t.text().replace(">>","");return r.indexOf("OP")>1&&(r="opa"),["do posta "+r,{pitch:1}]}return t.hasClass("postlink")?["link do strony "+t.text().split("://")[1].split("/")[0],{pitch:1}]:t.hasClass("quote")?[t.text().replace(">",""),{pitch:1.6*Math.random()+.3}]:"IMG"==t[0].tagName?"https://i.imgur.com/ohFvRES.gif"==t.attr("src")?["kul",{pitch:1}]:"https://i.imgur.com/gB7t8a3.gif"==t.attr("src")?["cześć",{pitch:1}]:["obrazek",{pitch:1}]:"S"==t[0].tagName?[t.text(),{pitch:1}]:"U"==t[0].tagName?[t.text(),{pitch:.5}]:"B"==t[0].tagName?[t.text(),{volume:1.5}]:[t.text()]}function rv_rec_speak(e,t){if(0!=e.length){var r=rv_speak_line_info(e[0]),a=rv_text_normalize(r[0]),i=r[1];0==a.length&&rv_rec_speak(e.slice(1,e.length));var p=Object.assign({},{onend:function(){rv_rec_speak(e.slice(1,e.length),t)}},i);responsiveVoice.speak(a,t,p)}}function rv_prepare(e,t){for(var r=e.split("<br>"),a=[],i=0;i<r.length;i++)r[i].length>1&&a.push(r[i]);rv_rec_speak(a.slice(0,a.length-1),t)}
+
+        // TO-DO: move rv_add_links to shared post iteration loop
         function rv_add_links() {
             $('.post').each(function() {
                 var postInfo = $(this).find('.postInfo').first();
@@ -418,7 +512,7 @@ window.addEventListener('load', function() {
         }
 
         rv_init();
-        responsiveVoice.CHARACTER_LIMIT = 6000;
+        //responsiveVoice.CHARACTER_LIMIT = 6000;
         window.setInterval(rv_add_links, 5000);
     }
 
