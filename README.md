@@ -1,9 +1,10 @@
 <h1 align="center">Karachan Deluxe 2023 v0.3.9 BETA</h1>
 
 <h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
+<hr/>
 
-**Wymagania - w tej konfiguracji wszystko powinno działać**
-* Firefox
+**Wymagania**
+* Firefox (pełne wsparcie chrome potem)
 * Tampermonkey
 
 **Ficzery**
