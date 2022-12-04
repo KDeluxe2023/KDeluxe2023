@@ -24,26 +24,26 @@
 
 **TO-DO**
 * dumper z opcją pobierania obrazków oraz z opcją pominięcia ukrytych postujących dobry pomysł
-* statystyki: ile tematów skrawężnikowałeś, ile postów napisałeś, ile metrów przejechałeś myszką, ile czasu spędziłeś na czanie
-* https://greasyfork.org/en/scripts/370095-konfident/code
-* secret: anony bez skryptu widzą tylko ciąg losowych słów i znaków, a ci ze skryptem pasek w kolorze i żeby rozkodować trzeba podać hasło https://pastebin.com/Qv1pd284
+* statystyki - ilość: napisanych postów, metrów przejechanych myszką, skrawężnikowanych postów, fredów
+* zmiana tytułu deski
+* zintegrować i przepisać [konfident+](https://greasyfork.org/en/scripts/370095-konfident/code)
+* secret: anony bez skryptu widzą tylko ciąg losowych słów i znaków, a ci ze skryptem pasek w kolorze i żeby rozkodować trzeba podać hasło, [stary skrypt](https://pastebin.com/Qv1pd284)
 * autokrawężnik z filtrami (nazwa obrazka/substring w głównym poście freda)
-* opcje robienia nicków, w sensie każdy anon sobie wpisuje nicka i można potem kogoś pingować np. @cieć_inwalida i wtedy u tego ciecia inwalidy z rozjebaną ręką pojawi się dźwięk powiadomienia jak z GG który będzie dzialał na podstawie search.php mitsuby
+* możliwośc wpisania nicku w formularzu wysyłania posta, za pomocą nicku można spingować kogoś np. wpisujemy do posta @stały_słuchacz i wtedy u tego anona pojawia się [powiadomienie](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) z dźwiękiem, można to oprzeć na odpytywanie search.php ajaxem
 * poprawienie pobierania plików żeby nie pobrać thumbnaila albo dodanie jakiegoś downloader żeby pobrać całą nitkę lub bobrazki z nitki
 * uproszczone sagowanie
 * spoilerowanie obrazka na stałe (po hashu)
 * ulepszone tytuły stron
 * content freeze (usunięte posty są oznaczane jako usunięte i nie znikają po odświezeniu strony (trzeba mieć otwartego freda))
 * przepisany, odbugowany fastreply
-* https://greasyfork.org/en/scripts/26707-kurahen-idhighlight/code
-* https://github.com/Kurahen-Premium/Kurahen-Premium
+* zaimportować jakieś gówna z [kurahen premium](https://github.com/Kurahen-Premium/Kurahen-Premium)
+* system powiadomień w faviconie, [inspiracja](https://pastebin.com/NazxdcsU)
 * pełna lista wordfiltrów w kreatorze posta
 * zamienianie słowofiltrów w polu treści posta w czasie rzeczywistym
 * worldfilter bypass (zapobiega banom za słowofiltry na które jest autoban itp)
-* zmiana tytułu deski
 * ukrywanie postow <x odpowiedzi x do wyboru samemu
 * opcja pisania tekstem zalgo
-* trójsiła: https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+
+* helper do [trójsiły](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
 * usprawnienia do wyszukiwarki chanowej
 
 **Changelog**
