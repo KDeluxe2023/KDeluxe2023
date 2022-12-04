@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.3.3
+// @version      0.3.4
 // @description  Największe rozszerzenie dodające szereg nowych funkcji do forum młodzieżowo katolickiego
 // @author       anon zdrapkarz
 // @match        *://*.karachan.org/*
@@ -28,6 +28,8 @@ if (localStorage.o_kdeluxe_blind_mode_tts == 1)
 // mitsuba cog
 const openTab=function(a){if(!a.hasClass("tab-opened")){var e=a.parent().children(".tab-opened");e.removeClass("tab-opened"),$("#"+e.data("tab-ref")).removeClass("opened"),a.addClass("tab-opened"),$("#"+a.data("tab-ref")).addClass("opened")}};
 ////// end shared functions
+
+log("Initialized");
 
 // scripts must be prevented from loading before they actually load
 var bsePd = window.addEventListener('beforescriptexecute', e => {
@@ -98,7 +100,8 @@ window.addEventListener('load', function() {
     // count execution time
     var execution_start_time = performance.now()
 
-    log(`Page finished loading!`);
+    log(`jQuery v.${jQuery.fn.jquery} was detected`);
+    log(`Pageload is finished, loading features!`);
     //// write code below this line ////
 
     // create our own settings tab
@@ -153,8 +156,9 @@ window.addEventListener('load', function() {
         add_settings_checkbox("dangerous_bambo", "Dangerous Bambo", "Dodaje biegającego murzynka (bambo) na dole ekranu");
         add_settings_checkbox("ban_checker", "Ban Checker", "Wyświetla status bana");
         add_settings_checkbox("lower_def_volume", "Lower Default Volume", "Obniża domyślną głośność w playerze video, przydatne w FF");
-        //add_settings_checkbox("prev_next", "Jump to post", "Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika");
+        //add_settings_checkbox("prev_next", "Jump To Post", "Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika");
         add_settings_checkbox("catalog_curb", "Catalog Curb", "Pozwala krawężnikować z poziomu katalogu");
+        add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
 
         //add_settings_textbox("override_board_name", "Własny nagłówek na /b/", "Wpisz nową nazwe deski /b/")
         //load_text_data("override_board_name", localStorage.o_kdeluxe_override_board_name);
@@ -178,7 +182,7 @@ window.addEventListener('load', function() {
         $(".grecaptcha-badge").hide();
         rcount++;
 
-        // find unknown iframes
+        // remove invisible iframes
         $("iframe").each(function() {
             let src = $(this).attr('src');
             if(src == undefined)
@@ -214,6 +218,26 @@ window.addEventListener('load', function() {
 
         log(`Advanced Filters Loaded...`);
         log(`Filtered ${rcount} elements!`);
+    }
+
+    //// Image Preview Anti-Eyestrain
+    if(localStorage.o_kdeluxe_image_preview_anti_eyestrain == 1 && localStorage.o_imgpreview === "1" && !g_special_page) {
+        let toggle = false;
+        let preview_container = $("#imagePreview");
+        preview_container.append(`<a href="#" id="anti-eyestrain"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>`);
+
+        $("#anti-eyestrain").css({"position": "absolute", "top": "0", "right": "0", "font-size": "20px", "background-color": "black"});
+        $("#anti-eyestrain").click(function(e) {
+            e.preventDefault();
+
+            if (toggle) {
+                preview_container.find(">:first-child").css({"filter": ""});
+            } else if (!toggle) {
+                preview_container.find(">:first-child").css({"filter": "hue-rotate(180deg) invert(1)"});
+            }
+
+            toggle = !toggle;
+        });
     }
 
     //// Catalog Curb
