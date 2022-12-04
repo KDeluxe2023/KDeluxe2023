@@ -21,10 +21,9 @@
 
 **TO-DO**
 * bugfix na listę obserwowanych fredów poza ekranem
-* player radioradio osadzony na górze deski w każdy czwartek po 22:00 i piątek po 24:00
-* dumper z opcją pobierania obrazków oraz z opcją pominięcia ukrytych postujących dobry pomysł
-* krawężnik na postującego (ukryj skurwysyna) w oparciu na mutationobserver (z filtrami)
 * auto-zmiana hasła po banie
+* dumper z opcją pobierania obrazków oraz z opcją pominięcia ukrytych postujących dobry pomysł
+* statystyki: ile tematów skrawężnikowałeś, ile postów napisałeś, ile metrów przejechałeś myszką, ile czasu spędziłeś na czanie
 * https://greasyfork.org/en/scripts/370095-konfident/code
 * secret: anony bez skryptu widzą tylko ciąg losowych słów i znaków, a ci ze skryptem pasek w kolorze i żeby rozkodować trzeba podać hasło https://pastebin.com/Qv1pd284
 * autokrawężnik z filtrami (nazwa obrazka/substring w głównym poście freda)
@@ -32,7 +31,6 @@
 * poprawienie pobierania plików żeby nie pobrać thumbnaila albo dodanie jakiegoś downloader żeby pobrać całą nitkę lub bobrazki z nitki
 * uproszczone sagowanie
 * spoilerowanie obrazka na stałe (po hashu)
-* statystyki: ile tematów skrawężnikowałeś, ile postów napisałeś, ile metrów przejechałeś myszką, ile czasu spędziłeś na czanie
 * ulepszone tytuły stron
 * content freeze (usunięte posty są oznaczane jako usunięte i nie znikają po odświezeniu strony (trzeba mieć otwartego freda))
 * przepisany, odbugowany fastreply
@@ -40,8 +38,7 @@
 * https://github.com/Kurahen-Premium/Kurahen-Premium
 * pełna lista wordfiltrów w kreatorze posta
 * zamienianie słowofiltrów w polu treści posta w czasie rzeczywistym
-* worldfilter bypass
-* anti-ban (nie pozwala zapostować jeśli dostałbyś auto-bana) - przydatne jak np. wstawiam kod albo kopiujemy skądś tekst gdzie są emotki
+* worldfilter bypass (zapobiega banom za słowofiltry na które jest autoban itp)
 * zmiana tytułu deski
 * ukrywanie postow <x odpowiedzi x do wyboru samemu
 * opcja pisania tekstem zalgo
