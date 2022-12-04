@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.3.6 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.3.7 BETA</h1>
 
 <h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 
@@ -18,10 +18,11 @@
 * Catalog Curb - Pozwala krawężnikować z poziomu katalogu
 * UID Curb - Pozwala krawężnikować poszczególnych anonów we fredach
 * Teoria Chaosu™ Integration - Wyświetla player radioradio podczas audycji claude'a
+* Fix Thread WatchList OOB - Przywraca listę obserwowanych fredów do lewego górnego rogu
+* Auto Follow - Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)
+* Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
 
 **TO-DO**
-* bugfix na listę obserwowanych fredów poza ekranem
-* auto-zmiana hasła po banie
 * dumper z opcją pobierania obrazków oraz z opcją pominięcia ukrytych postujących dobry pomysł
 * statystyki: ile tematów skrawężnikowałeś, ile postów napisałeś, ile metrów przejechałeś myszką, ile czasu spędziłeś na czanie
 * https://greasyfork.org/en/scripts/370095-konfident/code
