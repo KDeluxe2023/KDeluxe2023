@@ -2,6 +2,10 @@
 
 <h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 
+**Wymagania - w tej konfiguracji wszystko powinno działać**
+* Firefox
+* Tampermonkey
+
 **Ficzery**
 * Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony
 * Anti Bible - Nie pozwala na załadowanie biblii (htmlshiv.js)
