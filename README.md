@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.4.1 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.4.2 BETA</h1>
 <h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 <hr/>
 
@@ -11,7 +11,7 @@
 * Anti Bible - Nie pozwala na załadowanie biblii (htmlshiv.js)
 * Advanced Filters - Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne
 * Better Embeds - Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu
-* Vibrant Night - Ukrywa /noc/ kiedy nie jest dostępna, [wkrutce] a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
+* Smart Boards - Ukrywa /noc/ kiedy nie jest dostępna, ukrywa /4/, [wkrutce] a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
 * Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
 * <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
 * Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
@@ -26,6 +26,8 @@
 * Auto Follow - Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)
 * Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
 * Fred Dumper" - Pozwala zapisać obecnie otwarty fred jako jpg, dodatkowo pozwala pobrać też obrazki osobno w zipie
+
+Dodatkowo w konsoli jest dostępny obszerny log z wykonywania skryptu i profilowanie czasowe
 
 Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania, zapraszam do robienia pull requestów
 
