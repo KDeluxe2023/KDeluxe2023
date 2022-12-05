@@ -3,11 +3,11 @@
 <hr/>
 
 **Wymagania**
-* Firefox (pełne wsparcie chrome potem)
+* Firefox [wsparcie chrome](https://github.com/KDeluxe2023/KDeluxe2023/issues/1)
 * Tampermonkey
 
 **Instalacja**
-* Instalujesz [addon tampermonkey[(https://www.tampermonkey.net/) do przeglądarki
+* Instalujesz [addon tampermonkey](https://www.tampermonkey.net/) do przeglądarki
 * Instalujesz [userscript z repo](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
 
 **Dostępne funkcje**
