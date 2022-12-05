@@ -6,6 +6,10 @@
 * Firefox (pełne wsparcie chrome potem)
 * Tampermonkey
 
+**Instalacja**
+* Instalujesz [addon tampermonkey[(https://www.tampermonkey.net/) do przeglądarki
+* Instalujesz [userscript z repo](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
+
 **Dostępne funkcje**
 * Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony
 * Anti Bible - Nie pozwala na załadowanie biblii (htmlshiv.js)
