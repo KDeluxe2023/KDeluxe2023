@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.4.2 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.4.3 BETA</h1>
 <h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 <hr/>
 
@@ -21,18 +21,18 @@
 * Image Preview Anti-Eyestrain - Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy
 * Catalog Curb - Pozwala krawężnikować z poziomu katalogu
 * UID Curb - Pozwala krawężnikować poszczególnych anonów we fredach
-* Teoria Chaosu™ Integration - Wyświetla player radioradio podczas audycji claude'a
+* Teoria Chaosu™ Integration - Wyświetla player radioradio podczas audycji claude'a (█▬█ █ ▀█▀)
 * Fix Thread WatchList OOB - Przywraca listę obserwowanych fredów do lewego górnego rogu
 * Auto Follow - Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)
 * Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
-* Fred Dumper" - Pozwala zapisać obecnie otwarty fred jako jpg, dodatkowo pozwala pobrać też obrazki osobno w zipie
+* Fred Dumper - Pozwala zapisać obecnie otwarty fred jako jpg, dodatkowo pozwala pobrać też obrazki osobno w zipie
+* Rich Stats - Pokazuje nam przesuwalne okienko ze statystykami forumowicza - ilośc napisanych postów, przejechane kilometry myszką, czas spędzony na deskach, ilość wyszukań w wyszukiwarce, ilość krawężników, pobranych rzeczy z /rs/...
 
 Dodatkowo w konsoli jest dostępny obszerny log z wykonywania skryptu i profilowanie czasowe
 
 Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania, zapraszam do robienia pull requestów
 
 **Do zrobienia**
-* statystyki - ilość: napisanych postów, metrów przejechanych myszką, skrawężnikowanych postów, fredów
 * zmiana tytułu deski
 * zintegrować i przepisać [konfident+](https://greasyfork.org/en/scripts/370095-konfident/code)
 * secret: anony bez skryptu widzą tylko ciąg losowych słów i znaków, a ci ze skryptem pasek w kolorze i żeby rozkodować trzeba podać hasło, [stary skrypt](https://pastebin.com/Qv1pd284)
