@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.4.1
+// @version      0.4.2
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -73,6 +73,8 @@ var g_special_page = false;
 var g_is_in_catalog = false;
 // tells us if we have a topic fully opened
 var g_is_fred_open = false;
+// holds user selected style
+var g_style = localStorage.style;
 
 // assign those globals above
 let special_pages = ["catalog.html", "search.php", "/rs/", "/*/"];
@@ -97,7 +99,7 @@ log(`g_is_fred_open = ${g_is_fred_open}`);
 ///// main script logic ////
 window.addEventListener('load', function() {
     // count execution time
-    var execution_start_time = performance.now()
+    var total_execution_start_time = performance.now()
 
     if (!window.jQuery) {
         // jQuery should be loaded at this point, something is wrong...
@@ -109,6 +111,8 @@ window.addEventListener('load', function() {
 
     log(`Pageload is finished, loading features!`);
     //// write code below this line ////
+
+    let performance_interface = performance.now()
 
     // create our own settings tab
     let settings_container = $("#tab-settings .modal-cont");
@@ -155,29 +159,44 @@ window.addEventListener('load', function() {
         add_settings_checkbox("spoiler_revealer", "Spoiler Revealer", "Odkrywa wszystkie spoilery więc nie trzeba na nie najeżdżać");
         add_settings_checkbox("advanced_filters", "Advanced Filters", "Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne");
         add_settings_checkbox("anti_bible", "Anti Bible", "Nie pozwala na załadowanie biblii (htmlshiv.js)");
-        add_settings_checkbox("better_embed", "Better Embeds", "Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu");
-        add_settings_checkbox("vibrant_night", "Vibrant Night", "Ukrywa /noc/ kiedy nie jest dostępna"); // , a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
-        add_settings_checkbox("blind_mode_tts", "Blind Mode (TTS)", "Dodaje obok postów opcję text to speech czyli czytania na głos");
-        add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R");
-        add_settings_checkbox("dangerous_bambo", "Dangerous Bambo", "Dodaje biegającego murzynka (bambo) na dole ekranu");
-        add_settings_checkbox("ban_checker", "Ban Checker", "Wyświetla status bana");
-        add_settings_checkbox("lower_def_volume", "Lower Default Volume", "Obniża domyślną głośność w playerze video, przydatne w FF");
-        //add_settings_checkbox("prev_next", "Jump To Post", "Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika");
         add_settings_checkbox("catalog_curb", "Catalog Curb", "Pozwala krawężnikować z poziomu katalogu");
         add_settings_checkbox("uid_curb", "UID Curb", "Pozwala krawężnikować poszczególnych anonów we fredach");
+        add_settings_checkbox("better_embed", "Better Embeds", "Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu");
         add_settings_checkbox("radioradio_player", "Teoria Chaosu™ Integration", "Wyświetla player radioradio podczas audycji claude'a");
+        add_settings_checkbox("lower_def_volume", "Lower Default Volume", "Obniża domyślną głośność w playerze video, przydatne w FF");
+        add_settings_checkbox("ban_checker", "Ban Checker", "Wyświetla status bana");
         add_settings_checkbox("password_changer", "Password Changer", "Zmienia hasło na losowe przy każdym załadowaniu strony");
-        add_settings_checkbox("auto_follow", "Auto Follow", "Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)");
         add_settings_checkbox("fred_dumper", "Fred Dumper", "Pozwala zapisać obecnie otwarty fred jako jpg, dodatkowo pozwala pobrać też obrazki osobno w zipie");
+        add_settings_checkbox("auto_follow", "Auto Follow", "Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)");
+        add_settings_checkbox("rich_stats", "Rich Statistics", "Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum");
+        add_settings_checkbox("blind_mode_tts", "Blind Mode (TTS)", "Dodaje obok postów opcję text to speech czyli czytania na głos");
+        add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R");
+        //add_settings_checkbox("prev_next", "Jump To Post", "Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
+        add_settings_checkbox("dangerous_bambo", "Dangerous Bambo", "Dodaje biegającego murzynka (bambo) na dole ekranu");
+        add_settings_checkbox("smart_boards", "Smart Boards", "Ukrywa /noc/ kiedy nie jest dostępna"); // , a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
 
         //add_settings_textbox("override_board_name", "Własny nagłówek na /b/", "Wpisz nową nazwe deski /b/")
         //load_text_data("override_board_name", localStorage.o_kdeluxe_override_board_name);
     }
 
+    //// Add ThreadWatcher Position Reset Button
+    $("#settingsSave").after(`<input type="button" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
+    $("#resetThreadWatcher").click(function(e){
+        e.preventDefault();
+        localStorage.KurahenPremium_WatchedThreads_Left = "10px";
+        localStorage.KurahenPremium_WatchedThreads_Top = "10px";
+        window.location.reload();
+    });
+
+    log(`[⏱️] Interface created in ${performance.now() - performance_interface}ms`);
+
     //// Filters
     // dont move this lower, this needs to run first
     if (localStorage.o_kdeluxe_advanced_filters == 1) {
+        log(`Advanced Filters Initiated...`);
+        let performance_filters = performance.now()
+
         let rcount = 0;
 
         // remove unwanted elements
@@ -229,22 +248,47 @@ window.addEventListener('load', function() {
         // Anti-wirówka
         localStorage.xD = 'xD';
 
-        log(`Advanced Filters Loaded...`);
         log(`Filtered ${rcount} elements!`);
+
+        log(`[⏱️] Advanced Filters loaded in ${performance.now() - performance_filters}ms`);
     }
 
-    //// Add ThreadWatcher Position Reset Button
-    $("#settingsSave").after(`<input type="button" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
-    $("#resetThreadWatcher").click(function(e){
-        e.preventDefault();
-        localStorage.KurahenPremium_WatchedThreads_Left = "10px";
-        localStorage.KurahenPremium_WatchedThreads_Top = "10px";
-        window.location.reload();
-    });
+    //// Rich Stats
+    if(localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page) {
+        log(`Rich Stats Loaded...`);
 
-    {
-        // Fred Dumper
+        let performance_rich_stats = performance.now()
+
+        let top_pos = "1px";
+        let left_pos = "1px";
+        // create stats window
+        jQuery('<div>', {
+            id: 'stats_box',
+            class: 'movable',
+            style: `height:auto;min-height:100px;width:auto;min-width:250px;position:absolute;top:${top_pos};left:${left_pos};padding:5px;`
+        }).appendTo('body');
+        $("#stats_box").draggable();
+
+        // style our box the same as watcher box
+        function read_css_property(e,t){var n=e.charAt(0),r=e.substring(1),u="#"==n?document.getElementById(r):document.getElementsByClassName(r)[0];return window.getComputedStyle(u,null).getPropertyValue(t)}
+        let og_background = read_css_property("#watcher_box", "background");
+        let og_border = read_css_property("#watcher_box", "border");
+
+        $('#stats_box').css({"background":og_background,"border":og_border});
+
+        // populate it with content
+        jQuery('<small>').appendTo('#stats_box').text("Twoje statystyki");
+
+        log(`[⏱️] Rich stats loaded in ${performance.now() - performance_rich_stats}ms`);
+    }
+
+
+    { // block
+        //// Fred Dumper
         if(localStorage.o_kdeluxe_fred_dumper == 1 && !g_special_page && g_is_fred_open) {
+            log(`Fred Dumper Loaded...`);
+            let performance_fred_dumper = performance.now()
+
             let bar = $('.post').first().find('.postInfo').first();
             bar.prepend(`<span id="dumper_container">[<a href="#" id="dump_thread"><i class="fa fa-download" aria-hidden="true"></i></a>]</span>`);
             $("#dumper_container").css({"margin-right":"3px"});
@@ -273,7 +317,7 @@ window.addEventListener('load', function() {
                     }
 
                     function download_all_media_zipped() {
-                       function saveToZip(e,t){log("Generating zip...");const n=new JSZip,o=n.folder("project");t.forEach((e=>{const t=fetch(e).then((e=>200===e.status?e.blob():Promise.reject(new Error(e.statusText)))),n=e.substring(e.lastIndexOf("/"));o.file(n,t)})),n.generateAsync({type:"blob"}).then((t=>saveAs(t,e))).catch((e=>console.log(e)))}
+                        function saveToZip(e,t){log("Generating zip...");const n=new JSZip,o=n.folder("project");t.forEach((e=>{const t=fetch(e).then((e=>200===e.status?e.blob():Promise.reject(new Error(e.statusText)))),n=e.substring(e.lastIndexOf("/"));o.file(n,t)})),n.generateAsync({type:"blob"}).then((t=>saveAs(t,e))).catch((e=>console.log(e)))}
 
                         log("Creating zip...");
                         let urls = [];
@@ -311,11 +355,14 @@ window.addEventListener('load', function() {
 
                 });
             });
+
+            log(`[⏱️] Fred Dumper loaded in ${performance.now() - performance_fred_dumper}ms`);
         }
 
         //// RadioRadio Player
         if(localStorage.o_kdeluxe_radioradio_player == 1 && !g_special_page) {
             log(`Radioradio Player Loaded...`);
+            let performance_radioradio_player = performance.now()
 
             const d = new Date();
             let day = d.getDay();
@@ -339,12 +386,15 @@ window.addEventListener('load', function() {
                 // teoria chaosu
                 display_player();
             }
+
+            log(`[⏱️] RadioRadio Player loaded in ${performance.now() - performance_radioradio_player}ms`);
         }
 
 
         //// Auto Follow
         if(localStorage.o_kdeluxe_auto_follow == 1 && !g_special_page && g_is_fred_open) {
             log(`Auto Follow Loaded...`);
+            let performance_autofollow = performance.now()
 
             $('#postform').on('submit', function(e) {
                 e.preventDefault();
@@ -354,21 +404,26 @@ window.addEventListener('load', function() {
                     log("Auto Follow Executed");
                 }
             });
+
+            log(`[⏱️] Autofollow loaded in ${performance.now() - performance_autofollow}ms`);
         }
 
         //// Password Changer
         if(localStorage.o_kdeluxe_password_changer == 1 && !g_special_page) {
             log(`Password Changer Loaded...`);
+            let performance_password_changer = performance.now()
 
             function random_str(r){for(var n="",o="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789",t=o.length,a=0;a<r;a++)n+=o.charAt(Math.floor(Math.random()*t));return n}
 
             $.cookie("password", random_str(8), { path: '/' });
             log(`Password changed: ${$.cookie("password")}`);
+            log(`[⏱️] Password Changer loaded in ${performance.now() - performance_password_changer}ms`);
         }
 
         //// UID Curb
-        if(localStorage.o_kdeluxe_uid_curb == 1 && !g_special_page) {
+        if(localStorage.o_kdeluxe_uid_curb == 1 && !g_special_page && g_is_fred_open) {
             log(`UID Curb Initialized...`);
+            let performance_uid_curb = performance.now()
 
             // add clear button
             $("#settingsSave").after(`<input type="button" value="Clear Curbed UIDs" id="clear_curb_list">`);
@@ -381,9 +436,10 @@ window.addEventListener('load', function() {
             function appendToStorage(name, data){var old=localStorage.getItem(name);if(old === null){old = "";}localStorage.setItem(name, old + data);}
 
             // TO-DO: move this loop to shared post iteration loop
-            $('.postInfo').each(function() {
+            // TO-DO: optimize this, this literally takes 100ms to execute
+            $('.postInfo').each(function(index) {
                 // skip main post, mitsuba already lets you curb it
-                if ($(this).find("span.subject").length)
+                if (index == 0) // if ($(this).find("span.subject").length)
                     return true;
 
                 // fetch id
@@ -401,6 +457,7 @@ window.addEventListener('load', function() {
                     $(`span.posteruid[title="${x}"]`).parents('.post').hide();
                 })
             });
+            // end optimize
 
             // read hidden UIDs from localstorage
             let hidden_posters = localStorage.getItem('o_kdeluxe_curbed_uids');
@@ -414,14 +471,19 @@ window.addEventListener('load', function() {
                 }
                 log(`Curbed ${count-1} UIDs`);
             }
+
+            log(`[⏱️] UID Curb loaded in ${performance.now() - performance_uid_curb}ms`);
         }
 
         //// Catalog Curb
         if(this.localStorage.o_kdeluxe_catalog_curb == 1 && g_is_in_catalog) {
-            let board = window.location.toString().split("/")[3];
+            log(`Catalog Curb Loaded...`);
+            let performance_catalog_curb = performance.now()
 
+            let board = window.location.toString().split("/")[3];
             let posts = document.querySelectorAll(".thread");
 
+            // TO-DO: dont store curbed threads individually, use json with curb time and id+board instead
             function getHideValue(el) {
                 let threadId = el.getAttribute("id").slice(7);
                 return `h_${board}_${threadId}`;
@@ -434,9 +496,7 @@ window.addEventListener('load', function() {
                         break;
                     }
                 }
-            });
 
-            posts.forEach((el, idx) => {
                 el.innerHTML = `<div><a class="hide" href="#" style="font-size:21px;">[–]</a></div>` + el.innerHTML
             });
 
@@ -449,11 +509,14 @@ window.addEventListener('load', function() {
                 });
             });
 
-            log(`Catalog Curb Loaded...`);
+            log(`[⏱️] Catalog Curb loaded in ${performance.now() - performance_catalog_curb}ms`);
         }
 
         //// Image Preview Anti-Eyestrain
         if(localStorage.o_kdeluxe_image_preview_anti_eyestrain == 1 && localStorage.o_imgpreview === "1" && !g_special_page) {
+            log(`Image Preview Anti-Eyestrain Loaded...`);
+            let performance_anti_eyestrain = performance.now()
+
             let toggle = false;
             let preview_container = $("#imagePreview");
             preview_container.append(`<a href="#" id="anti-eyestrain"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>`);
@@ -471,11 +534,14 @@ window.addEventListener('load', function() {
                 toggle = !toggle;
             });
 
-            log(`Image Preview Anti-Eyestrain Loaded...`);
+            log(`[⏱️] Image Preview Anti-Eyestrain loaded in ${performance.now() - performance_anti_eyestrain}ms`);
         }
 
         //// Ban Checker
         if(this.localStorage.o_kdeluxe_ban_checker == 1 && !g_special_page) {
+            log(`Ban Checker Loaded...`);
+            let performance_ban_checker = performance.now()
+
             $("#postform").after(`<h1 id="banned"></h1>`);
             var ban_check_func = window.setInterval(function(){
                 fetch("https://karachan.org/banned.php").then((resp) => resp.text()).then((text) => {
@@ -486,7 +552,7 @@ window.addEventListener('load', function() {
                 });
             }, 1000*10);
 
-            log(`Ban Checker Loaded...`);
+            log(`[⏱️] Ban Checker loaded in ${performance.now() - performance_ban_checker}ms`);
         }
 
         //// Prev/Next
@@ -546,22 +612,31 @@ window.addEventListener('load', function() {
 
         //// Lower Default Volume
         if (localStorage.o_kdeluxe_lower_def_volume == 1 && !g_special_page) {
+            log("Lower Default Volume Loaded...");
+            let performance_lower_def_volume = performance.now()
+
             let volume = 0.1
             $("#player").prop("volume", volume);
 
-            log("Lower Default Volume Loaded...");
+            log(`[⏱️] Lower Default Volume loaded in ${performance.now() - performance_lower_def_volume}ms`);
         }
 
         //// Dangerous Bambo
         if (localStorage.o_kdeluxe_dangerous_bambo == 1) {
+            log("Dangerous Bambo Loaded...");
+            let performance_dangerous_bambo = performance.now()
+
             $(`<style type='text/css'>#papaj_pingwin{width:200px;height:190px;position:fixed;animation-iteration-count:2137;background:url("https://i.imgur.com/mB0hqA9.gif");animation-name:pingwin;animation-duration:30s;animation-timing-function:linear;bottom:0;z-index:1000}@keyframes pingwin{0%{right:100%;transform:scaleX(1)}50%{right:-15%;transform:scaleX(1)}51%{right:-15%;transform:scaleX(-1)}100%{transform:scaleX(-1);right:115%}}</style>`).appendTo("head");
             $("body").append(`<div id="papaj_pingwin"></div>`);
 
-            log("Dangerous Bambo Loaded...");
+            log(`[⏱️] Dangerous Bambo loaded in ${performance.now() - performance_lower_def_volume}ms`);
         }
 
         //// New keyframes
         if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page) {
+            log("New Keyframe Animations Loaded...");
+            let performance_new_keyframes = performance.now()
+
             $(`<style type='text/css'>@keyframes robert{from{background-color:green;color:#fff}to{background-color:#fff;color:green}}.maxiu{background-color:red;color:#ff0}</style>`).appendTo("head");
 
             function on_post_loop_new_keyframes(post) {
@@ -571,11 +646,13 @@ window.addEventListener('load', function() {
                 _this.html(str);
             }
 
-            log("New Keyframe Animations Loaded...");
+            log(`[⏱️] New Keyframes loaded in ${performance.now() - performance_new_keyframes}ms`);
         }
 
         //// Blind Mode (TTS)
         if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page) {
+            let performance_blind_mode_tts = performance.now()
+
             if (responsiveVoice === undefined)
                 return true;
 
@@ -624,10 +701,15 @@ window.addEventListener('load', function() {
             rv_init();
             responsiveVoice.CHARACTER_LIMIT = 6000;
             window.setInterval(rv_add_links, 5000);
+
+            log(`[⏱️] Blind Mode TTS loaded in ${performance.now() - performance_blind_mode_tts}ms`);
         }
 
-        //// Vibrant Night
+        //// Smart Boards
         if (localStorage.o_kdeluxe_smart_boards == 1) {
+            log(`Smart Boards Loaded...`);
+            let performance_smart_boards = performance.now()
+
             let board_ele = $("#tab-boardlink");
 
             // yszty kurwa gnoju
@@ -638,19 +720,20 @@ window.addEventListener('load', function() {
             var hour = date.getHours();
 
             if (hour >= 1 && hour <= 5) {
-                log(`Vibrant Night Loaded...`);
                 // TO-DO: add lightbulb and dim the screen
 
             } else {
                 // hide /noc/ cause its not available
                 board_ele.find(`[data-short='noc']`).remove();
-
             }
+
+            log(`[⏱️] Smart Boards loaded in ${performance.now() - performance_smart_boards}ms`);
         }
 
         //// Auto Scroll
         if (localStorage.o_kdeluxe_autoscroll == 1 && !g_special_page) {
             log(`Autoscroll Loaded...`);
+            let performance_autoscroll = performance.now()
 
             var autoscroll;
             $(".uinfo").before('[<input type="checkbox" class="as-box"/>Autoscroll] '), $(".as-box").change(function() {
@@ -661,22 +744,26 @@ window.addEventListener('load', function() {
                     }, "slow")
                 }, 1e3) : clearInterval(autoscroll)
             })
+
+            log(`[⏱️] Autoscroll loaded in ${performance.now() - performance_autoscroll}ms`);
         }
 
         //// Spoiler Revealer
         if (localStorage.o_kdeluxe_spoiler_revealer == 1) {
-            $("<style type='text/css'>s { color: white!important; }</style>").appendTo("head");
-
             log(`Spoiler Revealer Loaded...`);
+
+            $("<style type='text/css'>s { color: white!important; }</style>").appendTo("head");
         }
 
         //// Better Embed
         if (localStorage.o_kdeluxe_better_embed == 1 && !g_special_page) {
+            let performance_better_embeds = performance.now()
+
             const embeds = document.querySelectorAll("iframe");
             if(embeds.length == 0)
                 return;
 
-            log(`Better Embed Loaded...`);
+            log(`Better Embeds Loaded...`);
 
             const fetchVideoTitle = async (id) => {
                 const body = await fetch(
@@ -805,11 +892,13 @@ window.addEventListener('load', function() {
 
             loopThroughEmbeds(embeds);
             observeIncomingEmbeds();
+
+            log(`[⏱️] Better Embeds loaded in ${performance.now() - performance_better_embeds}ms`);
         }
 
-    }
+    } // block
 
-    log(`Finished in ${performance.now() - execution_start_time}ms`);
+    log(`Finished in ${performance.now() - total_execution_start_time}ms`);
 
     // iterate over newly collected posts
     if(!g_special_page) {
