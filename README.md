@@ -3,7 +3,7 @@
 <hr/>
 
 **Wymagania**
-* Firefox [wsparcie chrome](https://github.com/KDeluxe2023/KDeluxe2023/issues/1)
+* Firefox [(o wsparciu dla chrome)](https://github.com/KDeluxe2023/KDeluxe2023/issues/1)
 * Tampermonkey
 
 **Instalacja**
