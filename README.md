@@ -38,14 +38,16 @@ Dodatkowo w konsoli jest dostępny obszerny log z wykonywania skryptu i profilow
 Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania, zapraszam do robienia pull requestów
 
 **Do zrobienia**
-* zmiana tytułu deski
-* zintegrować i przepisać [konfident+](https://greasyfork.org/en/scripts/370095-konfident/code)
-* secret: anony bez skryptu widzą tylko ciąg losowych słów i znaków, a ci ze skryptem pasek w kolorze i żeby rozkodować trzeba podać hasło, [stary skrypt](https://pastebin.com/Qv1pd284)
+* <b>przesunąć wszystkie pętle iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
+* przepisać system zapisywania/odczytywania ustawień, chwilowo robi to za nas mitsuba
+* dodać funkcje obsługującą dodawanie textboxów, buttonów i comboboxów do UI
+* opcja zmiany tytułu deski
+* zintegrować i przepisać [konfident+](https://pastebin.com/raw/ELkn8CRb)
+* secret: anony bez skryptu widzą tylko ciąg losowych słów i znaków, a ci ze skryptem pasek w kolorze i żeby rozkodować trzeba podać hasło
 * autokrawężnik z filtrami (nazwa obrazka/substring w głównym poście freda)
 * możliwośc wpisania nicku w formularzu wysyłania posta, za pomocą nicku można spingować kogoś np. wpisujemy do posta @stały_słuchacz i wtedy u tego anona pojawia się [powiadomienie](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) z dźwiękiem, można to oprzeć na odpytywanie search.php ajaxem
 * poprawienie pobierania plików żeby nie pobrać thumbnaila albo dodanie jakiegoś downloader żeby pobrać całą nitkę lub bobrazki z nitki
 * uproszczone sagowanie
-* <b>przesunąć wszystkie pętle iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
 * spoilerowanie obrazka na stałe (po hashu)
 * ulepszone tytuły stron
 * content freeze (usunięte posty są oznaczane jako usunięte i nie znikają po odświezeniu strony (trzeba mieć otwartego freda))
@@ -59,6 +61,7 @@ Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania,
 * opcja pisania tekstem zalgo
 * helper do [trójsiły](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
 * usprawnienia do wyszukiwarki chanowej
+* rozwiązać i usunąć wszystkie tagi "TO-DO:" w kodzie
 
 **Historia wersji**
 
