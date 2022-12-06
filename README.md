@@ -4,10 +4,10 @@
 
 **Wymagania**
 * Firefox / Chrome / Opera / Safari / Edge
-* Tampermonkey
+* Addon pozwalający ładować userjs
 
 **Instalacja**
-* Instalujesz [addon tampermonkey](https://www.tampermonkey.net/) do przeglądarki
+* Instalujesz [addon violentmonkey](https://violentmonkey.github.io/get-it/) lub inny kompatybilny userjs loader
 * Instalujesz [userscript z repo](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
 
 **Dostępne funkcje ([zaproponuj nowe](https://github.com/KDeluxe2023/KDeluxe2023/issues))**
