@@ -29,7 +29,7 @@
 * Fix Thread WatchList OOB - Przywraca listę obserwowanych fredów do lewego górnego rogu
 * Auto Follow - Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)
 * Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
-* Fred Dumper - Pozwala zapisać obecnie otwarty fred jako jpg, dodatkowo pozwala pobrać też obrazki osobno w zipie
+* Fred Dumper - Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie
 * Rich Stats - Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum
 
 Dodatkowo w konsoli jest dostępny obszerny log z wykonywania skryptu i profilowanie czasowe
