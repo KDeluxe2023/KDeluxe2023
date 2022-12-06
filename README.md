@@ -12,7 +12,7 @@
 
 **Dostępne funkcje**
 * Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony
-* Anti Bible - Nie pozwala na załadowanie biblii [działa tylko na firefox](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
+* Anti Bible - Nie pozwala na załadowanie biblii [(działa tylko na firefox)](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
 * Advanced Filters - Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne
 * Better Embeds - Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu
 * Smart Boards - Ukrywa /noc/ kiedy nie jest dostępna, ukrywa /4/
