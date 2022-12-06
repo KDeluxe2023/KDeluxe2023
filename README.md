@@ -3,7 +3,8 @@
 <hr/>
 
 **Wymagania**
-* Firefox [(o wsparciu dla chrome)](https://github.com/KDeluxe2023/KDeluxe2023/issues/1)
+* Firefox 
+* lub Chrome (niekompatybilny z Anti Bible)
 * Tampermonkey
 
 **Instalacja**
