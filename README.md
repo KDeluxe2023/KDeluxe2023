@@ -10,6 +10,12 @@
 * Instalujesz [addon violentmonkey](https://violentmonkey.github.io/get-it/)
 * Instalujesz [userscript z repo](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
 
+**Jak zmienić ustawienia**
+
+Ustawienia są tam gdzie ustawienia mitsuby (trybik)
+
+![firefox_bKzkjwzFYE](https://user-images.githubusercontent.com/119752397/206005514-765ec49b-bb95-44d4-ab9b-7f7b08208280.png)
+
 **Dostępne funkcje ([zaproponuj nowe](https://github.com/KDeluxe2023/KDeluxe2023/issues))**
 * Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można togglować
 * Teoria Chaosu™ Integration - Wyświetla player radioradio podczas audycji claude'a (█▬█ █ ▀█▀)
