@@ -10,7 +10,7 @@
 * Instalujesz [addon tampermonkey](https://www.tampermonkey.net/) do przeglądarki
 * Instalujesz [userscript z repo](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
 
-**Dostępne funkcje**
+**Dostępne funkcje ([zaproponuj nowe](https://github.com/KDeluxe2023/KDeluxe2023/issues))**
 * Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można togglować
 * Teoria Chaosu™ Integration - Wyświetla player radioradio podczas audycji claude'a (█▬█ █ ▀█▀)
 * Advanced Filters - Inteligentne filtry à la ublock ułatwiające korzystanie ze strony
@@ -33,7 +33,7 @@
 * <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
 * <del>Jump To Post - Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika</del>
 
-Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania, zapraszam do robienia pull requestów
+Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
 
 **Do zrobienia**
 * <b>[przesunąć wszystkie pętle](https://github.com/KDeluxe2023/KDeluxe2023/issues/4) iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
@@ -44,7 +44,6 @@ Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania,
 * przepisać [konfident+](https://pastebin.com/raw/ELkn8CRb) i zintegrować do kdeluxe
 * opcja zmiany tytułu deski (textbox)
 * autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
-* poprawienie pobierania plików żeby nie pobrać thumbnaila albo dodanie jakiegoś downloader żeby pobrać całą nitkę lub bobrazki z nitki
 * uproszczone sagowanie (checkbox)
 * spoilerowanie obrazka na stałe (po hashu)
 * fastreply fix (zdebugować i naprawić problem, najłatwiej przez napisanie nowego xD)
@@ -61,4 +60,4 @@ Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania,
 
 **Historia wersji**
 
-Pojawi się po zakończeniu bety
+Pojawi się po zakończeniu bety, która zostanie zakończona po wprowadzeniu systemu pingowania, konfident+ i sekretów oraz generalnej optymalizacji
