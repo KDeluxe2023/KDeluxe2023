@@ -11,55 +11,52 @@
 * Instalujesz [userscript z repo](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
 
 **Dostępne funkcje**
-* Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony
-* Anti Bible - Nie pozwala na załadowanie biblii [(działa tylko na firefox)](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
-* Advanced Filters - Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne
-* Better Embeds - Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu
-* Smart Boards - Ukrywa /noc/ kiedy nie jest dostępna, ukrywa /4/
-* Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
-* <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
-* Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
-* Ban Checker - Pokazuje czerwony napis na górze deski jeśli masz bana
-* Lower Default Volume - Obniża domyślną głośność w playerze video, przydatne w FF
-* <del>Jump To Post - Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika</del>
-* Image Preview Anti-Eyestrain - Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy
-* Catalog Curb - Pozwala krawężnikować z poziomu katalogu
-* UID Curb - Pozwala krawężnikować poszczególnych anonów we fredach
+* Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można togglować
 * Teoria Chaosu™ Integration - Wyświetla player radioradio podczas audycji claude'a (█▬█ █ ▀█▀)
-* Fix Thread WatchList OOB - Przywraca listę obserwowanych fredów do lewego górnego rogu
-* Auto Follow - Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)
-* Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
-* Fred Dumper - Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie
+* Advanced Filters - Inteligentne filtry à la ublock ułatwiające korzystanie ze strony
+* Better Embeds - Zamienia ciężkie jutubowe embedy na miniaturki z tytułem, które przekierowują do wideo
 * Rich Stats - Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum
-
-Dodatkowo w konsoli jest dostępny obszerny log z wykonywania skryptu i profilowanie czasowe
+* Fred Dumper - Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie
+* Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
+* Ban Checker - Pokazuje czerwony napis na górze deski kiedy dostanie się bana
+* Catalog Curb - Pozwala krawężnikować tematy z poziomu katalogu
+* UID Curb - Pozwala krawężnikować poszczególnych postujących we fredach (działa tylko we fredzie)
+* Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
+* Auto Follow - Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)
+* Image Preview Anti-Eyestrain - Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy
+* Smart Boards - Ukrywa /noc/ kiedy nie jest dostępna, zawsze ukrywa /4/
+* Lower Default Volume - Obniża domyślną głośność w playerze video, przydatne w FF
+* Fix Thread WatchList OOB - Przywraca listę obserwowanych fredów do lewego górnego rogu
+* Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
+* Anti Bible - Nie pozwala na załadowanie biblii [(działa tylko na firefox)](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
+* Profilowanie czasowe - w konsoli wyświetla nam czas jaki każda funkcja potrzebowała na załadowanie
+* <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
+* <del>Jump To Post - Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika</del>
 
 Przekreślone pozycje są zepsute lub na tyle zjebane że wymagają przepisania, zapraszam do robienia pull requestów
 
 **Do zrobienia**
-* <b>przesunąć wszystkie pętle iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
-* przepisać system zapisywania/odczytywania ustawień, chwilowo robi to za nas mitsuba
-* dodać funkcje obsługującą dodawanie textboxów, buttonów i comboboxów do UI
-* opcja zmiany tytułu deski
-* zintegrować i przepisać [konfident+](https://pastebin.com/raw/ELkn8CRb)
-* secret: anony bez skryptu widzą tylko ciąg losowych słów i znaków, a ci ze skryptem pasek w kolorze i żeby rozkodować trzeba podać hasło
-* autokrawężnik z filtrami (nazwa obrazka/substring w głównym poście freda)
-* możliwośc wpisania nicku w formularzu wysyłania posta, za pomocą nicku można spingować kogoś np. wpisujemy do posta @stały_słuchacz i wtedy u tego anona pojawia się [powiadomienie](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) z dźwiękiem, można to oprzeć na odpytywanie search.php ajaxem
+* <b>[przesunąć wszystkie pętle](https://github.com/KDeluxe2023/KDeluxe2023/issues/4) iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
+* content freeze - usunięte posty są zapisywane w pamięci i "zamrożone" oraz widoczne z niższym opacity
+* dodać funkcje obsługującą dodawanie textboxów, buttonów, sliderów i comboboxów do UI
+* sekret: możliwość pisania zaszyfrowanych postów z unikalną sygnaturą na końcu (np. ==SECRET) które można odszyfrować automatycznie domyślnym, publicznym hasłem. można też nadać hasło ręcznie, wtedy w polu posta zamiast tekstu pojawi się textbox z opcją wpisania hasła do sekretu
+* system pingowania (w oparciu na odpytywanie search.php ajaxem): wpisujemy w formularzu posta pseudonim, za pomocą którego można spingować kogoś np. wpisujemy do posta @stały_słuchacz i wtedy u tego anona pojawia się [powiadomienie](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) z [dźwiękiem](https://stackoverflow.com/a/24749629)
+* przepisać [konfident+](https://pastebin.com/raw/ELkn8CRb) i zintegrować do kdeluxe
+* opcja zmiany tytułu deski (textbox)
+* autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
 * poprawienie pobierania plików żeby nie pobrać thumbnaila albo dodanie jakiegoś downloader żeby pobrać całą nitkę lub bobrazki z nitki
-* uproszczone sagowanie
+* uproszczone sagowanie (checkbox)
 * spoilerowanie obrazka na stałe (po hashu)
-* ulepszone tytuły stron
-* content freeze (usunięte posty są oznaczane jako usunięte i nie znikają po odświezeniu strony (trzeba mieć otwartego freda))
-* przepisany, odbugowany fastreply
-* zaimportować jakieś gówna z [kurahen premium](https://github.com/Kurahen-Premium/Kurahen-Premium)
+* fastreply fix (zdebugować i naprawić problem, najłatwiej przez napisanie nowego xD)
+* opcja otwierania wszystkich linków w nowej karcie [np w ten sposób](https://github.com/Kurahen-Premium/Kurahen-Premium/blob/dev/kurahenPremium.user.js#L271)
 * system powiadomień w faviconie, [inspiracja](https://pastebin.com/NazxdcsU)
-* pełna lista wordfiltrów w kreatorze posta
-* zamienianie słowofiltrów w polu treści posta w czasie rzeczywistym
-* worldfilter bypass (zapobiega banom za słowofiltry na które jest autoban itp)
-* ukrywanie postow <x odpowiedzi x do wyboru samemu
+* pełna lista wordfiltrów w stylu #esesman, #gimbo w kreatorze posta
+* worldfilter bypass (wstawia niewidzialne spacje lub zamienia znaki w wyrazach ze słowofiltrem)
+* ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
 * opcja pisania tekstem zalgo
-* helper do [trójsiły](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
+* auto-[trójsiła](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
 * usprawnienia do wyszukiwarki chanowej
+* przepisać system zapisywania/odczytywania ustawień, chwilowo robi to za nas mitsuba
 * rozwiązać i usunąć wszystkie tagi "TO-DO:" w kodzie
 
 **Historia wersji**
