@@ -15,7 +15,7 @@
 * Anti Bible - Nie pozwala na załadowanie biblii (htmlshiv.js)
 * Advanced Filters - Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne
 * Better Embeds - Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu
-* Smart Boards - Ukrywa /noc/ kiedy nie jest dostępna, ukrywa /4/, [wkrutce] a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
+* Smart Boards - Ukrywa /noc/ kiedy nie jest dostępna, ukrywa /4/
 * Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
 * <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
 * Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
