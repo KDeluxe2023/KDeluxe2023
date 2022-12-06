@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.4.5
+// @version      0.4.6
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -290,7 +290,7 @@ window.addEventListener('load', function() {
         });
 
         /// Draw UI window
-        // TO-DO: read this from localstorage
+        // TO-DO: read last position from localstorage
         let top_pos = "1px";
         let left_pos = "1px";
         jQuery('<div>', {
@@ -309,10 +309,30 @@ window.addEventListener('load', function() {
 
         // populate it with content
         $('<small>').appendTo('#stats_box').text("Twoje statystyki");
-        $('<h5 id="stats_time">').appendTo("#stats_box");
-        $('<h5 id="stats_posts">').appendTo("#stats_box").text(`Postów napisanych: ${JSON.parse(localStorage.o_kdexule_rich_stats_posts)}`);
-        $('<h5 id="stats_distance">').appendTo("#stats_box").text(`Dystans przebyty: ${JSON.parse(localStorage.o_kdexule_rich_stats_distance)}`);
-        $('<h5 id="stats_thread_curbs">').appendTo("#stats_box").text(`Krawężników: ${JSON.parse(localStorage.o_kdexule_rich_stats_thread_curbs)}`);
+        $("<hr/>").appendTo("#stats_box");
+        //$(`<style type='text/css'>.stat { margin: 0; padding: 0; }</style>`).appendTo("head");
+        $(` <table>
+  <tr>
+    <th>Kryterium</th>
+    <th>Wartość</th>
+  </tr>
+  <tr>
+    <td>Czas zmarnowany</td>
+    <td><p id="stats_time" class="stat"></td>
+  </tr>
+  <tr>
+    <td>Postów napisanych</td>
+    <td>${JSON.parse(localStorage.o_kdexule_rich_stats_posts)}</td>
+  </tr>
+  <tr>
+    <td>Dystans pokonany</td>
+    <td><p id="stats_distance" class="stat"></td>
+  </tr>
+   <tr>
+    <td>Krawężników</td>
+    <td>${JSON.parse(localStorage.o_kdexule_rich_stats_thread_curbs)}</td>
+  </tr>
+</table>`).appendTo("#stats_box");
 
         /// STAT1: time spent
         // save our time spent on page every 0.5 second
@@ -327,7 +347,7 @@ window.addEventListener('load', function() {
             // save it
             localStorage.o_kdexule_rich_stats_time = JSON.stringify(time_spent_sum);
             // display it as it goes on
-            $("#stats_time").text(`Czas zmarnowany: ${secondsToHms(time_spent_sum)}`);
+            $("#stats_time").text(`${secondsToHms(time_spent_sum)}`);
         }, 0.5*1000);
 
         /// STAT2: posts
@@ -359,7 +379,10 @@ window.addEventListener('load', function() {
                 // save it
                 localStorage.o_kdexule_rich_stats_distance = JSON.stringify(meter_sum);
 
-                $("#stats_distance").text(`Dystans przebyty: ${Math.round(meter_sum)}km`);
+                // round it to display
+                let display_meters = Math.round((meter_sum + Number.EPSILON) * 100) / 100
+
+                $("#stats_distance").text(`${display_meters}km`);
             }
 
             lastSeenAt.x = event.clientX;
