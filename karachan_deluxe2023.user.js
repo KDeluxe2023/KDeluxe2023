@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.4.6
+// @version      0.4.7
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -495,24 +495,30 @@ window.addEventListener('load', function() {
             let day = d.getDay();
             let hour = d.getHours();
 
-            function display_player() {
+            function display_player(label) {
                 $(`#postform`).after(`
         <div id="radioradio_player">
         <figure>
-           <figcaption>SŁUCHAJ TEORII CHAOSU, TERAZ NA ŻYWO:</figcaption>
-           <audio controls src="https://c16.radioboss.fm:18014/stream"></audio>
+           <figcaption>SŁUCHAJ AUDYCJI ${label}, TERAZ NA ŻYWO:</figcaption>
+           <audio controls autoplay src="https://c16.radioboss.fm:18014/stream"></audio>
         </figure>
         </div>`);
                 $("#radioradio_player").css({"text-align": "center"});
             }
 
-            if (day == 4 && hour >= 22 && hour <= 5) {
-                // info tydzień
-                display_player();
-            } else if (day == 5 && hour >= 0 && hour <= 6) {
-                // teoria chaosu
-                display_player();
-            }
+          let lbl = null;
+
+          if (day == 4 && hour >= 22 || day == 5 && hour <= 5)
+            lbl = "Info Tydzień";
+
+          if (day == 6 && hour >= 0 && hour <= 6)
+            lbl = "👽Teoria Chaosu👽";
+
+          if (day == 2 && hour >= 21)
+            lbl = "Radioaktywnej";
+
+          if(lbl != null)
+            display_player(lbl)
 
             log(`[⏱️] RadioRadio Player loaded in ${performance.now() - performance_radioradio_player}ms`);
         }
