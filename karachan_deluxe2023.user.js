@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.4.2
+// @version      0.4.3
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -37,20 +37,24 @@ var bsePd = window.addEventListener('beforescriptexecute', e => {
     e.target.removeEventListener('beforescriptexecute', bsePd);
 
     let filename = filename_from_url(e.target.src);
+    if (!filename)
+        return true;
 
     if (localStorage.o_kdeluxe_anti_bible == 1) {
         if (filename == "htmlshiv.js") {
             e.preventDefault();
-            log("Bible was unloaded because Anti-Bible is ON");
+            log("htmlshiv.js was unloaded because Anti-Bible is active");
         }
     }
 
     if (localStorage.o_kdeluxe_better_embed == 1) {
         if (filename == "emblite.js") {
             e.preventDefault();
-            log("Emblite was unloaded because better embeds are ON");
+            log("emblite.js was unloaded because Better Embeds are active");
         }
     }
+
+    log(`Loaded script: ${filename}`);
 });
 
 // suppress meaningless errors
@@ -61,7 +65,6 @@ window.addEventListener("error", (event) => {
     if (filename == "emblite.js")
         event.preventDefault();
 });
-
 
 //// globals
 // array with newly added posts
@@ -112,9 +115,9 @@ window.addEventListener('load', function() {
     log(`Pageload is finished, loading features!`);
     //// write code below this line ////
 
+    // draw our own UI
     let performance_interface = performance.now()
 
-    // create our own settings tab
     let settings_container = $("#tab-settings .modal-cont");
     let settings_nav = settings_container.find(".modal-nav");
 
@@ -142,6 +145,7 @@ window.addEventListener('load', function() {
             last_id++;
         }
 
+        /*
         const add_settings_textbox = function(internal_name, label, placeholder) {
             kdeluxe_settings_tab.append(`<input type="text" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}">`);
             kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${placeholder}">${label}</label>`);
@@ -153,7 +157,7 @@ window.addEventListener('load', function() {
             if (variable) {
                 $("#" + element).text(variable);
             }
-        }
+        }*/
 
         add_settings_checkbox("autoscroll", "Auto Scroll", "Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony");
         add_settings_checkbox("spoiler_revealer", "Spoiler Revealer", "Odkrywa wszystkie spoilery więc nie trzeba na nie najeżdżać");
@@ -170,7 +174,8 @@ window.addEventListener('load', function() {
         add_settings_checkbox("auto_follow", "Auto Follow", "Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)");
         add_settings_checkbox("rich_stats", "Rich Statistics", "Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum");
         add_settings_checkbox("blind_mode_tts", "Blind Mode (TTS)", "Dodaje obok postów opcję text to speech czyli czytania na głos");
-        add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R");
+        // TO-DO: fix those below
+        //add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R");
         //add_settings_checkbox("prev_next", "Jump To Post", "Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
         add_settings_checkbox("dangerous_bambo", "Dangerous Bambo", "Dodaje biegającego murzynka (bambo) na dole ekranu");
@@ -181,7 +186,7 @@ window.addEventListener('load', function() {
     }
 
     //// Add ThreadWatcher Position Reset Button
-    $("#settingsSave").after(`<input type="button" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
+    $("#settingsSave").after(`<input type="button" style="margin-left: 5px;" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
     $("#resetThreadWatcher").click(function(e){
         e.preventDefault();
         localStorage.KurahenPremium_WatchedThreads_Left = "10px";
@@ -256,12 +261,35 @@ window.addEventListener('load', function() {
     //// Rich Stats
     if(localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page) {
         log(`Rich Stats Loaded...`);
-
         let performance_rich_stats = performance.now()
 
+        /// Set up storage
+        const storage_vars = ["rich_stats_time", "rich_stats_posts", "rich_stats_distance", "rich_stats_thread_curbs"]
+        storage_vars.forEach(function(item, index) {
+            if (localStorage.getItem("o_kdexule_" + item) == null) {
+                let zero = 0;
+                localStorage.setItem("o_kdexule_" + item, JSON.stringify(zero));
+            }
+        });
+
+        /// Draw reset button
+        $("#settingsSave").after(`<input type="button" style="margin-left: 5px;" value="Reset Stats" id="reset_rich_stats">`);
+        $("#reset_rich_stats").click(function(e){
+            e.preventDefault();
+
+            storage_vars.forEach(function(item, index) {
+                let storage_name = "o_kdexule_" + item;
+                localStorage.removeItem(storage_name);
+                log(`nulled ${storage_name}`);
+            });
+
+            window.location.reload();
+        });
+
+        /// Draw UI window
+        // TO-DO: read this from localstorage
         let top_pos = "1px";
         let left_pos = "1px";
-        // create stats window
         jQuery('<div>', {
             id: 'stats_box',
             class: 'movable',
@@ -277,7 +305,74 @@ window.addEventListener('load', function() {
         $('#stats_box').css({"background":og_background,"border":og_border});
 
         // populate it with content
-        jQuery('<small>').appendTo('#stats_box').text("Twoje statystyki");
+        $('<small>').appendTo('#stats_box').text("Twoje statystyki");
+        $('<h5 id="stats_time">').appendTo("#stats_box");
+        $('<h5 id="stats_posts">').appendTo("#stats_box").text(`Postów napisanych: ${JSON.parse(localStorage.o_kdexule_rich_stats_posts)}`);
+        $('<h5 id="stats_distance">').appendTo("#stats_box").text(`Dystans przebyty: ${JSON.parse(localStorage.o_kdexule_rich_stats_distance)}`);
+        $('<h5 id="stats_thread_curbs">').appendTo("#stats_box").text(`Krawężników: ${JSON.parse(localStorage.o_kdexule_rich_stats_thread_curbs)}`);
+
+        /// STAT1: time spent
+        // save our time spent on page every 0.5 second
+        function secondsToHms(o){var $=Math.floor((o=Number(o))/3600),n=Math.floor(o%3600/60),r=Math.floor(o%3600%60);return($>0?$+(1==$?" godzina, ":" godzin, "):"")+(n>0?n+(1==n?" minuta, ":" minut, "):"")+(r>0?r+(1==r?" sekunda":" sekund"):"")}
+        setInterval(function(){
+            // dont count if our tab isnt focused
+            if (!document.hasFocus())
+                return;
+
+            // increase time spent by 0.5 second
+            let time_spent_sum = JSON.parse(localStorage.o_kdexule_rich_stats_time) + 0.5;
+            // save it
+            localStorage.o_kdexule_rich_stats_time = JSON.stringify(time_spent_sum);
+            // display it as it goes on
+            $("#stats_time").text(`Czas zmarnowany: ${secondsToHms(time_spent_sum)}`);
+        }, 0.5*1000);
+
+        /// STAT2: posts
+        // register posts sent count
+        $('#postform').on('submit', function(e) {
+            e.preventDefault();
+            // TO-DO: check if post was submitted actually
+            // increase posts
+            let posts_sum = JSON.parse(localStorage.o_kdexule_rich_stats_posts) + 1;
+            // save it
+            localStorage.o_kdexule_rich_stats_posts = JSON.stringify(posts_sum);
+        });
+
+        // STAT3: distance
+        var totalDistance = 0;
+        var lastSeenAt = {x: null, y: null};
+        $(document).mousemove(function(event) {
+            if(lastSeenAt.x) {
+                totalDistance += Math.sqrt(Math.pow(lastSeenAt.y - event.clientY, 2) + Math.pow(lastSeenAt.x - event.clientX, 2));
+
+                // convert pixels to meters
+                let meters = totalDistance / 3779.5275591;
+                // pixels to meters is off here...
+                meters /= 150;
+                // cast to kilometers
+                meters = meters / 1000;
+                // increase meters
+                let meter_sum = JSON.parse(localStorage.o_kdexule_rich_stats_distance) + meters;
+                // save it
+                localStorage.o_kdexule_rich_stats_distance = JSON.stringify(meter_sum);
+
+                $("#stats_distance").text(`Dystans przebyty: ${Math.round(meter_sum)}km`);
+            }
+
+            lastSeenAt.x = event.clientX;
+            lastSeenAt.y = event.clientY;
+        });
+
+        // STAT4: curbs
+        $('.hider').on('click', function(e) {
+            //e.preventDefault();
+            // TO-DO: check if post was submitted actually
+
+            // increase curbs
+            let thread_curbs_sum = JSON.parse(localStorage.o_kdexule_rich_stats_thread_curbs) + 1;
+            // save it
+            localStorage.o_kdexule_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
+        });
 
         log(`[⏱️] Rich stats loaded in ${performance.now() - performance_rich_stats}ms`);
     }
@@ -293,6 +388,7 @@ window.addEventListener('load', function() {
             bar.prepend(`<span id="dumper_container">[<a href="#" id="dump_thread"><i class="fa fa-download" aria-hidden="true"></i></a>]</span>`);
             $("#dumper_container").css({"margin-right":"3px"});
 
+            // TO-DO: load required libraries for this on demand instead doing it on every script load
             $("#dump_thread").click(function(e){
                 e.preventDefault();
                 dialogBox('KDeluxe', `Jak chcesz pobrać ten temat?`, ["Screenshot", "Screenshot + Pliki", "Tylko Pliki", "Anuluj"], 'fa-download', function(a) {
@@ -436,7 +532,6 @@ window.addEventListener('load', function() {
             function appendToStorage(name, data){var old=localStorage.getItem(name);if(old === null){old = "";}localStorage.setItem(name, old + data);}
 
             // TO-DO: move this loop to shared post iteration loop
-            // TO-DO: optimize this, this literally takes 100ms to execute
             $('.postInfo').each(function(index) {
                 // skip main post, mitsuba already lets you curb it
                 if (index == 0) // if ($(this).find("span.subject").length)
@@ -447,6 +542,7 @@ window.addEventListener('load', function() {
                 if(uid === undefined)
                     return true;
 
+                // TO-DO: optimize this somehow, it takes 100ms to add this shit on every iteration
                 $(this).append(`<a href="#" class="curb_uid" uid="${uid}">[–]</a>`);
 
                 $(".curb_uid").click(function(e) {
@@ -457,7 +553,6 @@ window.addEventListener('load', function() {
                     $(`span.posteruid[title="${x}"]`).parents('.post').hide();
                 })
             });
-            // end optimize
 
             // read hidden UIDs from localstorage
             let hidden_posters = localStorage.getItem('o_kdeluxe_curbed_uids');
@@ -633,6 +728,7 @@ window.addEventListener('load', function() {
         }
 
         //// New keyframes
+        /*
         if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page) {
             log("New Keyframe Animations Loaded...");
             let performance_new_keyframes = performance.now()
@@ -647,7 +743,7 @@ window.addEventListener('load', function() {
             }
 
             log(`[⏱️] New Keyframes loaded in ${performance.now() - performance_new_keyframes}ms`);
-        }
+        }*/
 
         //// Blind Mode (TTS)
         if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page) {
