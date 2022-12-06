@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.4.3
+// @version      0.4.4
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -204,6 +204,9 @@ window.addEventListener('load', function() {
 
         let rcount = 0;
 
+        // accept TOS
+        setCookie('regulamin', 'accepted', 365);
+
         // remove unwanted elements
         const ele_blacklist = ["#smok", "#jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo", "#regulamin", ".absBotDisclaimer"]
         ele_blacklist.forEach(function(item, index) {
@@ -373,6 +376,11 @@ window.addEventListener('load', function() {
             // save it
             localStorage.o_kdexule_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
         });
+
+        // TO-DO:
+        // STAT5: searches in search.php count
+
+        // STAT6: /rs/ downloaded item count
 
         log(`[⏱️] Rich stats loaded in ${performance.now() - performance_rich_stats}ms`);
     }
