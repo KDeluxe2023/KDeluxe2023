@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.4.4
+// @version      0.4.5
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -732,7 +732,7 @@ window.addEventListener('load', function() {
             $(`<style type='text/css'>#papaj_pingwin{width:200px;height:190px;position:fixed;animation-iteration-count:2137;background:url("https://i.imgur.com/mB0hqA9.gif");animation-name:pingwin;animation-duration:30s;animation-timing-function:linear;bottom:0;z-index:1000}@keyframes pingwin{0%{right:100%;transform:scaleX(1)}50%{right:-15%;transform:scaleX(1)}51%{right:-15%;transform:scaleX(-1)}100%{transform:scaleX(-1);right:115%}}</style>`).appendTo("head");
             $("body").append(`<div id="papaj_pingwin"></div>`);
 
-            log(`[⏱️] Dangerous Bambo loaded in ${performance.now() - performance_lower_def_volume}ms`);
+            log(`[⏱️] Dangerous Bambo loaded in ${performance.now() - performance_dangerous_bambo}ms`);
         }
 
         //// New keyframes
