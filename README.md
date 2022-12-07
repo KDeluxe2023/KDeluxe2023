@@ -44,6 +44,7 @@ Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [
 **Do zrobienia**
 * ThreadWatcher [Smart-Sort](https://pastebin.com/raw/XrvEYQYE) - sortuje fredy na liście obserwowanych po liście odpowiedzi
 * zrobić [logo i faviconke](https://github.com/KDeluxe2023/KDeluxe2023/issues/9)
+* kod ma już ponad 1000 linijek, trzeba go podzielić jakoś ładnie na części
 * <b>[przesunąć wszystkie pętle](https://github.com/KDeluxe2023/KDeluxe2023/issues/4) iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
 * content freeze - usunięte posty są zapisywane w pamięci i "zamrożone" oraz widoczne z niższym opacity
 * dodać funkcje obsługującą dodawanie textboxów, buttonów, sliderów i comboboxów do UI
