@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.4.8
+// @version      0.4.9
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -267,7 +267,7 @@ window.addEventListener('load', function() {
         let performance_rich_stats = performance.now()
 
         /// Set up storage
-        const storage_vars = ["rich_stats_time", "rich_stats_posts", "rich_stats_distance", "rich_stats_thread_curbs", "rich_stats_sticky"]
+        const storage_vars = ["rich_stats_time", "rich_stats_posts", "rich_stats_distance", "rich_stats_thread_curbs"]
         storage_vars.forEach(function(item, index) {
             if (localStorage.getItem("o_kdexule_" + item) == null) {
                 let zero = 0;
@@ -288,19 +288,20 @@ window.addEventListener('load', function() {
 
           localStorage.o_kdeluxe_rich_stats_box_top = "35px";
           localStorage.o_kdeluxe_rich_stats_box_left = "4px";
+          localStorage.o_kdeluxe_rich_stats_sticky = "absolute";
 
             window.location.reload();
         });
 
         /// Draw UI window
         function get_rich_stats_box_top() {
-        if (localStorage.o_kdeluxe_rich_stats_box_top == null || localStorage.o_kdeluxe_rich_stats_box_top == "")
+        if (localStorage.getItem("o_kdexule_rich_stats_box_top"))
             localStorage.o_kdeluxe_rich_stats_box_top = "35px";
 
         return localStorage.o_kdeluxe_rich_stats_box_top;
         }
         function get_rich_stats_box_left() {
-           if (localStorage.o_kdeluxe_rich_stats_box_left == null || localStorage.o_kdeluxe_rich_stats_box_left == "")
+          if (localStorage.getItem("o_kdexule_rich_stats_box_left"))
               localStorage.o_kdeluxe_rich_stats_box_left = "4px";
 
           return localStorage.o_kdeluxe_rich_stats_box_left;
@@ -308,7 +309,7 @@ window.addEventListener('load', function() {
 
         let top_pos = get_rich_stats_box_top();
         let left_pos = get_rich_stats_box_left();
-        let pos_type = localStorage.o_kdeluxe_rich_stats_sticky;
+        let pos_type = localStorage.getItem("o_kdeluxe_rich_stats_sticky");
 
         if (pos_type == null)
           pos_type = "absolute";
