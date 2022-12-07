@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.5.1
+// @version      0.5.2
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -916,7 +916,7 @@ window.addEventListener('load', function() {
 
                 rv_add_links();
 
-                $('a[href="#stop_tts"]').click(function(){
+                $('a[href="#stop_tts"]').click(function(e){
                     e.preventDefault();
 
                     if(responsiveVoice.isPlaying()) {
