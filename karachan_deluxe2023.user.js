@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.5.0
+// @version      0.5.1
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -141,7 +141,7 @@ window.addEventListener('load', function() {
         const add_settings_checkbox = function(internal_name, label, tooltip) {
             kdeluxe_settings_tab.append(`<input type="checkbox" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}" checked="checked">`);
             kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${tooltip}">${label}</label>`);
-            // imageboardSettings.push( { o_kdexule_${option}: { desktop: 1, mobile: 1} } );
+            // imageboardSettings.push( { o_kdeluxe_${option}: { desktop: 1, mobile: 1} } );
             last_id++;
         }
 
@@ -269,9 +269,9 @@ window.addEventListener('load', function() {
         /// Set up storage
         const storage_vars = ["rich_stats_time", "rich_stats_posts", "rich_stats_distance", "rich_stats_thread_curbs"]
         storage_vars.forEach(function(item, index) {
-            if (localStorage.getItem("o_kdexule_" + item) == null) {
+            if (localStorage.getItem("o_kdeluxe_" + item) == null) {
                 let zero = 0;
-                localStorage.setItem("o_kdexule_" + item, JSON.stringify(zero));
+                localStorage.setItem("o_kdeluxe_" + item, JSON.stringify(zero));
             }
         });
 
@@ -281,7 +281,7 @@ window.addEventListener('load', function() {
             e.preventDefault();
 
             storage_vars.forEach(function(item, index) {
-                let storage_name = "o_kdexule_" + item;
+                let storage_name = "o_kdeluxe_" + item;
                 localStorage.removeItem(storage_name);
                 log(`nulled ${storage_name}`);
             });
@@ -290,18 +290,19 @@ window.addEventListener('load', function() {
           localStorage.o_kdeluxe_rich_stats_box_left = "4px";
           localStorage.o_kdeluxe_rich_stats_sticky = "absolute";
 
-            window.location.reload();
+          window.location.reload();
         });
 
         /// Draw UI window
         function get_rich_stats_box_top() {
-        if (localStorage.getItem("o_kdexule_rich_stats_box_top") == null)
+          log(localStorage.getItem("o_kdeluxe_rich_stats_box_top"));
+        if (localStorage.getItem("o_kdeluxe_rich_stats_box_top") == null)
             localStorage.o_kdeluxe_rich_stats_box_top = "35px";
 
         return localStorage.o_kdeluxe_rich_stats_box_top;
         }
         function get_rich_stats_box_left() {
-          if (localStorage.getItem("o_kdexule_rich_stats_box_left") == null)
+          if (localStorage.getItem("o_kdeluxe_rich_stats_box_left") == null)
               localStorage.o_kdeluxe_rich_stats_box_left = "4px";
 
           return localStorage.o_kdeluxe_rich_stats_box_left;
@@ -310,16 +311,28 @@ window.addEventListener('load', function() {
         let top_pos = get_rich_stats_box_top();
         let left_pos = get_rich_stats_box_left();
         let pos_type = localStorage.getItem("o_kdeluxe_rich_stats_sticky");
+        //log(`STATBOX POSITION: ${top_pos}/${left_pos}`);
 
-        if (pos_type == null)
-          pos_type = "absolute";
+      if (pos_type == null)
+            localStorage.setItem('o_kdeluxe_rich_stats_sticky', 'absolute');
 
         $('<div>', {
             id: 'stats_box',
             class: 'movable',
             style: `height:auto;min-height:140px;width:auto;min-width:250px;position:${pos_type};top:${top_pos};left:${left_pos};padding:5px;`
         }).appendTo('body');
-        $("#stats_box").draggable();
+        $("#stats_box").draggable({
+          // save window position when we move it
+          start: function() {
+          },
+          drag: function() {
+          },
+          stop: function() {
+            log("Drag finished");
+            localStorage.o_kdeluxe_rich_stats_box_top = $("#stats_box").css("top");
+            localStorage.o_kdeluxe_rich_stats_box_left = $("#stats_box").css("left");
+          }
+        });
 
         // style our box the same as watcher box
         function read_css_property(e,t){var n=e.charAt(0),r=e.substring(1),u="#"==n?document.getElementById(r):document.getElementsByClassName(r)[0];return window.getComputedStyle(u,null).getPropertyValue(t)}
@@ -327,12 +340,6 @@ window.addEventListener('load', function() {
         let og_border = read_css_property("#watcher_box", "border");
 
         $('#stats_box').css({"background":og_background,"border":og_border});
-
-        // automatically save window position
-        $("#stats_box").on("mouseout", function(e) {
-            localStorage.o_kdeluxe_rich_stats_box_top = $("#stats_box").css("top");
-            localStorage.o_kdeluxe_rich_stats_box_left = $("#stats_box").css("left");
-         });
 
       // draw sticker button
         $('<img>', {
@@ -365,6 +372,7 @@ window.addEventListener('load', function() {
                 $("stats_box").css({
                     "top": `${newtop}px`
                 });
+                localStorage.o_kdeluxe_rich_stats_box_top = newtop;
 
             } else {
                 $("#stats_box_sticky_btn").css({
@@ -376,11 +384,11 @@ window.addEventListener('load', function() {
 
                 localStorage.o_kdeluxe_rich_stats_sticky = "fixed";
 
-              log(parseInt($("stats_box").css("top")));
                 let newtop = parseInt($("stats_box").css("top")) - document.body.scrollTop;
                 $("stats_box").css({
                     "top": `${newtop}px`
                 });
+                localStorage.o_kdeluxe_rich_stats_box_top = newtop;
             }
         });
 
@@ -399,7 +407,7 @@ window.addEventListener('load', function() {
   </tr>
   <tr>
     <td>Postów napisanych</td>
-    <td>${JSON.parse(localStorage.o_kdexule_rich_stats_posts)}</td>
+    <td>${JSON.parse(localStorage.o_kdeluxe_rich_stats_posts)}</td>
   </tr>
   <tr>
     <td>Dystans pokonany</td>
@@ -407,7 +415,7 @@ window.addEventListener('load', function() {
   </tr>
    <tr>
     <td>Krawężników</td>
-    <td>${JSON.parse(localStorage.o_kdexule_rich_stats_thread_curbs)}</td>
+    <td>${JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs)}</td>
   </tr>
 </table>`).appendTo("#stats_box");
 
@@ -420,6 +428,9 @@ window.addEventListener('load', function() {
 
           var hDisplay = h > 0 ? h + (h == 1 ? " godzin, " : " godziny, ") : "";
           var mDisplay = m > 0 ? m + (m == 1 ? " minuta " : " minut ") : "";
+          if (h == 0 && m == 0)
+            return "poniżej minuty";
+
           return hDisplay + mDisplay;
       }
 
@@ -428,17 +439,15 @@ window.addEventListener('load', function() {
             if (!document.hasFocus())
                 return;
 
-
-
         // increase time spent by 0.5 second
-            let time_spent_sum = JSON.parse(localStorage.o_kdexule_rich_stats_time) + 0.5;
+            let time_spent_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_time) + 0.5;
 
         // save it
-            localStorage.o_kdexule_rich_stats_time = JSON.stringify(time_spent_sum);
+            localStorage.o_kdeluxe_rich_stats_time = JSON.stringify(time_spent_sum);
             // display it as it goes on
             let human_readable_time = secondsToHms(time_spent_sum);
 
-        $("#stats_time").text(`${human_readable_time}`);
+            $("#stats_time").text(`${human_readable_time}`);
         }, 0.5*1000);
 
         /// STAT2: posts
@@ -448,9 +457,9 @@ window.addEventListener('load', function() {
             //e.preventDefault();
             // TO-DO: check if post was submitted actually
             // increase posts
-            let posts_sum = JSON.parse(localStorage.o_kdexule_rich_stats_posts) + 1;
+            let posts_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_posts) + 1;
             // save it
-            localStorage.o_kdexule_rich_stats_posts = JSON.stringify(posts_sum);
+            localStorage.o_kdeluxe_rich_stats_posts = JSON.stringify(posts_sum);
         });
 
         // STAT3: distance
@@ -467,14 +476,14 @@ window.addEventListener('load', function() {
                 // cast to kilometers
                 meters = meters / 1000;
                 // increase meters
-                let meter_sum = JSON.parse(localStorage.o_kdexule_rich_stats_distance) + meters;
+                let meter_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_distance) + meters;
                 // save it
-                localStorage.o_kdexule_rich_stats_distance = JSON.stringify(meter_sum);
+                localStorage.o_kdeluxe_rich_stats_distance = JSON.stringify(meter_sum);
 
                 // round it to display
                 let display_meters = Math.round((meter_sum + Number.EPSILON) * 100) / 100
 
-                $("#stats_distance").text(`${display_meters}km`);
+                $("#stats_distance").text(`${display_meters} km`);
             }
 
             lastSeenAt.x = event.clientX;
@@ -487,9 +496,9 @@ window.addEventListener('load', function() {
             // TO-DO: check if post was submitted actually
 
             // increase curbs
-            let thread_curbs_sum = JSON.parse(localStorage.o_kdexule_rich_stats_thread_curbs) + 1;
+            let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) + 1;
             // save it
-            localStorage.o_kdexule_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
+            localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
         });
 
         // TO-DO:
