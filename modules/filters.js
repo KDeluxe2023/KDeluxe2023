@@ -1,4 +1,4 @@
-<script>
+<script type="text/javascript">
 	log(`Advanced Filters Initiated...`);
 	let performance_filters = performance.now()
 
