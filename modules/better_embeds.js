@@ -2,7 +2,7 @@ let performance_better_embeds = performance.now()
 
 const embeds = document.querySelectorAll("iframe");
 if (embeds.length == 0)
-    return;
+    return false;
 
 console.log(`[KDeluxe] Better Embeds Loaded...`);
 
