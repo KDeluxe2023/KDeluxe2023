@@ -61,7 +61,7 @@ $("#stats_box").draggable({
     start: function() {},
     drag: function() {},
     stop: function() {
-        log("Drag finished");
+        console.log(`[KDeluxe] Drag finished`);
         localStorage.o_kdeluxe_rich_stats_box_top = $("#stats_box").css("top");
         localStorage.o_kdeluxe_rich_stats_box_left = $("#stats_box").css("left");
     }
