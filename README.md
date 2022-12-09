@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.5.3 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.5.4 BETA</h1>
 <h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 <hr/>
 
@@ -25,6 +25,8 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 * Fred Dumper - Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie
 * Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
 * Ban Checker - Pokazuje czerwony napis na górze deski kiedy dostanie się bana
+* External Links - Wszystkie linki otwierają się teraz w nowym oknie
+* ThreadWatcher Sort - Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku
 * Catalog Curb - Pozwala krawężnikować tematy z poziomu katalogu
 * UID Curb - Pozwala krawężnikować poszczególnych postujących we fredach (działa tylko we fredzie)
 * Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
@@ -42,7 +44,6 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
 
 **Do zrobienia**
-* ThreadWatcher [Smart-Sort](https://pastebin.com/raw/XrvEYQYE) - sortuje fredy na liście obserwowanych po liście odpowiedzi
 * zrobić [logo i faviconke](https://github.com/KDeluxe2023/KDeluxe2023/issues/9)
 * <b>[przesunąć wszystkie pętle](https://github.com/KDeluxe2023/KDeluxe2023/issues/4) iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
 * content freeze - usunięte posty są zapisywane w pamięci i "zamrożone" oraz widoczne z niższym opacity
@@ -55,7 +56,6 @@ Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [
 * uproszczone sagowanie (checkbox)
 * spoilerowanie obrazka na stałe (po hashu)
 * fastreply fix (zdebugować i naprawić problem, najłatwiej przez napisanie nowego xD)
-* opcja otwierania wszystkich linków w nowej karcie [np w ten sposób](https://github.com/Kurahen-Premium/Kurahen-Premium/blob/dev/kurahenPremium.user.js#L271)
 * system powiadomień w faviconie, [inspiracja](https://pastebin.com/NazxdcsU)
 * pełna lista wordfiltrów w stylu #esesman, #gimbo w kreatorze posta
 * worldfilter bypass (wstawia niewidzialne spacje lub zamienia znaki w wyrazach ze słowofiltrem)
