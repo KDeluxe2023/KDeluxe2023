@@ -1,5 +1,8 @@
 let performance_interface = performance.now()
 
+// mitsuba import
+const openTab=function(a){if(!a.hasClass("tab-opened")){var e=a.parent().children(".tab-opened");e.removeClass("tab-opened"),$("#"+e.data("tab-ref")).removeClass("opened"),a.addClass("tab-opened"),$("#"+a.data("tab-ref")).addClass("opened")}};
+
 let settings_container = $("#tab-settings .modal-cont");
 let settings_nav = settings_container.find(".modal-nav");
 
