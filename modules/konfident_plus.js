@@ -1,4 +1,7 @@
 {
+    console.log(`[KDeluxe] Konfident+ Loaded...`);
+let performance_timer = performance.now()
+
     var myReports = (function() {
         if (typeof localStorage.reports === "undefined") {
             localStorage.reports = "[]";
@@ -256,4 +259,6 @@
             escapeHtml: escapeHtml,
         };
     })();
+    
+    console.log(`[KDeluxe] [⏱️] Konfident+ finished in ${performance.now() - performance_timer}ms`);
 }
