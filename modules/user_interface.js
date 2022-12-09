@@ -81,7 +81,7 @@
     }
 
     //// Add ThreadWatcher Position Reset Button
-    $("#settingsSave").after(`<input type="button" style="margin-left: 5px;" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
+    kdeluxe_settings_tab.after(`<input type="button" style="margin-left: 5px;" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
     $("#resetThreadWatcher").click(function(e) {
         e.preventDefault();
         localStorage.KurahenPremium_WatchedThreads_Left = "10px";
