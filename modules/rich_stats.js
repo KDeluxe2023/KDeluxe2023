@@ -1,4 +1,4 @@
-if (localStorage.o_kdeluxe_rich_stats == 1 /* && !g_special_page*/ ) {
+if (localStorage.o_kdeluxe_rich_stats == 1) {
     console.log(`[KDeluxe] Rich Stats Loaded...`);
     let performance_rich_stats = performance.now()
 
