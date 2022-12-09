@@ -1,4 +1,4 @@
-console.log("External Links Loaded...");
+console.log(`[KDeluxe] External Links Loaded...`);
 let performance_external_links = performance.now()
 
 var links = document.getElementsByClassName('postlink');
