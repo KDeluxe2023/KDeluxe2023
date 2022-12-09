@@ -1,5 +1,5 @@
 if (localStorage.o_kdeluxe_fred_dumper == 1) {
-    log(`Fred Dumper Loaded...`);
+    console.log(`[KDeluxe] Fred Dumper Loaded...`);
     let performance_fred_dumper = performance.now()
 
     let bar = $('.post').first().find('.postInfo').first();
@@ -57,7 +57,7 @@ if (localStorage.o_kdeluxe_fred_dumper == 1) {
 
                     urls.push(absolute_url);
                 });
-                log(`${urls.length} links to zip collected`);
+                console.log(`[KDeluxe] ${urls.length} links to zip collected`);
 
                 saveToZip(`${fred_id} - ${fred_time}.zip`, urls)
             }
@@ -86,5 +86,5 @@ if (localStorage.o_kdeluxe_fred_dumper == 1) {
         });
     });
 
-    log(`[⏱️] Fred Dumper loaded in ${performance.now() - performance_fred_dumper}ms`);
+    console.log(`[KDeluxe] [⏱️] Fred Dumper loaded in ${performance.now() - performance_fred_dumper}ms`);
 }
