@@ -1,4 +1,4 @@
-	log(`Advanced Filters Initiated...`);
+	console.log(`Advanced Filters Initiated...`);
 	let performance_filters = performance.now()
 
 	let rcount = 0;
@@ -38,7 +38,7 @@
 		$(this).remove();
 		rcount++;
 
-		log("Dropped invisible iframe: " + src);
+		console.log("Dropped invisible iframe: " + src);
 	}
 	});
 
@@ -55,6 +55,6 @@
 	// Anti-wirówka
 	localStorage.xD = 'xD';
 
-	log(`Filtered ${rcount} elements!`);
+	console.log(`Filtered ${rcount} elements!`);
 
-	log(`[⏱️] Advanced Filters loaded in ${performance.now() - performance_filters}ms`);
+	console.log(`[⏱️] Advanced Filters loaded in ${performance.now() - performance_filters}ms`);
