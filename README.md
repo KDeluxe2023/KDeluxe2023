@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.5.2 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.5.3 BETA</h1>
 <h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 <hr/>
 
@@ -65,7 +65,7 @@ Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [
 * auto-[trójsiła](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
 * usprawnienia do wyszukiwarki chanowej
 * przepisać system zapisywania/odczytywania ustawień, chwilowo robi to za nas mitsuba
-* rozwiązać i usunąć wszystkie tagi "TO-DO:" w kodzie
+* rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
 
 **Historia wersji**
 
