@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.5.4
+// @version      0.5.5
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -23,7 +23,7 @@
 // ==/UserScript==
 
 // modules will be loaded based on this github's commit ID
-const g_last_commit = "9fc7cf62889e3101faae58b0a198c4b2abe5c75c";
+const g_last_commit = "60c447e29c3b350b3aa908300a00f0b5e34db11e";
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
 function load_module(e, t) {
