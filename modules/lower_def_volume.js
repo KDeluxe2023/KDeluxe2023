@@ -1,4 +1,4 @@
-console.log("Lower Default Volume Loaded...");
+console.log(`[KDeluxe] Lower Default Volume Loaded...`);
 let performance_lower_def_volume = performance.now()
 
 let volume = 0.1
