@@ -66,7 +66,7 @@ settings_nav.prepend(
     add_settings_checkbox("dangerous_bambo", "Dangerous Bambo", "Dodaje biegającego murzynka (bambo) na dole ekranu");
     add_settings_checkbox("smart_boards", "Smart Boards", "Ukrywa /noc/ kiedy nie jest dostępna"); // , a w nocy dodaje lampy na całej stronie i lekko ją przyciemnia
     add_settings_checkbox("external_links", "External Links", "Wszystkie linki otwierają się teraz w nowym oknie");
-    add_settings_checkbox("threadwatcher_sort", "ThreadWatcher Sort", "Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku");
+    //add_settings_checkbox("threadwatcher_sort", "ThreadWatcher Sort", "Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku");
 
     //add_settings_textbox("override_board_name", "Własny nagłówek na /b/", "Wpisz nową nazwe deski /b/")
     //load_text_data("override_board_name", localStorage.o_kdeluxe_override_board_name);
