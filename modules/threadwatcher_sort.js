@@ -19,17 +19,14 @@ function callback(mutationList) {
     jebanie();
 }
 
-$(document).ready(function() {
-    sraka = document.getElementById('watched_list');
-    guwno = {
-        childList: true,
-        subtree: true,
-        characterData: true
-    };
-    kutas = new MutationObserver(callback);
-    kutas.observe(sraka, guwno);
-});
-
+sraka = document.getElementById('watched_list');
+guwno = {
+    childList: true,
+    subtree: true,
+    characterData: true
+};
+kutas = new MutationObserver(callback);
+kutas.observe(sraka, guwno);
 
 (() => {
     let addCSS = (css) => {
