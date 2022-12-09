@@ -1,3 +1,6 @@
+log("ThreadWatcher Sort Loaded...");
+let performance_threadwatcher_sort = performance.now()
+
 function jebanie() {
     chuj = $("#watched_list").find(".watch-link");
     for (i = 0; i < chuj.length; i++) {
@@ -58,3 +61,5 @@ $(document).ready(function() {
         });
     });
 })();
+
+console.log(`[KDeluxe] [⏱️] ThreadWatcher Sort loaded in ${performance.now() - performance_threadwatcher_sort}ms`);
