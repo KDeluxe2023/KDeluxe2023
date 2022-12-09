@@ -26,7 +26,6 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 * Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
 * Ban Checker - Pokazuje czerwony napis na górze deski kiedy dostanie się bana
 * External Links - Wszystkie linki otwierają się teraz w nowym oknie
-* <del>ThreadWatcher Sort - Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku</del>
 * Catalog Curb - Pozwala krawężnikować tematy z poziomu katalogu
 * UID Curb - Pozwala krawężnikować poszczególnych postujących we fredach (działa tylko we fredzie)
 * Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
@@ -40,6 +39,7 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 * Profilowanie czasowe - w konsoli wyświetla nam czas jaki każda funkcja potrzebowała na załadowanie
 * <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
 * <del>Jump To Post - Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika</del>
+* <del>ThreadWatcher Sort - Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku</del>
 
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
 
