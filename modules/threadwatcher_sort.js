@@ -1,4 +1,4 @@
-log("ThreadWatcher Sort Loaded...");
+console.log(`[KDeluxe] ThreadWatcher Sort Loaded...`);
 let performance_threadwatcher_sort = performance.now()
 
 function jebanie() {
