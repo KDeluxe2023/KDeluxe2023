@@ -6,7 +6,7 @@ $('#postform').on('submit', function(e) {
     let watchlink = $(".watch-button-container a")[0];
     if (watchlink.innerText.trim() == "[Obserwuj]") {
         watchlink.click();
-        log("Auto Follow Executed");
+        console.log(`[KDeluxe] Auto Follow Executed`);
     }
 });
 
