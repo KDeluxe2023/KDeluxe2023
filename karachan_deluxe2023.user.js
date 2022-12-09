@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.5.3
+// @version      0.5.4
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -23,7 +23,7 @@
 // ==/UserScript==
 
 // modules will be loaded based on this github's commit ID
-const g_last_commit = "e14e493871a713e530a2c9bd74fe4f62f46f266c";
+const g_last_commit = "9fc7cf62889e3101faae58b0a198c4b2abe5c75c";
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
 function load_module(e, t) {
@@ -159,8 +159,8 @@ window.addEventListener('load', function() {
     if (localStorage.o_kdeluxe_dangerous_bambo == 1)
         load_module("dangerous_bambo");
 
-    if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
-        load_module("new_keyframe_anims");
+    //if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
+    //    load_module("new_keyframe_anims");
 
     if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page)
         load_module("blind_mode_tts");
@@ -178,6 +178,12 @@ window.addEventListener('load', function() {
         console.log(`[KDeluxe] Spoiler Revealer Loaded...`);
         $("<style type='text/css'>s { color: white!important; }</style>").appendTo("head");
     }
+
+    if (localStorage.o_kdeluxe_external_links == 1)
+        load_module("external_links");
+
+    //if (localStorage.o_kdeluxe_threadwatcher_sort == 1)
+    //    load_module("threadwatcher_sort");
 
     // iterate over newly collected posts
     if (!g_special_page) {
