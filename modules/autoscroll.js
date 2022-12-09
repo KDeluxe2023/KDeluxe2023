@@ -1,5 +1,5 @@
 if (localStorage.o_kdeluxe_autoscroll == 1 && !g_special_page) {
-    log(`Autoscroll Loaded...`);
+    console.log(`[KDeluxe] Autoscroll Loaded...`);
     let performance_autoscroll = performance.now()
 
     var autoscroll;
@@ -12,5 +12,5 @@ if (localStorage.o_kdeluxe_autoscroll == 1 && !g_special_page) {
         }, 1e3) : clearInterval(autoscroll)
     })
 
-    log(`[⏱️] Autoscroll loaded in ${performance.now() - performance_autoscroll}ms`);
+    console.log(`[KDeluxe] [⏱️] Autoscroll loaded in ${performance.now() - performance_autoscroll}ms`);
 }
