@@ -1,4 +1,3 @@
-<script type="text/javascript">
 	log(`Advanced Filters Initiated...`);
 	let performance_filters = performance.now()
 
@@ -59,4 +58,3 @@
 	log(`Filtered ${rcount} elements!`);
 
 	log(`[⏱️] Advanced Filters loaded in ${performance.now() - performance_filters}ms`);
-</script>
