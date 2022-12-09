@@ -79,7 +79,7 @@ function rv_add_links() {
     $(".tts_controls").css({
         "margin-left": "3px"
     });
-    log("TTS Links Refreshed");
+    console.log(`[KDeluxe] TTS Links Refreshed`);
 }
 
 function rv_init() {
