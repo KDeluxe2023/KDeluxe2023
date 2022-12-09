@@ -1,4 +1,4 @@
-if (localStorage.o_kdeluxe_rich_stats == 1 /* && !g_special_page*/ ) {
+if (localStorage.o_kdeluxe_advanced_filters == 1) {
     console.log(`[KDeluxe] Advanced Filters Initiated...`);
     let performance_filters = performance.now()
 
@@ -57,7 +57,5 @@ if (localStorage.o_kdeluxe_rich_stats == 1 /* && !g_special_page*/ ) {
     localStorage.xD = 'xD';
 
     console.log(`[KDeluxe] Filtered ${rcount} elements!`);
-
     console.log(`[KDeluxe] [⏱️] Advanced Filters loaded in ${performance.now() - performance_filters}ms`);
-
 }
