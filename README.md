@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.5.6 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.5.7 BETA</h1>
 <h3 align="center">Największe, modularne rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 <hr/>
 
@@ -19,6 +19,7 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 **Dostępne funkcje ([zaproponuj nowe](https://github.com/KDeluxe2023/KDeluxe2023/issues))**
 * Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można togglować
 * Teoria Chaosu™ Integration - Wyświetla player radioradio podczas audycji claude'a (█▬█ █ ▀█▀)
+* Konfident+ - Pozwala śledzić dalsze losy zgłoszonych przez siebie postów
 * Advanced Filters - Inteligentne filtry à la ublock ułatwiające korzystanie ze strony
 * Better Embeds - Zamienia ciężkie jutubowe embedy na miniaturki z tytułem, które przekierowują do wideo
 * Rich Stats - Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum
@@ -36,7 +37,6 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 * Fix Thread WatchList OOB - Przywraca listę obserwowanych fredów do lewego górnego rogu
 * Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
 * Anti Bible - Nie pozwala na załadowanie biblii [(działa tylko na firefox)](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
-* Profilowanie czasowe - w konsoli wyświetla nam czas jaki każda funkcja potrzebowała na załadowanie
 * <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
 * <del>Jump To Post - Pozwala przechodzić do następnego/poprzedniego postu wybranego użytkownika</del>
 * <del>ThreadWatcher Sort - Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku</del>
