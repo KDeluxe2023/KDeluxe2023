@@ -1,5 +1,5 @@
 <h1 align="center">Karachan Deluxe 2023 v0.5.4 BETA</h1>
-<h3 align="center">Największe rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
+<h3 align="center">Największe, modularne rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 <hr/>
 
 **Wymagania**
