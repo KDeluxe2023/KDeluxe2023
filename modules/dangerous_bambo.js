@@ -1,4 +1,4 @@
-log("Dangerous Bambo Loaded...");
+console.log(`[KDeluxe] Dangerous Bambo Loaded...`);
 let performance_dangerous_bambo = performance.now()
 
 $(`<style type='text/css'>
