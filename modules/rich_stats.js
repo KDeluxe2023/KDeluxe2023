@@ -147,7 +147,7 @@ $(` <table>
   </tr>
   <tr>
     <td>Czas zmarnowany</td>
-    <td id="stats_time" class="stat">???</td>
+    <td id="stats_time" class="stat"><i class="fa fa-question-circle-o" aria-hidden="true"></i></td>
   </tr>
   <tr>
     <td>Postów napisanych</td>
@@ -155,11 +155,11 @@ $(` <table>
   </tr>
   <tr>
     <td>Dystans pokonany</td>
-    <td id="stats_distance" class="stat">???</td>
+    <td id="stats_distance" class="stat"><i class="fa fa-question-circle-o" aria-hidden="true"></i></td>
   </tr>
    <tr>
     <td>Krawężników</td>
-    <td>${JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs)}</td>
+    <td id="thread_curbs">${JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs)}</td>
   </tr>
 </table>`).appendTo("#stats_box");
 
@@ -245,6 +245,8 @@ $('.hider:contains("[+]")').on('click', function(e) {
     let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) - 1;
     // save it
     localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
+    // display it
+    $("#thread_curbs").text(`${thread_curbs_sum}`);
 });
 
 $('.hider:contains("[–]")').on('click', function(e) {
@@ -254,6 +256,8 @@ $('.hider:contains("[–]")').on('click', function(e) {
     let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) + 1;
     // save it
     localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
+    // display it
+    $("#thread_curbs").text(`${thread_curbs_sum}`);
 });
 
 // TO-DO:
