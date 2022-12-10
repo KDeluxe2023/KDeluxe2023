@@ -79,9 +79,11 @@
         //add_settings_textbox("override_board_name", "Własny nagłówek na /b/", "Wpisz nową nazwe deski /b/")
         //load_text_data("override_board_name", localStorage.o_kdeluxe_override_board_name);
     }
+    
+    kdeluxe_settings_tab.append(`<div id="kdeluxe_button_container"></div>`);
 
     //// Add ThreadWatcher Position Reset Button
-    kdeluxe_settings_tab.after(`<input type="button" style="margin-left: 5px;" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
+    $("#kdeluxe_button_container").append(`<input type="button" style="margin-left: 5px;" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
     $("#resetThreadWatcher").click(function(e) {
         e.preventDefault();
         localStorage.KurahenPremium_WatchedThreads_Left = "10px";
