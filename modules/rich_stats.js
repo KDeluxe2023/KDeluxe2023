@@ -117,8 +117,7 @@ $("#stats_box_sticky_btn").on("click", function(e) {
         $("stats_box").css({
             "top": `${newtop}px`
         });
-        localStorage.o_kdeluxe_rich_stats_box_top = newtop;
-
+        localStorage.o_kdeluxe_rich_stats_box_top = `${newtop}px`;
     } else {
         $("#stats_box_sticky_btn").css({
             "opacity": 1.0
@@ -133,7 +132,7 @@ $("#stats_box_sticky_btn").on("click", function(e) {
         $("stats_box").css({
             "top": `${newtop}px`
         });
-        localStorage.o_kdeluxe_rich_stats_box_top = newtop;
+        localStorage.o_kdeluxe_rich_stats_box_top = `${newtop}px`;
     }
 });
 
