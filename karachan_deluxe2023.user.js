@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.5.8
+// @version      0.5.9
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -108,10 +108,12 @@ window.addEventListener('load', function() {
         return;
     } else {
         console.log(`[KDeluxe] jQuery v.${jQuery.fn.jquery} is present...`);
+        console.log(`[KDeluxe] Loading modules...`);
     }
-
-    console.log(`[KDeluxe] Pageload is finished, loading features!`);
     //// write code below this line ////
+
+    // draw version info
+    $(".group-options").append(`<div style="font-size: 10px;position:absolute">[KDeluxe v${GM.info.script.version}]</div>`)
 
     // draw our own UI
     load_module("user_interface");
