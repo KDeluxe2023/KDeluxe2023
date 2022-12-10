@@ -247,7 +247,7 @@ $('.hider:contains("[+]")').on('click', function(e) {
     localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
 });
 
-$('.hider:contains("[-]")').on('click', function(e) {
+$('.hider:contains("[–]")').on('click', function(e) {
     // TO-DO: check if post was submitted actually
 
     // increase curbs
