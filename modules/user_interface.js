@@ -80,7 +80,7 @@
         //load_text_data("override_board_name", localStorage.o_kdeluxe_override_board_name);
     }
     
-    kdeluxe_settings_tab.append(`<div id="kdeluxe_button_container"></div>`);
+    kdeluxe_settings_tab.append(`<div id="kdeluxe_button_container" style="margin-top:8px;"></div>`);
 
     //// Add ThreadWatcher Position Reset Button
     $("#kdeluxe_button_container").append(`<input type="button" style="margin-left: 5px;" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
