@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.5.6
+// @version      0.5.7
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,8 +22,8 @@
 // @require      https://raw.githubusercontent.com/KDeluxe2023/KDeluxe2023/main/dependencies/FileSaver.min.js
 // ==/UserScript==
 
-// modules will be loaded based on this github's commit ID
-const g_last_commit = "d00c0708e364c442bf87e1d1c2a41bf0196291a6";
+// modules will be loaded at this commit in github repo via jsdelivr
+const g_last_commit = "115b016e576f594ef7b9a20d12ba8dccb92aae17";
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
 function load_module(e, t) {
@@ -33,9 +33,6 @@ function load_module(e, t) {
         (n || !a.readyState || /loaded|complete/.test(a.readyState)) && (a.onload = a.onreadystatechange = null, a = void 0, !n && t && setTimeout(t, 0))
     }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/modules/${e}.js`, n.parentNode.insertBefore(a, n)
 }
-
-// action starts below this point
-console.log("Main Script Initialized");
 
 // scripts must be prevented from loading before they actually load
 var bsePd = window.addEventListener('beforescriptexecute', e => {
@@ -52,14 +49,14 @@ var bsePd = window.addEventListener('beforescriptexecute', e => {
     if (localStorage.o_kdeluxe_anti_bible == 1) {
         if (filename == "htmlshiv.js") {
             e.preventDefault();
-            console.log(`[KDeluxe] was unloaded because Anti-Bible is active`);
+            console.log(`[KDeluxe] htmlshiv.js was unloaded because Anti-Bible is active`);
         }
     }
 
     if (localStorage.o_kdeluxe_better_embed == 1) {
         if (filename == "emblite.js") {
             e.preventDefault();
-            console.log(`[KDeluxe] was unloaded because Better Embeds are active`);
+            console.log(`[KDeluxe] emblite.js was unloaded because Better Embeds are active`);
         }
     }
 
@@ -110,7 +107,7 @@ window.addEventListener('load', function() {
         console.log(`jQuery absent, aborting!`);
         return;
     } else {
-        console.log(`[KDeluxe] jQuery v.${jQuery.fn.jquery} was detected`);
+        console.log(`[KDeluxe] jQuery v.${jQuery.fn.jquery} is present...`);
     }
 
     console.log(`[KDeluxe] Pageload is finished, loading features!`);
@@ -150,17 +147,11 @@ window.addEventListener('load', function() {
     if (this.localStorage.o_kdeluxe_ban_checker == 1 && !g_special_page)
         load_module("ban_checker");
 
-    //if(this.localStorage.o_kdeluxe_prev_next == 1 && !g_special_page && g_is_fred_open)
-    //  load_module("prev_next");
-
     if (localStorage.o_kdeluxe_lower_def_volume == 1 && !g_special_page)
         load_module("lower_def_volume");
 
     if (localStorage.o_kdeluxe_dangerous_bambo == 1)
         load_module("dangerous_bambo");
-
-    //if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
-    //    load_module("new_keyframe_anims");
 
     if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page)
         load_module("blind_mode_tts");
@@ -174,18 +165,26 @@ window.addEventListener('load', function() {
     if (localStorage.o_kdeluxe_better_embed == 1 && !g_special_page)
         load_module("better_embeds");
 
-    if (localStorage.o_kdeluxe_spoiler_revealer == 1) {
-        console.log(`[KDeluxe] Spoiler Revealer Loaded...`);
-        $("<style type='text/css'>s { color: white!important; }</style>").appendTo("head");
-    }
+    if (localStorage.o_kdeluxe_spoiler_revealer == 1)
+        load_module("spoiler_revealer");
 
     if (localStorage.o_kdeluxe_external_links == 1)
         load_module("external_links");
 
+    if (localStorage.o_kdeluxe_konfident_plus == 1)
+        load_module("konfident_plus");
+
     //if (localStorage.o_kdeluxe_threadwatcher_sort == 1)
     //    load_module("threadwatcher_sort");
 
+    //if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
+    //    load_module("new_keyframe_anims");
+
+    //if(this.localStorage.o_kdeluxe_prev_next == 1 && !g_special_page && g_is_fred_open)
+    //    load_module("prev_next");
+
     // iterate over newly collected posts
+  /*
     if (!g_special_page) {
         var process_posts = window.setInterval(function() {
             let last_post = g_new_posts.pop();
@@ -193,8 +192,10 @@ window.addEventListener('load', function() {
             // on_post_loop_new_keyframes(last_post);
         }, 1000);
     }
+    */
 });
 
+/*
 if (!g_special_page) {
     // store new posts that appear in DOM into array
     var observer = new MutationObserver(function(mutations, observer) {
@@ -217,4 +218,4 @@ if (!g_special_page) {
         characterData: false,
         subtree: true
     });
-}
+}*/
