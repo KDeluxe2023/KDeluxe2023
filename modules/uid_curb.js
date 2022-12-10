@@ -2,7 +2,7 @@ console.log(`[KDeluxe] UID Curb Initialized...`);
 let performance_uid_curb = performance.now()
 
 // add clear button
-$("#settingsSave").after(`<input type="button" value="Clear Curbed UIDs" id="clear_curb_list">`);
+$("#kdeluxe_button_container").append(`<input type="button" value="Clear Curbed UIDs" id="clear_curb_list">`);
 $("#clear_curb_list").click(function(e) {
     e.preventDefault();
     localStorage.o_kdeluxe_curbed_uids = "";
