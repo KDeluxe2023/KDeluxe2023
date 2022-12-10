@@ -44,13 +44,14 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
 
 **Do zrobienia**
+* standalone media player żeby rozwiązać problem z niewidocznym suwakiem dźwięku
 * zrobić [logo i faviconke](https://github.com/KDeluxe2023/KDeluxe2023/issues/9)
 * <b>[przesunąć wszystkie pętle](https://github.com/KDeluxe2023/KDeluxe2023/issues/4) iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
 * content freeze - usunięte posty są zapisywane w pamięci i "zamrożone" oraz widoczne z niższym opacity
 * dodać funkcje obsługującą dodawanie textboxów, buttonów, sliderów i comboboxów do UI
 * sekret: możliwość pisania zaszyfrowanych postów z unikalną sygnaturą na końcu (np. ==SECRET) które można odszyfrować automatycznie domyślnym, publicznym hasłem. można też nadać hasło ręcznie, wtedy w polu posta zamiast tekstu pojawi się textbox z opcją wpisania hasła do sekretu
 * system pingowania (w oparciu na odpytywanie search.php ajaxem): wpisujemy w formularzu posta pseudonim, za pomocą którego można spingować kogoś np. wpisujemy do posta @stały_słuchacz i wtedy u tego anona pojawia się [powiadomienie](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) z [dźwiękiem](https://stackoverflow.com/a/24749629)
-* przepisać [konfident+](https://pastebin.com/raw/ELkn8CRb) i zintegrować do kdeluxe
+* dodać obsługe reportów wysłanych z modala w konfident+, dodatkowo przenieść otiweranie zakładki konfident+ gdzieś indziej np. w róg ekranu (ikonka)
 * opcja zmiany tytułu deski (textbox)
 * autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
 * uproszczone sagowanie (checkbox)
