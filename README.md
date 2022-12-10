@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.6.0 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.6.1 BETA</h1>
 <h3 align="center">Największe, modularne rozszerzenie z nowymi funkcjami do forum młodzieżowo katolickiego</h3>
 <hr/>
 
@@ -8,7 +8,7 @@
 
 **Instalacja**
 * Instalujesz [addon violentmonkey](https://violentmonkey.github.io/get-it/)
-* Instalujesz [userscript z repo](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
+* Instalujesz [userscript z repozytorium](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
 
 **Jak zmienić ustawienia**
 
@@ -24,7 +24,6 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 * Better Embeds - Zamienia ciężkie jutubowe embedy na miniaturki z tytułem, które przekierowują do wideo
 * Rich Stats - Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum
 * Fred Dumper - Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie
-* Jump To Post - Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika
 * Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
 * Ban Checker - Pokazuje czerwony napis na górze deski kiedy dostanie się bana
 * External Links - Wszystkie linki otwierają się teraz w nowym oknie
@@ -38,6 +37,7 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 * Fix Thread WatchList OOB - Przywraca listę obserwowanych fredów do lewego górnego rogu
 * Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
 * Anti Bible - Nie pozwala na załadowanie biblii [(działa tylko na firefox)](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
+* <del>Jump To Post - Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika</del>
 * <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
 * <del>ThreadWatcher Sort - Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku</del>
 
