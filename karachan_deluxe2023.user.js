@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.5.9
+// @version      0.6.0
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -23,7 +23,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "0697deb76c80b8d9ea993bd1cca55821905579a0";
+const g_last_commit = "fc0e75912f33bfeeb31346cb4290b5b41f573156";
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
 function load_module(e, t) {
@@ -176,25 +176,25 @@ window.addEventListener('load', function() {
     if (localStorage.o_kdeluxe_konfident_plus == 1)
         load_module("konfident_plus");
 
+    if(this.localStorage.o_kdeluxe_prev_next == 1 && !g_special_page && g_is_fred_open)
+        load_module("prev_next");
+
     //if (localStorage.o_kdeluxe_threadwatcher_sort == 1)
     //    load_module("threadwatcher_sort");
 
     //if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
     //    load_module("new_keyframe_anims");
 
-    //if(this.localStorage.o_kdeluxe_prev_next == 1 && !g_special_page && g_is_fred_open)
-    //    load_module("prev_next");
-
     // iterate over newly collected posts
-  /*
-    if (!g_special_page) {
-        var process_posts = window.setInterval(function() {
-            let last_post = g_new_posts.pop();
-            // TO-DO: Convert last_post node to actual html element
-            // on_post_loop_new_keyframes(last_post);
-        }, 1000);
-    }
-    */
+    /*
+      if (!g_special_page) {
+          var process_posts = window.setInterval(function() {
+              let last_post = g_new_posts.pop();
+              // TO-DO: Convert last_post node to actual html element
+              // on_post_loop_new_keyframes(last_post);
+          }, 1000);
+      }
+      */
 });
 
 /*
