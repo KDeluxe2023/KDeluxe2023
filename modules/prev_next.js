@@ -1,4 +1,7 @@
 {
+    console.log(`[KDeluxe] Jump To Post Loaded...`);
+    let performance_timer = performance.now()
+
     let posts = $(".postInfo");
 
     // TO-DO: optimize find_prev and find_next
@@ -68,4 +71,6 @@
             post.append(`<span>[${prevHref} | ${nextHref}]</span>`);
         }
     });
+    
+    console.log(`[KDeluxe] [⏱️] Jump To Post finished in ${performance.now() - performance_timer}ms`);
 }
