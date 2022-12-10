@@ -244,15 +244,15 @@ $('.hider').on('click', function(e) {
     let thread_id = $(this).parent().parent().attr("id").substr(2);
 
     if (localStorage.getItem(`h_${board}_${thread_id}`) === null) {
-        // increase curbs
-        let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) + 1;
+        // decrease curbs
+        let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) - 1;
         // save it
         localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
         // display it
         $("#thread_curbs").text(`${thread_curbs_sum}`);
     } else {
-        // decrease curbs
-        let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) - 1;
+        // increase curbs
+        let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) + 1;
         // save it
         localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
         // display it
