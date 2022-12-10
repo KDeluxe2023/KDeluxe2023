@@ -11,7 +11,7 @@ storage_vars.forEach(function(item, index) {
 });
 
 /// Draw reset button
-$("#settingsSave").after(`<input type="button" style="margin-left: 5px;" value="Reset Stats" id="reset_rich_stats">`);
+$("#kdeluxe_button_container").append(`<input type="button" style="margin-left: 5px;" value="Reset Stats" id="reset_rich_stats">`);
 $("#reset_rich_stats").click(function(e) {
     e.preventDefault();
 
