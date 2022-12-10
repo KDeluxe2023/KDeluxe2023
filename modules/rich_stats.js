@@ -238,8 +238,16 @@ $(document).mousemove(function(event) {
 });
 
 // STAT4: curbs
-$('.hider').on('click', function(e) {
-    //e.preventDefault();
+$('.hider:contains("[+]")').on('click', function(e) {
+    // TO-DO: check if post was submitted actually
+
+    // decrease curbs
+    let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) - 1;
+    // save it
+    localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
+});
+
+$('.hider:contains("[-]")').on('click', function(e) {
     // TO-DO: check if post was submitted actually
 
     // increase curbs
