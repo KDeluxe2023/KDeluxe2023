@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Konfident+ Loaded...`);
-let performance_timer = performance.now()
-
     var myReports = (function() {
         if (typeof localStorage.reports === "undefined") {
             localStorage.reports = "[]";
@@ -84,7 +81,6 @@ let performance_timer = performance.now()
                 }
             </style>
             <div class="myReportsTblContainer"></div>
-
             <div class="myReportsButtons">
                 <center>
                     <button class="btn-clear ladda-button" data-style="expand-right" data-size="xs" data-color="mint">Clear all</button>
@@ -108,7 +104,6 @@ let performance_timer = performance.now()
                     <tr><td style="color:#003399">Reported thread deleted/404'd</td></tr>
                 </table>
             </div>
-
         </div>
         `).insertBefore(".modal-cont .btn-wrap");
             $("ul.modal-nav").append('<li data-tab-ref="tab-settings-reports">Konfident+</li>');
@@ -128,6 +123,11 @@ let performance_timer = performance.now()
             $("input[name=report]").click((e) => {
                 addReport($(e.target).parent().find("input[name=reason]").first().val());
             });
+
+            // TO-DO: also register reports made via modal
+            //$(".skandalBox").closest('button').click(function () {
+            //  console.log("test");
+            //});
 
             function clearReports(idArr = undefined) {
                 if (typeof idArr === "undefined") {
@@ -259,6 +259,4 @@ let performance_timer = performance.now()
             escapeHtml: escapeHtml,
         };
     })();
-    
-    console.log(`[KDeluxe] [⏱️] Konfident+ finished in ${performance.now() - performance_timer}ms`);
 }
