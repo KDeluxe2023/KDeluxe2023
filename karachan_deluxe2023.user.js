@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.6.0
+// @version      0.6.1
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -16,14 +16,13 @@
 // @run-at       document-start
 // @license      MIT
 // @grant        none
-// @require      https://code.responsivevoice.org/responsivevoice.js?key=ZBLsY9RB
 // @require      https://raw.githubusercontent.com/KDeluxe2023/KDeluxe2023/main/dependencies/html2canvas.min.js
 // @require      https://raw.githubusercontent.com/KDeluxe2023/KDeluxe2023/main/dependencies/jszip.min.js
 // @require      https://raw.githubusercontent.com/KDeluxe2023/KDeluxe2023/main/dependencies/FileSaver.min.js
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "fc0e75912f33bfeeb31346cb4290b5b41f573156";
+const g_last_commit = "9e3172b769e79455eb5a62938eb2fc7bb733b175";
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
 function load_module(e, t) {
@@ -176,48 +175,4 @@ window.addEventListener('load', function() {
     if (localStorage.o_kdeluxe_konfident_plus == 1)
         load_module("konfident_plus");
 
-    if(this.localStorage.o_kdeluxe_prev_next == 1 && !g_special_page && g_is_fred_open)
-        load_module("prev_next");
-
-    //if (localStorage.o_kdeluxe_threadwatcher_sort == 1)
-    //    load_module("threadwatcher_sort");
-
-    //if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
-    //    load_module("new_keyframe_anims");
-
-    // iterate over newly collected posts
-    /*
-      if (!g_special_page) {
-          var process_posts = window.setInterval(function() {
-              let last_post = g_new_posts.pop();
-              // TO-DO: Convert last_post node to actual html element
-              // on_post_loop_new_keyframes(last_post);
-          }, 1000);
-      }
-      */
 });
-
-/*
-if (!g_special_page) {
-    // store new posts that appear in DOM into array
-    var observer = new MutationObserver(function(mutations, observer) {
-        for (var i = 0; i < mutations.length; ++i) {
-            // look through all added nodes of this mutation
-            for (var j = 0; j < mutations[i].addedNodes.length; ++j) {
-                let node = mutations[i].addedNodes[j];
-                if (!node.tagName) continue; // skip non-elements
-                if (node.tagName != "BLOCKQUOTE") continue; // skip non-posts
-                g_new_posts.push(node);
-                console.log(`[KDeluxe] New post node pushed`);
-            }
-        }
-
-    });
-
-    observer.observe(document.documentElement || document.body, {
-        attributes: false,
-        childList: true,
-        characterData: false,
-        subtree: true
-    });
-}*/
