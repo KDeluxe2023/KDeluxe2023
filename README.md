@@ -44,6 +44,7 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
 
 **Do zrobienia**
+* usunąć czytanie linków i numerów postów z blind mode tts
 * standalone media player żeby rozwiązać problem z niewidocznym suwakiem dźwięku
 * zrobić [logo i faviconke](https://github.com/KDeluxe2023/KDeluxe2023/issues/9)
 * <b>[przesunąć wszystkie pętle](https://github.com/KDeluxe2023/KDeluxe2023/issues/4) iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
