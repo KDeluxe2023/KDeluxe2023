@@ -238,26 +238,26 @@ $(document).mousemove(function(event) {
 });
 
 // STAT4: curbs
-$('.hider:contains("[+]")').on('click', function(e) {
-    // TO-DO: check if post was submitted actually
+$('.hider').on('click', function(e) {
+    // check if thread is already curbed or not
+    let board = $(this).closest(".thread").data('board');
+    let thread_id = $(this).parent().attr("id").substr(2);
 
-    // decrease curbs
-    let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) - 1;
-    // save it
-    localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
-    // display it
-    $("#thread_curbs").text(`${thread_curbs_sum}`);
-});
-
-$('.hider:contains("[–]")').on('click', function(e) {
-    // TO-DO: check if post was submitted actually
-
-    // increase curbs
-    let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) + 1;
-    // save it
-    localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
-    // display it
-    $("#thread_curbs").text(`${thread_curbs_sum}`);
+    if (localStorage.getItem(`h_${board}_${thread_id}`) === null) {
+        // increase curbs
+        let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) + 1;
+        // save it
+        localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
+        // display it
+        $("#thread_curbs").text(`${thread_curbs_sum}`);
+    } else {
+        // decrease curbs
+        let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) - 1;
+        // save it
+        localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
+        // display it
+        $("#thread_curbs").text(`${thread_curbs_sum}`);
+    }
 });
 
 // TO-DO:
