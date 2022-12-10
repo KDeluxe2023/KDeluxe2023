@@ -28,7 +28,6 @@
         */
         for (let i = post_index + 1; i < posts.length; i++) {
             if (posts[i].querySelector(".posteruid").getAttribute("id") == poster_uid) {
-                console.log("next: " + posts[i].getAttribute("id").slice(2));
                 return posts[i].getAttribute("id").slice(2);
             }
         }
