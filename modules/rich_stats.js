@@ -241,7 +241,7 @@ $(document).mousemove(function(event) {
 $('.hider').on('click', function(e) {
     // check if thread is already curbed or not
     let board = $(this).closest(".thread").data('board');
-    let thread_id = $(this).parent().attr("id").substr(2);
+    let thread_id = $(this).parent().parent().attr("id").substr(2);
 
     if (localStorage.getItem(`h_${board}_${thread_id}`) === null) {
         // increase curbs
