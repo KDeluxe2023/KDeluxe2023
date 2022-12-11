@@ -67,7 +67,7 @@ if (embeds.length != 0) {
 
     const createYoutubeIcon = () => {
         const youtubeIcon = document.createElement("img");
-        youtubeIcon.src = `https://www.freeiconspng.com/uploads/white-youtube-logo-png-28.png`;
+        youtubeIcon.src = `https://i.imgur.com/IjUx7CW.png`;
         youtubeIcon.style.cssText = "width:80px;height:60px;";
 
         return youtubeIcon;
