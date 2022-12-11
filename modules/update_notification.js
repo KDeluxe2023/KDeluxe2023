@@ -4,8 +4,10 @@
         async: false,
         cache: false,
         success: function(data) {
-            let local_version = $.trim(document.currentScript.getAttribute('data'));
-            let remote_version = $.trim(data);
+            let local_version = '' + $.trim(document.currentScript.getAttribute('data'));
+            let remote_version = '' + $.trim(data);
+            console.log(`[KDeluxe] local_version = ${local_version}`);
+            console.log(`[KDeluxe] remote_version = ${remote_version}`);
 
             if (local_version != remote_version) {
                 dialogBox('KDeluxe', `Dostępna jest nowsza wersja KDeluxe (${remote_version})<br/>Czy chcesz ją zainstalować?`, ["Tak", "Nie"], 'fa-code-fork', function(a) {
