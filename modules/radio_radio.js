@@ -6,12 +6,18 @@ const day = d.getDay();
 const hour = d.getHours();
 const minutes = d.getMinutes();
 
-const displayPlayer = (label) => {
+const getTitle = async () => {
+  const res = await fetch("https://c16.radioboss.fm/w/nowplayinginfo?u=14");
+  const json = await res.json();
+  return json.nowplaying;
+};
+
+const displayPlayer = async () => {
   const container = document.createElement("div");
   container.id = "radioradio_player";
   container.innerHTML = `
 <figure class="radioradio_player_figure">
-   <figcaption style="cursor:pointer;user-select:none;padding-bottom:10px;font-weight:bold;">SŁUCHAJ AUDYCJI ${label}, TERAZ NA ŻYWO:</figcaption>
+   <figcaption class="radioradio_player_figure_title" style="cursor:pointer;user-select:none;padding-bottom:10px;font-weight:bold;">Pobieranie...</figcaption>
    <audio controls src="https://c16.radioboss.fm:18014/stream" preload="metadata"></audio>
 </figure>
 `.trim();
@@ -32,70 +38,65 @@ const displayPlayer = (label) => {
     container.style.left = 5 + "%";
   }
 
-  document.querySelector(".boardBanner").after(container);
+  document.body.appendChild(container);
 };
 
-let lbl = "";
+function dragElement(el) {
+  let pos1 = 0,
+    pos2 = 0,
+    pos3 = 0,
+    pos4 = 0;
+  el.onmousedown = dragMouseDown;
 
-if ((day == 4 && hour >= 22) || (day == 5 && hour <= 5)) lbl = "Info Tydzień";
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
 
-if ((day == 5 && hour >= 23 && minutes >= 30) || (day == 6 && hour <= 6))
-  lbl = "👽Teoria Chaosu👽";
+    pos3 = e.clientX;
+    pos4 = e.clientY;
 
-if (day == 2 && hour >= 21) lbl = "Radioaktywnej";
+    document.onmouseup = closeDragElement;
+    document.onmousemove = elementDrag;
+  }
 
-if (lbl != "") {
-  displayPlayer(lbl);
-  dragElement(document.getElementById("radioradio_player"));
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
 
-  function dragElement(el) {
-    let pos1 = 0,
-      pos2 = 0,
-      pos3 = 0,
-      pos4 = 0;
-    el.onmousedown = dragMouseDown;
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
 
-    function dragMouseDown(e) {
-      e = e || window.event;
-      e.preventDefault();
+    el.style.top = el.offsetTop - pos2 + "px";
+    el.style.left = el.offsetLeft - pos1 + "px";
+  }
 
-      pos3 = e.clientX;
-      pos4 = e.clientY;
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
 
-      document.onmouseup = closeDragElement;
-      document.onmousemove = elementDrag;
-    }
-
-    function elementDrag(e) {
-      e = e || window.event;
-      e.preventDefault();
-
-      pos1 = pos3 - e.clientX;
-      pos2 = pos4 - e.clientY;
-      pos3 = e.clientX;
-      pos4 = e.clientY;
-
-      el.style.top = el.offsetTop - pos2 + "px";
-      el.style.left = el.offsetLeft - pos1 + "px";
-    }
-
-    function closeDragElement() {
-      document.onmouseup = null;
-      document.onmousemove = null;
-
-      localStorage.setItem(
-        "radioRadioPlayerPosition",
-        JSON.stringify({
-          pos1: pos1,
-          pos2: pos2,
-          pos3: pos3,
-          pos4: pos4,
-          offsetTop: el.offsetTop,
-          offsetLeft: el.offsetLeft,
-        })
-      );
-    }
+    localStorage.setItem(
+      "radioRadioPlayerPosition",
+      JSON.stringify({
+        pos1: pos1,
+        pos2: pos2,
+        pos3: pos3,
+        pos4: pos4,
+        offsetTop: el.offsetTop,
+        offsetLeft: el.offsetLeft,
+      })
+    );
   }
 }
+
+displayPlayer();
+dragElement(document.getElementById("radioradio_player"));
+
+window.setInterval(async () => {
+  const title = document.querySelector(".radioradio_player_figure_title");
+  title.innerHTML = await getTitle();
+}, 5000);
+
 
 console.log(`[KDeluxe] [⏱️] RadioRadio Player loaded in ${performance.now() - performance_radioradio_player}ms`);
