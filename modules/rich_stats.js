@@ -269,7 +269,7 @@ $('.hider').on('click', function(e) {
 });
 
 // count clicked links
-$(".postlink").on('click' function(e) {
+$(".postlink").on('click', function(e) {
       // increase count
         let links_opened_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_links_opened) + 1;
         // save it
