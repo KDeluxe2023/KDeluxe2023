@@ -32,7 +32,7 @@
         let last_id = 0;
         const add_settings_checkbox = function(internal_name, label, tooltip) {
             kdeluxe_settings_tab.append(`<input type="checkbox" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}" checked="checked">`);
-            kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${tooltip}">${label}</label>`);
+            kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${tooltip}" style="cursor: help;">${label}</label>`);
             // imageboardSettings.push( { o_kdeluxe_${option}: { desktop: 1, mobile: 1} } );
             last_id++;
         }
@@ -40,7 +40,7 @@
         /*
         const add_settings_textbox = function(internal_name, label, placeholder) {
             kdeluxe_settings_tab.append(`<input type="text" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}">`);
-            kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${placeholder}">${label}</label>`);
+            kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${placeholder}" style="cursor: help;">${label}</label>`);
 
             last_id++;
         }
