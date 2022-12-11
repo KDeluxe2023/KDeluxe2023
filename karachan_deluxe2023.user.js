@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.6.3
+// @version      0.6.4
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,15 +22,16 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "157b12b60f58b93fa6d8d9f261272a2dcec9bdde";
+const g_last_commit = "bdf7ce007030de5e628ad9f65db73759dae0907e";
+const g_script_version = GM.info.script.version;
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
-function load_module(e, t) {
+function load_module(e, t, data_pass = "") {
     var a = document.createElement("script"),
         n = document.getElementsByTagName("script")[0];
     a.async = 1, a.onload = a.onreadystatechange = function(e, n) {
         (n || !a.readyState || /loaded|complete/.test(a.readyState)) && (a.onload = a.onreadystatechange = null, a = void 0, !n && t && setTimeout(t, 0))
-    }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/modules/${e}.js`, n.parentNode.insertBefore(a, n)
+    }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/modules/${e}.js`, a.setAttribute("data-pass", `${data_pass}`), n.parentNode.insertBefore(a, n)
 }
 
 // scripts must be prevented from loading before they actually load
@@ -59,7 +60,7 @@ var bsePd = window.addEventListener('beforescriptexecute', e => {
         }
     }
 
-    console.log(`[KDeluxe] Browser loaded script: ${filename}`);
+    console.log(`[KDeluxe] Browser loaded a script: ${filename}`);
 });
 
 //// globals
@@ -112,7 +113,10 @@ window.addEventListener('load', function() {
     //// write code below this line ////
 
     // draw version info
-    $(".group-options").append(`<div style="font-size: 10px;position:absolute">[KDeluxe v${GM.info.script.version}]</div>`)
+    $(".group-options").append(`<div style="font-size: 10px;position:absolute">[KDeluxe v${g_script_version}]</div>`)
+
+    // check for update
+    load_module("update_notification", null, g_script_version);
 
     // draw our own UI
     load_module("user_interface");
@@ -176,5 +180,6 @@ window.addEventListener('load', function() {
         load_module("konfident_plus");
 
     if (localStorage.o_kdeluxe_enhanced_postform == 1)
-      load_module("enhanced_postform");
+        load_module("enhanced_postform");
+
 });
