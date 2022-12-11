@@ -4,7 +4,7 @@
         async: false,
         cache: false,
         success: function(data) {
-            let local_version = $.trim(document.currentScript.getAttribute('localv'));
+            let local_version = $.trim(document.currentScript.getAttribute('data'));
             let remote_version = $.trim(data);
 
             if (local_version != remote_version) {
