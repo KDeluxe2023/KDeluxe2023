@@ -77,7 +77,7 @@
         });
 
         // wordfilter helper
-        var wordfilters = [
+        const wordfilters = [
             ['#cwel', "KOMPROMITACJA CWELA"],
             ['#gimbo', 'xD'],
             ['#essa', 'ESSA!'],
@@ -101,9 +101,12 @@
             ['#1%', 'groźny LEWAK wykryty'],
             ['#mylittlefaggot', 'PRZYJAŹŃ JEST MAGIĄ'],
             ['#alezapierdala', 'ALE ZAPIERDALA'],
+            ['#potrzebnainterwencja ', 'INTERWENCJA'],
+            ['#sprawadlareportera ', 'Sprawa dla reportera'],
+            ['#Lasoupeauxchoux ', 'kapuśniaczek'],
             ['/r/pcmasterrace', '/r/pcmasterrace'],
             ['#shrek', 'ORK']
-        ];
+        ].sort(function(a,b){ return a[1] > b[1] ? 1 : -1; });
 
         // insert new row into postform table
         $('#postForm tbody tr').eq(3).after('<tr><td>Wordfilter</td><td><select id="wordfilter_helper"></td></tr>');
