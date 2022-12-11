@@ -95,13 +95,12 @@
             ['#penis', 'pisiorek'],
             ['#wagina', 'cipuszka'],
             ['#m__b', 'niegroźny WYKOPEK wykryty'],
-            ['#Lasoupeauxchoux', 'kapuśniaczek'],
             ['#homoś', 'pedał'],
             ['#korwinkrulempolski', 'kongres nowej prawicy'],
             ['#korwin', 'KORWiN'],
             ['#1%', 'groźny LEWAK wykryty'],
             ['#mylittlefaggot', 'PRZYJAŹŃ JEST MAGIĄ'],
-            ['#tetetka', 'ALE ZAPIERDALA'],
+            ['#alezapierdala', 'ALE ZAPIERDALA'],
             ['/r/pcmasterrace', '/r/pcmasterrace'],
             ['#shrek', 'ORK']
         ];
