@@ -46,8 +46,9 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
 
 **Do zrobienia**
+* crocidile scanner - skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje
 * usunąć czytanie linków i numerów postów z blind mode tts
-* standalone media player żeby rozwiązać problem z niewidocznym suwakiem dźwięku
+* standalone media player - żeby rozwiązać problem z niewidocznym suwakiem dźwięku
 * zrobić [logo i faviconke](https://github.com/KDeluxe2023/KDeluxe2023/issues/9)
 * <b>[przesunąć wszystkie pętle](https://github.com/KDeluxe2023/KDeluxe2023/issues/4) iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
 * content freeze - usunięte posty są zapisywane w pamięci i "zamrożone" oraz widoczne z niższym opacity
