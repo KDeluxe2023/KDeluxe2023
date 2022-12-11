@@ -33,7 +33,7 @@ function get_rich_stats_box_top() {
     if (localStorage.getItem("o_kdeluxe_rich_stats_box_top") == null)
         localStorage.o_kdeluxe_rich_stats_box_top = "35px";
 
-      if (isNaN(localStorage.getItem("o_kdeluxe_rich_stats_box_top")))
+      if (isNaN(parseInt(localStorage.getItem("o_kdeluxe_rich_stats_box_top"))))
         localStorage.o_kdeluxe_rich_stats_box_top = "35px";
     
     return localStorage.o_kdeluxe_rich_stats_box_top;
@@ -43,7 +43,7 @@ function get_rich_stats_box_left() {
     if (localStorage.getItem("o_kdeluxe_rich_stats_box_left") == null)
         localStorage.o_kdeluxe_rich_stats_box_left = "4px";
     
-       if (isNaN(localStorage.getItem("o_kdeluxe_rich_stats_box_left")))
+       if (isNaN(parseInt(localStorage.getItem("o_kdeluxe_rich_stats_box_left"))))
         localStorage.o_kdeluxe_rich_stats_box_left = "4px";
 
     return localStorage.o_kdeluxe_rich_stats_box_left;
