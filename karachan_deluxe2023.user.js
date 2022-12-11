@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.6.4
+// @version      0.6.5
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "bdf7ce007030de5e628ad9f65db73759dae0907e";
+const g_last_commit = "4ddd00f6a3f709c074f98a189482ede240f5692d";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
@@ -180,6 +180,6 @@ window.addEventListener('load', function() {
         load_module("konfident_plus");
 
     if (localStorage.o_kdeluxe_enhanced_postform == 1)
-        load_module("enhanced_postform");
+      load_module("enhanced_postform");
 
 });
