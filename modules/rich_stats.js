@@ -2,7 +2,7 @@ console.log(`[KDeluxe] Rich Stats Loaded...`);
 let performance_rich_stats = performance.now()
 
 /// Set up storage
-const storage_vars = ["rich_stats_time", "rich_stats_posts", "rich_stats_distance", "rich_stats_thread_curbs"]
+const storage_vars = ["rich_stats_time", "rich_stats_posts", "rich_stats_distance", "rich_stats_thread_curbs", "rich_stats_links_opened"]
 storage_vars.forEach(function(item, index) {
     if (localStorage.getItem("o_kdeluxe_" + item) == null) {
         let zero = 0;
@@ -33,11 +33,17 @@ function get_rich_stats_box_top() {
     if (localStorage.getItem("o_kdeluxe_rich_stats_box_top") == null)
         localStorage.o_kdeluxe_rich_stats_box_top = "35px";
 
+      if (isNaN(localStorage.getItem("o_kdeluxe_rich_stats_box_top"))
+        localStorage.o_kdeluxe_rich_stats_box_top = "35px";
+    
     return localStorage.o_kdeluxe_rich_stats_box_top;
 }
 
 function get_rich_stats_box_left() {
     if (localStorage.getItem("o_kdeluxe_rich_stats_box_left") == null)
+        localStorage.o_kdeluxe_rich_stats_box_left = "4px";
+    
+       if (isNaN(localStorage.getItem("o_kdeluxe_rich_stats_box_left"))
         localStorage.o_kdeluxe_rich_stats_box_left = "4px";
 
     return localStorage.o_kdeluxe_rich_stats_box_left;
@@ -113,8 +119,8 @@ $("#stats_box_sticky_btn").on("click", function(e) {
 
         localStorage.o_kdeluxe_rich_stats_sticky = "absolute";
 
-        let newtop = parseInt($("stats_box").css("top")) + document.body.scrollTop;
-        $("stats_box").css({
+        let newtop = parseInt($("#stats_box").css("top")) + $(window).scrollTop();
+        $("#stats_box").css({
             "top": `${newtop}px`
         });
         localStorage.o_kdeluxe_rich_stats_box_top = `${newtop}px`;
@@ -128,8 +134,8 @@ $("#stats_box_sticky_btn").on("click", function(e) {
 
         localStorage.o_kdeluxe_rich_stats_sticky = "fixed";
 
-        let newtop = parseInt($("stats_box").css("top")) - document.body.scrollTop;
-        $("stats_box").css({
+        let newtop = parseInt($("#stats_box").css("top")) - $(window).scrollTop();
+        $("#stats_box").css({
             "top": `${newtop}px`
         });
         localStorage.o_kdeluxe_rich_stats_box_top = `${newtop}px`;
@@ -161,10 +167,13 @@ $(` <table>
     <td>Krawężników</td>
     <td id="thread_curbs">${JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs)}</td>
   </tr>
+  <tr>
+    <td>Linków otwartych</td>
+    <td id="links_opened">${JSON.parse(localStorage.o_kdeluxe_rich_stats_links_opened)}</td>
+  </tr>
 </table>`).appendTo("#stats_box");
 
-/// STAT1: time spent
-// save our time spent on page every 0.5 second
+// count time spent on page
 function secondsToHms(d) {
     d = Number(d);
     var h = Math.floor(d / 3600);
@@ -192,12 +201,11 @@ setInterval(function() {
     let human_readable_time = secondsToHms(time_spent_sum);
 
     $("#stats_time").text(`${human_readable_time}`);
-}, 0.5 * 1000);
+}, 1 * 1000);
 
-/// STAT2: posts
-// register posts sent count
+// count submitted posts
 // $('#postform').on('submit', function(e) {
-$(".ladda-button").on("click", function(e) {
+$("#postform .ladda-button").on("click", function(e) {
     //e.preventDefault();
     // TO-DO: check if post was submitted actually
     // increase posts
@@ -206,7 +214,7 @@ $(".ladda-button").on("click", function(e) {
     localStorage.o_kdeluxe_rich_stats_posts = JSON.stringify(posts_sum);
 });
 
-// STAT3: distance
+// count mouse distance travelled
 var totalDistance = 0;
 var lastSeenAt = {
     x: null,
@@ -237,7 +245,7 @@ $(document).mousemove(function(event) {
     lastSeenAt.y = event.clientY;
 });
 
-// STAT4: curbs
+// count (un)curbs
 $('.hider').on('click', function(e) {
     // check if thread is already curbed or not
     let board = $(this).closest(".thread").data('board');
@@ -260,9 +268,18 @@ $('.hider').on('click', function(e) {
     }
 });
 
+// count clicked links
+$(".postlink").on('click' function(e) {
+      // increase count
+        let links_opened_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_links_opened) + 1;
+        // save it
+        localStorage.o_kdeluxe_rich_stats_links_opened = JSON.stringify(links_opened_sum);
+        // display it
+        $("#links_opened").text(`${links_opened_sum}`);
+});
 // TO-DO:
-// STAT5: searches in search.php count
+// STAT6: searches in search.php count
 
-// STAT6: /rs/ downloaded item count
+// STAT7: /rs/ downloaded item count
 
 console.log(`[KDeluxe] [⏱️] Rich stats loaded in ${performance.now() - performance_rich_stats}ms`);
