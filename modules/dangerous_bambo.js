@@ -1,7 +1,8 @@
-console.log(`[KDeluxe] Dangerous Bambo Loaded...`);
-let performance_dangerous_bambo = performance.now()
+{
+    console.log(`[KDeluxe] Dangerous Bambo Loaded...`);
+    let performance_dangerous_bambo = performance.now()
 
-$(`<style type='text/css'>
+    $(`<style type='text/css'>
 #papaj_pingwin{
 width:120px;
 height:173px;
@@ -35,6 +36,7 @@ right:115%
 }
 }
 </style>`).appendTo("head");
-$("body").append(`<div id="papaj_pingwin"></div>`);
+    $("body").append(`<div id="papaj_pingwin"></div>`);
 
-console.log(`[KDeluxe] [⏱️] Dangerous Bambo loaded in ${performance.now() - performance_dangerous_bambo}ms`);
+    console.log(`[KDeluxe] [⏱️] Dangerous Bambo loaded in ${performance.now() - performance_dangerous_bambo}ms`);
+}
