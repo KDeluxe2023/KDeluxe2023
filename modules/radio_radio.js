@@ -12,7 +12,7 @@ const getTitle = async () => {
     return json.nowplaying;
 };
 
-const isLive() {
+const isLive = function() {
     if ((day == 4 && hour >= 22) || (day == 5 && hour <= 5))
         return true; // info tydzień
 
