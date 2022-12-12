@@ -7,7 +7,7 @@ width:200px;
 height:190px;
 position:fixed;
 animation-iteration-count:2137;
-background:url("https://i.imgur.com/mB0hqA9.gif");
+background:url("https://i.imgur.com/bijNbcs.gif");
 animation-name:pingwin;
 animation-duration:30s;
 animation-timing-function:linear;
