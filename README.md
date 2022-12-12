@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.6.9 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.7.0 BETA</h1>
 <p align="center"><img  src="https://user-images.githubusercontent.com/119752397/206885097-dd4cad13-ee7b-40d2-9a94-b78a8d95a6c9.jpg" alt="bobraz" width="600"/></p>
 <h3 align="center">Największe, modularne rozszerzenie do forum młodzieżowo katolickiego</h3>
 <hr/>
@@ -40,9 +40,9 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 * Lower Default Volume - Obniża domyślną głośność w playerze video, przydatne w FF
 * Fix Thread WatchList OOB - Przywraca listę obserwowanych fredów do lewego górnego rogu
 * Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
+* New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R, #deluxe
 * Anti Bible - Nie pozwala na załadowanie biblii [(działa tylko na firefox)](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
 * <del>Jump To Post - Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika</del>
-* <del>New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R</del>
 * <del>ThreadWatcher Sort - Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku</del>
 
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
