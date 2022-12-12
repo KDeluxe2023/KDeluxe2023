@@ -135,8 +135,8 @@ window.addEventListener('load', function() {
     if (localStorage.o_kdeluxe_advanced_filters == 1)
         load_module("filters");
 
-    if (localStorage.o_kdeluxe_threadwatcher_sort == 1 && localStorage.o_watched == 1)
-        load_module("threadwatcher_sort");
+    //if (localStorage.o_kdeluxe_threadwatcher_sort == 1 && localStorage.o_watched == 1)
+    //    load_module("threadwatcher_sort");
 
     if (localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page)
         load_module("rich_stats");
