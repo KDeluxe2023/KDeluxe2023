@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.6.9
+// @version      0.7.0
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,17 +22,18 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "5aebe895955b277602fc5ef2d11386091538d52f";
+const g_last_commit = "53c8d30c4638a6e4ff5f9fe8560dbaaa9dcf66f3";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
-function load_module(e, t, data_pass = "") {
+function load_module(module_name, t, data_pass = "") {
     var a = document.createElement("script"),
         n = document.getElementsByTagName("script")[0];
     a.async = 1, a.onload = a.onreadystatechange = function(e, n) {
         (n || !a.readyState || /loaded|complete/.test(a.readyState)) && (a.onload = a.onreadystatechange = null, a = void 0, !n && t && setTimeout(t, 0))
-    }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/modules/${e}.js`, a.setAttribute("data-pass", `${data_pass}`), n.parentNode.insertBefore(a, n)
+    }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/modules/${module_name}.js`, a.setAttribute("data-pass", `${data_pass}`), n.parentNode.insertBefore(a, n)
 }
+
 // scripts must be prevented from loading before they actually load
 var bsePd = window.addEventListener('beforescriptexecute', e => {
     e.target.removeEventListener('beforescriptexecute', bsePd);
@@ -78,9 +79,6 @@ var g_style = localStorage.style;
 // assign globals
 let special_pages = ["catalog.html", "search.php", "/rs/", "/*/"];
 let url_path = window.location.pathname;
-String.prototype.endsWith = function(t) {
-    return -1 !== this.indexOf(t, this.length - t.length)
-};
 for (const item of special_pages) {
     if (url_path.endsWith(item)) {
         g_special_page = true;
@@ -115,9 +113,10 @@ window.addEventListener('load', function() {
     $(".group-options").append(`<div style="font-size: 10px;position:absolute">[KDeluxe v${g_script_version}]</div>`)
 
     // enforce full_compatibility
-    if (localStorage.o_kdeluxe_full_compatibility == 1) {
+    if (localStorage.o_kdeluxe_full_compatibility == 1 && !g_special_page) {
         localStorage.o_loader = "0"
         localStorage.o_fastreply = "0";
+        $(".expander").hide();
         if (g_is_fred_open) {
             localStorage.updtchbx = "";
             $(".updateCheck").prop("checked", false);
@@ -135,6 +134,9 @@ window.addEventListener('load', function() {
     // dont move this lower, this needs to run first
     if (localStorage.o_kdeluxe_advanced_filters == 1)
         load_module("filters");
+
+    if (localStorage.o_kdeluxe_threadwatcher_sort == 1 && localStorage.o_watched == 1)
+        load_module("threadwatcher_sort");
 
     if (localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page)
         load_module("rich_stats");
@@ -190,10 +192,13 @@ window.addEventListener('load', function() {
     if (localStorage.o_kdeluxe_konfident_plus == 1)
         load_module("konfident_plus");
 
-    if (localStorage.o_kdeluxe_enhanced_postform == 1)
+    if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
         load_module("enhanced_postform");
 
-    if (localStorage.o_kdeluxe_vocaroo_embeds == 1)
+    if (localStorage.o_kdeluxe_vocaroo_embeds == 1 && !g_special_page)
         load_module("vocaroo_embeds");
+
+    if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
+        load_module("new_keyframe_anims");
 
 });
