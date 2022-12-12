@@ -3,8 +3,8 @@ let performance_dangerous_bambo = performance.now()
 
 $(`<style type='text/css'>
 #papaj_pingwin{
-width:200px;
-height:190px;
+width:120px;
+height:173px;
 position:fixed;
 animation-iteration-count:2137;
 background:url("https://i.imgur.com/bijNbcs.gif");
