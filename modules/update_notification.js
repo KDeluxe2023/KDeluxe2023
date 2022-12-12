@@ -14,7 +14,8 @@
                     if (a == 1)
                         return;
 
-                    window.location.href = `https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js`;
+                    if (a == 0)
+                        window.location.href = `https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js`;
                 });
             }
         }
