@@ -12,7 +12,6 @@
         let domain = get_domain(link);
         if (domain == "vocaroo.com") {
             let recording_code = link.split("/")[3];
-            console.log("====================" + recording_code);
             $(this).replaceWith(`<div>
         <iframe width="300" height="60" src="https://vocaroo.com/embed/${recording_code}?autoplay=0" frameborder="0" allow="autoplay"></iframe>
         <!--<br><a href="https://voca.ro/${recording_code}" title="Vocaroo Nagrywanie Głosu" target="_blank">Wyświetl na Vocaroo &gt;&gt;</a>-->
