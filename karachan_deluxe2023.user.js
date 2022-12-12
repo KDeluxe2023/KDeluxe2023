@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.6.6
+// @version      0.6.7
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "f84f75e4c690f96e82cf51049c6f322da424032a";
+const g_last_commit = "16c4b2139a45dc768572ef58a6d326f086e51266";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
@@ -33,7 +33,6 @@ function load_module(e, t, data_pass = "") {
         (n || !a.readyState || /loaded|complete/.test(a.readyState)) && (a.onload = a.onreadystatechange = null, a = void 0, !n && t && setTimeout(t, 0))
     }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/modules/${e}.js`, a.setAttribute("data-pass", `${data_pass}`), n.parentNode.insertBefore(a, n)
 }
-
 // scripts must be prevented from loading before they actually load
 var bsePd = window.addEventListener('beforescriptexecute', e => {
     e.target.removeEventListener('beforescriptexecute', bsePd);
@@ -115,6 +114,17 @@ window.addEventListener('load', function() {
     // draw version info
     $(".group-options").append(`<div style="font-size: 10px;position:absolute">[KDeluxe v${g_script_version}]</div>`)
 
+    // enforce full_compatibility
+    if (localStorage.o_kdeluxe_full_compatibility == 1) {
+        localStorage.removeItem("o_loader");
+        localStorage.o_fastreply = "0";
+        if (g_is_fred_open) {
+            localStorage.updtchbx = "";
+            $(".updateCheck").prop("checked", false);
+            $(".updateCheck").hide();
+        }
+    }
+
     // check for update
     load_module("update_notification", null, g_script_version);
 
@@ -180,6 +190,9 @@ window.addEventListener('load', function() {
         load_module("konfident_plus");
 
     if (localStorage.o_kdeluxe_enhanced_postform == 1)
-      load_module("enhanced_postform");
+        load_module("enhanced_postform");
+
+    if (localStorage.o_kdeluxe_vocaroo_embeds == 1)
+        load_module("vocaroo_embeds");
 
 });
