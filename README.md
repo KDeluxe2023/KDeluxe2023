@@ -48,11 +48,14 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
 
 **Do zrobienia**
-* crocidile scanner - skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje
+* dodać niewidzialną spacje jako bbbutton do enhanced postform
+* poprawić konfident+, przepisać najlepiej bo to stare gówno
+* naprawić blind mode tts
+* crocodile scanner - skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje
 * usunąć czytanie linków i numerów postów z blind mode tts
 * standalone media player - żeby rozwiązać problem z niewidocznym suwakiem dźwięku
 * zrobić [logo i faviconke](https://github.com/KDeluxe2023/KDeluxe2023/issues/9)
-* <b>[przesunąć wszystkie pętle](https://github.com/KDeluxe2023/KDeluxe2023/issues/4) iterujące po postach do jednej wspólnej, tej na końcu pliku</b>
+* zaimplementować mutationobserver w modułach które zmieniają treści postów (dodawanych przez pageloader i autoupdater we fredzie)
 * content freeze - usunięte posty są zapisywane w pamięci i "zamrożone" oraz widoczne z niższym opacity
 * dodać funkcje obsługującą dodawanie textboxów, buttonów, sliderów i comboboxów do UI
 * sekret: możliwość pisania zaszyfrowanych postów z unikalną sygnaturą na końcu (np. ==SECRET) które można odszyfrować automatycznie domyślnym, publicznym hasłem. można też nadać hasło ręcznie, wtedy w polu posta zamiast tekstu pojawi się textbox z opcją wpisania hasła do sekretu
@@ -63,7 +66,6 @@ Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [
 * spoilerowanie obrazka na stałe (po hashu)
 * fastreply fix (zdebugować i naprawić problem, najłatwiej przez napisanie nowego xD)
 * system powiadomień w faviconie, [inspiracja](https://pastebin.com/NazxdcsU)
-* worldfilter bypass (wstawia niewidzialne spacje lub zamienia znaki w wyrazach ze słowofiltrem)
 * ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
 * auto-[trójsiła](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
 * usprawnienia do wyszukiwarki chanowej
