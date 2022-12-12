@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 v0.6.6 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.6.7 BETA</h1>
 <p align="center"><img  src="https://user-images.githubusercontent.com/119752397/206885097-dd4cad13-ee7b-40d2-9a94-b78a8d95a6c9.jpg" alt="bobraz" width="600"/></p>
 <h3 align="center">Największe, modularne rozszerzenie do forum młodzieżowo katolickiego</h3>
 <hr/>
@@ -18,6 +18,8 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 ![firefox_bKzkjwzFYE](https://user-images.githubusercontent.com/119752397/206005514-765ec49b-bb95-44d4-ab9b-7f7b08208280.png)
 
 **Dostępne funkcje ([zaproponuj nowe](https://github.com/KDeluxe2023/KDeluxe2023/issues))**
+
+* Vocaroo Embeds - Zamienia linki do vocaroo w postach na osadzony player
 * Autoscroll - Dodaje opcje automatycznego przewijania freda, którą można togglować
 * Teoria Chaosu™ Integration - Wyświetla player radioradio podczas audycji claude'a (█▬█ █ ▀█▀)
 * Konfident+ - Pozwala śledzić dalsze losy zgłoszonych przez siebie postów
