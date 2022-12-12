@@ -1,152 +1,153 @@
-console.log(`[KDeluxe] Rich Stats Loaded...`);
-let performance_rich_stats = performance.now()
+{
+    console.log(`[KDeluxe] Rich Stats Loaded...`);
+    let performance_rich_stats = performance.now()
 
-/// Set up storage
-const storage_vars = ["rich_stats_time", "rich_stats_posts", "rich_stats_distance", "rich_stats_thread_curbs", "rich_stats_links_opened"]
-storage_vars.forEach(function(item, index) {
-    if (localStorage.getItem("o_kdeluxe_" + item) == null) {
-        let zero = 0;
-        localStorage.setItem("o_kdeluxe_" + item, JSON.stringify(zero));
-    }
-});
-
-/// Draw reset button
-$("#kdeluxe_button_container").append(`<input type="button" style="margin-left: 5px;" value="Reset Stats" id="reset_rich_stats">`);
-$("#reset_rich_stats").click(function(e) {
-    e.preventDefault();
-
+    /// Set up storage
+    const storage_vars = ["rich_stats_time", "rich_stats_posts", "rich_stats_distance", "rich_stats_thread_curbs", "rich_stats_links_opened"]
     storage_vars.forEach(function(item, index) {
-        let storage_name = "o_kdeluxe_" + item;
-        localStorage.removeItem(storage_name);
-        console.log(`[KDeluxe] nulled ${storage_name}`);
+        if (localStorage.getItem("o_kdeluxe_" + item) == null) {
+            let zero = 0;
+            localStorage.setItem("o_kdeluxe_" + item, JSON.stringify(zero));
+        }
     });
 
-    localStorage.o_kdeluxe_rich_stats_box_top = "35px";
-    localStorage.o_kdeluxe_rich_stats_box_left = "4px";
-    localStorage.o_kdeluxe_rich_stats_sticky = "absolute";
+    /// Draw reset button
+    $("#kdeluxe_button_container").append(`<input type="button" style="margin-left: 5px;" value="Reset Stats" id="reset_rich_stats">`);
+    $("#reset_rich_stats").click(function(e) {
+        e.preventDefault();
 
-    window.location.reload();
-});
+        storage_vars.forEach(function(item, index) {
+            let storage_name = "o_kdeluxe_" + item;
+            localStorage.removeItem(storage_name);
+            console.log(`[KDeluxe] nulled ${storage_name}`);
+        });
 
-/// Draw UI window
-function get_rich_stats_box_top() {
-    if (localStorage.getItem("o_kdeluxe_rich_stats_box_top") == null)
         localStorage.o_kdeluxe_rich_stats_box_top = "35px";
-
-      if (isNaN(parseInt(localStorage.getItem("o_kdeluxe_rich_stats_box_top"))))
-        localStorage.o_kdeluxe_rich_stats_box_top = "35px";
-    
-    return localStorage.o_kdeluxe_rich_stats_box_top;
-}
-
-function get_rich_stats_box_left() {
-    if (localStorage.getItem("o_kdeluxe_rich_stats_box_left") == null)
         localStorage.o_kdeluxe_rich_stats_box_left = "4px";
-    
-       if (isNaN(parseInt(localStorage.getItem("o_kdeluxe_rich_stats_box_left"))))
-        localStorage.o_kdeluxe_rich_stats_box_left = "4px";
+        localStorage.o_kdeluxe_rich_stats_sticky = "absolute";
 
-    return localStorage.o_kdeluxe_rich_stats_box_left;
-}
+        window.location.reload();
+    });
 
-let top_pos = get_rich_stats_box_top();
-let left_pos = get_rich_stats_box_left();
-let pos_type = localStorage.getItem("o_kdeluxe_rich_stats_sticky");
-//console.log(`[KDeluxe] STATBOX POSITION: ${top_pos}/${left_pos}`);
+    /// Draw UI window
+    function get_rich_stats_box_top() {
+        if (localStorage.getItem("o_kdeluxe_rich_stats_box_top") == null)
+            localStorage.o_kdeluxe_rich_stats_box_top = "35px";
 
-if (pos_type == null)
-    localStorage.setItem('o_kdeluxe_rich_stats_sticky', 'absolute');
+        if (isNaN(parseInt(localStorage.getItem("o_kdeluxe_rich_stats_box_top"))))
+            localStorage.o_kdeluxe_rich_stats_box_top = "35px";
 
-$('<div>', {
-    id: 'stats_box',
-    class: 'movable',
-    style: `height:auto;min-height:140px;width:auto;min-width:250px;position:${pos_type};top:${top_pos};left:${left_pos};padding:5px;`
-}).appendTo('body');
-$("#stats_box").draggable({
-    // save window position when we move it
-    start: function() {},
-    drag: function() {},
-    stop: function() {
-        console.log(`[KDeluxe] Drag finished`);
-        localStorage.o_kdeluxe_rich_stats_box_top = $("#stats_box").css("top");
-        localStorage.o_kdeluxe_rich_stats_box_left = $("#stats_box").css("left");
+        return localStorage.o_kdeluxe_rich_stats_box_top;
     }
-});
 
-// style our box the same as watcher box
-function read_css_property(e, t) {
-    var n = e.charAt(0),
-        r = e.substring(1),
-        u = "#" == n ? document.getElementById(r) : document.getElementsByClassName(r)[0];
-    return window.getComputedStyle(u, null).getPropertyValue(t)
-}
-let og_background = read_css_property("#watcher_box", "background");
-let og_border = read_css_property("#watcher_box", "border");
+    function get_rich_stats_box_left() {
+        if (localStorage.getItem("o_kdeluxe_rich_stats_box_left") == null)
+            localStorage.o_kdeluxe_rich_stats_box_left = "4px";
 
-$('#stats_box').css({
-    "background": og_background,
-    "border": og_border
-});
+        if (isNaN(parseInt(localStorage.getItem("o_kdeluxe_rich_stats_box_left"))))
+            localStorage.o_kdeluxe_rich_stats_box_left = "4px";
 
-// draw sticker button
-$('<img>', {
-    src: `https://karachan.org/img/sticky.gif`,
-    id: 'stats_box_sticky_btn',
-    style: `position:absolute;right:0px;cursor:default;`
-}).appendTo("#stats_box");
+        return localStorage.o_kdeluxe_rich_stats_box_left;
+    }
 
-// lower opacity depending on if window is sticky
-if ($("#stats_box").css("position") === 'absolute') {
-    $("#stats_box_sticky_btn").css({
-        "opacity": 0.25
+    let top_pos = get_rich_stats_box_top();
+    let left_pos = get_rich_stats_box_left();
+    let pos_type = localStorage.getItem("o_kdeluxe_rich_stats_sticky");
+    //console.log(`[KDeluxe] STATBOX POSITION: ${top_pos}/${left_pos}`);
+
+    if (pos_type == null)
+        localStorage.setItem('o_kdeluxe_rich_stats_sticky', 'absolute');
+
+    $('<div>', {
+        id: 'stats_box',
+        class: 'movable',
+        style: `height:auto;min-height:140px;width:auto;min-width:250px;position:${pos_type};top:${top_pos};left:${left_pos};padding:5px;`
+    }).appendTo('body');
+    $("#stats_box").draggable({
+        // save window position when we move it
+        start: function() {},
+        drag: function() {},
+        stop: function() {
+            console.log(`[KDeluxe] Drag finished`);
+            localStorage.o_kdeluxe_rich_stats_box_top = $("#stats_box").css("top");
+            localStorage.o_kdeluxe_rich_stats_box_left = $("#stats_box").css("left");
+        }
     });
-} else {
-    $("#stats_box_sticky_btn").css({
-        "opacity": 1.0
+
+    // style our box the same as watcher box
+    function read_css_property(e, t) {
+        var n = e.charAt(0),
+            r = e.substring(1),
+            u = "#" == n ? document.getElementById(r) : document.getElementsByClassName(r)[0];
+        return window.getComputedStyle(u, null).getPropertyValue(t)
+    }
+    let og_background = read_css_property("#watcher_box", "background");
+    let og_border = read_css_property("#watcher_box", "border");
+
+    $('#stats_box').css({
+        "background": og_background,
+        "border": og_border
     });
-}
 
-$("#stats_box_sticky_btn").on("click", function(e) {
-    e.preventDefault();
+    // draw sticker button
+    $('<img>', {
+        src: `https://karachan.org/img/sticky.gif`,
+        id: 'stats_box_sticky_btn',
+        style: `position:absolute;right:0px;cursor:default;`
+    }).appendTo("#stats_box");
 
-    if ($(this).css("opacity") === '1') {
+    // lower opacity depending on if window is sticky
+    if ($("#stats_box").css("position") === 'absolute') {
         $("#stats_box_sticky_btn").css({
             "opacity": 0.25
         });
-        $("#stats_box").css({
-            "position": "absolute"
-        });
-
-        localStorage.o_kdeluxe_rich_stats_sticky = "absolute";
-
-        let newtop = parseInt($("#stats_box").css("top")) + $(window).scrollTop();
-        $("#stats_box").css({
-            "top": `${newtop}px`
-        });
-        localStorage.o_kdeluxe_rich_stats_box_top = `${newtop}px`;
     } else {
         $("#stats_box_sticky_btn").css({
             "opacity": 1.0
         });
-        $("#stats_box").css({
-            "position": "fixed"
-        });
-
-        localStorage.o_kdeluxe_rich_stats_sticky = "fixed";
-
-        let newtop = parseInt($("#stats_box").css("top")) - $(window).scrollTop();
-        $("#stats_box").css({
-            "top": `${newtop}px`
-        });
-        localStorage.o_kdeluxe_rich_stats_box_top = `${newtop}px`;
     }
-});
 
-// populate it with content
-$('<small>').appendTo('#stats_box').text("Twoje statystyki");
-$("<hr/>").appendTo("#stats_box");
-//$(`<style type='text/css'>.stat { margin: 0; padding: 0; }</style>`).appendTo("head");
-$(` <table>
+    $("#stats_box_sticky_btn").on("click", function(e) {
+        e.preventDefault();
+
+        if ($(this).css("opacity") === '1') {
+            $("#stats_box_sticky_btn").css({
+                "opacity": 0.25
+            });
+            $("#stats_box").css({
+                "position": "absolute"
+            });
+
+            localStorage.o_kdeluxe_rich_stats_sticky = "absolute";
+
+            let newtop = parseInt($("#stats_box").css("top")) + $(window).scrollTop();
+            $("#stats_box").css({
+                "top": `${newtop}px`
+            });
+            localStorage.o_kdeluxe_rich_stats_box_top = `${newtop}px`;
+        } else {
+            $("#stats_box_sticky_btn").css({
+                "opacity": 1.0
+            });
+            $("#stats_box").css({
+                "position": "fixed"
+            });
+
+            localStorage.o_kdeluxe_rich_stats_sticky = "fixed";
+
+            let newtop = parseInt($("#stats_box").css("top")) - $(window).scrollTop();
+            $("#stats_box").css({
+                "top": `${newtop}px`
+            });
+            localStorage.o_kdeluxe_rich_stats_box_top = `${newtop}px`;
+        }
+    });
+
+    // populate it with content
+    $('<small>').appendTo('#stats_box').text("Twoje statystyki");
+    $("<hr/>").appendTo("#stats_box");
+    //$(`<style type='text/css'>.stat { margin: 0; padding: 0; }</style>`).appendTo("head");
+    $(` <table>
   <tr>
     <th>Kryterium</th>
     <th>Wartość</th>
@@ -173,113 +174,114 @@ $(` <table>
   </tr>
 </table>`).appendTo("#stats_box");
 
-// count time spent on page
-function secondsToHms(d) {
-    d = Number(d);
-    var h = Math.floor(d / 3600);
-    var m = Math.floor(d % 3600 / 60);
+    // count time spent on page
+    function secondsToHms(d) {
+        d = Number(d);
+        var h = Math.floor(d / 3600);
+        var m = Math.floor(d % 3600 / 60);
 
-    var hDisplay = h > 0 ? h + (h == 1 ? " godzin, " : " godziny, ") : "";
-    var mDisplay = m > 0 ? m + (m == 1 ? " minuta " : " minut ") : "";
-    if (h == 0 && m == 0)
-        return "poniżej minuty";
+        var hDisplay = h > 0 ? h + (h == 1 ? " godzin, " : " godziny, ") : "";
+        var mDisplay = m > 0 ? m + (m == 1 ? " minuta " : " minut ") : "";
+        if (h == 0 && m == 0)
+            return "poniżej minuty";
 
-    return hDisplay + mDisplay;
-}
-
-setInterval(function() {
-    // dont count if our tab isnt focused
-    if (!document.hasFocus())
-        return;
-
-    // increase time spent by 0.5 second
-    let time_spent_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_time) + 0.5;
-
-    // save it
-    localStorage.o_kdeluxe_rich_stats_time = JSON.stringify(time_spent_sum);
-    // display it as it goes on
-    let human_readable_time = secondsToHms(time_spent_sum);
-
-    $("#stats_time").text(`${human_readable_time}`);
-}, 1 * 1000);
-
-// count submitted posts
-// $('#postform').on('submit', function(e) {
-$("#postform .ladda-button").on("click", function(e) {
-    //e.preventDefault();
-    // TO-DO: check if post was submitted actually
-    // increase posts
-    let posts_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_posts) + 1;
-    // save it
-    localStorage.o_kdeluxe_rich_stats_posts = JSON.stringify(posts_sum);
-});
-
-// count mouse distance travelled
-var totalDistance = 0;
-var lastSeenAt = {
-    x: null,
-    y: null
-};
-$(document).mousemove(function(event) {
-    if (lastSeenAt.x) {
-        totalDistance += Math.sqrt(Math.pow(lastSeenAt.y - event.clientY, 2) + Math.pow(lastSeenAt.x - event.clientX, 2));
-
-        // convert pixels to meters
-        let meters = totalDistance / 3779.5275591;
-        // pixels to meters is off here...
-        meters /= 150;
-        // cast to kilometers
-        meters = meters / 1000;
-        // increase meters
-        let meter_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_distance) + meters;
-        // save it
-        localStorage.o_kdeluxe_rich_stats_distance = JSON.stringify(meter_sum);
-
-        // round it to display
-        let display_meters = Math.round((meter_sum + Number.EPSILON) * 100) / 100
-
-        $("#stats_distance").text(`${display_meters} km`);
+        return hDisplay + mDisplay;
     }
 
-    lastSeenAt.x = event.clientX;
-    lastSeenAt.y = event.clientY;
-});
+    setInterval(function() {
+        // dont count if our tab isnt focused
+        if (!document.hasFocus())
+            return;
 
-// count (un)curbs
-$('.hider').on('click', function(e) {
-    // check if thread is already curbed or not
-    let board = $(this).closest(".thread").data('board');
-    let thread_id = $(this).parent().parent().attr("id").substr(2);
+        // increase time spent by 0.5 second
+        let time_spent_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_time) + 0.5;
 
-    if (localStorage.getItem(`h_${board}_${thread_id}`) === null) {
-        // decrease curbs
-        let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) - 1;
         // save it
-        localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
-        // display it
-        $("#thread_curbs").text(`${thread_curbs_sum}`);
-    } else {
-        // increase curbs
-        let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) + 1;
-        // save it
-        localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
-        // display it
-        $("#thread_curbs").text(`${thread_curbs_sum}`);
-    }
-});
+        localStorage.o_kdeluxe_rich_stats_time = JSON.stringify(time_spent_sum);
+        // display it as it goes on
+        let human_readable_time = secondsToHms(time_spent_sum);
 
-// count clicked links
-$(".postlink").on('click', function(e) {
-      // increase count
+        $("#stats_time").text(`${human_readable_time}`);
+    }, 1 * 1000);
+
+    // count submitted posts
+    // $('#postform').on('submit', function(e) {
+    $("#postform .ladda-button").on("click", function(e) {
+        //e.preventDefault();
+        // TO-DO: check if post was submitted actually
+        // increase posts
+        let posts_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_posts) + 1;
+        // save it
+        localStorage.o_kdeluxe_rich_stats_posts = JSON.stringify(posts_sum);
+    });
+
+    // count mouse distance travelled
+    var totalDistance = 0;
+    var lastSeenAt = {
+        x: null,
+        y: null
+    };
+    $(document).mousemove(function(event) {
+        if (lastSeenAt.x) {
+            totalDistance += Math.sqrt(Math.pow(lastSeenAt.y - event.clientY, 2) + Math.pow(lastSeenAt.x - event.clientX, 2));
+
+            // convert pixels to meters
+            let meters = totalDistance / 3779.5275591;
+            // pixels to meters is off here...
+            meters /= 150;
+            // cast to kilometers
+            meters = meters / 1000;
+            // increase meters
+            let meter_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_distance) + meters;
+            // save it
+            localStorage.o_kdeluxe_rich_stats_distance = JSON.stringify(meter_sum);
+
+            // round it to display
+            let display_meters = Math.round((meter_sum + Number.EPSILON) * 100) / 100
+
+            $("#stats_distance").text(`${display_meters} km`);
+        }
+
+        lastSeenAt.x = event.clientX;
+        lastSeenAt.y = event.clientY;
+    });
+
+    // count (un)curbs
+    $('.hider').on('click', function(e) {
+        // check if thread is already curbed or not
+        let board = $(this).closest(".thread").data('board');
+        let thread_id = $(this).parent().parent().attr("id").substr(2);
+
+        if (localStorage.getItem(`h_${board}_${thread_id}`) === null) {
+            // decrease curbs
+            let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) - 1;
+            // save it
+            localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
+            // display it
+            $("#thread_curbs").text(`${thread_curbs_sum}`);
+        } else {
+            // increase curbs
+            let thread_curbs_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_thread_curbs) + 1;
+            // save it
+            localStorage.o_kdeluxe_rich_stats_thread_curbs = JSON.stringify(thread_curbs_sum);
+            // display it
+            $("#thread_curbs").text(`${thread_curbs_sum}`);
+        }
+    });
+
+    // count clicked links
+    $(".postlink").on('click', function(e) {
+        // increase count
         let links_opened_sum = JSON.parse(localStorage.o_kdeluxe_rich_stats_links_opened) + 1;
         // save it
         localStorage.o_kdeluxe_rich_stats_links_opened = JSON.stringify(links_opened_sum);
         // display it
         $("#links_opened").text(`${links_opened_sum}`);
-});
-// TO-DO:
-// STAT6: searches in search.php count
+    });
+    // TO-DO:
+    // STAT6: searches in search.php count
 
-// STAT7: /rs/ downloaded item count
+    // STAT7: /rs/ downloaded item count
 
-console.log(`[KDeluxe] [⏱️] Rich stats loaded in ${performance.now() - performance_rich_stats}ms`);
+    console.log(`[KDeluxe] [⏱️] Rich stats loaded in ${performance.now() - performance_rich_stats}ms`);
+}
