@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.6.7
+// @version      0.6.8
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "16c4b2139a45dc768572ef58a6d326f086e51266";
+const g_last_commit = "ff82f1ec8dd337bfbfd5e5fb18b3022a387dacab";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
@@ -116,12 +116,13 @@ window.addEventListener('load', function() {
 
     // enforce full_compatibility
     if (localStorage.o_kdeluxe_full_compatibility == 1) {
-        localStorage.removeItem("o_loader");
+        localStorage.o_loader = "0"
         localStorage.o_fastreply = "0";
         if (g_is_fred_open) {
             localStorage.updtchbx = "";
             $(".updateCheck").prop("checked", false);
-            $(".updateCheck").hide();
+            $(".updateCheck").parent().hide();
+            $(".updateLink").hide();
         }
     }
 
