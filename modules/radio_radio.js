@@ -26,9 +26,6 @@ const isLive = function() {
 }
 
 const displayPlayer = async () => {
-    if (!isLive())
-        return false;
-
     const container = document.createElement("div");
     container.id = "radioradio_player";
     container.innerHTML = `
@@ -106,13 +103,14 @@ function dragElement(el) {
     }
 }
 
-displayPlayer();
-dragElement(document.getElementById("radioradio_player"));
+if (isLive()) {
+    displayPlayer();
+    dragElement(document.getElementById("radioradio_player"));
 
-window.setInterval(async () => {
-    const title = document.querySelector(".radioradio_player_figure_title");
-    title.innerHTML = await getTitle();
-}, 5000);
-
+    window.setInterval(async () => {
+        const title = document.querySelector(".radioradio_player_figure_title");
+        title.innerHTML = await getTitle();
+    }, 5000);
+}
 
 console.log(`[KDeluxe] [⏱️] RadioRadio Player loaded in ${performance.now() - performance_radioradio_player}ms`);
