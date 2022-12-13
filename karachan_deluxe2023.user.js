@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.7.1
+// @version      0.7.2
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "2d9be76d7100c4f7fb18214dd1829eb2f6f87622";
+const g_last_commit = "cc2d6b1c7817f7b066718bdbf4458470123c499d";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
@@ -134,9 +134,7 @@ window.addEventListener('load', function() {
         if (localStorage.o_kdeluxe_advanced_filters == 1)
             load_module("filters");
 
-        //if (localStorage.o_kdeluxe_threadwatcher_sort == 1 && localStorage.o_watched == 1)
-        //    load_module("threadwatcher_sort");
-
+        // proceed with the rest
         if (localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page)
             load_module("rich_stats");
 
@@ -153,7 +151,7 @@ window.addEventListener('load', function() {
             load_module("password_changer");
 
         if (localStorage.o_kdeluxe_uid_curb == 1 && !g_special_page && g_is_fred_open)
-           load_module("uid_curb");
+            load_module("uid_curb");
 
         if (this.localStorage.o_kdeluxe_catalog_curb == 1 && g_is_in_catalog)
             load_module("catalog_curb");
