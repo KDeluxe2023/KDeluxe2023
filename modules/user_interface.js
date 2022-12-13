@@ -11,8 +11,6 @@
 
     // select mitsuba's settings form
     let settings_container = document.querySelector("#tab-settings .modal-cont");
-    let settings_nav = settings_container.querySelector(".modal-nav");
-
     // add tab dummy content
     let settings_nav = document.querySelector(".modal-nav");
     settings_nav.insertAdjacentHTML('afterend', "<div id='tab-settings-deluxe' class='tab-content'><h2>Karachan Deluxe 2023</h2></div>");
