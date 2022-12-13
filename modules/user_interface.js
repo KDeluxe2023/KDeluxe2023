@@ -2,12 +2,14 @@
     let performance_timer = performance.now()
 
     // mitsuba func used to switch tabs
-    const openTab = function(a) {
-        if (!a.hasClass("tab-opened")) {
-            var e = a.parent().children(".tab-opened");
-            e.removeClass("tab-opened"), $("#" + e.data("tab-ref")).removeClass("opened"), a.addClass("tab-opened"), $("#" + a.data("tab-ref")).addClass("opened")
+    function openTab(a) {
+        if (!a.classList.contains("tab-opened")) {
+            let e = a.parentElement.querySelectorAll(".tab-opened");
+            e.forEach((e) => e.classList.remove("tab-opened"));
+            a.classList.add("tab-opened");
+            document.querySelectorAll(`[data-tab-ref="${a.dataset.tabRef}"]`).forEach((elem) => elem.classList.toggle("opened"));
         }
-    };
+    }
 
     // select mitsuba's settings form
     let settings_container = document.querySelector("#tab-settings .modal-cont");
