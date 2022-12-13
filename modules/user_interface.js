@@ -10,13 +10,15 @@
     };
 
     // select mitsuba's settings form
-    let settings_container = $("#tab-settings .modal-cont");
-    let settings_nav = settings_container.find(".modal-nav");
+    let settings_container = document.querySelector("#tab-settings .modal-cont");
+    let settings_nav = settings_container.querySelector(".modal-nav");
 
     // add tab dummy content
-    settings_nav.after(`<div id="tab-settings-deluxe" class="tab-content"><h2>Karachan Deluxe 2023</h2></div>`);
-    let kdeluxe_settings_tab = $("#tab-settings-deluxe");
-    kdeluxe_settings_tab.css("display", "none");
+    let settings_nav = document.querySelector(".modal-nav");
+    settings_nav.insertAdjacentHTML('afterend', "<div id='tab-settings-deluxe' class='tab-content'><h2>Karachan Deluxe 2023</h2></div>");
+
+    let kdeluxe_settings_tab = document.querySelector("#tab-settings-deluxe");
+    kdeluxe_settings_tab.style.display = "none";
 
     // add tab button
     settings_nav.insertAdjacentHTML('afterbegin', "<li data-tab-ref='tab-settings-deluxe' onclick=\"openTab(this)\">KDeluxe 2023</li>");
@@ -25,8 +27,8 @@
     {
         let last_id = 0;
         const add_settings_checkbox = function(internal_name, label, tooltip) {
-            kdeluxe_settings_tab.append(`<input type="checkbox" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}" checked="checked">`);
-            kdeluxe_settings_tab.append(`<label for="opt_kdeluxe_${last_id}" title="${tooltip}" style="cursor: help;">${label}</label>`);
+            let kdeluxe_settings_tab = document.querySelector("#tab-settings-deluxe");
+            kdeluxe_settings_tab.insertAdjacentHTML('beforeend', `<input type="checkbox" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}" checked="checked" /><label for="opt_kdeluxe_${last_id}" title="${tooltip}" style="cursor: help;">${label}</label>`);
             // imageboardSettings.push( { o_kdeluxe_${option}: { desktop: 1, mobile: 1} } );
             last_id++;
         }
@@ -77,21 +79,19 @@
         //add_settings_textbox("override_board_name", "Własny nagłówek na /b/", "Wpisz nową nazwe deski /b/")
         //load_text_data("override_board_name", localStorage.o_kdeluxe_override_board_name);
     }
-    
-    kdeluxe_settings_tab.append(`<div id="kdeluxe_button_container" style="margin-top:8px;"></div>`);
 
-    // add threadWatcher reset button
-    document.getElementById("kdeluxe_button_container").innerHTML += "<input type='button' style='margin-right: 5px;' value='Fix ThreadWatcher OOB' id='reset_thread_watcher' />";
-    $("#reset_threadwatcher").click(function(e) {
+    let kdeluxe_settings_tab = document.querySelector("#tab-settings-deluxe");
+    kdeluxe_settings_tab.insertAdjacentHTML('beforeend', "<div id='kdeluxe_button_container' style='margin-top:8px;'><input type='button' style='margin-right: 5px;' value='Fix ThreadWatcher OOB' id='reset_thread_watcher' /></div>");
+    document.getElementById("reset_threadwatcher").addEventListener("click", (e) => {
         e.preventDefault();
         localStorage.KurahenPremium_WatchedThreads_Left = "10px";
         localStorage.KurahenPremium_WatchedThreads_Top = "10px";
         window.location.reload();
     });
-    
+
     // add button used to clear curbed uids
     if (localStorage.o_kdeluxe_uid_curb == 1)
         document.getElementById("kdeluxe_button_container").innerHTML += "<input type='button' style='margin-right: 5px;' value='Clear Curbed UIDs' id='clear_curb_list' />";
-    
+
     console.log(`[KDeluxe] [⏱️] Interface created in ${performance.now() - performance_timer}ms`);
 }
