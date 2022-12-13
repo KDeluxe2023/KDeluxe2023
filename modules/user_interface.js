@@ -78,7 +78,7 @@
     }
 
     kdeluxe_settings_tab.insertAdjacentHTML('beforeend', "<div id='kdeluxe_button_container' style='margin-top:8px;'><input type='button' style='margin-right: 5px;' value='Fix ThreadWatcher OOB' id='reset_thread_watcher' /></div>");
-    document.getElementById("reset_threadwatcher").addEventListener("click", (e) => {
+    document.getElementById("reset_thread_watcher").addEventListener("click", (e) => {
         e.preventDefault();
         localStorage.KurahenPremium_WatchedThreads_Left = "10px";
         localStorage.KurahenPremium_WatchedThreads_Top = "10px";
