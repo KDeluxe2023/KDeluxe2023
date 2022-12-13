@@ -25,7 +25,6 @@
     {
         let last_id = 0;
         const add_settings_checkbox = function(internal_name, label, tooltip) {
-            let kdeluxe_settings_tab = document.querySelector("#tab-settings-deluxe");
             kdeluxe_settings_tab.insertAdjacentHTML('beforeend', `<input type="checkbox" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}" checked="checked" /><label for="opt_kdeluxe_${last_id}" title="${tooltip}" style="cursor: help;">${label}</label>`);
             // imageboardSettings.push( { o_kdeluxe_${option}: { desktop: 1, mobile: 1} } );
             last_id++;
@@ -78,7 +77,6 @@
         //load_text_data("override_board_name", localStorage.o_kdeluxe_override_board_name);
     }
 
-    let kdeluxe_settings_tab = document.querySelector("#tab-settings-deluxe");
     kdeluxe_settings_tab.insertAdjacentHTML('beforeend', "<div id='kdeluxe_button_container' style='margin-top:8px;'><input type='button' style='margin-right: 5px;' value='Fix ThreadWatcher OOB' id='reset_thread_watcher' /></div>");
     document.getElementById("reset_threadwatcher").addEventListener("click", (e) => {
         e.preventDefault();
