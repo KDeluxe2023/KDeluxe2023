@@ -1,23 +1,36 @@
+
 {
     console.log(`[KDeluxe] Smart Boards Loaded...`);
     let performance_smart_boards = performance.now()
 
-    let board_ele = $("#tab-boardlink");
-
-    // yszty kurwa gnoju
-    board_ele.find(`[data-short='4']`).remove();
+   let board_ele = document.querySelector("#tab-boardlink");
+   board_ele.querySelector(`[data-short='4']`).remove();
 
     // determine if its night
     let date = new Date;
     let hour = date.getHours();
 
-    if (hour >= 1 && hour <= 5) {
-        // TO-DO: add lightbulb and dim the screen
-
-    } else {
+    if (!(hour >= 1 && hour <= 5)) {
         // hide /noc/ cause its not available
-        board_ele.find(`[data-short='noc']`).remove();
+        board_ele.querySelector("[data-short='noc']").remove();
     }
+
+    var div1 = document.getElementById('tab-boardlink');
+    var div2 = div1.getElementsByClassName('group-options')[0];
+    var newDiv = document.createElement('div');
+    newDiv.classList.add('group');
+    div1.insertBefore(newDiv, div2);
+
+    function insert_new_boardlink(label, link) {
+        var aTag = document.createElement('a');
+        aTag.setAttribute('href', link);
+        aTag.innerHTML = label;
+        newDiv.appendChild(aTag);
+    }
+
+    insert_new_boardlink("test", "/test/");
+    insert_new_boardlink("элита", "/элита/");
+    insert_new_boardlink("wykop", "/wykop/");
 
     console.log(`[KDeluxe] [⏱️] Smart Boards loaded in ${performance.now() - performance_smart_boards}ms`);
 }
