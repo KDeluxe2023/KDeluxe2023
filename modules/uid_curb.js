@@ -18,15 +18,12 @@
     }
 
     function curb_uids_in_document(target_uid) {
-        let count = 0;
         const blacklist = document.querySelectorAll(
             `span.posteruid[title="${target_uid}"]`
         );
         for (let j = 0; j < blacklist.length; j++) {
             blacklist[j].closest('.post').style.display = 'none';
-            count++;
         }
-        return count;
     }
 
     // save every post's infobar except first one (original poster)
@@ -53,8 +50,7 @@
             const uid = elem.getAttribute('uid');
 
             appendToStorage('o_kdeluxe_curbed_uids', uid + ';');
-            let curb_count = curb_uids_in_document(uid);
-            console.log(`[KDeluxe] Curbed ${uid}, ${count} times`);
+            curb_uids_in_document(uid);
 
         });
     });
@@ -66,8 +62,7 @@
         let count = 0;
         for (let i = 0; i < hiddenPostersArr.length; i++) {
             let blacklisted_uid = hiddenPostersArr[i];
-            let curb_count = curb_uids_in_document(blacklisted_uid);
-            console.log(`[KDeluxe] Curbed ${blacklisted_uid}, ${count} times`);
+            curb_uids_in_document(blacklisted_uid);
         }
     }
 
