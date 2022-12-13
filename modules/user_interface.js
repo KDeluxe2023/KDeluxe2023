@@ -86,14 +86,17 @@
     
     kdeluxe_settings_tab.append(`<div id="kdeluxe_button_container" style="margin-top:8px;"></div>`);
 
-    //// Add ThreadWatcher Position Reset Button
-    $("#kdeluxe_button_container").append(`<input type="button" style="margin-left: 5px;" value="Fix ThreadWatcher OOB" id="resetThreadWatcher">`);
-    $("#resetThreadWatcher").click(function(e) {
+    // add ThreadWatcher Position Reset Button
+    $("#kdeluxe_button_container").append(`<input type="button" style="margin-left: 5px;" value="Fix ThreadWatcher OOB" id="reset_thread_watcher">`);
+    $("#reset_threadwatcher").click(function(e) {
         e.preventDefault();
         localStorage.KurahenPremium_WatchedThreads_Left = "10px";
         localStorage.KurahenPremium_WatchedThreads_Top = "10px";
         window.location.reload();
     });
+    
+    // add button used to clear curbed uids
+    $("#kdeluxe_button_container").append(`<input type="button" value="Clear Curbed UIDs" id="clear_curb_list">`);
 
     console.log(`[KDeluxe] [⏱️] Interface created in ${performance.now() - performance_timer}ms`);
 }
