@@ -2,26 +2,30 @@
     let performance_timer = performance.now()
 
     // mitsuba func used to switch tabs
-    function openTab(a) {
-        if (!a.classList.contains("tab-opened")) {
-            let e = a.parentElement.querySelectorAll(".tab-opened");
-            e.forEach((e) => e.classList.remove("tab-opened"));
-            a.classList.add("tab-opened");
-            document.querySelectorAll(`[data-tab-ref="${a.dataset.tabRef}"]`).forEach((elem) => elem.classList.toggle("opened"));
+    const openTab = function(a) {
+        if (!a.hasClass("tab-opened")) {
+            var e = a.parent().children(".tab-opened");
+            e.removeClass("tab-opened"), $("#" + e.data("tab-ref")).removeClass("opened"), a.addClass("tab-opened"), $("#" + a.data("tab-ref")).addClass("opened")
         }
-    }
+    };
 
     // select mitsuba's settings form
     let settings_container = document.querySelector("#tab-settings .modal-cont");
-    // add tab dummy content
     let settings_nav = document.querySelector(".modal-nav");
-    settings_nav.insertAdjacentHTML('afterend', "<div id='tab-settings-deluxe' class='tab-content'><h2>Karachan Deluxe 2023</h2></div>");
 
+    // add tab dummy content
+    settings_nav.insertAdjacentHTML('afterend', "<div id='tab-settings-deluxe' class='tab-content'><h2>Karachan Deluxe 2023</h2></div>");
     let kdeluxe_settings_tab = document.querySelector("#tab-settings-deluxe");
     kdeluxe_settings_tab.style.display = "none";
 
     // add tab button
-    settings_nav.insertAdjacentHTML('afterbegin', "<li data-tab-ref='tab-settings-deluxe' onclick=\"openTab(this)\">KDeluxe 2023</li>");
+    $(settings_nav).prepend(
+        $(`<li data-tab-ref='tab-settings-deluxe'>KDeluxe 2023</li>`)
+        .click(function() {
+            openTab($(this));
+            return false;
+        })
+    );
 
     // populate settings tab
     {
