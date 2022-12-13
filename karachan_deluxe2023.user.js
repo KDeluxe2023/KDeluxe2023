@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.7.0
+// @version      0.7.1
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "53c8d30c4638a6e4ff5f9fe8560dbaaa9dcf66f3";
+const g_last_commit = "2d9be76d7100c4f7fb18214dd1829eb2f6f87622";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
@@ -110,7 +110,7 @@ window.addEventListener('load', function() {
     //// write code below this line ////
 
     // draw version info
-    $(".group-options").append(`<div style="font-size: 10px;position:absolute">[KDeluxe v${g_script_version}]</div>`)
+    document.querySelector(".group-options").insertAdjacentHTML('beforeend', `<div style="font-size: 10px;position:absolute">[KDeluxe v${g_script_version}]</div>`);
 
     // enforce full_compatibility
     if (localStorage.o_kdeluxe_full_compatibility == 1 && !g_special_page) {
@@ -128,77 +128,77 @@ window.addEventListener('load', function() {
     // check for update
     load_module("update_notification", null, g_script_version);
 
-    // draw our own UI
-    load_module("user_interface");
+    // draw our own UI first
+    load_module('user_interface', function() {
+        // run filters after that
+        if (localStorage.o_kdeluxe_advanced_filters == 1)
+            load_module("filters");
 
-    // dont move this lower, this needs to run first
-    if (localStorage.o_kdeluxe_advanced_filters == 1)
-        load_module("filters");
+        //if (localStorage.o_kdeluxe_threadwatcher_sort == 1 && localStorage.o_watched == 1)
+        //    load_module("threadwatcher_sort");
 
-    //if (localStorage.o_kdeluxe_threadwatcher_sort == 1 && localStorage.o_watched == 1)
-    //    load_module("threadwatcher_sort");
+        if (localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page)
+            load_module("rich_stats");
 
-    if (localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page)
-        load_module("rich_stats");
+        if (localStorage.o_kdeluxe_fred_dumper == 1 && !g_special_page && g_is_fred_open)
+            load_module("fred_dumper");
 
-    if (localStorage.o_kdeluxe_fred_dumper == 1 && !g_special_page && g_is_fred_open)
-        load_module("fred_dumper");
+        if (localStorage.o_kdeluxe_radioradio_player == 1 && !g_special_page)
+            load_module("radio_radio");
 
-    if (localStorage.o_kdeluxe_radioradio_player == 1 && !g_special_page)
-        load_module("radio_radio");
+        if (localStorage.o_kdeluxe_auto_follow == 1 && !g_special_page && g_is_fred_open)
+            load_module("auto_follow");
 
-    if (localStorage.o_kdeluxe_auto_follow == 1 && !g_special_page && g_is_fred_open)
-        load_module("auto_follow");
+        if (localStorage.o_kdeluxe_password_changer == 1 && !g_special_page)
+            load_module("password_changer");
 
-    if (localStorage.o_kdeluxe_password_changer == 1 && !g_special_page)
-        load_module("password_changer");
+        if (localStorage.o_kdeluxe_uid_curb == 1 && !g_special_page && g_is_fred_open)
+           load_module("uid_curb");
 
-    if (localStorage.o_kdeluxe_uid_curb == 1 && !g_special_page && g_is_fred_open)
-        load_module("uid_curb");
+        if (this.localStorage.o_kdeluxe_catalog_curb == 1 && g_is_in_catalog)
+            load_module("catalog_curb");
 
-    if (this.localStorage.o_kdeluxe_catalog_curb == 1 && g_is_in_catalog)
-        load_module("catalog_curb");
+        if (localStorage.o_kdeluxe_image_preview_anti_eyestrain == 1 && localStorage.o_imgpreview === "1" && !g_special_page)
+            load_module("anti_eyestrain");
 
-    if (localStorage.o_kdeluxe_image_preview_anti_eyestrain == 1 && localStorage.o_imgpreview === "1" && !g_special_page)
-        load_module("anti_eyestrain");
+        if (this.localStorage.o_kdeluxe_ban_checker == 1 && !g_special_page)
+            load_module("ban_checker");
 
-    if (this.localStorage.o_kdeluxe_ban_checker == 1 && !g_special_page)
-        load_module("ban_checker");
+        if (localStorage.o_kdeluxe_lower_def_volume == 1 && !g_special_page)
+            load_module("lower_def_volume");
 
-    if (localStorage.o_kdeluxe_lower_def_volume == 1 && !g_special_page)
-        load_module("lower_def_volume");
+        if (localStorage.o_kdeluxe_dangerous_bambo == 1)
+            load_module("dangerous_bambo");
 
-    if (localStorage.o_kdeluxe_dangerous_bambo == 1)
-        load_module("dangerous_bambo");
+        if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page)
+            load_module("blind_mode_tts");
 
-    if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page)
-        load_module("blind_mode_tts");
+        if (localStorage.o_kdeluxe_smart_boards == 1)
+            load_module("smart_boards");
 
-    if (localStorage.o_kdeluxe_smart_boards == 1)
-        load_module("smart_boards");
+        if (localStorage.o_kdeluxe_autoscroll == 1 && !g_special_page)
+            load_module("auto_scroll");
 
-    if (localStorage.o_kdeluxe_autoscroll == 1 && !g_special_page)
-        load_module("auto_scroll");
+        if (localStorage.o_kdeluxe_better_embed == 1 && !g_special_page)
+            load_module("better_embeds");
 
-    if (localStorage.o_kdeluxe_better_embed == 1 && !g_special_page)
-        load_module("better_embeds");
+        if (localStorage.o_kdeluxe_spoiler_revealer == 1)
+            load_module("spoiler_revealer");
 
-    if (localStorage.o_kdeluxe_spoiler_revealer == 1)
-        load_module("spoiler_revealer");
+        if (localStorage.o_kdeluxe_external_links == 1)
+            load_module("external_links");
 
-    if (localStorage.o_kdeluxe_external_links == 1)
-        load_module("external_links");
+        if (localStorage.o_kdeluxe_konfident_plus == 1)
+            load_module("konfident_plus");
 
-    if (localStorage.o_kdeluxe_konfident_plus == 1)
-        load_module("konfident_plus");
+        if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
+            load_module("enhanced_postform");
 
-    if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
-        load_module("enhanced_postform");
+        if (localStorage.o_kdeluxe_vocaroo_embeds == 1 && !g_special_page)
+            load_module("vocaroo_embeds");
 
-    if (localStorage.o_kdeluxe_vocaroo_embeds == 1 && !g_special_page)
-        load_module("vocaroo_embeds");
+        if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
+            load_module("new_keyframe_anims");
 
-    if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
-        load_module("new_keyframe_anims");
-
+    });
 });
