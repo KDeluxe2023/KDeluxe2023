@@ -19,13 +19,7 @@
     kdeluxe_settings_tab.css("display", "none");
 
     // add tab button
-    settings_nav.prepend(
-        $(`<li data-tab-ref='tab-settings-deluxe'>KDeluxe 2023</li>`)
-        .click(function() {
-            openTab($(this));
-            return false;
-        })
-    );
+    settings_nav.insertAdjacentHTML('afterbegin', "<li data-tab-ref='tab-settings-deluxe' onclick=\"openTab(this)\">KDeluxe 2023</li>");
 
     // populate settings tab
     {
@@ -86,8 +80,8 @@
     
     kdeluxe_settings_tab.append(`<div id="kdeluxe_button_container" style="margin-top:8px;"></div>`);
 
-    // add ThreadWatcher Position Reset Button
-    $("#kdeluxe_button_container").append(`<input type="button" style="margin-left: 5px;" value="Fix ThreadWatcher OOB" id="reset_thread_watcher">`);
+    // add threadWatcher reset button
+    document.getElementById("kdeluxe_button_container").innerHTML += "<input type='button' style='margin-right: 5px;' value='Fix ThreadWatcher OOB' id='reset_thread_watcher' />";
     $("#reset_threadwatcher").click(function(e) {
         e.preventDefault();
         localStorage.KurahenPremium_WatchedThreads_Left = "10px";
@@ -96,7 +90,8 @@
     });
     
     // add button used to clear curbed uids
-    $("#kdeluxe_button_container").append(`<input type="button" value="Clear Curbed UIDs" id="clear_curb_list">`);
-
+    if (localStorage.o_kdeluxe_uid_curb == 1)
+        document.getElementById("kdeluxe_button_container").innerHTML += "<input type='button' style='margin-right: 5px;' value='Clear Curbed UIDs' id='clear_curb_list' />";
+    
     console.log(`[KDeluxe] [⏱️] Interface created in ${performance.now() - performance_timer}ms`);
 }
