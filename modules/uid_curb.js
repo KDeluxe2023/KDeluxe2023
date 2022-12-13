@@ -3,7 +3,7 @@
     let performance_timer = performance.now();
 
     // handle "clear curbed UIDs" button that was created in user_interface.js
-    document.getElementById('clear_curb_list').addEventListener('click', function() {
+    document.getElementById('clear_curb_list').addEventListener('click', function(e) {
         e.preventDefault();
         localStorage.o_kdeluxe_curbed_uids = "";
         window.location.reload();
