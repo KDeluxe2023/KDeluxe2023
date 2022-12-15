@@ -179,18 +179,17 @@
             // detach the postform, hide choina and add blur to form
             button.innerText = "Przyczep";
             postForm.style.position = 'absolute';
-            postForm.style.right = '5%';
+            postForm.style.right = '1px';
             postForm.style.bottom = '5%';
             postForm.style.backdropFilter = "blur(5px)";
             choina.style.display = 'none';
-            // postForm.style.height = 'auto';
         }
     });
 
     // add an event listener to the window to make the form move with the scroll
     window.addEventListener('scroll', function() {
         if (postForm.style.position == 'absolute')
-            postForm.style.top = window.scrollY - 300 + (window.innerHeight * 0.95) + 'px';
+            postForm.style.top = window.scrollY - 300 - 30 + (window.innerHeight * 0.95) + 'px';
     });
 
     console.log(`[KDeluxe] [⏱️] Enhanced PostForm loaded in ${performance.now() - performance_timer}ms`);
