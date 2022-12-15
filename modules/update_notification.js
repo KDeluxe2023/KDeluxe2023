@@ -11,11 +11,11 @@
                 console.log(`[KDeluxe] remote_version = ${remote_version}`);
 
                 if (local_version != remote_version) {
-                    dialogBox('KDeluxe', `Dostępna jest nowsza wersja KDeluxe (${remote_version})<br/>Czy chcesz ją zainstalować?`, ["Tak", "Nie"], 'fa-code-fork', function(a) {
-                        if (a == 1)
+                    dialogBox('KDeluxe', `Dostępna jest nowsza wersja KDeluxe (${remote_version})<br/>Czy chcesz ją zainstalować? <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/changelog.md' target="_blank">Zobacz changelog</a>`, ["Nie i nie pytaj przez 12h", "Tak"], 'fa-code-fork', function(a) {
+                        if (a == 0)
                             return;
 
-                        if (a == 0)
+                        if (a == 1)
                             window.location.href = `https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js`;
                     });
                 }
