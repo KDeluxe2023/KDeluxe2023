@@ -32,6 +32,7 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 * Ban Checker - Pokazuje czerwony napis na górze deski kiedy dostanie się bana
 * External Links - Wszystkie linki otwierają się teraz w nowym oknie
 * Catalog Curb - Pozwala krawężnikować tematy z poziomu katalogu
+* Jump To Post - Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika
 * UID Curb - Pozwala krawężnikować poszczególnych postujących we fredach (działa tylko we fredzie)
 * Password Changer - Zmienia hasło na losowe przy każdym załadowaniu strony
 * Auto Follow - Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)
@@ -42,7 +43,6 @@ Ustawienia są tam gdzie ustawienia mitsuby (trybik)
 * Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
 * New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R, #deluxe
 * Anti Bible - Nie pozwala na załadowanie biblii [(działa tylko na firefox)](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
-* <del>Jump To Post - Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika</del>
 * <del>ThreadWatcher Sort - Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku</del>
 
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
