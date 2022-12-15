@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.7.2
+// @version      0.7.3
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "cc2d6b1c7817f7b066718bdbf4458470123c499d";
+const g_last_commit = "30cf6a5089eadf9fe4a2fb77205a62d16d976b12";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader (this should be below any function used inside loaded modules!)
@@ -140,6 +140,9 @@ window.addEventListener('load', function() {
 
         if (localStorage.o_kdeluxe_fred_dumper == 1 && !g_special_page && g_is_fred_open)
             load_module("fred_dumper");
+
+        if (localStorage.o_kdeluxe_prev_next == 1  && !g_special_page && g_is_fred_open)
+            load_module("prev_next");
 
         if (localStorage.o_kdeluxe_radioradio_player == 1 && !g_special_page)
             load_module("radio_radio");
