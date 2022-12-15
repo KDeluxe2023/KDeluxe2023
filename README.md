@@ -1,7 +1,9 @@
-<h1 align="center">Karachan Deluxe 2023 v0.7.3 BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 v0.7.4 BETA</h1>
 <p align="center"><img  src="https://user-images.githubusercontent.com/119752397/206885097-dd4cad13-ee7b-40d2-9a94-b78a8d95a6c9.jpg" alt="bobraz" width="600"/></p>
 <h3 align="center">Największe, modularne rozszerzenie do forum młodzieżowo katolickiego</h3>
 <hr/>
+
+[**Zobacz historię wersji**](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/changelog.md)
 
 **Wymagania**
 * Firefox / Chrome / Safari (?) / Opera 
@@ -14,6 +16,7 @@
 **Jak zmienić ustawienia**
 
 Ustawienia są tam gdzie ustawienia mitsuby (trybik)
+Gdy jakaś nowa funkcja zostanie dodana, musisz kliknąć przycisk zapisu ustawień jeszcze raz żeby ją aktywować, nawet jeśli dana opcja jest zaznaczona jako aktywna.
 
 ![firefox_bKzkjwzFYE](https://user-images.githubusercontent.com/119752397/206005514-765ec49b-bb95-44d4-ab9b-7f7b08208280.png)
 
@@ -64,14 +67,9 @@ Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [
 * opcja zmiany tytułu deski (textbox)
 * autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
 * spoilerowanie obrazka na stałe (po hashu)
-* fastreply fix (zdebugować i naprawić problem, najłatwiej przez napisanie nowego xD)
 * system powiadomień w faviconie, [inspiracja](https://pastebin.com/NazxdcsU)
 * ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
 * auto-[trójsiła](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
 * usprawnienia do wyszukiwarki chanowej
 * przepisać system zapisywania/odczytywania ustawień, chwilowo robi to za nas mitsuba
 * rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
-
-**Historia wersji**
-
-Pojawi się po zakończeniu bety, która zostanie zakończona po wprowadzeniu systemu pingowania, konfident+ i sekretów oraz generalnej optymalizacji
