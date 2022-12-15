@@ -1,7 +1,7 @@
 {
     console.log(`[KDeluxe] Enhanced PostForm Loaded...`);
     let performance_timer = performance.now()
-    
+
     if ($('#postform').length) {
         let tarea = $('#postform textarea');
 
@@ -106,7 +106,9 @@
             ['#Lasoupeauxchoux ', 'kapuśniaczek'],
             ['/r/pcmasterrace', '/r/pcmasterrace'],
             ['#shrek', 'ORK']
-        ].sort(function(a,b){ return a[1] > b[1] ? 1 : -1; });
+        ].sort(function(a, b) {
+            return a[1] > b[1] ? 1 : -1;
+        });
 
         // insert new row into postform table
         $('#postForm tbody tr').eq(3).after('<tr><td>Wordfilter</td><td><select id="wordfilter_helper"></td></tr>');
@@ -116,7 +118,19 @@
             $('#wordfilter_helper').append($('<option></option>').val(index).html($(this)[1]))
         });
 
-        $.fn.extend({insertAtCaret:function(t){return this.each((function(){if(document.selection)this.focus(),document.selection.createRange().text=t,this.focus();else if(this.selectionStart||"0"==this.selectionStart){var e=this.selectionStart,s=this.selectionEnd,i=this.scrollTop;this.value=this.value.substring(0,e)+t+this.value.substring(s,this.value.length),this.focus(),this.selectionStart=e+t.length,this.selectionEnd=e+t.length,this.scrollTop=i}else this.value+=t,this.focus()})),this}});
+        $.fn.extend({
+            insertAtCaret: function(t) {
+                return this.each((function() {
+                    if (document.selection) this.focus(), document.selection.createRange().text = t, this.focus();
+                    else if (this.selectionStart || "0" == this.selectionStart) {
+                        var e = this.selectionStart,
+                            s = this.selectionEnd,
+                            i = this.scrollTop;
+                        this.value = this.value.substring(0, e) + t + this.value.substring(s, this.value.length), this.focus(), this.selectionStart = e + t.length, this.selectionEnd = e + t.length, this.scrollTop = i
+                    } else this.value += t, this.focus()
+                })), this
+            }
+        });
         $('#wordfilter_helper').on('change', function() {
             let selected = this.value;
             tarea.insertAtCaret(wordfilters[selected][0]);
@@ -135,6 +149,49 @@
             "transform": "scale(1.2)"
         });
     }
-  
+
+    // add popout button to postform
+    // get the post form, button and choina elements
+    var postForm = document.getElementById('postform');
+    var choina = document.getElementById('choina');
+
+    // add toggle button
+    let tbody = document.getElementById('postform').querySelector('tbody');
+    tbody.innerHTML += '<tr><td>Popout</td><td class="ladda-td"><button id="detach_form" class="ladda-button" data-style="expand-right" data-size="xs" data-color="mint"><span class="laddaLabelConteiner"><span class="ladda-label">Odczep</span></span></button></td><tr/>';
+
+    let button = document.querySelector("#detach_form");
+
+    // make sure content fits the form and always stays on top
+    postForm.style.zIndex = '999';
+    postForm.style.height = '300px';
+
+    // add an event listener to the button which will handle toggling
+    button.addEventListener("click", function(e) {
+        e.preventDefault();
+        if (postForm.style.position == 'absolute') {
+            button.innerText = "Odczep";
+            // reattach the postform to its original position, show choina and remove blur from background
+            postForm.style.position = '';
+            postForm.style.position = 'static';
+            choina.style.display = '';
+            postForm.style.backdropFilter = "blur(0px)";
+        } else {
+            // detach the postform, hide choina and add blur to form
+            button.innerText = "Przyczep";
+            postForm.style.position = 'absolute';
+            postForm.style.right = '5%';
+            postForm.style.bottom = '5%';
+            postForm.style.backdropFilter = "blur(5px)";
+            choina.style.display = 'none';
+            // postForm.style.height = 'auto';
+        }
+    });
+
+    // add an event listener to the window to make the form move with the scroll
+    window.addEventListener('scroll', function() {
+        if (postForm.style.position == 'absolute')
+            postForm.style.top = window.scrollY - 300 + (window.innerHeight * 0.95) + 'px';
+    });
+
     console.log(`[KDeluxe] [⏱️] Enhanced PostForm loaded in ${performance.now() - performance_timer}ms`);
 }
