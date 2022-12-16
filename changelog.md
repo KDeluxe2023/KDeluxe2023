@@ -1,3 +1,7 @@
+**0.7.5 - (16/12/22 13:35)**
+
+* bugfixy
+
 **0.7.4 - (15/12/22 18:00)**
 
 * dodano opcję odczepiania formularza do pisania postów - taki formularz działa podobnie jak fastreply z tą różnicą, że się nie buguje w dużych fredach tak jak mitsubowskie fastreply
