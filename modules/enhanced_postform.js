@@ -3,7 +3,7 @@
     let performance_timer = performance.now()
 
     if ($('#postform').length) {
-        let tarea = $('#postform textarea');
+        let tarea = $('#postForm textarea');
 
         // constrain file picker to permitted formats
         $("input[name='upfile']").attr("accept", ".jpg,.jpeg,.jfif,.pjpeg,.pjp,.gif,.mp3,.mp4,.png,.webm");
