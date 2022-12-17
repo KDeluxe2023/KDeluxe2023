@@ -1,4 +1,4 @@
-**0.7.6 - (17/12/22 ?????)**
+**0.7.6 - (17/12/22 10:16)**
 
 * przyśpieszono moduł prev_next o ~10%
 * przyśpieszono moduł uid_curb o ~90%
