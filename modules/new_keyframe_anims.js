@@ -15,9 +15,6 @@
       color: green;
     }
   }
-  .robercik {
-
-  }
   .maxiu {
     background-color: red;
     color: #ff0;
@@ -49,9 +46,7 @@
     function replaceText(text) {
         let result = text;
         for (let i = 0; i < replacementRules.length; i++) {
-            if (replacementRules[i].pattern.test(text)) {
                 result = result.replace(replacementRules[i].pattern, replacementRules[i].replacement);
-            }
         }
         return result;
     }
@@ -65,6 +60,6 @@
         // Replace the original element with the copy, preserving its attached events
         messages[i].parentNode.replaceChild(copy, messages[i]);
     }
-    
+
     console.log(`[KDeluxe] [⏱️] New Keyframes loaded in ${performance.now() - performance_timer}ms`);
 }
