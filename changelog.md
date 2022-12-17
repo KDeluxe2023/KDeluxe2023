@@ -1,3 +1,10 @@
+**0.7.6 - (17/12/22 ?????)**
+
+* przyśpieszono moduł prev_next o ~10%
+* przyśpieszono moduł uid_curb o ~90%
+* zoptymalizowano moduł radio_radio, teraz już nie robi tyle requestów a zamiast tego zmienia tytuł w sposób inteligentny
+* przepisano moduł enhanced_postform częściowo do vanilla js, dalej jest rozjebany lekko
+
 **0.7.5 - (16/12/22 13:35)**
 
 * bugfixy
