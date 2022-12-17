@@ -2,31 +2,33 @@
     console.log(`[KDeluxe] Enhanced PostForm Loaded...`);
     let performance_timer = performance.now()
 
-    if ($('#postform').length) {
-        let tarea = $('#postForm textarea');
+    if (document.getElementById('postform')) {
+        let tarea = document.querySelector('#postForm textarea');
 
         // constrain file picker to permitted formats
-        $("input[name='upfile']").attr("accept", ".jpg,.jpeg,.jfif,.pjpeg,.pjp,.gif,.mp3,.mp4,.png,.webm");
+        document.querySelector("input[name='upfile']").setAttribute("accept", ".jpg,.jpeg,.jfif,.pjpeg,.pjp,.gif,.mp3,.mp4,.png,.webm");
 
         // hide email field
-        $("#postForm tbody tr:first").hide();
+        document.querySelector("#postForm tbody tr:nth-child(1)").style.display = "none";
 
         // stores posts on pontificate
-        let pontyfikat = $("ul.rules li:nth-child(4)").text();
+        let pontyfikat = document.querySelector("ul.rules li:nth-child(4)").textContent;
         // remove useless info
-        $("tr.rules").hide();
+        document.querySelector("#postform tr.rules").style.display = 'none';
         // store amount of czaks
         let czaksy = document.getElementById('counter').innerText;
         // calculate actual online
         let online = Math.round(czaksy / 2.5) + 1;
         // display that all
-        $("ul.rules").replaceWith(`<h3 style="text-align:center">Online: ${online} anonów (${czaksy} czaksów) / ${pontyfikat}</h3>`);
+        const counterElement = document.getElementById('counter');
+        const parentElement = counterElement.parentNode.parentNode;
+        parentElement.innerHTML = `<h3 style="text-align:center">Online: ${online} anonów (${czaksy} czaksów) / ${pontyfikat}</h3>`;
 
         // add zalgo BBbutton
-        $("#postForm .BBButtons").append(`<button id="bbzalgo" tabindex="-1" type="button" class="BBButton BBButton_zalgo">Zalgo</button>`)
+        document.querySelector("#postForm .BBButtons").innerHTML += `<button id="bbzalgo" tabindex="-1" type="button" class="BBButton BBButton_zalgo">Zalgo</button>`;
 
         $("#bbzalgo").click(function() {
-			dialogBox("UWAGA", "Ta opcja nie była testowana i prawdopodobnie będzie skutkować auto-banem", ["Rozumiem"]);
+            dialogBox("UWAGA", "Ta opcja nie była testowana i prawdopodobnie będzie skutkować auto-banem", ["Rozumiem"]);
             var Z = {
                 chars: {
                     0: ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗", "͑", "̇", "̈", "̊", "͂", "̓", "̈́", "͊", "͋", "͌", "̃", "̂", "̌", "͐", "̀", "́", "̋", "̏", "̒", "̓", "̔", "̽", "̉", "ͣ", "ͤ", "ͥ", "ͦ", "ͧ", "ͨ", "ͩ", "ͪ", "ͫ", "ͬ", "ͭ", "ͮ", "ͯ", "̾", "͛", "͆", "̚"],
@@ -112,29 +114,24 @@
         });
 
         // insert new row into postform table
-        $('#postForm tbody tr').eq(3).after('<tr><td>Wordfilter</td><td><select id="wordfilter_helper"></td></tr>');
+        let tr = document.createElement('tr');
+        tr.innerHTML = '<td>Wordfilter</td><td><select id="wordfilter_helper"></td>';
+        document.querySelector('#postForm tbody tr').after(tr);
 
         // populate combobox
-        $.each(wordfilters, function(index, text) {
-            $('#wordfilter_helper').append($('<option></option>').val(index).html($(this)[1]))
+        Object.keys(wordfilters).forEach(function(index) {
+            let text = wordfilters[index][1];
+            let option = document.createElement('option');
+            option.value = index;
+            option.innerHTML = text;
+            document.getElementById('wordfilter_helper').appendChild(option);
         });
 
-        $.fn.extend({
-            insertAtCaret: function(t) {
-                return this.each((function() {
-                    if (document.selection) this.focus(), document.selection.createRange().text = t, this.focus();
-                    else if (this.selectionStart || "0" == this.selectionStart) {
-                        var e = this.selectionStart,
-                            s = this.selectionEnd,
-                            i = this.scrollTop;
-                        this.value = this.value.substring(0, e) + t + this.value.substring(s, this.value.length), this.focus(), this.selectionStart = e + t.length, this.selectionEnd = e + t.length, this.scrollTop = i
-                    } else this.value += t, this.focus()
-                })), this
-            }
-        });
-        $('#wordfilter_helper').on('change', function() {
+        document.getElementById('wordfilter_helper').addEventListener('change', function() {
             let selected = this.value;
-            tarea.insertAtCaret(wordfilters[selected][0]);
+            let selected_filter_text = wordfilters[selected][0];
+            console.log(`[KDeluxe] Inserted wordfilter: ${selected_filter_text}`);
+            insertAtCaret(tarea, selected_filter_text);
         });
 
         // add margin to bbcode buttons
