@@ -1,3 +1,7 @@
+**0.7.7 - (17/12/22 21:45)
+
+* poprawiono moduł new_keyframe_animations - nie rozwala on już przyczepionych eventów do innych elementów w postach, np. eventu podglądu cytowanego posta, przeniesiono również regułki podmiany do tablicy
+
 **0.7.6 - (17/12/22 10:16)**
 
 * przyśpieszono moduł prev_next o ~10%
