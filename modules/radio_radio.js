@@ -1,11 +1,10 @@
 {
     console.log(`[KDeluxe] Radioradio Player Loaded...`);
-    let performance_radioradio_player = performance.now()
+    let performance_radioradio_player = performance.now();
 
-    const d = new Date();
-    const day = d.getDay();
-    const hour = d.getHours();
-    const minutes = d.getMinutes();
+    const currentDay = new Date().getDay();
+    const currentHour = new Date().getHours();
+    const currentMinutes = new Date().getMinutes();
 
     const getTitle = async () => {
         const res = await fetch("https://c16.radioboss.fm/w/nowplayinginfo?u=14");
@@ -14,13 +13,13 @@
     };
 
     const isLive = function() {
-        if ((day == 4 && hour >= 22) || (day == 5 && hour <= 5))
+        if ((currentDay == 4 && currentHour >= 22) || (currentDay == 5 && currentHour <= 5))
             return true; // info tydzień
 
-        if ((day == 5 && hour >= 23 && minutes >= 30) || (day == 6 && hour <= 6))
+        if ((currentDay == 5 && currentHour >= 23 && currentMinutes >= 30) || (currentDay == 6 && currentHour <= 6))
             return true; // teoria chaosu
 
-        if (day == 2 && hour >= 21)
+        if (currentDay == 2 && currentHour >= 21)
             return true; // radioaktywna
 
         return false;
@@ -29,18 +28,57 @@
     const displayPlayer = async () => {
         const container = document.createElement("div");
         container.id = "radioradio_player";
-        container.innerHTML = `
-<figure class="radioradio_player_figure">
-   <figcaption class="radioradio_player_figure_title" style="cursor:pointer;user-select:none;padding-bottom:10px;font-weight:bold;">Pobieranie...</figcaption>
-   <audio controls src="https://c16.radioboss.fm:18014/stream" preload="metadata"></audio>
-</figure>
-`.trim();
         container.style.textAlign = "center";
         container.style.position = "absolute";
         container.style.border = "solid 1px";
         container.style.background = "rgba(40,40,40,.5059)";
         container.style.cursor = "pointer";
         container.style.userSelect = "none";
+
+        const figure = document.createElement("figure");
+        figure.classList.add("radioradio_player_figure");
+        container.appendChild(figure);
+
+        const figcaption = document.createElement("figcaption");
+        figcaption.classList.add("radioradio_player_figure_title");
+        figcaption.style.cursor = "pointer";
+        figcaption.style.userSelect = "none";
+        figcaption.style.paddingBottom = "10px";
+        figcaption.style.fontWeight = "bold";
+        figcaption.innerHTML = "Pobieranie...";
+        figure.appendChild(figcaption);
+
+        const audio = document.createElement("audio");
+        audio.controls = true;
+        audio.src = "https://c16.radioboss.fm:18014/stream";
+        audio.preload = "metadata";
+
+        let currentTitle = null;
+        let lastUpdateTime = null;
+
+        const UPDATE_INTERVAL = 300000; // update title every 5 minutes
+
+        audio.addEventListener("play", async () => {
+            currentTitle = await getTitle();
+            figcaption.innerHTML = currentTitle;
+            lastUpdateTime = Date.now();
+        });
+
+        audio.addEventListener("timeupdate", async () => {
+            if (Date.now() - lastUpdateTime > UPDATE_INTERVAL) {
+                currentTitle = await getTitle();
+
+                figcaption.innerHTML = currentTitle;
+                lastUpdateTime = Date.now();
+            }
+        });
+
+        audio.addEventListener("pause", () => {
+            currentTitle = null;
+            lastUpdateTime = null;
+        });
+
+        figure.appendChild(audio);
 
         const settings = JSON.parse(localStorage.getItem("radioRadioPlayerPosition"));
 
@@ -107,12 +145,7 @@
     if (isLive()) {
         displayPlayer();
         dragElement(document.getElementById("radioradio_player"));
-
-        window.setInterval(async () => {
-            const title = document.querySelector(".radioradio_player_figure_title");
-            title.innerHTML = await getTitle();
-        }, 5000);
     }
-
+    
     console.log(`[KDeluxe] [⏱️] RadioRadio Player loaded in ${performance.now() - performance_radioradio_player}ms`);
 }
