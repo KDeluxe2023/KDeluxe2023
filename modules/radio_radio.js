@@ -56,7 +56,7 @@
         let currentTitle = null;
         let lastUpdateTime = null;
 
-        const UPDATE_INTERVAL = 300000; // update title every 5 minutes
+        const UPDATE_INTERVAL = 1*60*1000; // update title every 1 minute
 
         audio.addEventListener("play", async () => {
             currentTitle = await getTitle();
