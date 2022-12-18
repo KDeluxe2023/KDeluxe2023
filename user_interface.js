@@ -25,13 +25,13 @@
       margin-left: 25px;
     }
     .indent label::before {
-      border-bottom: 1px solid;
-      border-left: 1px solid;
-      content: " ";
-      display: inline-block;
-      height: 8px;
-      margin-bottom: 5px;
-      width: 8px;
+      border-bottom: 1px solid !important;
+      border-left: 1px solid !important;
+      content: " " !important;
+      display: inline-block !important;
+      height: 8px !important;
+      margin-bottom: 5px !important;
+      width: 8px !important;
     }
 `;
     document.head.appendChild(style);
