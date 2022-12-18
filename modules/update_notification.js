@@ -10,7 +10,7 @@
             console.log(`[KDeluxe] remote_version = ${remote_version}`);
 
             if (local_version != remote_version) {
-                dialogBox('KDeluxe', `Dostępna jest nowsza wersja KDeluxe (${remote_version})<br/>Czy chcesz ją zainstalować?`, ["Tak", "Nie"], 'fa-code-fork', function(a) {
+                dialogBox('KDeluxe', `Dostępna jest nowsza wersja KDeluxe <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>(${remote_version})</a><br/>Czy chcesz ją zainstalować?`, ["Tak", "Nie"], 'fa-code-fork', function(a) {
                     if (a == 1)
                         return;
 
