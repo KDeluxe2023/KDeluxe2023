@@ -73,7 +73,7 @@
         add_settings_checkbox("autoscroll", "Auto Scroll", "Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony");
         add_settings_checkbox("spoiler_revealer", "Spoiler Revealer", "Odkrywa wszystkie spoilery więc nie trzeba na nie najeżdżać");
         add_settings_checkbox("advanced_filters", "Heuristic Filters", "Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne");
-        add_settings_checkbox("anti_bible", "Anti Bible", "Nie pozwala na załadowanie biblii (htmlshiv.js)");
+        add_settings_checkbox("anti_bible", "Anti Bible", "Nie pozwala na załadowanie biblii (htmlshiv.js)", true);
         add_settings_checkbox("catalog_curb", "Catalog Curb", "Pozwala krawężnikować z poziomu katalogu");
         add_settings_checkbox("uid_curb", "UID Curb", "Pozwala krawężnikować poszczególnych anonów we fredach");
         add_settings_checkbox("smart_curb", "Smart Curb", "Automatycznie krawężnikuje posty określone automatycznie jako spam", true);
@@ -90,7 +90,7 @@
         add_settings_checkbox("enhanced_postform", "Enhanced PostForm", "Zmieniony formularz postowania, z listą wordfiltrów i nie tylko");
         add_settings_checkbox("smart_boards", "Smart Boards", "Ukrywa /noc/ kiedy nie jest dostępna");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
-        add_settings_checkbox("lower_def_volume", "Lower Default Volume", "Obniża domyślną głośność w playerze video, przydatne w FF");
+        add_settings_checkbox("anti_screamer", "Anti Screamer", "Obniża maksymalną głośnośc dźwięku odgrywanego przez stronę do 70dB");
         add_settings_checkbox("dangerous_bambo", "Dangerous Bambo", "Dodaje biegającego murzynka (bambo) na dole ekranu");
         add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R, #deluxe");
         add_settings_checkbox("prev_next", "Jump To Post", "Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika");
