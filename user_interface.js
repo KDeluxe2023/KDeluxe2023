@@ -24,7 +24,7 @@
     .indent {
       margin-left: 25px;
     }
-    .indent::before {
+    .indent label::before {
       border-bottom: 1px solid;
       border-left: 1px solid;
       content: " ";
@@ -50,7 +50,7 @@
         let last_id = 0;
         const add_settings_checkbox = function(internal_name, label, tooltip, indent = false) {
             if (indent) {
-                kdeluxe_settings_tab.insertAdjacentHTML('beforeend', `<input type="checkbox" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}" checked="checked" /><label class="indent" for="opt_kdeluxe_${last_id}" title="${tooltip}" style="cursor: help;">${label}</label>`);
+                kdeluxe_settings_tab.insertAdjacentHTML('beforeend', `<div class="indent"><input type="checkbox" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}" checked="checked" /><label for="opt_kdeluxe_${last_id}" title="${tooltip}" style="cursor: help;">${label}</label></div>`);
             } else {
                 kdeluxe_settings_tab.insertAdjacentHTML('beforeend', `<input type="checkbox" name="o_kdeluxe_${internal_name}" id="opt_kdeluxe_${last_id}" checked="checked" /><label for="opt_kdeluxe_${last_id}" title="${tooltip}" style="cursor: help;">${label}</label>`);
             }
