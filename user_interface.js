@@ -27,11 +27,8 @@
     .indent label::before {
       border-bottom: 1px solid !important;
       border-left: 1px solid !important;
-      content: " " !important;
-      display: inline-block !important;
-      height: 8px !important;
       margin-bottom: 5px !important;
-      width: 8px !important;
+      padding-left: 6px;
     }
 `;
     document.head.appendChild(style);
