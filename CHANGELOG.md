@@ -5,9 +5,9 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 ## [0.7.7] - 17/12/22 21:45
  
 ### Zmieniono
-- moduł new_keyfame_animations: przeniesiono również regułki podmiany do tablicy 
+- moduł new_keyfame_animations: przeniesiono regułki podmieniania do tablicy 
 ### Naprawiano
-- moduł new_keyframe_animations: nie odczepia on już eventów do innych elementów w postach, np. eventu podglądu cytowanego posta
+- moduł new_keyframe_animations: nie odczepia już eventów do innych elementów w postach, np. eventu podglądu cytowanego posta
 
 ## [0.7.6] - 17/12/22 10:16
  
