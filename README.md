@@ -57,10 +57,9 @@ Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [
 * sprawdzić które znaki w nowym bbcode "zalgo" są banowane automatycznie
 * poprawić konfident+, przepisać najlepiej bo to stare gówno
 * naprawić blind mode tts
-* crocodile scanner - skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje
 * usunąć czytanie linków i numerów postów z blind mode tts
+* crocodile scanner - skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje
 * standalone media player - żeby rozwiązać problem z niewidocznym suwakiem dźwięku
-* zrobić [logo i faviconke](https://github.com/KDeluxe2023/KDeluxe2023/issues/9)
 * zaimplementować mutationobserver w modułach które zmieniają treści postów (dodawanych przez pageloader i autoupdater we fredzie)
 * content freeze - usunięte posty są zapisywane w pamięci i "zamrożone" oraz widoczne z niższym opacity
 * dodać funkcje obsługującą dodawanie textboxów, buttonów, sliderów i comboboxów do UI
@@ -73,6 +72,5 @@ Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [
 * system powiadomień w faviconie, [inspiracja](https://pastebin.com/NazxdcsU)
 * ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
 * auto-[trójsiła](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
-* usprawnienia do wyszukiwarki chanowej
 * przepisać system zapisywania/odczytywania ustawień, chwilowo robi to za nas mitsuba
 * rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
