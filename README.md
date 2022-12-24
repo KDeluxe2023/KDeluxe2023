@@ -11,6 +11,10 @@
 * Instalujesz [addon violentmonkey](https://violentmonkey.github.io/get-it/)
 * Instalujesz [userscript z repozytorium](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
 
+**Bezpieczeństwo**
+
+Odpowiadając na liczne zarzuty jakoby ten projekt miałby być cyberwołyniem 2.0: kod jest publiczny i wszystko jest zawarte w tym repozytorium. Wbrew pozorom KDeluxe nie posiada żadnej funkcjonalności wykonującej automatyczne aktualizacje. Każdy moduł jest [pobierany z repo przez jsdelivr](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/karachan_deluxe2023.user.js#L34) z danego punktu w tym repo, które jest przedstawione w kodzie pod postacią [zhardcodowanego ID commita](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/karachan_deluxe2023.user.js#L25). W praktyce oznacza to, że niemożliwe jest wprowadzenie jakiejkolwiek zmiany w kodzie, z którą nie będzie się można wcześniej zapoznać. Poza tym kod jest prosty i bogaty w komentarze.
+
 **Jak zmienić ustawienia**
 
 Ustawienia są tam gdzie ustawienia mitsuby (trybik)
