@@ -2,7 +2,7 @@
     console.log(`[KDeluxe] Enhanced PostForm Loaded...`);
     let performance_timer = performance.now()
 
-    if (document.getElementById('postform')) {
+    if (document.getElementById('postForm')) {
         let tarea = document.querySelector('#postForm textarea');
 
         // constrain file picker to permitted formats
@@ -22,11 +22,33 @@
         // display that all
         const counterElement = document.getElementById('counter');
         const parentElement = counterElement.parentNode.parentNode;
-        parentElement.innerHTML = `<h3 style="text-align:center">Online: ${online} anonów (${czaksy} czaksów) / ${pontyfikat}</h3>`;
+        //parentElement.innerHTML = `<h3 style="text-align:center">Online: ${online} anonów (${czaksy} czaksów) / ${pontyfikat}</h3>`;
 
+        const fragment = document.createDocumentFragment();
+        const h3 = document.createElement('h3');
+        h3.style.textAlign = 'center';
+        h3.textContent = `Online: ${online} anonów (${czaksy} czaksów) / ${pontyfikat}`;
+        fragment.appendChild(h3);
+        parentElement.appendChild(fragment);
         // add zalgo BBbutton
-        document.querySelector("#postForm .BBButtons").innerHTML += `<button id="bbzalgo" tabindex="-1" type="button" class="BBButton BBButton_zalgo">Zalgo</button>`;
 
+        // Get the element with the class "BBButtons"
+        const buttons = document.querySelector("#postForm .BBButtons");
+
+        // Create the button element
+        const button = document.createElement("button");
+
+        // Set the button's attributes
+        button.id = "bbzalgo";
+        button.tabIndex = "-1";
+        button.type = "button";
+        button.className = "BBButton BBButton_zalgo";
+        button.textContent = "Zalgo";
+
+        // Append the button to the element with the class "BBButtons"
+        buttons.appendChild(button);
+
+        // attach event to zalgo button
         $("#bbzalgo").click(function() {
             dialogBox("UWAGA", "Ta opcja nie była testowana i prawdopodobnie będzie skutkować auto-banem", ["Rozumiem"]);
             var Z = {
@@ -53,23 +75,24 @@
                 return this.substring(0, t) + n + this.substring(e)
             };
 
-            let selection_start = tarea[0].selectionStart;
-            let selection_end = tarea[0].selectionEnd;
-            let tarea_text = tarea.val();
+            let selection_start = tarea.selectionStart;
+            let selection_end = tarea.selectionEnd;
+            let tarea_text = tarea.value;
             let selected_text = tarea_text.slice(selection_start, selection_end);
 
             console.log(`[KDeluxe] start: ${selection_start}, end: ${selection_end}, selected: ${selected_text}`);
             let zalgon = Z.generate(selected_text);
             let new_text = tarea_text.replaceBetween(selection_start, selection_end, zalgon);
 
-            tarea.val(new_text);
+            tarea.value = new_text;
 
             tarea.focus();
-            $(tarea).trigger("tareaValueChanged");
+            tarea.dispatchEvent(new Event("tareaValueChanged"));
         });
 
         // saga checkbox
-        $("#nofile").parent().parent().append(`<label><input id="sagecheck" type="checkbox" name="sage" value="0">Sagunia</label>`);
+        const sageCheck = `<label><input id="sagecheck" type="checkbox" name="sage" value="0">Sagunia</label>`;
+        $("#nofile").parent().parent().append(sageCheck);
 
         $("#sagecheck").change(function() {
             if (this.checked) {
@@ -116,7 +139,8 @@
         // insert new row into postform table
         let tr = document.createElement('tr');
         tr.innerHTML = '<td>Wordfilter</td><td><select id="wordfilter_helper"></td>';
-        document.querySelector('#postForm tbody tr').after(tr);
+        document.querySelector('#postForm tbody tr:nth-child(4)').after(tr);
+
 
         // populate combobox
         Object.keys(wordfilters).forEach(function(index) {
@@ -127,11 +151,16 @@
             document.getElementById('wordfilter_helper').appendChild(option);
         });
 
+        function InsertAtCaret(newText, el = document.activeElement) {
+            const [start, end] = [el.selectionStart, el.selectionEnd];
+            el.setRangeText(newText, start, end, 'select');
+        }
+
         document.getElementById('wordfilter_helper').addEventListener('change', function() {
             let selected = this.value;
             let selected_filter_text = wordfilters[selected][0];
             console.log(`[KDeluxe] Inserted wordfilter: ${selected_filter_text}`);
-            insertAtCaret(tarea, selected_filter_text);
+            InsertAtCaret(selected_filter_text, tarea);
         });
 
         // add margin to bbcode buttons
@@ -153,20 +182,41 @@
         var choina = document.getElementById('choina');
 
         // add toggle button
-        let tbody = document.getElementById('postform').querySelector('tbody');
-        tbody.innerHTML += '<tr><td>Popout</td><td class="ladda-td"><button id="detach_form" class="ladda-button" data-style="expand-right" data-size="xs" data-color="mint"><span class="laddaLabelConteiner"><span class="ladda-label">Odczep</span></span></button></td><tr/>';
 
-        let button = document.querySelector("#detach_form");
+        // get the tbody element of the post form
+        const tbody = postForm.querySelector('tbody');
+
+        // create the toggle button
+        const dettach_button = document.createElement('button');
+        dettach_button.id = 'detach_form';
+        dettach_button.className = 'ladda-button';
+        dettach_button.dataset.style = 'expand-right';
+        dettach_button.dataset.size = 'xs';
+        dettach_button.dataset.color = 'mint';
+        dettach_button.innerHTML = '<span class="laddaLabelConteiner"><span class="ladda-label">Odczep</span></span>';
+
+        // create the row for the toggle button
+        const row = document.createElement('tr');
+        const labelCell = document.createElement('td');
+        labelCell.textContent = 'Popout';
+        const buttonCell = document.createElement('td');
+        buttonCell.className = 'ladda-td';
+        buttonCell.appendChild(dettach_button);
+        row.appendChild(labelCell);
+        row.appendChild(buttonCell);
+
+        // add the row to the tbody element
+        tbody.appendChild(row);
 
         // make sure content fits the form and always stays on top
         postForm.style.zIndex = '999';
         postForm.style.height = '300px';
 
         // add an event listener to the button which will handle toggling
-        button.addEventListener("click", function(e) {
+        dettach_button.addEventListener("click", function(e) {
             e.preventDefault();
             if (postForm.style.position == 'absolute') {
-                button.innerText = "Odczep";
+                dettach_button.innerText = "Odczep";
                 // reattach the postform to its original position, show choina and remove blur from background
                 postForm.style.position = '';
                 postForm.style.position = 'static';
@@ -174,7 +224,7 @@
                 postForm.style.backdropFilter = "blur(0px)";
             } else {
                 // detach the postform, hide choina and add blur to form
-                button.innerText = "Przyczep";
+                dettach_button.innerText = "Przyczep";
                 postForm.style.position = 'absolute';
                 postForm.style.right = '1px';
                 postForm.style.bottom = '5%';
