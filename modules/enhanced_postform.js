@@ -238,9 +238,6 @@
             if (postForm.style.position == 'absolute')
                 postForm.style.top = window.scrollY - 300 - 30 + (window.innerHeight * 0.95) + 'px';
         });
-
-        // focus on post message textarea
-        tarea.focus();
     }
 
     console.log(`[KDeluxe] [⏱️] Enhanced PostForm loaded in ${performance.now() - performance_timer}ms`);
