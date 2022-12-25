@@ -2,6 +2,15 @@
 Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
  
+## [0.7.8] - 25/12/22 23:52
+
+### Zmieniono
+- moduł ban_checker sprawdza teraz status bana natychmiast po załadowaniu strony, a potem co każde 10 sekund
+- ścieżka specjalnego modułu user_interface została zmieniona na katalog root
+
+### Naprawiono
+- moduł enhanced_postform jest teraz w pełni sprawny i nie stripuje już eventów z elementów, przepisano go też na vanilla js
+
 ## [0.7.7] - 17/12/22 21:45
  
 ### Zmieniono
