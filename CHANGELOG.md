@@ -4,6 +4,9 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
  
 ## [0.7.8] - 25/12/22 23:52
 
+### Dodano
+- error handling do module loadera, teraz wyświetli nam przeglądarkowy alert jeśli nie można było załadować jakiegoś modułu
+
 ### Zmieniono
 - moduł ban_checker sprawdza teraz status bana natychmiast po załadowaniu strony, a potem co każde 10 sekund
 - ścieżka specjalnego modułu user_interface została zmieniona na katalog root
