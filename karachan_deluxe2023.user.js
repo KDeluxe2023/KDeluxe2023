@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.7.7
+// @version      0.7.8
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,16 +22,18 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "d5cb8492a7cdf1d3cff79efc8a229eb183c1e583";
+const g_last_commit = "c7ff32e3cae2e83a797ccadc91762b8016830341";
 const g_script_version = GM.info.script.version;
 
-// dynamic module loader (this should be below any function used inside loaded modules!)
+// dynamic module loader
 function load_module(module_name, t, data_pass = "") {
     var a = document.createElement("script"),
         n = document.getElementsByTagName("script")[0];
     a.async = 1, a.onload = a.onreadystatechange = function(e, n) {
         (n || !a.readyState || /loaded|complete/.test(a.readyState)) && (a.onload = a.onreadystatechange = null, a = void 0, !n && t && setTimeout(t, 0))
-    }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/modules/${module_name}.js`, a.setAttribute("data-pass", `${data_pass}`), n.parentNode.insertBefore(a, n)
+    }, a.onerror = function(error) {
+        alert(`KDeluxe napotkał błąd przy ładowaniu modułu: ${error.target.src}`);
+    }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/${module_name}.js`, a.setAttribute("data-pass", `${data_pass}`), n.parentNode.insertBefore(a, n)
 }
 
 // scripts must be prevented from loading before they actually load
@@ -64,9 +66,6 @@ var bsePd = window.addEventListener('beforescriptexecute', e => {
 });
 
 //// globals
-// array with newly added posts
-var g_new_posts = [];
-
 // tells us if we're on a special page like search etc
 var g_special_page = false;
 // tells us if we're in catalog view
@@ -79,8 +78,8 @@ var g_style = localStorage.style;
 // assign globals
 let special_pages = ["catalog.html", "search.php", "/rs/", "/*/"];
 let url_path = window.location.pathname;
-for (const item of special_pages) {
-    if (url_path.endsWith(item)) {
+for (const special_page_indicator of special_pages) {
+    if (url_path.endsWith(special_page_indicator)) {
         g_special_page = true;
 
         // detect if we're in catalog
@@ -125,82 +124,81 @@ window.addEventListener('load', function() {
         }
     }
 
-    // check for update
-    load_module("update_notification", null, g_script_version);
-
     // draw our own UI first
     load_module('user_interface', function() {
         // run filters after that
         if (localStorage.o_kdeluxe_advanced_filters == 1)
-            load_module("filters");
+            load_module("modules/filters");
+
+        // check for update
+        load_module("modules/update_notification", null, g_script_version);
 
         // proceed with the rest
         if (localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page)
-            load_module("rich_stats");
+            load_module("modules/rich_stats");
 
         if (localStorage.o_kdeluxe_fred_dumper == 1 && !g_special_page && g_is_fred_open)
-            load_module("fred_dumper");
+            load_module("modules/fred_dumper");
 
-        if (localStorage.o_kdeluxe_prev_next == 1  && !g_special_page && g_is_fred_open)
-            load_module("prev_next");
+        if (localStorage.o_kdeluxe_prev_next == 1 && !g_special_page && g_is_fred_open)
+            load_module("modules/prev_next");
 
         if (localStorage.o_kdeluxe_radioradio_player == 1 && !g_special_page)
-            load_module("radio_radio");
+            load_module("modules/radio_radio");
 
         if (localStorage.o_kdeluxe_auto_follow == 1 && !g_special_page && g_is_fred_open)
-            load_module("auto_follow");
+            load_module("modules/auto_follow");
 
         if (localStorage.o_kdeluxe_password_changer == 1 && !g_special_page)
-            load_module("password_changer");
+            load_module("modules/password_changer");
 
         if (localStorage.o_kdeluxe_uid_curb == 1 && !g_special_page && g_is_fred_open)
-            load_module("uid_curb");
+            load_module("modules/uid_curb");
 
-        if (this.localStorage.o_kdeluxe_catalog_curb == 1 && g_is_in_catalog)
-            load_module("catalog_curb");
+        if (localStorage.o_kdeluxe_catalog_curb == 1 && g_is_in_catalog)
+            load_module("modules/catalog_curb");
 
-        if (localStorage.o_kdeluxe_image_preview_anti_eyestrain == 1
-            && localStorage.o_imgpreview === "1" && !g_special_page)
-            load_module("anti_eyestrain");
+        if (localStorage.o_kdeluxe_image_preview_anti_eyestrain == 1 &&
+            localStorage.o_imgpreview === "1" && !g_special_page)
+            load_module("modules/anti_eyestrain");
 
-        if (this.localStorage.o_kdeluxe_ban_checker == 1 && !g_special_page)
-            load_module("ban_checker");
+        if (localStorage.o_kdeluxe_ban_checker == 1 && !g_special_page)
+            load_module("modules/ban_checker");
 
-        if (localStorage.o_kdeluxe_lower_def_volume == 1 && !g_special_page)
-            load_module("lower_def_volume");
+        if (localStorage.o_kdeluxe_anti_screamer == 1 && !g_special_page)
+            load_module("modules/lower_def_volume");
 
         if (localStorage.o_kdeluxe_dangerous_bambo == 1)
-            load_module("dangerous_bambo");
+            load_module("modules/dangerous_bambo");
 
         if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page)
-            load_module("blind_mode_tts");
+            load_module("modules/blind_mode_tts");
 
         if (localStorage.o_kdeluxe_smart_boards == 1)
-            load_module("smart_boards");
+            load_module("modules/smart_boards");
 
         if (localStorage.o_kdeluxe_autoscroll == 1 && !g_special_page)
-            load_module("auto_scroll");
+            load_module("modules/auto_scroll");
 
         if (localStorage.o_kdeluxe_better_embed == 1 && !g_special_page)
-            load_module("better_embeds");
+            load_module("modules/better_embeds");
 
         if (localStorage.o_kdeluxe_spoiler_revealer == 1)
-            load_module("spoiler_revealer");
+            load_module("modules/spoiler_revealer");
 
         if (localStorage.o_kdeluxe_external_links == 1)
-            load_module("external_links");
+            load_module("modules/external_links");
 
         if (localStorage.o_kdeluxe_konfident_plus == 1)
-            load_module("konfident_plus");
+            load_module("modules/konfident_plus");
 
         if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
-            load_module("enhanced_postform");
+            load_module("modules/enhanced_postform");
 
         if (localStorage.o_kdeluxe_vocaroo_embeds == 1 && !g_special_page)
-            load_module("vocaroo_embeds");
+            load_module("modules/vocaroo_embeds");
 
         if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
-            load_module("new_keyframe_anims");
-
+            load_module("modules/new_keyframe_anims");
     });
 });
