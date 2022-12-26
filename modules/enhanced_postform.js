@@ -29,7 +29,7 @@
         h3.style.textAlign = 'center';
         h3.textContent = `Online: ${online} anonów (${czaksy} czaksów) / ${pontyfikat}`;
         fragment.appendChild(h3);
-        parentElement.appendChild(fragment);
+        parentElement.replaceChildren(fragment);
         // add zalgo BBbutton
 
         // Get the element with the class "BBButtons"
