@@ -76,7 +76,7 @@
         add_settings_checkbox("anti_bible", "Anti Bible", "Nie pozwala na załadowanie biblii (htmlshiv.js)", true);
         add_settings_checkbox("catalog_curb", "Catalog Curb", "Pozwala krawężnikować z poziomu katalogu");
         add_settings_checkbox("uid_curb", "UID Curb", "Pozwala krawężnikować poszczególnych anonów we fredach");
-        add_settings_checkbox("smart_curb", "Smart Curb", "Automatycznie krawężnikuje posty określone automatycznie jako spam", true);
+        //add_settings_checkbox("smart_curb", "Smart Curb", "Automatycznie krawężnikuje posty określone automatycznie jako spam", true);
         add_settings_checkbox("better_embed", "Better Embeds", "Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu");
         add_settings_checkbox("radioradio_player", "Teoria Chaosu™ Integration", "Wyświetla player radioradio podczas audycji claude'a");
         add_settings_checkbox("ban_checker", "Ban Checker", "Wyświetla status bana");
