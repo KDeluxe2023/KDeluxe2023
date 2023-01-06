@@ -5,9 +5,8 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 ## [0.7.9] - 06/01/22 01:56
 
 ### Zmieniono
-- dostępność zepsutych modułów w interfejsie
-- moduł enhanced postform ma teraz większy priorytet ładowania
-
+- usunięto zepsute moduły z interfejsu
+- moduł enhanced_postform ma teraz większy priorytet ładowania
 ### Naprawiono
 - sprawdzenie dostępności jquery zostało usunięte bo nie działało dobrze na wszystkich konfiguracjach
 
@@ -15,11 +14,9 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 
 ### Dodano
 - error handling do module loadera, teraz wyświetli nam przeglądarkowy alert jeśli nie można było załadować jakiegoś modułu
-
 ### Zmieniono
 - moduł ban_checker sprawdza teraz status bana natychmiast po załadowaniu strony, a potem co każde 10 sekund
 - ścieżka specjalnego modułu user_interface została zmieniona na katalog root
-
 ### Naprawiono
 - moduł enhanced_postform jest teraz w pełni sprawny i nie stripuje już eventów z elementów, przepisano go też na vanilla js
 
