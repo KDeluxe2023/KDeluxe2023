@@ -1,7 +1,16 @@
 # Change Log
 Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
- 
+
+## [0.7.9] - 06/01/22 01:56
+
+### Zmieniono
+- dostępność zepsutych modułów w interfejsie
+- moduł enhanced postform ma teraz większy priorytet ładowania
+
+### Naprawiono
+- sprawdzenie dostępności jquery zostało usunięte bo nie działało dobrze na wszystkich konfiguracjach
+
 ## [0.7.8] - 25/12/22 23:52
 
 ### Dodano
