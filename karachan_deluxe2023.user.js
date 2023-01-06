@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.7.8
+// @version      0.7.9
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "22e4fdc914dc2dc7870dc7a16751f9cb8a320b4b";
+const g_last_commit = "f990dbaf1992eca784814ecf9e5ff49b0d0fee8b";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader
@@ -97,15 +97,19 @@ console.log(`[KDeluxe] g_is_in_catalog = ${g_is_in_catalog}`);
 console.log(`[KDeluxe] g_is_fred_open = ${g_is_fred_open}`);
 
 // actual script begins here
-window.addEventListener('load', function() {
-    if (!window.jQuery) {
-        // jQuery should be loaded at this point, something is wrong...
-        console.log(`jQuery absent, aborting!`);
+document.addEventListener('readystatechange', event => {
+    if (event.target.readyState !== "complete")
         return;
-    } else {
-        console.log(`[KDeluxe] jQuery v.${jQuery.fn.jquery} is present...`);
-        console.log(`[KDeluxe] Loading modules...`);
-    }
+
+    /*
+    if (typeof jQuery === 'undefined') {
+          // jQuery should be loaded at this point, something is wrong...
+          console.log(`jQuery absent, aborting!`);
+          return;
+      } else {
+          console.log(`[KDeluxe] jQuery v.${jQuery.fn.jquery} is present...`);
+          console.log(`[KDeluxe] Loading modules...`);
+      }*/
     //// write code below this line ////
 
     // draw version info
@@ -134,6 +138,9 @@ window.addEventListener('load', function() {
         load_module("modules/update_notification", null, g_script_version);
 
         // proceed with the rest
+        if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
+            load_module("modules/enhanced_postform");
+
         if (localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page)
             load_module("modules/rich_stats");
 
@@ -191,9 +198,6 @@ window.addEventListener('load', function() {
 
         if (localStorage.o_kdeluxe_konfident_plus == 1)
             load_module("modules/konfident_plus");
-
-        if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
-            load_module("modules/enhanced_postform");
 
         if (localStorage.o_kdeluxe_vocaroo_embeds == 1 && !g_special_page)
             load_module("modules/vocaroo_embeds");
