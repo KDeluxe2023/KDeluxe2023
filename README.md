@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.7.8</a> BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.7.9</a> BETA</h1>
 <p align="center"><img  src="https://user-images.githubusercontent.com/119752397/206885097-dd4cad13-ee7b-40d2-9a94-b78a8d95a6c9.jpg" alt="bobraz" width="600"/></p>
 <h3 align="center">Największe, modularne rozszerzenie do forum młodzieżowo katolickiego</h3>
 <hr/>
@@ -33,7 +33,6 @@ Gdy jakaś nowa funkcja zostanie dodana, musisz kliknąć przycisk zapisu ustawi
 * Better Embeds - Zamienia ciężkie jutubowe embedy na miniaturki z tytułem, które przekierowują do wideo
 * Rich Stats - Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum
 * Fred Dumper - Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie
-* Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)
 * Ban Checker - Pokazuje czerwony napis na górze deski kiedy dostanie się bana
 * External Links - Wszystkie linki otwierają się teraz w nowym oknie
 * Catalog Curb - Pozwala krawężnikować tematy z poziomu katalogu
@@ -48,6 +47,7 @@ Gdy jakaś nowa funkcja zostanie dodana, musisz kliknąć przycisk zapisu ustawi
 * Dangerous Bambo - Dodaje biegającego murzynka (bambo) na dole ekranu
 * New Keyframe Animations - Dodaje różne nowe filtry, np. #robercik, #R, #deluxe
 * Anti Bible - Nie pozwala na załadowanie biblii [(działa tylko na firefox)](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
+* <del>Blind Mode (TTS) - Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)</del>
 * <del>ThreadWatcher Sort - Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku</del>
 
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
