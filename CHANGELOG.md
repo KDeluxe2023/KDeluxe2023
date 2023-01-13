@@ -1,5 +1,6 @@
 # Change Log
 Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
+
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
 ## [0.7.9] - 06/01/22 01:56
