@@ -3,6 +3,15 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
+## [0.8.0] - 15/01/22 13:38
+
+### Dodano
+- moduł clickable boardname: pozwala odświeżyć/wrócić na zerową boarda na którym jesteś poprzez kliknięcie nagłówka z jego nazwą
+### Zmieniono
+- priorytet ładowania filtrów jest wyższy
+- moduł enhanced postform: popout to teraz opcjonalna funkcja, którą można wyłączyć w ustawieniach
+- moduł enhanced postform: zalgo to teraz opcjonalna funkcja, którą można wyłączyć w ustawieniach
+
 ## [0.7.9] - 06/01/22 01:56
 
 ### Zmieniono
