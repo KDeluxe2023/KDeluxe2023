@@ -11,9 +11,9 @@
         // hide email field
         document.querySelector("#postForm tbody tr:nth-child(1)").style.display = "none";
 
-        // stores posts on pontificate
+        // store posts per pontificate
         let pontyfikat = document.querySelector("ul.rules li:nth-child(4)").textContent;
-        // remove useless info
+        // remove text with useless info
         document.querySelector("#postform tr.rules").style.display = 'none';
         // store amount of czaks
         let czaksy = document.getElementById('counter').innerText;
@@ -22,7 +22,6 @@
         // display that all
         const counterElement = document.getElementById('counter');
         const parentElement = counterElement.parentNode.parentNode;
-        //parentElement.innerHTML = `<h3 style="text-align:center">Online: ${online} anonów (${czaksy} czaksów) / ${pontyfikat}</h3>`;
 
         const fragment = document.createDocumentFragment();
         const h3 = document.createElement('h3');
@@ -30,65 +29,68 @@
         h3.textContent = `Online: ${online} anonów (${czaksy} czaksów) / ${pontyfikat}`;
         fragment.appendChild(h3);
         parentElement.replaceChildren(fragment);
+
         // add zalgo BBbutton
+        if (localStorage.o_kdeluxe_enhanced_postform_zalgo) {
 
-        // Get the element with the class "BBButtons"
-        const buttons = document.querySelector("#postForm .BBButtons");
+            // Get the element with the class "BBButtons"
+            const buttons = document.querySelector("#postForm .BBButtons");
 
-        // Create the button element
-        const button = document.createElement("button");
+            // Create the button element
+            const button = document.createElement("button");
 
-        // Set the button's attributes
-        button.id = "bbzalgo";
-        button.tabIndex = "-1";
-        button.type = "button";
-        button.className = "BBButton BBButton_zalgo";
-        button.textContent = "Zalgo";
+            // Set the button's attributes
+            button.id = "bbzalgo";
+            button.tabIndex = "-1";
+            button.type = "button";
+            button.className = "BBButton BBButton_zalgo";
+            button.textContent = "Zalgo";
 
-        // Append the button to the element with the class "BBButtons"
-        buttons.appendChild(button);
+            // Append the button to the element with the class "BBButtons"
+            buttons.appendChild(button);
 
-        // attach event to zalgo button
-        $("#bbzalgo").click(function() {
-            dialogBox("UWAGA", "Ta opcja nie była testowana i prawdopodobnie będzie skutkować auto-banem", ["Rozumiem"]);
-            var Z = {
-                chars: {
-                    0: ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗", "͑", "̇", "̈", "̊", "͂", "̓", "̈́", "͊", "͋", "͌", "̃", "̂", "̌", "͐", "̀", "́", "̋", "̏", "̒", "̓", "̔", "̽", "̉", "ͣ", "ͤ", "ͥ", "ͦ", "ͧ", "ͨ", "ͩ", "ͪ", "ͫ", "ͬ", "ͭ", "ͮ", "ͯ", "̾", "͛", "͆", "̚"],
-                    1: ["̖", "̗", "̘", "̙", "̜", "̝", "̞", "̟", "̠", "̤", "̥", "̦", "̩", "̪", "̫", "̬", "̭", "̮", "̯", "̰", "̱", "̲", "̳", "̹", "̺", "̻", "̼", "ͅ", "͇", "͈", "͉", "͍", "͎", "͓", "͔", "͕", "͖", "͙", "͚", "̣"],
-                    2: ["̕", "̛", "̀", "́", "͘", "̡", "̢", "̧", "̨", "̴", "̵", "̶", "͏", "͜", "͝", "͞", "͟", "͠", "͢", "̸", "̷", "͡", "҉"]
-                },
-                random: function(r) {
-                    return 1 == r ? 0 : r ? Math.floor(Math.random() * r + 1) - 1 : Math.random()
-                },
-                generate: function(r) {
-                    return r.split("").map((function(r) {
-                        if (" " == r) return r;
-                        for (var n = 0, a = Z.random(16); n < a; n++) {
-                            var o = Z.random(3);
-                            r += Z.chars[o][Z.random(Z.chars[o].length)]
-                        }
-                        return r
-                    })).join("")
-                }
-            };
-            String.prototype.replaceBetween = function(t, e, n) {
-                return this.substring(0, t) + n + this.substring(e)
-            };
+            // attach event to zalgo button
+            $("#bbzalgo").click(function() {
+                dialogBox("UWAGA", "Ta opcja nie była testowana i prawdopodobnie będzie skutkować auto-banem", ["Rozumiem"]);
+                var Z = {
+                    chars: {
+                        0: ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗", "͑", "̇", "̈", "̊", "͂", "̓", "̈́", "͊", "͋", "͌", "̃", "̂", "̌", "͐", "̀", "́", "̋", "̏", "̒", "̓", "̔", "̽", "̉", "ͣ", "ͤ", "ͥ", "ͦ", "ͧ", "ͨ", "ͩ", "ͪ", "ͫ", "ͬ", "ͭ", "ͮ", "ͯ", "̾", "͛", "͆", "̚"],
+                        1: ["̖", "̗", "̘", "̙", "̜", "̝", "̞", "̟", "̠", "̤", "̥", "̦", "̩", "̪", "̫", "̬", "̭", "̮", "̯", "̰", "̱", "̲", "̳", "̹", "̺", "̻", "̼", "ͅ", "͇", "͈", "͉", "͍", "͎", "͓", "͔", "͕", "͖", "͙", "͚", "̣"],
+                        2: ["̕", "̛", "̀", "́", "͘", "̡", "̢", "̧", "̨", "̴", "̵", "̶", "͏", "͜", "͝", "͞", "͟", "͠", "͢", "̸", "̷", "͡", "҉"]
+                    },
+                    random: function(r) {
+                        return 1 == r ? 0 : r ? Math.floor(Math.random() * r + 1) - 1 : Math.random()
+                    },
+                    generate: function(r) {
+                        return r.split("").map((function(r) {
+                            if (" " == r) return r;
+                            for (var n = 0, a = Z.random(16); n < a; n++) {
+                                var o = Z.random(3);
+                                r += Z.chars[o][Z.random(Z.chars[o].length)]
+                            }
+                            return r
+                        })).join("")
+                    }
+                };
+                String.prototype.replaceBetween = function(t, e, n) {
+                    return this.substring(0, t) + n + this.substring(e)
+                };
 
-            let selection_start = tarea.selectionStart;
-            let selection_end = tarea.selectionEnd;
-            let tarea_text = tarea.value;
-            let selected_text = tarea_text.slice(selection_start, selection_end);
+                let selection_start = tarea.selectionStart;
+                let selection_end = tarea.selectionEnd;
+                let tarea_text = tarea.value;
+                let selected_text = tarea_text.slice(selection_start, selection_end);
 
-            console.log(`[KDeluxe] start: ${selection_start}, end: ${selection_end}, selected: ${selected_text}`);
-            let zalgon = Z.generate(selected_text);
-            let new_text = tarea_text.replaceBetween(selection_start, selection_end, zalgon);
+                console.log(`[KDeluxe] start: ${selection_start}, end: ${selection_end}, selected: ${selected_text}`);
+                let zalgon = Z.generate(selected_text);
+                let new_text = tarea_text.replaceBetween(selection_start, selection_end, zalgon);
 
-            tarea.value = new_text;
+                tarea.value = new_text;
 
-            tarea.focus();
-            tarea.dispatchEvent(new Event("tareaValueChanged"));
-        });
+                tarea.focus();
+                tarea.dispatchEvent(new Event("tareaValueChanged"));
+            });
+        }
 
         // saga checkbox
         const sageCheck = `<label><input id="sagecheck" type="checkbox" name="sage" value="0">Sagunia</label>`;
@@ -177,67 +179,69 @@
         });
 
         // add popout button to postform
-        // get the post form, button and choina elements
-        var postForm = document.getElementById('postform');
-        var choina = document.getElementById('choina');
+        if (localStorage.o_kdeluxe_enhanced_postform_popout) {
+            // get the post form, button and choina elements
+            var postForm = document.getElementById('postform');
+            var choina = document.getElementById('choina');
 
-        // add toggle button
+            // add toggle button
 
-        // get the tbody element of the post form
-        const tbody = postForm.querySelector('tbody');
+            // get the tbody element of the post form
+            const tbody = postForm.querySelector('tbody');
 
-        // create the toggle button
-        const dettach_button = document.createElement('button');
-        dettach_button.id = 'detach_form';
-        dettach_button.className = 'ladda-button';
-        dettach_button.dataset.style = 'expand-right';
-        dettach_button.dataset.size = 'xs';
-        dettach_button.dataset.color = 'mint';
-        dettach_button.innerHTML = '<span class="laddaLabelConteiner"><span class="ladda-label">Odczep</span></span>';
+            // create the toggle button
+            const dettach_button = document.createElement('button');
+            dettach_button.id = 'detach_form';
+            dettach_button.className = 'ladda-button';
+            dettach_button.dataset.style = 'expand-right';
+            dettach_button.dataset.size = 'xs';
+            dettach_button.dataset.color = 'mint';
+            dettach_button.innerHTML = '<span class="laddaLabelConteiner"><span class="ladda-label">Odczep</span></span>';
 
-        // create the row for the toggle button
-        const row = document.createElement('tr');
-        const labelCell = document.createElement('td');
-        labelCell.textContent = 'Popout';
-        const buttonCell = document.createElement('td');
-        buttonCell.className = 'ladda-td';
-        buttonCell.appendChild(dettach_button);
-        row.appendChild(labelCell);
-        row.appendChild(buttonCell);
+            // create the row for the toggle button
+            const row = document.createElement('tr');
+            const labelCell = document.createElement('td');
+            labelCell.textContent = 'Popout';
+            const buttonCell = document.createElement('td');
+            buttonCell.className = 'ladda-td';
+            buttonCell.appendChild(dettach_button);
+            row.appendChild(labelCell);
+            row.appendChild(buttonCell);
 
-        // add the row to the tbody element
-        tbody.appendChild(row);
+            // add the row to the tbody element
+            tbody.appendChild(row);
 
-        // make sure content fits the form and always stays on top
-        postForm.style.zIndex = '999';
-        postForm.style.height = '300px';
+            // make sure content fits the form and always stays on top
+            postForm.style.zIndex = '999';
+            postForm.style.height = '300px';
 
-        // add an event listener to the button which will handle toggling
-        dettach_button.addEventListener("click", function(e) {
-            e.preventDefault();
-            if (postForm.style.position == 'absolute') {
-                dettach_button.innerText = "Odczep";
-                // reattach the postform to its original position, show choina and remove blur from background
-                postForm.style.position = '';
-                postForm.style.position = 'static';
-                choina.style.display = '';
-                postForm.style.backdropFilter = "blur(0px)";
-            } else {
-                // detach the postform, hide choina and add blur to form
-                dettach_button.innerText = "Przyczep";
-                postForm.style.position = 'absolute';
-                postForm.style.right = '1px';
-                postForm.style.bottom = '5%';
-                postForm.style.backdropFilter = "blur(5px)";
-                choina.style.display = 'none';
-            }
-        });
+            // add an event listener to the button which will handle toggling
+            dettach_button.addEventListener("click", function(e) {
+                e.preventDefault();
+                if (postForm.style.position == 'absolute') {
+                    dettach_button.innerText = "Odczep";
+                    // reattach the postform to its original position, show choina and remove blur from background
+                    postForm.style.position = '';
+                    postForm.style.position = 'static';
+                    choina.style.display = '';
+                    postForm.style.backdropFilter = "blur(0px)";
+                } else {
+                    // detach the postform, hide choina and add blur to form
+                    dettach_button.innerText = "Przyczep";
+                    postForm.style.position = 'absolute';
+                    postForm.style.right = '1px';
+                    postForm.style.bottom = '5%';
+                    postForm.style.backdropFilter = "blur(5px)";
+                    choina.style.display = 'none';
+                }
+            });
 
-        // add an event listener to the window to make the form move with the scroll
-        window.addEventListener('scroll', function() {
-            if (postForm.style.position == 'absolute')
-                postForm.style.top = window.scrollY - 300 - 30 + (window.innerHeight * 0.95) + 'px';
-        });
+            // add an event listener to the window to make the form move with the scroll
+            window.addEventListener('scroll', function() {
+                if (postForm.style.position == 'absolute')
+                    postForm.style.top = window.scrollY - 300 - 30 + (window.innerHeight * 0.95) + 'px';
+            });
+        }
     }
 
     console.log(`[KDeluxe] [⏱️] Enhanced PostForm loaded in ${performance.now() - performance_timer}ms`);
