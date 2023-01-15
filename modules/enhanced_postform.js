@@ -31,7 +31,7 @@
         parentElement.replaceChildren(fragment);
 
         // add zalgo BBbutton
-        if (localStorage.o_kdeluxe_enhanced_postform_zalgo) {
+        if (localStorage.o_kdeluxe_enhanced_postform_zalgo == 1) {
 
             // Get the element with the class "BBButtons"
             const buttons = document.querySelector("#postForm .BBButtons");
@@ -179,7 +179,7 @@
         });
 
         // add popout button to postform
-        if (localStorage.o_kdeluxe_enhanced_postform_popout) {
+        if (localStorage.o_kdeluxe_enhanced_postform_popout == 1) {
             // get the post form, button and choina elements
             var postForm = document.getElementById('postform');
             var choina = document.getElementById('choina');
