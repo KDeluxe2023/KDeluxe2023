@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.7.9
+// @version      0.8.0
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "f990dbaf1992eca784814ecf9e5ff49b0d0fee8b";
+const g_last_commit = "1982ba1c459b61e236912c2d00f937a8e1355959";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader
@@ -128,18 +128,21 @@ document.addEventListener('readystatechange', event => {
         }
     }
 
-    // draw our own UI first
+    // run filters first
+    if (localStorage.o_kdeluxe_advanced_filters == 1)
+        load_module("modules/filters");
+
+    // check for update
+    load_module("modules/update_notification", null, g_script_version);
+
+    // draw settings UI
     load_module('user_interface', function() {
-        // run filters after that
-        if (localStorage.o_kdeluxe_advanced_filters == 1)
-            load_module("modules/filters");
-
-        // check for update
-        load_module("modules/update_notification", null, g_script_version);
-
         // proceed with the rest
         if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
             load_module("modules/enhanced_postform");
+
+        if (localStorage.o_kdeluxe_clickable_boardname == 1 && !g_special_page)
+            load_module("modules/clickable_boardname");
 
         if (localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page)
             load_module("modules/rich_stats");
