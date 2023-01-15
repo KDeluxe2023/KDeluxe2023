@@ -70,6 +70,7 @@
 
         add_settings_checkbox("full_compatibility", "Full (BETA) Compatibility", "Wyłącza pageloader i fastreply żeby każda funkcja w KDeluxe działała w 100%");
         add_settings_checkbox("vocaroo_embeds", "Vocaroo Embeds", "Zamienia linki do vocaroo w postach na osadzony player");
+        add_settings_checkbox("clickable_boardname", "Clickable Board Name", "Pozwala kliknąć na nazwe deski na górze strony żeby ją odświeżyć");
         add_settings_checkbox("autoscroll", "Auto Scroll", "Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony");
         add_settings_checkbox("spoiler_revealer", "Spoiler Revealer", "Odkrywa wszystkie spoilery więc nie trzeba na nie najeżdżać");
         add_settings_checkbox("advanced_filters", "Heuristic Filters", "Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne");
@@ -86,7 +87,9 @@
         add_settings_checkbox("rich_stats", "Rich Statistics", "Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum");
         add_settings_checkbox("external_links", "External Links", "Wszystkie linki otwierają się teraz w nowym oknie");
         add_settings_checkbox("konfident_plus", "Konfident+", "Pozwala śledzić dalsze losy zgłoszonych przez siebie postów");
-        add_settings_checkbox("enhanced_postform", "Enhanced PostForm", "Zmieniony formularz postowania, z listą wordfiltrów i nie tylko");
+        add_settings_checkbox("enhanced_postform", "Enhanced PostForm", "Ulepszony formularz postowania, z listą wordfiltrów i nie tylko");
+        add_settings_checkbox("enhanced_postform_popout", "Enhanced PostForm Popout", "Dodaje opcje zastępującą fastreply do enhanced postform", true);
+        add_settings_checkbox("enhanced_postform_zalgo", "Enhanced PostForm Zalgo", "Dodaje opcje pisania tekstem zalgo do enhanced postform", true);
         add_settings_checkbox("smart_boards", "Smart Boards", "Ukrywa /noc/ kiedy nie jest dostępna");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
         add_settings_checkbox("anti_screamer", "Anti Screamer", "Obniża maksymalną głośnośc dźwięku odgrywanego przez stronę do 70dB");
