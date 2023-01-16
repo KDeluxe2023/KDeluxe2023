@@ -52,25 +52,25 @@ Gdy jakaś nowa funkcja zostanie dodana, musisz kliknąć przycisk zapisu ustawi
 
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
 
-**Do zrobienia**
+**Do zrobienia (kolejność według priorytetu)**
+* rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
+* dodać rozbudowaną klase pozwalającą na prace z interfejsem, np. tworzenie draggable windows, textboxów, sliderów, radiobuttonów, checkboxów, buttonów, comboboxów
+* przepisać system zapisywania/odczytywania ustawień, chwilowo robi to za nas mitsuba
+* ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
+* naprawić blind mode tts
+* content freeze - usunięte posty są zapisywane w pamięci przeglądarki i "zamrożone" oraz widoczne z niższym opacity
+* autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
 * dodać niewidzialną spacje jako bbbutton do enhanced postform
 * sprawdzić które znaki w nowym bbcode "zalgo" są banowane automatycznie
-* poprawić konfident+, przepisać najlepiej bo to stare gówno
-* naprawić blind mode tts
+* przepisać konfident+ bo to stare gówno napisane przez innego anona
 * usunąć czytanie linków i numerów postów z blind mode tts
 * crocodile scanner - skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje
 * standalone media player - żeby rozwiązać problem z niewidocznym suwakiem dźwięku
 * zaimplementować mutationobserver w modułach które zmieniają treści postów (dodawanych przez pageloader i autoupdater we fredzie)
-* content freeze - usunięte posty są zapisywane w pamięci i "zamrożone" oraz widoczne z niższym opacity
-* dodać funkcje obsługującą dodawanie textboxów, buttonów, sliderów i comboboxów do UI
 * sekret: możliwość pisania zaszyfrowanych postów z unikalną sygnaturą na końcu (np. ==SECRET) które można odszyfrować automatycznie domyślnym, publicznym hasłem. można też nadać hasło ręcznie, wtedy w polu posta zamiast tekstu pojawi się textbox z opcją wpisania hasła do sekretu
 * system pingowania (w oparciu na odpytywanie search.php ajaxem): wpisujemy w formularzu posta pseudonim, za pomocą którego można spingować kogoś np. wpisujemy do posta @stały_słuchacz i wtedy u tego anona pojawia się [powiadomienie](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) z [dźwiękiem](https://stackoverflow.com/a/24749629)
 * dodać obsługe reportów wysłanych z modala w konfident+, dodatkowo przenieść otiweranie zakładki konfident+ gdzieś indziej np. w róg ekranu (ikonka)
 * opcja zmiany tytułu deski (textbox)
-* autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
 * spoilerowanie obrazka na stałe (po hashu)
 * system powiadomień w faviconie, [inspiracja](https://pastebin.com/NazxdcsU)
-* ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
 * auto-[trójsiła](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
-* przepisać system zapisywania/odczytywania ustawień, chwilowo robi to za nas mitsuba
-* rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
