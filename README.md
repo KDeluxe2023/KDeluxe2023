@@ -53,6 +53,7 @@ Gdy jakaś nowa funkcja zostanie dodana, musisz kliknąć przycisk zapisu ustawi
 Przekreślone pozycje są zepsute lub na tyle wolne że wymagają przepisania, [pull requesty](https://github.com/KDeluxe2023/KDeluxe2023/pulls) mile widziane
 
 **Do zrobienia (kolejność według priorytetu)**
+* zintegrować mitsubowski curb z modułem catalog curb tak żeby były połączone
 * rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
 * dodać rozbudowaną klase pozwalającą na prace z interfejsem, np. tworzenie draggable windows, textboxów, sliderów, radiobuttonów, checkboxów, buttonów, comboboxów
 * przepisać system zapisywania/odczytywania ustawień, chwilowo robi to za nas mitsuba
