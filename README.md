@@ -30,31 +30,32 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |Moduł|Opis|Stabilny|Uwagi
 |---|---|---|---|
 |[User Interface](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js)|Rysuje okienko z ustawieniami|&check;|[#27](https://github.com/KDeluxe2023/KDeluxe2023/issues/27)
-|Vocaroo Embeds|Zamienia linki do vocaroo w postach na osadzony player|&check;|
-|Autoscroll|Dodaje opcje toggle do automatycznego scrollowania freda|&check;|
-|Teoria Chaosu™ Integration|Wyświetla player radioradio podczas audycji kloda|&check;|█▬█ █ ▀█▀
-|Konfident+|Pozwala śledzić dalsze losy zgłoszonych przez siebie postów|&cross;|kopiuj-wklejka, trzeba ją przepisać
-|Advanced Filters|Inteligentne filtry à la ublock ułatwiające korzystanie ze strony|&check;|
-|Enhanced PostForm|Ulepszony formularz postowania, z listą wordfiltrów i nie tylko|&check;|[#23](https://github.com/KDeluxe2023/KDeluxe2023/issues/23)
-|Better Embeds|Zamienia ciężkie jutubowe embedy na miniaturki z tytułem, które przekierowują do wideo|&check;|
-|Rich Stats|Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum|&check;|[#6](https://github.com/KDeluxe2023/KDeluxe2023/issues/6)
-|Fred Dumper|Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie|&cross;|[#5](https://github.com/KDeluxe2023/KDeluxe2023/issues/5), [#3](https://github.com/KDeluxe2023/KDeluxe2023/issues/3)
-|Ban Checker|Pokazuje czerwony napis na górze deski kiedy dostanie się bana|&check;|
-|External Links|Wszystkie linki otwierają się teraz w nowym oknie|&check;|
-|Catalog Curb|Pozwala krawężnikować tematy z poziomu katalogu|&check;|[#26](https://github.com/KDeluxe2023/KDeluxe2023/issues/26)
-|Jump To Post|Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika|&check;|
-|UID Curb|Pozwala krawężnikować poszczególnych postujących we fredach|&check;|[#20](https://github.com/KDeluxe2023/KDeluxe2023/issues/20)
-|Password Changer|Zmienia hasło na losowe przy każdym załadowaniu strony|&check;|
-|Auto Follow|Automatycznie obserwuje temat, w którym napiszemy posta|&check;|[#22](https://github.com/KDeluxe2023/KDeluxe2023/issues/22)
-|Image Preview Anti-Eyestrain|Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy|&check;|
-|Smart Boards|Ukrywa /noc/ kiedy nie jest dostępna, zawsze ukrywa /4/|&check;|
-|Lower Default Volume|Obniża domyślną głośność w playerze video, przydatne w FF|&cross;|[#11](https://github.com/KDeluxe2023/KDeluxe2023/issues/11)
-|Fix Thread WatchList OOB|Przywraca listę obserwowanych fredów do lewego górnego rogu|&check;|
-|New Keyframe Animations|Dodaje różne nowe filtry, np. #robercik, #R, #deluxe|&cross;|
-|Anti Bible|Nie pozwala na załadowanie biblii|&check;|[działa tylko na firefox](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
-|Blind Mode (TTS)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|totalnie rozjebany, [#24](https://github.com/KDeluxe2023/KDeluxe2023/issues/24), [#10](https://github.com/KDeluxe2023/KDeluxe2023/issues/10)
-|ThreadWatcher Sort|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|totalnie rozjebany, [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
-|Dangerous Bambo|Dodaje biegającego murzynka (bambo) na dole ekranu|&check;|żeżuncja
+|[Vocaroo Embeds](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/vocaroo_embeds.js)|Zamienia linki do vocaroo w postach na osadzony player|&check;|
+|[Autoscroll](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/auto_scroll.js)|Dodaje opcje toggle do automatycznego scrollowania freda|&check;|
+|[Teoria Chaosu™ Integration](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/radio_radio.js)|Wyświetla player radioradio podczas audycji kloda|&check;|█▬█ █ ▀█▀
+|[Konfident+](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/konfident_plus.js)|Pozwala śledzić dalsze losy zgłoszonych przez siebie postów|&cross;|kopiuj-wklejka, trzeba ją przepisać
+|[Advanced Filters](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/filters.js)|Inteligentne filtry à la ublock ułatwiające korzystanie ze strony|&check;|
+|[Enhanced PostForm](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/enhanced_postform.js)|Ulepszony formularz postowania, z listą wordfiltrów i nie tylko|&check;|[#23](https://github.com/KDeluxe2023/KDeluxe2023/issues/23)
+|[Better Embeds](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/better_embeds.js)|Zamienia ciężkie jutubowe embedy na miniaturki z tytułem, które przekierowują do wideo|&check;|
+|[Rich Stats](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/rich_stats.js)|Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum|&check;|[#6](https://github.com/KDeluxe2023/KDeluxe2023/issues/6)
+|[Fred Dumper](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/fred_dumper.js)|Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie|&cross;|[#5](https://github.com/KDeluxe2023/KDeluxe2023/issues/5), [#3](https://github.com/KDeluxe2023/KDeluxe2023/issues/3)
+|[Ban Checker](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/ban_checker.js)|Pokazuje czerwony napis na górze deski kiedy dostanie się bana|&check;|
+|[External Links](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/external_links.js)|Wszystkie linki otwierają się teraz w nowym oknie|&check;|
+|[Catalog Curb](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/catalog_curb.js)|Pozwala krawężnikować tematy z poziomu katalogu|&check;|[#26](https://github.com/KDeluxe2023/KDeluxe2023/issues/26)
+|[Jump To Post](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/prev_next.js)|Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika|&check;|
+|[UID Curb](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/uid_curb.js)|Pozwala krawężnikować poszczególnych postujących we fredach|&check;|[#20](https://github.com/KDeluxe2023/KDeluxe2023/issues/20)
+|[Password Changer](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/password_changer.js)|Zmienia hasło na losowe przy każdym załadowaniu strony|&check;|
+|[Auto Follow](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/auto_follow.js)|Automatycznie obserwuje temat, w którym napiszemy posta|&check;|[#22](https://github.com/KDeluxe2023/KDeluxe2023/issues/22)
+|[Image Preview Anti-Eyestrain](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/anti_eyestrain.js)|Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy|&check;|
+|[Smart Boards](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/smart_boards.js)|Ukrywa /noc/ kiedy nie jest dostępna, zawsze ukrywa /4/|&check;|
+|[Spoiler Revealer](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/spoiler_revealer.js)|Odkrywa spoilery|&check;|
+|[Lower Default Volume](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/lower_def_volume.js)|Obniża domyślną głośność w playerze video, przydatne w FF|&cross;|[#11](https://github.com/KDeluxe2023/KDeluxe2023/issues/11)
+|[Fix Thread WatchList OOB](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js#L109)|Przywraca listę obserwowanych fredów do lewego górnego rogu|&check;|
+|[New Keyframe Animations](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/new_keyframe_anims.js)|Dodaje różne nowe filtry, np. #robercik, #R, #deluxe|&cross;|
+|[Anti Bible](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/karachan_deluxe2023.user.js#L51)|Nie pozwala na załadowanie biblii|&check;|[działa tylko na firefox](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
+|[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|totalnie rozjebany, [#24](https://github.com/KDeluxe2023/KDeluxe2023/issues/24), [#10](https://github.com/KDeluxe2023/KDeluxe2023/issues/10)
+|[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|totalnie rozjebany, [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
+|[Dangerous Bambo](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/dangerous_bambo.js)|Dodaje biegającego murzynka (bambo) na dole ekranu|&check;|żeżuncja
 
 **Do zrobienia (kolejność według priorytetu)**
 * rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
