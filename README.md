@@ -23,8 +23,6 @@ KDeluxe jest zaprojektowany w oparciu o system tzw. modułów czyli pojedynczych
 
 Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa funkcja zostanie dodana, trzeba kliknąć przycisk zapisu ustawień jeszcze raz żeby ją aktywować, nawet jeśli dana opcja jest zaznaczona jako aktywna.
 
-![firefox_bKzkjwzFYE](https://user-images.githubusercontent.com/119752397/206005514-765ec49b-bb95-44d4-ab9b-7f7b08208280.png)
-
 **Dostępne moduły ([zaproponuj nowe](https://github.com/KDeluxe2023/KDeluxe2023/issues))**
 
 |Moduł|Opis|Stabilny|Uwagi
