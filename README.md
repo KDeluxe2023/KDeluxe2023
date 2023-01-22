@@ -62,8 +62,6 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 * ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
 * content freeze - usunięte posty są zapisywane w pamięci przeglądarki i "zamrożone" oraz widoczne z niższym opacity
 * autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
-* dodać niewidzialną spacje jako bbbutton do enhanced postform
-* sprawdzić które znaki w nowym bbcode "zalgo" są banowane automatycznie
 * usunąć czytanie linków i numerów postów z blind mode tts
 * crocodile scanner - skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje
 * standalone media player - żeby rozwiązać problem z niewidocznym suwakiem dźwięku
