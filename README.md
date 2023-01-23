@@ -27,7 +27,9 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 
 |Moduł|Opis|Stabilny|Uwagi
 |---|---|---|---|
-|[User Interface](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js)|Rysuje okienko z ustawieniami|&check;|[#27](https://github.com/KDeluxe2023/KDeluxe2023/issues/27)
+|[Update Notification](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/update_notification.js)|Informuje o dostępności nowszej wersji|&check;|Zawsze aktywny
+|[User Interface](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js)|Rysuje okienko z ustawieniami|&check;|Zawsze aktywny / [#27](https://github.com/KDeluxe2023/KDeluxe2023/issues/27)
+|[Clickable Boardname](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/clickable_boardname.js)|Pozwala odświeżyć bieżącą stronę przez kliknięcie nazwy deski/banneru|&check;|
 |[Vocaroo Embeds](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/vocaroo_embeds.js)|Zamienia linki do vocaroo w postach na osadzony player|&check;|
 |[Autoscroll](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/auto_scroll.js)|Dodaje opcje toggle do automatycznego scrollowania freda|&check;|
 |[Teoria Chaosu™ Integration](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/radio_radio.js)|Wyświetla player radioradio podczas audycji kloda|&check;|█▬█ █ ▀█▀
@@ -51,8 +53,8 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Fix Thread WatchList OOB](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js#L109)|Przywraca listę obserwowanych fredów do lewego górnego rogu|&check;|
 |[New Keyframe Animations](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/new_keyframe_anims.js)|Dodaje różne nowe filtry, np. #robercik, #R, #deluxe|&cross;|
 |[Anti Bible](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/karachan_deluxe2023.user.js#L51)|Nie pozwala na załadowanie biblii|&check;|[tylko na firefox](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
-|[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|totalnie rozjebany, [#24](https://github.com/KDeluxe2023/KDeluxe2023/issues/24), [#10](https://github.com/KDeluxe2023/KDeluxe2023/issues/10)
-|[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|totalnie rozjebany, [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
+|[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|totalnie rozjebany / [#24](https://github.com/KDeluxe2023/KDeluxe2023/issues/24), [#10](https://github.com/KDeluxe2023/KDeluxe2023/issues/10)
+|[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|totalnie rozjebany / [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
 |[Dangerous Bambo](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/dangerous_bambo.js)|Dodaje biegającego murzynka (bambo) na dole ekranu|&check;|żeżuncja
 
 **Do zrobienia (kolejność według priorytetu)**
