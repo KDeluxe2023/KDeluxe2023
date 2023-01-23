@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.8.0</a> BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.8.1</a> BETA</h1>
 <p align="center"><img src="https://user-images.githubusercontent.com/119752397/210906694-ee8dccf4-f47c-472a-877b-243a740bab76.png" alt="bobraz" width="600"/></p>
 <h3 align="center">Największe, modularne rozszerzenie do forum młodzieżowo katolickiego</h3>
 <hr/>
