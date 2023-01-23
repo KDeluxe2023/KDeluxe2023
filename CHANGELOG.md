@@ -3,7 +3,12 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
-## [0.8.0] - 15/01/22 13:38
+## [0.8.1] - 23/01/23 01:10
+
+## Zmieniono
+- moduł clickable boardname: to teraz "banner f5" i pozwala odświeżyć stronę przez kliknięcie całego banneru (obrazka lub nazwy deski), zmieniono też metodę działa z ułomnej na normalną
+
+## [0.8.0] - 15/01/23 13:38
 
 ### Dodano
 - moduł clickable boardname: pozwala odświeżyć/wrócić na zerową boarda na którym jesteś poprzez kliknięcie nagłówka z jego nazwą
