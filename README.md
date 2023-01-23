@@ -67,7 +67,6 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 * standalone media player - żeby rozwiązać problem z niewidocznym suwakiem dźwięku
 * zaimplementować mutationobserver w modułach które zmieniają treści postów (dodawanych przez pageloader i autoupdater we fredzie)
 * sekret: możliwość pisania zaszyfrowanych postów z unikalną sygnaturą na końcu (np. ==SECRET) które można odszyfrować automatycznie domyślnym, publicznym hasłem. można też nadać hasło ręcznie, wtedy w polu posta zamiast tekstu pojawi się textbox z opcją wpisania hasła do sekretu
-* system pingowania (w oparciu na odpytywanie search.php ajaxem): wpisujemy w formularzu posta pseudonim, za pomocą którego można spingować kogoś np. wpisujemy do posta @stały_słuchacz i wtedy u tego anona pojawia się [powiadomienie](https://developer.mozilla.org/en-US/docs/Web/API/Notifications_API/Using_the_Notifications_API) z [dźwiękiem](https://stackoverflow.com/a/24749629)
 * dodać obsługe reportów wysłanych z modala w konfident+, dodatkowo przenieść otiweranie zakładki konfident+ gdzieś indziej np. w róg ekranu (ikonka)
 * moduł do zmiany tytułu deski
 * moduł do powiadomień w faviconie, [inspiracja](https://pastebin.com/NazxdcsU)
