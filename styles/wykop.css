@@ -1,0 +1,590 @@
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#hideformWrapper,
+#postform {
+    order: 2;
+}
+
+.grecaptcha-badge {
+    display: none !important;
+    ;
+}
+
+div[style="text-align: center; font-size: x-small!important; padding-bottom: 4px; padding-top: 10px; color: #333;"] {
+    height: 0;
+    max-height: 0;
+    margin: 0;
+    padding: 0 !important;
+    ;
+}
+
+.deleteform {
+    position: absolute;
+    background-color: rgb(67, 131, 175);
+    right: 0px;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+div.board>div.thread {
+    grid-column-start: 2;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 3px;
+    margin-bottom: 3px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.board>h2.boardHeader {
+    grid-column-start: 2;
+}
+
+div.post.reply {
+    background-color: transparent;
+    border: none;
+    padding-left: 115px;
+    padding-bottom: 8px;
+    margin-right: 1px;
+    margin-left: 0px;
+}
+
+div.post {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+div.thread>div:nth-of-type(2)>div.reply {
+    margin-top: 0px !important;
+}
+
+div.post blockquote.postMessage {
+    max-width: unset;
+    margin-top: 2px;
+    display: contents;
+}
+
+body:not(#menu) {
+    background-color: #4383af;
+}
+
+div.sub-menu {
+    background-color: #4383af;
+    d-padding-top: 9px;
+    d-padding-bottom: 9px;
+}
+
+div.group,
+div.group-options {
+    line-height: 49px;
+}
+
+.group a,
+.group-options a {
+    color: white !important;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.postContainer.opContainer {
+    padding-left: 13px;
+    padding-top: 3px;
+    border-top: 1px solid #e5eaec;
+    border-radius: 3px 3px 0 0;
+}
+
+a.expander {
+    flex-grow: 1;
+    border-right: 1px solid #e5eaec;
+}
+
+a.expander,
+span.summary {
+    background-color: white;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 6px;
+}
+
+span.summary {
+    border-left: 1px solid #e5eaec;
+}
+
+div.postContainer {
+    background-color: white;
+    border-left: 1px solid #e5eaec;
+    border-right: 1px solid #e5eaec;
+    width: 100%;
+}
+
+div.thread>div.postContainer:last-of-type {
+    border-bottom: 1px solid #e5eaec;
+    border-radius: 0 0 3px 3px;
+}
+
+span.dateTime,
+span.postNum>a:first-of-type {
+    color: #c1c3c4 !important;
+}
+
+a.hider::before {
+    content: "[Zakop]";
+    visibility: visible;
+}
+
+a.hider {
+    visibility: hidden;
+}
+
+span.nameBlock>span:first-child:nth-last-child(3),
+span.nameBlock>span:first-child:nth-last-child(2),
+span.nameBlock>span.samefagCLabel {
+    display: none;
+}
+
+span.posteruid {
+    color: #ff5917 !important;
+    background-color: transparent !important;
+    text-shadow: none !important;
+    margin-left: 35px;
+    font-size: 13px !important;
+    font-family: Arial, liberation sans, droid sans, Tahoma, lucida sans, lucida sans unicode, lucida grande, trebuchet ms, Verdana, Helvetica, sans-serif;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+span.posteruid[title^="a"],
+span.posteruid[title^="b"] {
+    color: #b00 !important;
+}
+
+span.posteruid[title^="c"],
+span.posteruid[title^="d"],
+span.posteruid[title^="e"],
+span.posteruid[title^="f"],
+span.posteruid[title^="g"] {
+    color: #393 !important;
+}
+
+a.postOptionsBtn::before {
+    background-image: url(https://www.wykop.pl/cdn/c3397992/avatar_def,q40.png);
+    background-size: 30px 30px;
+    width: 30px;
+    height: 30px;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    left: -40px;
+    border-bottom: 2px solid white;
+    box-shadow: 0px 2px rgba(70, 171, 242, 1);
+}
+
+div.post.op>div.postInfo>a.postOptionsBtn:before {
+    background-size: 40px;
+    width: 40px;
+    height: 40px;
+    left: -50px;
+}
+
+div.postInfo {
+    background-color: transparent !important;
+    border: none !important;
+    border-bottom: 1px solid #f4f6f7 !important;
+}
+
+div.backlink hr {
+    display: none;
+}
+
+div.backlink a.quotelink {
+    color: #95a5a6 !important;
+}
+
+a.quotelink {
+    color: #3498db !important;
+}
+
+div.backlink span:first-of-type:before {
+    content: "+: ";
+}
+
+a.quotePost {
+    color: #4383af !important;
+}
+
+div.postInfo {
+    position: sticky;
+}
+
+div.post div.file {
+    display: flex;
+    flex-direction: column;
+    order: 1;
+}
+
+div.backlink {
+    order: 1;
+}
+
+span.fileText {
+    font-size: 11px;
+}
+
+a.fileThumb {
+    display: table;
+    margin-left: 0 !important;
+}
+
+span.fileText>a:first-child {
+    color: #95a5a6 !important;
+    visibility: hidden;
+    font-weight: 400;
+}
+
+span.fileText>a:first-child:before {
+    color: #95a5a6;
+    content: "źródło ";
+    visibility: visible;
+    margin-right: -19px;
+}
+
+span.fileText,
+span.fileText a {
+    color: #95a5a6 !important;
+}
+
+span.quote {
+    color: #7f8c8d !important;
+}
+
+span.quote::first-letter {
+    visibility: hidden !important;
+    display: none !important;
+}
+
+span.quote::after,
+span.quote::before {
+    content: '" ';
+    font-size: 24px !important;
+    font-style: italic;
+    vertical-align: bottom;
+    font-family: times new, Georgia, Times, serif;
+    line-height: 14px;
+}
+
+span.quote::before {
+    line-height: 0px;
+    vertical-align: bottom;
+}
+
+div.fileInfo {
+    order: 1;
+    margin-left: 0 !important;
+}
+
+div.board {
+    background-color: #ecf0f1;
+    display: grid;
+    grid-template-columns: auto 929px 340px auto;
+}
+
+div.board hr {
+    border-color: transparent;
+    margin: 1px 0px;
+}
+
+div.navLinks a {
+    color: white !important;
+}
+
+div.navLinks,
+span.absBotDisclaimer a,
+div.deleteform,
+div.pagelist {
+    color: #d9e6ef !important;
+}
+
+#postform,
+ul.rules,
+div.boardBanner,
+#hideformWrapper,
+#content {
+    background-color: #ecf0f1;
+}
+
+div.postingMode {
+    background-color: transparent;
+}
+
+ul.rules {
+    margin-top: -2px;
+    padding-bottom: 10px;
+}
+
+body>hr,
+body>br {
+    display: none;
+}
+
+div.boardBanner {
+    padding-top: 30px;
+}
+
+#hideformWrapper {
+    margin: 0;
+    padding: 5px;
+}
+
+#quote-preview {
+    background-color: white;
+    border: 1px solid #e5eaec;
+    border-radius: 3px;
+    padding: 8px;
+    min-width: 28em;
+    box-shadow: 0px 0px 5px gray;
+    padding-left: 48px;
+}
+
+div.post.reply:target {
+    padding-left: 115px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 8px;
+    background-color: transparent;
+    border: none;
+    box-shadow: -3px 0px #27ae60;
+}
+
+div.post {
+    position: relative;
+    padding-bottom: 16px;
+}
+
+div.post {
+    display: flex;
+    flex-direction: column;
+}
+
+div.board,
+#content {
+    box-shadow: 0 3px 3px 0 rgba(0, 0, 0, .2);
+}
+
+div.deleteform {
+    margin-top: 20px;
+}
+
+div.pagelist a {
+    color: white !important;
+}
+
+div.postOptions a {
+    color: white !important;
+}
+
+a,
+span.nameBlock>span.name,
+a.replylink:not(:hover) {
+    color: #ff5917 !important;
+}
+
+div.boardTitle {
+    color: #ff5917 !important;
+    padding-bottom: 8px;
+}
+
+#threads>div.thread {
+    background-color: white;
+    border: 1px solid #e5eaec;
+    border-radius: 3px;
+}
+
+div.highlightPost {
+    background-color: transparent !important;
+    box-shadow: -3px 0px rebeccapurple;
+    padding-left: 73px;
+}
+
+div.post {
+    counter-reset: foofoo 0;
+}
+
+blockquote.postMessage>div.backlink>span {
+    counter-increment: foofoo;
+}
+
+div.post>blockquote>div.backlink::after {
+    content: "+" counter(foofoo);
+    position: absolute;
+    color: #3b915f !important;
+    font-size: 15px !important;
+    right: 8px;
+    top: -1px;
+    font-weight: bold;
+}
+
+div.post>blockquote>div.backlink:empty::after {
+    content: "0";
+    color: #2c3e50 !important;
+}
+
+textarea {
+    background-color: white;
+}
+
+div.postnew {
+    box-shadow: -3px 0px #46abf2;
+    padding-left: 115px;
+    background-color: transparent !important;
+}
+
+/* ustawienia */
+
+div.postInfo {
+    background-color: transparent;
+}
+
+div.post blockquote.postMessage {
+    color: #2c3e50;
+    margin-left: 42px;
+}
+
+div.post blockquote.postMessage * {
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+div.post.op blockquote.postMessage {
+    margin-left: 52px;
+}
+
+div.post.op {
+    margin-left: 52px;
+}
+
+.modal-bg {
+    background-color: transparent;
+}
+
+.modal-nav li {
+    color: rgb(52, 73, 94);
+    font-weight: 400;
+}
+
+
+#menu .tab-content {
+    background-color: white;
+    color: rgb(52, 73, 94);
+}
+
+.modal-cont label {
+    background-color: white;
+    color: #dadadf !important
+}
+
+.ui-sortable td {
+    color: rgb(52, 73, 94);
+    background-color: white;
+    padding: 1px;
+    font-weight: bold;
+}
+
+h2 {
+    color: rgb(52, 73, 94);
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+
+}
+
+.opened h2 {
+    color: rgb(52, 73, 94);
+    background-color: white;
+
+}
+
+#menu h2 {
+    color: rgb(52, 73, 94);
+    background-color: white;
+    border-radius: 3px;
+    text-align: left;
+
+}
+
+.modal-cont {
+    position: relative;
+    box-shadow: 0px 0px 3px black;
+    background-color: rgb(255, 255, 255) !important;
+    background: rgb(255, 255, 255) !important;
+
+}
+
+.btn-wrap {
+    position: absolute;
+    margin-bottom: -1px !Important;
+    color: rgba(255, 255, 255, 0) !important;
+    background-color: rgb(255, 255, 255) !important;
+    position: relative;
+    height: 190px;
+    background-image: url("https://i.imgur.com/iN8KtJg.png");
+    background-repeat: no-repeat !important;
+    background-position: bottom;
+    background-size: 100%
+}
+
+#settingsReset {
+    position: absolute;
+    color: rgba(255, 255, 255, 0) !important;
+    background-image: url("https://i.imgur.com/FiF8olP.png");
+    background-repeat: no-repeat !important;
+    background-position: center;
+    background-color: #4b8bb7 !important;
+    margin-top: 15px;
+    width: 75%;
+    margin-top: 30px;
+    display: block;
+    padding: 6px 4 !important;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Arial;
+    font-weight: 700;
+    font-size: 14px !important;
+}
+
+#settingsSave {
+    position: absolute;
+    background-image: url("https://i.imgur.com/9ChsDCP.png");
+    background-repeat: no-repeat !important;
+    background-position: center;
+    background-color: rgb(59, 91, 152) !important;
+    color: transparent !important;
+    width: 75%;
+    margin-top: 95px;
+    display: block;
+    padding: 6px 4 !important;
+    left: 50%;
+    margin-right: -0%;
+    transform: translate(-50%, -50%);
+    margin-bottom: 5px;
+
+}
+
+.hint {
+    color: transparent !important
+}
+
+.modal-nav li {
+    background-color: #dadadf !important;
+    border-color: black !important;
+}
+
+#menu .modal-nav li {
+    border-color: #888 !important;
+}
+
+
+.opened label {
+    color: rgb(59, 91, 152) !important;
+}
