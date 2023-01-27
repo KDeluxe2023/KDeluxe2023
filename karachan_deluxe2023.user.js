@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.8.1
+// @version      0.8.2
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "f19e465ab432430fe6d040083cdc8037fb795b64";
+const g_last_commit = "76f03b6fc2c91ebbcb4677b216a77ca191a89943";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader
@@ -36,7 +36,7 @@ function load_module(module_name, t, data_pass = "") {
     }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/${module_name}.js`, a.setAttribute("data-pass", `${data_pass}`), n.parentNode.insertBefore(a, n)
 }
 
-// scripts must be prevented from loading before they actually load
+// some modules have to be executed early
 var bsePd = window.addEventListener('beforescriptexecute', e => {
     e.target.removeEventListener('beforescriptexecute', bsePd);
 
@@ -95,6 +95,7 @@ if (window.location.toString().includes("/res/"))
 console.log(`[KDeluxe] g_special_page = ${g_special_page}`);
 console.log(`[KDeluxe] g_is_in_catalog = ${g_is_in_catalog}`);
 console.log(`[KDeluxe] g_is_fred_open = ${g_is_fred_open}`);
+console.log(`[KDeluxe] mitsuba config = %o`, config)
 
 // actual script begins here
 document.addEventListener('readystatechange', event => {
@@ -140,6 +141,9 @@ document.addEventListener('readystatechange', event => {
         // proceed with the rest
         if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
             load_module("modules/enhanced_postform");
+
+        if (localStorage.o_kdeluxe_community_styles == 1)
+            load_module("modules/community_styles");
 
         if (localStorage.o_kdeluxe_clickable_boardname == 1 && !g_special_page)
             load_module("modules/clickable_boardname");
