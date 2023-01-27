@@ -69,6 +69,7 @@
         }*/
 
         add_settings_checkbox("full_compatibility", "Full (BETA) Compatibility", "Wyłącza pageloader i fastreply żeby każda funkcja w KDeluxe działała w 100%");
+        add_settings_checkbox("community_styles", "Community Styles", "Dodaje nowe style css do wyboru w opcjach mitsuby");
         add_settings_checkbox("vocaroo_embeds", "Vocaroo Embeds", "Zamienia linki do vocaroo w postach na osadzony player");
         add_settings_checkbox("clickable_boardname", "Banner F5", "Pozwala kliknąć na nazwe deski na górze strony żeby ją odświeżyć");
         add_settings_checkbox("autoscroll", "Auto Scroll", "Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony");
@@ -93,7 +94,6 @@
         add_settings_checkbox("smart_boards", "Smart Boards", "Ukrywa /noc/ kiedy nie jest dostępna");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
         add_settings_checkbox("anti_screamer", "Anti Screamer", "Obniża maksymalną głośnośc dźwięku odgrywanego przez stronę do 70dB");
-        add_settings_checkbox("dangerous_bambo", "Dangerous Bambo", "Dodaje biegającego murzynka (bambo) na dole ekranu");
         add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R, #deluxe");
         add_settings_checkbox("prev_next", "Jump To Post", "Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika");
 
