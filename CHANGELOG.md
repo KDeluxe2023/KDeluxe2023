@@ -3,6 +3,14 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
+## [0.8.2] - 27/01/23 07:50
+
+## Dodano
+- moduł community styles: dodaje nowe style css do wyboru w ustawieniach mitsuby
+- github pages do ładowania statycznych zasobów jak css
+## Zmieniono
+- moduł dangerous bambo: został wypierdolony bo dawał żeżuncje potencjalnym użytkownikom
+
 ## [0.8.1] - 23/01/23 01:10
 
 ## Zmieniono
