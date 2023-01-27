@@ -1,13 +1,22 @@
 {
-  let performance_timer = performance.now();
-  console.log(`[KDeluxe] Spoiler Revealer Loaded...`);
-  
-  $("<style type='text/css'>s { color: white!important; }</style>").appendTo("head");
-          
-  // TO-DO: implement this pseudo-code:
-  // foreach <img src="../img/spoiler.png" alt="Spoiler image" style="width: 170px">
-  // set src to parent <a> href attribute
-  // (do this via mutationobserver)
-  
-  console.log(`[KDeluxe] [⏱️] Spoiler Revealer finished in ${performance.now() - performance_timer}ms`);
+    let performance_timer = performance.now();
+    console.log(`[KDeluxe] Community Styles Loaded...`);
+
+    function add_style(name) {
+        var x = document.getElementById("stylechanger");
+        var option = document.createElement("option");
+        option.text = name;
+        option.value = name;
+        x.add(option);
+    }
+
+    add_style("Blackroach");
+    add_style("Karagen");
+    add_style("Modern Roach");
+    add_style("Orgonite");
+    add_style("Shogun");
+    add_style("Windows 95");
+    add_style("Wykop");
+
+    console.log(`[KDeluxe] [⏱️] Community Styles finished in ${performance.now() - performance_timer}ms`);
 }
