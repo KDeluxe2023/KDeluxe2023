@@ -1,6 +1,6 @@
 {
     $.ajax({
-        url: `https://raw.githubusercontent.com/KDeluxe2023/KDeluxe2023/main/version.txt`,
+        url: `https://kdeluxe2023.github.io/KDeluxe2023/version.txt`,
         async: false,
         cache: false,
         success: function(data) {
