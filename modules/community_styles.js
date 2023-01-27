@@ -2,6 +2,7 @@
     console.log(`[KDeluxe] Community Styles Loaded...`);
     let performance_timer = performance.now()
 
+    // append custom styles to engine config
     config.styles.push({
         name: "Blackroach",
         path: "https://kdeluxe2023.github.io/KDeluxe2023/styles/blackroach.css"
@@ -30,6 +31,8 @@
         name: "Wykop",
         path: "https://kdeluxe2023.github.io/KDeluxe2023/styles/wykop.css"
     });
+    
+    let combobox = document.querySelector("#stylechanger");
 
     // clear style picker
     function removeOptions(selectElement) {
@@ -39,11 +42,14 @@
         }
     }
 
-    removeOptions(document.getElementById('stylechanger'));
+    removeOptions(combobox);
 
     // repopulate it by invoking engine method
     addStylechanger();
+    
+    // manually refresh selected style
+    combobox.dispatchEvent(new Event("change"));
 
-
+    
     console.log(`[KDeluxe] [⏱️] Community styles loaded in ${performance.now() - performance_timer}ms`);
 }
