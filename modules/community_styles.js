@@ -15,7 +15,7 @@
         path: "https://kdeluxe2023.github.io/KDeluxe2023/styles/modern_roach.css"
     });
     config.styles.push({
-        name: "Orgonicki",
+        name: "Orgonite",
         path: "https://kdeluxe2023.github.io/KDeluxe2023/styles/orgonite.css"
     });
     config.styles.push({
