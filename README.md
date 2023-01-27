@@ -4,11 +4,11 @@
 <hr/>
 
 **Wymagania**
-* Firefox / Chrome / Safari (?) / Opera 
+* Firefox / Chrome / Safari / Opera 
 * Addon pozwalający ładować userjs
 
 **Instalacja**
-* Instalujesz [addon violentmonkey](https://violentmonkey.github.io/get-it/)
+* Instalujesz [addon violentmonkey](https://violentmonkey.github.io/get-it/) lub [Safari Userscripts](https://github.com/quoid/userscripts)
 * Instalujesz [userscript z repozytorium](https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js)
 
 **Bezpieczeństwo**
