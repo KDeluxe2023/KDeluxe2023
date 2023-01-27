@@ -1,0 +1,379 @@
+/* STYL (działa na tomorrow) */
+
+
+
+
+@import url(https://fonts.googleapis.com/css?family=Roboto&display=swap);
+
+body {
+    background-color: #121212 !important;
+    font-size: 13px !important;
+    color: #bababa
+}
+
+.op.post {
+    background: #121212;
+    background: -moz-linear-gradient(0deg, rgba(18, 18, 18, 1) 62%, rgba(18, 18, 18, 1) 63%, rgba(13, 13, 13, 1) 63%);
+    background: -webkit-linear-gradient(0deg, rgba(18, 18, 18, 1) 62%, rgba(18, 18, 18, 1) 63%, rgba(13, 13, 13, 1) 63%);
+    background: linear-gradient(0deg, rgba(18, 18, 18, 1) 62%, rgba(18, 18, 18, 1) 63%, rgba(13, 13, 13, 1) 63%);
+    padding: .4% !important;
+    min-width: 100% !important
+}
+
+.thread {
+    margin-left: -12px !important
+}
+
+.fileThumb {
+    margin-left: 0 !important
+}
+
+#imagePreview {
+    border: none !important
+}
+
+.reply {
+    border-radius: 0 !important;
+    border: 1px solid #000 !important;
+    background-color: #1b1b1b !important
+}
+
+.quote {
+    color: #058009 !important
+}
+
+.quotelink {
+    color: #fff !important
+}
+
+.postMessage>a {
+    color: #fff !important;
+    text-decoration: underline !important
+}
+
+.summary {
+    margin-bottom: 20px;
+    margin-left: 3rem !important
+}
+
+.summary>.replylink {
+    color: #a4a4a4 !important;
+    text-decoration: none !important
+}
+
+.expander {
+    color: #bcbcbc !important;
+    text-decoration: none !important
+}
+
+.postNum>a {
+    color: #bcbcbc !important;
+    text-decoration: none !important
+}
+
+.dateTime {
+    color: #ddd !important
+}
+
+hr {
+    height: 1px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #4f4f4f
+}
+
+.ui-draggable.ui-front.ui-corner-all.ui-widget-content.ui-widget.ui-dialog {
+    background-color: transparent !important;
+    border: none !important
+}
+
+.board-input {
+    background-color: #262626 !important;
+    color: #a4a4a4 !important;
+    border: 0;
+    box-sizing: border-box;
+    outline: 0;
+    width: 100%;
+    min-height: 40px;
+    line-height: 18px;
+    font-family: Roboto, Arial, sans-serif;
+    min-width: 310px;
+    font-size: 13px;
+    padding: 16px
+}
+
+textarea {
+    background-color: #262626 !important;
+    color: #a4a4a4 !important;
+    border: 0;
+    box-sizing: border-box;
+    outline: 0;
+    width: 100%;
+    min-height: 100px;
+    line-height: 18px;
+    font-family: Roboto, Arial, sans-serif;
+    min-width: 310px;
+    font-size: 13px;
+    padding: 16px
+}
+
+input {
+    background-color: #262626 !important;
+    color: #a4a4a4 !important;
+    border: none !important
+}
+
+.name {
+    color: #bcbcbc;
+    padding: 8px;
+    font-weight: 400 !important
+}
+
+.ui-dialog-title {
+    display: none !important
+}
+
+.ui-draggable-handle.ui-helper-clearfix.ui-corner-all.ui-widget-header.ui-dialog-titlebar {
+    height: 1vw !important
+}
+
+.backlink>hr {
+    display: none !important
+}
+
+.backlink>span>.quotelink {
+    text-decoration: none !important
+}
+
+.postInfo {
+    border-bottom: 1px solid #4f4f4f !important;
+    padding-bottom: 5px !important;
+    padding-top: 5px !important;
+    margin-left: 0 !important
+}
+
+.boardTitle {
+    position: absolute !important;
+    top: 3.6vw;
+    font-size: 15px !important;
+    margin-left: 2vw;
+    color: #bcbcbc !important;
+    font-weight: 400 !important;
+    letter-spacing: .1px !important
+}
+
+.op>.postInfo {
+    border-bottom: 0 !important
+}
+
+#tab-boardlink {
+    background-color: #0d0d0d !important;
+    text-decoration: none !important
+}
+
+.quotelink {
+    text-decoration: underline !important
+}
+
+.preview {
+    border-radius: 0 !important;
+    border: 1px solid #000 !important;
+    background-color: #1b1b1b !important
+}
+
+#body>hr:nth-of-type(1) {
+    display: none !important
+}
+
+.reply>.postMessage {
+    padding: 0 !important;
+    margin: 11px !important
+}
+
+.postOptionsBtn {
+    margin-left: 15px;
+    text-decoration: none !important
+}
+
+.replyContainer>.reply>.postInfo>.postOptionsBtn {
+    margin-left: 2px;
+    text-decoration: none !important
+}
+
+.fileText {
+    margin-left: 12px;
+    text-decoration: none !important
+}
+
+.clear>a {
+    text-decoration: none !important
+}
+
+.postInfo {
+    color: #a6b6a5 !important
+}
+
+a {
+    color: #fff !important
+}
+
+#postForm>tbody>tr:nth-of-type(7)>td:nth-of-type(2)>input {
+    background-color: #262626 !important;
+    border: 0;
+    box-sizing: border-box;
+    outline: 0;
+    width: 100%;
+    min-height: 10px;
+    max-height: 10px;
+    line-height: 18px;
+    font-family: Roboto, Arial, sans-serif;
+    min-width: 10px;
+    font-size: 13px;
+    padding: 16px
+}
+
+.postForm {
+    width: 100px !important
+}
+
+.fa-bars.fa.postOptionsBtn {
+    visibility: hidden
+}
+
+.nameBlock {
+    margin-left: 15px
+}
+
+.fa-bars.fa.postOptionsBtn::before {
+    content: "...";
+    visibility: visible !important;
+    display: block;
+    position: absolute;
+    font-size: 20px;
+    margin-top: -9px;
+    margin-left: 3.5px
+}
+
+.op .fa-bars.fa.postOptionsBtn::before {
+    content: "...";
+    visibility: visible !important;
+    display: block;
+    position: absolute;
+    font-size: 20px;
+    margin-top: -9px;
+    margin-left: 15px !important
+}
+
+.BBButton {
+    border: none;
+    background-color: transparent !important;
+    color: #fff;
+    border-radius: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 3px
+}
+
+.BBButton:hover {
+    background-color: transparent !important;
+    color: #fff;
+    border: none;
+    border-radius: 0;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 3px
+}
+
+.postForm td {
+    background-color: #262626 !important;
+    border-color: #262626 !important;
+    border-collapse: collapse
+}
+
+size table {
+    background: #262626 !important;
+    border-collapse: collapse;
+    border-spacing: 0 !important
+}
+
+.postForm {
+    border-bottom-color: #fff !important
+}
+
+#postPassword {
+    color: #fff8c5 !important
+}
+
+td {
+    font-weight: 400 !important
+}
+
+.threadStats {
+    color: #bcbcbc !important
+}
+
+#menu * a:visited {
+    color: #d6d6d6 !important;
+    font-family: Roboto, Arial, sans-serif
+}
+
+#menu * a {
+    color: #d6d6d6 !important;
+    font-family: Roboto, Arial, sans-serif
+}
+
+#postPassword {
+    background-color: #e8f0fe !important;
+    color: #000 !important
+}
+
+.postOptions {
+    z-index: 1
+}
+
+.postOptions>a:nth-of-type(1) {
+    background-color: #0d0d0d !important;
+    color: #bcbcbc !important;
+    padding: 9px
+}
+
+.postOptions>a:nth-of-type(3) {
+    background-color: #0d0d0d !important;
+    color: #bcbcbc !important;
+    padding: 9px
+}
+
+.postOptions>a:nth-of-type(5) {
+    background-color: #0d0d0d !important;
+    color: #bcbcbc !important;
+    padding: 9px
+}
+
+.postOptions>a:nth-of-type(6) {
+    background-color: #0d0d0d !important;
+    color: #bcbcbc !important;
+    padding: 9px
+}
+
+
+/* DODATKI */
+
+/*KARALUCH*/
+
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    bottom: -6px;
+    left: calc(100% - 314px);
+    right: 0;
+    background-image: url(https://i.imgur.com/eer64yv.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: right bottom;
+    background-size: auto 25%;
+    opacity: 0.9;
+    z-index: -1;
+}
