@@ -1,5 +1,12 @@
-//crocodile scanner - skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje
+//crocodile scanner
 const searchString = "tvp.info/13977779";
+
+function replaceString(websiteContent) {
+  let newContent = websiteContent.replace(searchString, '🐊');
+  return newContent;
+}
+
 const websiteContent = document.getElementsByTagName('body')[0].innerHTML;
-let newContent = websiteContent.replace(searchString, '🐊');
-document.getElementsByTagName('body')[0].innerHTML = newContent;
+let updatedContent = replaceString(websiteContent);
+
+document.getElementsByTagName('body')[0].innerHTML = updatedContent;
