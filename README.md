@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.8.2</a> BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.8.3</a> BETA</h1>
 <p align="center"><img src="https://user-images.githubusercontent.com/119752397/210906694-ee8dccf4-f47c-472a-877b-243a740bab76.png" alt="bobraz" width="600"/></p>
 <h3 align="center">Największe, modularne rozszerzenie do forum młodzieżowo katolickiego</h3>
 <hr/>
@@ -27,7 +27,7 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 
 |Moduł|Opis|Stabilny|Uwagi
 |---|---|---|---|
-|[Crocodile Scanner](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/crocodile_scanner.js)|skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje|&check;|
+|[Crocodile Scanner](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/crocodile_scanner.js)|Skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje|&check;|
 |[Update Notification](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/update_notification.js)|Informuje o dostępności nowszej wersji|&check;|Zawsze aktywny
 |[User Interface](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js)|Rysuje okienko z ustawieniami|&check;|Zawsze aktywny / [#27](https://github.com/KDeluxe2023/KDeluxe2023/issues/27)
 |[Community Styles](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/community_styles.js)|Dodaje style społeczności do wyboru w ustawieniach mitsuby|&check;|
