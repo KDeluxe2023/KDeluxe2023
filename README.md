@@ -27,6 +27,7 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 
 |Moduł|Opis|Stabilny|Uwagi
 |---|---|---|---|
+|[Crocodile Scanner](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/crocodile_scanner.js)|skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje|&check;|
 |[Update Notification](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/update_notification.js)|Informuje o dostępności nowszej wersji|&check;|Zawsze aktywny
 |[User Interface](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js)|Rysuje okienko z ustawieniami|&check;|Zawsze aktywny / [#27](https://github.com/KDeluxe2023/KDeluxe2023/issues/27)
 |[Community Styles](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/community_styles.js)|Dodaje style społeczności do wyboru w ustawieniach mitsuby|&check;|
@@ -64,7 +65,6 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 * content freeze - usunięte posty są zapisywane w pamięci przeglądarki i "zamrożone" oraz widoczne z niższym opacity
 * autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
 * usunąć czytanie linków i numerów postów z blind mode tts
-* crocodile scanner - skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje
 * standalone media player - żeby rozwiązać problem z niewidocznym suwakiem dźwięku
 * zaimplementować mutationobserver w modułach które zmieniają treści postów (dodawanych przez pageloader i autoupdater we fredzie)
 * sekret: możliwość pisania zaszyfrowanych postów z unikalną sygnaturą na końcu (np. ==SECRET) które można odszyfrować automatycznie domyślnym, publicznym hasłem. można też nadać hasło ręcznie, wtedy w polu posta zamiast tekstu pojawi się textbox z opcją wpisania hasła do sekretu
