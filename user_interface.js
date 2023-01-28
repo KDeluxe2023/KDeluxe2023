@@ -69,6 +69,7 @@
         }*/
 
         add_settings_checkbox("full_compatibility", "Full (BETA) Compatibility", "Wyłącza pageloader i fastreply żeby każda funkcja w KDeluxe działała w 100%");
+        add_settings_checkbox("crocodile_scanner", "Crocodile Scanner", "Wykrywa krokodyle i oznacza je ikonką");
         add_settings_checkbox("community_styles", "Community Styles", "Dodaje nowe style css do wyboru w opcjach mitsuby");
         add_settings_checkbox("vocaroo_embeds", "Vocaroo Embeds", "Zamienia linki do vocaroo w postach na osadzony player");
         add_settings_checkbox("clickable_boardname", "Banner F5", "Pozwala kliknąć na nazwe deski na górze strony żeby ją odświeżyć");

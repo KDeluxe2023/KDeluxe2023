@@ -139,6 +139,9 @@ document.addEventListener('readystatechange', event => {
     // draw settings UI
     load_module('user_interface', function() {
         // proceed with the rest
+        if (localStorage.o_kdeluxe_crocodile_scanner == 1)
+            load_module("modules/crocodile_scanner");
+        
         if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
             load_module("modules/enhanced_postform");
 
