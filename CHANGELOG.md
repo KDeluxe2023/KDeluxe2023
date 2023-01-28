@@ -3,6 +3,11 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
+## [0.8.3] - 29/01/23 00:24
+
+## Dodano
+- moduł crocodile scanner: wyszukuje linki do krokodyli i zamienia je na ikonke
+
 ## [0.8.2] - 27/01/23 07:50
 
 ## Dodano
