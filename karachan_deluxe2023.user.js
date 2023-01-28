@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.8.3
+// @version      0.8.4
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -22,7 +22,7 @@
 // ==/UserScript==
 
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "5a6ae9ec5648b869cd173e170209974346dc2d81";
+const g_last_commit = "70eb1ba866eb5b1b03a1102b2b015245258e39da";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader
@@ -102,17 +102,6 @@ document.addEventListener('readystatechange', event => {
     if (event.target.readyState !== "complete")
         return;
 
-    /*
-    if (typeof jQuery === 'undefined') {
-          // jQuery should be loaded at this point, something is wrong...
-          console.log(`jQuery absent, aborting!`);
-          return;
-      } else {
-          console.log(`[KDeluxe] jQuery v.${jQuery.fn.jquery} is present...`);
-          console.log(`[KDeluxe] Loading modules...`);
-      }*/
-    //// write code below this line ////
-
     // draw version info
     document.querySelector(".group-options").insertAdjacentHTML('beforeend', `<div style="font-size: 10px;position:absolute">[KDeluxe v${g_script_version}]</div>`);
 
@@ -139,9 +128,6 @@ document.addEventListener('readystatechange', event => {
     // draw settings UI
     load_module('user_interface', function() {
         // proceed with the rest
-        if (localStorage.o_kdeluxe_crocodile_scanner == 1)
-            load_module("modules/crocodile_scanner");
-        
         if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
             load_module("modules/enhanced_postform");
 
@@ -211,6 +197,9 @@ document.addEventListener('readystatechange', event => {
 
         if (localStorage.o_kdeluxe_vocaroo_embeds == 1 && !g_special_page)
             load_module("modules/vocaroo_embeds");
+
+        if (localStorage.o_kdeluxe_crocodile_scanner == 1)
+            load_module("modules/crocodile_scanner");
 
         if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
             load_module("modules/new_keyframe_anims");
