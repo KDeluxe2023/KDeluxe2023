@@ -1,12 +1,11 @@
-//crocodile scanner
-const searchString = "tvp.info/13977779";
+{
+    console.log(`[KDeluxe] Crocodile scanner  Loaded...`);
+    let performance_autofollow = performance.now()
 
-function replaceString(websiteContent) {
-  let newContent = websiteContent.replace(searchString, '🐊');
-  return newContent;
+    const links = document.querySelectorAll("a[href*='tvp.info/13977779']");
+    links.forEach(link => {
+        link.textContent = link.textContent.replace("tvp.info/13977779", "🐊");
+    });
+
+    console.log(`[KDeluxe] [⏱️] Crocodile scanner loaded in ${performance.now() - performance_autofollow}ms`);
 }
-
-const websiteContent = document.getElementsByTagName('body')[0].innerHTML;
-let updatedContent = replaceString(websiteContent);
-
-document.getElementsByTagName('body')[0].innerHTML = updatedContent;
