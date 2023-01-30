@@ -92,10 +92,12 @@ if (window.location.toString().includes("/res/"))
     g_is_fred_open = true;
 
 // print them for debug purposes
+/*
 console.log(`[KDeluxe] g_special_page = ${g_special_page}`);
 console.log(`[KDeluxe] g_is_in_catalog = ${g_is_in_catalog}`);
 console.log(`[KDeluxe] g_is_fred_open = ${g_is_fred_open}`);
 console.log(`[KDeluxe] mitsuba config = %o`, config)
+*/
 
 // actual script begins here
 document.addEventListener('readystatechange', event => {
