@@ -3,6 +3,12 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
+## [0.8.5] = 03/02/23 09:28
+
+## Naprawiono
+- błąd z printowaniem zmiennych do debugowania (całkowicie psuło to KDeluxe na niektórych przeglądarkach)
+- moduł filters: dodano sprawdzenie czy element istnieje przed usunięciem go (całkowicie psuło to moduł na niektórych przeglądarkach)
+
 ## [0.8.4] - 29/01/23 00:55
 
 ## Naprawiono
