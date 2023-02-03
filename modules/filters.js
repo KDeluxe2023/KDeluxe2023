@@ -6,11 +6,21 @@
     setCookie('regulamin', 'accepted', 365);
 
     // remove unwanted elements
-    document.getElementById("smok").style.display = 'none';
-    document.getElementById("jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo").style.display = 'none';
-    document.getElementById("regulamin").style.display = 'none';
-    document.getElementsByClassName('absBotDisclaimer')[0].style.display = 'none';
-    document.getElementsByClassName('grecaptcha-badge')[0].style.display = 'none';
+    let smok_stopka = document.getElementById("smok");
+    if (smok_stopka)
+        smok_stopka.style.display = 'none';
+    
+    let swinie = document.getElementById("jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo");
+    if (swinie)
+        swinie.style.display = 'none';
+    
+    let stopka_mitsuba = document.getElementsByClassName('absBotDisclaimer');
+    if (stopka_mitsuba)
+        stopka_mitsuba[0].style.display = 'none';
+    
+    let stopka_kapcza = document.getElementsByClassName('grecaptcha-badge');
+    if (stopka_kapcza)
+        stopka_kapcza[0].style.display = 'none';
 
     // remove invisible iframes
     const iframes = document.querySelectorAll('iframe');
