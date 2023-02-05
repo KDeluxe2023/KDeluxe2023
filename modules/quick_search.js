@@ -13,7 +13,7 @@
     aTag.addEventListener('click', function(event) {
         event.preventDefault();
         const input = prompt('Enter your search query');
-        if (input && input >= 4) {
+        if (input && input.length >= 4) {
             const form = document.createElement('form');
             form.method = 'post';
             form.action = 'https://karachan.org/search.php';
