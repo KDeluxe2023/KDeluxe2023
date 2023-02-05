@@ -41,7 +41,7 @@
 
         if (width < 5 || height < 5) {
             item.parentNode.removeChild(item);
-            rcount++;
+            console.log("[KDeluxe] Removed invisible iframe");
         }
     });
 
