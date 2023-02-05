@@ -25,7 +25,7 @@
             searchInput.value = input;
 
             form.appendChild(searchInput);
-            document.body.appendChild(form); // Add the form to the DOM
+            document.body.appendChild(form);
 
             try {
                 form.submit();
