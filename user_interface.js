@@ -80,7 +80,6 @@
         add_settings_checkbox("crocodile_scanner", "Crocodile Scanner", "Wykrywa krokodyle i oznacza je ikonką");
         add_settings_checkbox("quick_search", "Quick Search", "Dodaje ikonke szybkiego wyszukiwania na pasku menu, w prawym górnym rogu");
         add_settings_checkbox("uid_curb", "UID Curb", "Pozwala krawężnikować poszczególnych anonów we fredach");
-        //add_settings_checkbox("smart_curb", "Smart Curb", "Automatycznie krawężnikuje posty określone automatycznie jako spam", true);
         add_settings_checkbox("better_embed", "Better Embeds", "Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu");
         add_settings_checkbox("radioradio_player", "Teoria Chaosu™ Integration", "Wyświetla player radioradio podczas audycji claude'a");
         add_settings_checkbox("ban_checker", "Ban Checker", "Wyświetla status bana");
@@ -96,7 +95,7 @@
         add_settings_checkbox("smart_boards", "Smart Boards", "Ukrywa /noc/ kiedy nie jest dostępna");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
         add_settings_checkbox("anti_screamer", "Anti Screamer", "Obniża maksymalną głośnośc dźwięku odgrywanego przez stronę do 70dB");
-        add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R, #deluxe");
+        //add_settings_checkbox("new_keyframes", "New Keyframe Animations", "Dodaje różne nowe filtry, np. #robercik, #R, #deluxe");
         add_settings_checkbox("prev_next", "Jump To Post", "Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika");
 
         // TO-DO: fix those below
