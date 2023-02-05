@@ -176,11 +176,8 @@ document.addEventListener('readystatechange', event => {
         if (localStorage.o_kdeluxe_anti_screamer == 1 && !g_special_page)
             load_module("modules/lower_def_volume");
 
-        if (localStorage.o_kdeluxe_dangerous_bambo == 1)
-            load_module("modules/dangerous_bambo");
-
-        if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page)
-            load_module("modules/blind_mode_tts");
+        //if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page)
+        //    load_module("modules/blind_mode_tts");
 
         if (localStorage.o_kdeluxe_smart_boards == 1)
             load_module("modules/smart_boards");
@@ -206,7 +203,7 @@ document.addEventListener('readystatechange', event => {
         if (localStorage.o_kdeluxe_crocodile_scanner == 1)
             load_module("modules/crocodile_scanner");
 
-        if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
-            load_module("modules/new_keyframe_anims");
+        //if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
+        //    load_module("modules/new_keyframe_anims");
     });
 });
