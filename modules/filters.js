@@ -1,26 +1,27 @@
 {
     console.log(`[KDeluxe] Heuristic Filters Initiated...`);
-    let performance_timer = performance.now()
+    let performance_timer = performance.now();
 
     // accept TOS
-    setCookie('regulamin', 'accepted', 365);
+    document.cookie = 'regulamin=accepted; expires=Sun, 1 Jan 2030 00:00:00 UTC; path=/';
 
-    // remove unwanted elements
-    let smok_stopka = document.getElementById("smok");
-    if (smok_stopka)
-        smok_stopka.style.display = 'none';
-    
-    let swinie = document.getElementById("jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo");
-    if (swinie)
-        swinie.style.display = 'none';
-    
-    let stopka_mitsuba = document.getElementsByClassName('absBotDisclaimer');
-    if (stopka_mitsuba)
-        stopka_mitsuba[0].style.display = 'none';
-    
-    let stopka_kapcza = document.getElementsByClassName('grecaptcha-badge');
-    if (stopka_kapcza)
-        stopka_kapcza[0].style.display = 'none';
+    // hide unwanted elements
+    function addStyle(innerHTML) {
+        document.head.appendChild(
+            Object.assign(document.createElement('style'), {
+                type: 'text/css',
+                innerHTML: innerHTML
+            })
+        );
+    }
+    // wszechstronny miszcz
+    addStyle('#smok { display: none !important; }');
+    // świnie
+    addStyle('#jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo { display: none !important; }');
+    // stopka mitsubowska
+    addStyle('.absBotDisclaimer { display: none !important; }');
+    // kapcza w stopce
+    addStyle('.grecaptcha-badge { display: none !important; }');
 
     // remove invisible iframes
     const iframes = document.querySelectorAll('iframe');
@@ -45,6 +46,7 @@
     });
 
     // Anti: Malicious CSS
+    /*
     const style = document.createElement('style');
     style.innerHTML = ".anti_css { transform: rotate(0deg) !important; }";
     document.head.appendChild(style);
@@ -57,7 +59,7 @@
                 element.classList.add('anti_css');
             });
         }
-    });
+    });*/
 
     // Anti-wirówka
     localStorage.xD = 'xD';
