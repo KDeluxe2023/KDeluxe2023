@@ -58,7 +58,6 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Anti Bible](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/karachan_deluxe2023.user.js#L51)|Nie pozwala na załadowanie biblii|&check;|[tylko na firefox](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
 |[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|totalnie rozjebany / [#24](https://github.com/KDeluxe2023/KDeluxe2023/issues/24), [#10](https://github.com/KDeluxe2023/KDeluxe2023/issues/10)
 |[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|totalnie rozjebany / [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
-|[Dangerous Bambo](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/dangerous_bambo.js)|Dodaje biegającego murzynka (bambo) na dole ekranu|&check;|żeżuncja
 
 **Do zrobienia (kolejność według priorytetu)**
 * rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
