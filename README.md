@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.8.5</a> BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.8.6</a> BETA</h1>
 <p align="center"><img src="https://user-images.githubusercontent.com/119752397/210906694-ee8dccf4-f47c-472a-877b-243a740bab76.png" alt="bobraz" width="600"/></p>
 <h3 align="center">Największe, modularne rozszerzenie do forum młodzieżowo katolickiego</h3>
 <hr/>
@@ -27,11 +27,12 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 
 |Moduł|Opis|Stabilny|Uwagi
 |---|---|---|---|
-|[Crocodile Scanner](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/crocodile_scanner.js)|Skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje|&check;|
 |[Update Notification](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/update_notification.js)|Informuje o dostępności nowszej wersji|&check;|Zawsze aktywny
 |[User Interface](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js)|Rysuje okienko z ustawieniami|&check;|Zawsze aktywny / [#27](https://github.com/KDeluxe2023/KDeluxe2023/issues/27)
 |[Community Styles](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/community_styles.js)|Dodaje style społeczności do wyboru w ustawieniach mitsuby|&check;|
+|[Quick Search](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/quick_search.js)|Dodaje ikonke szybkiego wyszukiwania na pasku menu, w prawym górnym rogu|&check;|
 |[Banner F5](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/clickable_boardname.js)|Pozwala odświeżyć bieżącą stronę przez kliknięcie w banner deski|&check;|
+|[Crocodile Scanner](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/crocodile_scanner.js)|Skanuje linki do portali informacyjnych w postach i zamienia je na ikonke krokodyla jeśli go wykryje|&check;|
 |[Vocaroo Embeds](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/vocaroo_embeds.js)|Zamienia linki do vocaroo w postach na osadzony player|&check;|
 |[Autoscroll](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/auto_scroll.js)|Dodaje opcje toggle do automatycznego scrollowania freda|&check;|
 |[Teoria Chaosu™ Integration](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/radio_radio.js)|Wyświetla player radioradio podczas audycji kloda|&check;|█▬█ █ ▀█▀
