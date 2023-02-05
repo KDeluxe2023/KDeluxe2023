@@ -3,7 +3,20 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
-## [0.8.5] = 03/02/23 09:28
+## [0.8.6] - 05/02/23 16:53
+
+## Zmieniono
+- moduł filters: zmieniono metodę ukrywania elementów na lepszą i poprawiono akceptowania regulaminów
+- moduł uid_curb: przepisano cały moduł, jest bardziej czytelny i zwięzły
+
+## Naprawiono
+- moduł uid_curb: nie pokazuje się już na postach systemowych [#20](https://github.com/KDeluxe2023/KDeluxe2023/issues/20)
+- moduł spoiler_reaveler: omyłkowo usunięte w ostatniej aktualizacji, teraz przywrócony
+
+## Dodano
+- moduł quick_search: pozwala na szybki dostęp do wyszukiwarki mitsubowskiej
+
+## [0.8.5] - 03/02/23 09:28
 
 ## Naprawiono
 - błąd z printowaniem zmiennych do debugowania (całkowicie psuło to KDeluxe na niektórych przeglądarkach)
