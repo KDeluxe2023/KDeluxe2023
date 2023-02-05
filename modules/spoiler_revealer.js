@@ -2,7 +2,12 @@
     let performance_timer = performance.now();
     console.log(`[KDeluxe] Spoiler Revealer Loaded...`);
 
-    $("<style type='text/css'>s { color: white!important; }</style>").appendTo("head");
+    document.head.appendChild(
+        Object.assign(document.createElement('style'), {
+            type: 'text/css',
+            innerHTML: 's { color: white !important; }'
+        })
+    );
 
     // TO-DO: implement this pseudo-code:
     // foreach <img src="../img/spoiler.png" alt="Spoiler image" style="width: 170px">
