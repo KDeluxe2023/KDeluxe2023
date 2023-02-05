@@ -69,7 +69,6 @@
         }*/
 
         add_settings_checkbox("full_compatibility", "Full (BETA) Compatibility", "Wyłącza pageloader i fastreply żeby każda funkcja w KDeluxe działała w 100%");
-        add_settings_checkbox("crocodile_scanner", "Crocodile Scanner", "Wykrywa krokodyle i oznacza je ikonką");
         add_settings_checkbox("community_styles", "Community Styles", "Dodaje nowe style css do wyboru w opcjach mitsuby");
         add_settings_checkbox("vocaroo_embeds", "Vocaroo Embeds", "Zamienia linki do vocaroo w postach na osadzony player");
         add_settings_checkbox("clickable_boardname", "Banner F5", "Pozwala kliknąć na nazwe deski na górze strony żeby ją odświeżyć");
@@ -78,6 +77,8 @@
         add_settings_checkbox("advanced_filters", "Heuristic Filters", "Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne");
         add_settings_checkbox("anti_bible", "Anti Bible", "Nie pozwala na załadowanie biblii (htmlshiv.js)", true);
         add_settings_checkbox("catalog_curb", "Catalog Curb", "Pozwala krawężnikować z poziomu katalogu");
+        add_settings_checkbox("crocodile_scanner", "Crocodile Scanner", "Wykrywa krokodyle i oznacza je ikonką");
+        add_settings_checkbox("quick_search", "Quick Search", "Dodaje ikonke szybkiego wyszukiwania na pasku menu, w prawym górnym rogu");
         add_settings_checkbox("uid_curb", "UID Curb", "Pozwala krawężnikować poszczególnych anonów we fredach");
         //add_settings_checkbox("smart_curb", "Smart Curb", "Automatycznie krawężnikuje posty określone automatycznie jako spam", true);
         add_settings_checkbox("better_embed", "Better Embeds", "Zamienia ciężkie embedy na miniaturki z tytułem, które przekierowują do filmu");
