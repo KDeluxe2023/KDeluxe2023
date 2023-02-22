@@ -14,13 +14,16 @@
                         const doc = document.implementation.createHTMLDocument();
                         doc.write(text);
                         const posts = document.getElementsByTagName("blockquote");
-                        for (const post of posts)
-                            post.innerHTML = doc.getElementById(post.id).innerHTML;
-
+                        for (const post of posts) {
+                            let non_js_text = doc.getElementById(post.id).innerHTML;
+                            if (non_js_text !== null)
+                                post.innerHTML = non_js_text;
+                        }
+                        
                         console.log(`[KDeluxe] [⏱️] Anti-bible loaded in ${performance.now() - performance_timer}ms`);
                     }
                 } catch (err) {
-                    console.error(`[KDeluxe] ${err}`);
+                    console.error(`[KDeluxe] Anti-bible error: ${err}`);
                 }
             }());
         } else {
