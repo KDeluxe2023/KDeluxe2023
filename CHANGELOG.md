@@ -3,6 +3,20 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
+## [8.8.8] - 22/02/23 09:12
+
+## Zmieniono
+- tryb full_compability: został usunięty bo nie jest już prawie do niczego potrzebny
+- moduł anti_bible: działa teraz na wszystkich przeglądarkach (inna metoda)
+- moduł filters: zmieniono kolejność uruchamiania filtrów i dodano ukrywanie "ankiety anonów"
+- moduł radioradio: nie wyświetla się już we wtorki (ty zakało kurierska)
+
+## Dodano
+- moduł enhanced_postform: otrzymał sub-opcje pozwalającą odbindować przechwytywanie klawiszy
+- moduł enhanced_postform: zmienia nazwe checkboxa "Ukryj obrazek" na "Spoiler"
+- moduł spoiler_revealer: odkrywa teraz też obrazki pod spoilerem
+- moduł uid_curb: działa natychmiastowo na posty dodane przez auto-update, usuwa zamiast ukrywać
+
 ## [0.8.6] - 05/02/23 16:53
 
 ## Zmieniono
