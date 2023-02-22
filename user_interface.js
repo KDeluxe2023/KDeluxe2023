@@ -68,14 +68,13 @@
             }
         }*/
 
-        add_settings_checkbox("full_compatibility", "Full (BETA) Compatibility", "Wyłącza pageloader i fastreply żeby każda funkcja w KDeluxe działała w 100%");
         add_settings_checkbox("community_styles", "Community Styles", "Dodaje nowe style css do wyboru w opcjach mitsuby");
         add_settings_checkbox("vocaroo_embeds", "Vocaroo Embeds", "Zamienia linki do vocaroo w postach na osadzony player");
         add_settings_checkbox("clickable_boardname", "Banner F5", "Pozwala kliknąć na nazwe deski na górze strony żeby ją odświeżyć");
         add_settings_checkbox("autoscroll", "Auto Scroll", "Dodaje opcje automatycznego przewijania freda, którą można w(y)łączyć na samym dole strony");
         add_settings_checkbox("spoiler_revealer", "Spoiler Revealer", "Odkrywa wszystkie spoilery więc nie trzeba na nie najeżdżać");
         add_settings_checkbox("advanced_filters", "Heuristic Filters", "Filtry ala ublock ułatwiające korzystanie z czana, w tym heurystyczne");
-        add_settings_checkbox("anti_bible", "Anti Bible", "Nie pozwala na załadowanie biblii (htmlshiv.js)", true);
+        add_settings_checkbox("anti_bible", "Anti Bible", "Omija zabezpieczenie typu biblia (htmlshiv.js)", true);
         add_settings_checkbox("catalog_curb", "Catalog Curb", "Pozwala krawężnikować z poziomu katalogu");
         add_settings_checkbox("crocodile_scanner", "Crocodile Scanner", "Wykrywa krokodyle i oznacza je ikonką");
         add_settings_checkbox("quick_search", "Quick Search", "Dodaje ikonke szybkiego wyszukiwania na pasku menu, w prawym górnym rogu");
@@ -84,7 +83,6 @@
         add_settings_checkbox("radioradio_player", "Teoria Chaosu™ Integration", "Wyświetla player radioradio podczas audycji claude'a");
         add_settings_checkbox("ban_checker", "Ban Checker", "Wyświetla status bana");
         add_settings_checkbox("password_changer", "Password Changer", "Zmienia hasło na losowe przy każdym załadowaniu strony");
-        add_settings_checkbox("fred_dumper", "Fred Dumper", "Pozwala zapisać obecnie otwarty fred jako jpg, dodatkowo pozwala pobrać też obrazki osobno w zipie");
         add_settings_checkbox("auto_follow", "Auto Follow", "Automatycznie obserwuje temat, w którym napiszemy posta (obecnie nie działa z fast reply)");
         add_settings_checkbox("rich_stats", "Rich Statistics", "Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum");
         add_settings_checkbox("external_links", "External Links", "Wszystkie linki otwierają się teraz w nowym oknie");
@@ -92,6 +90,7 @@
         add_settings_checkbox("enhanced_postform", "Enhanced PostForm", "Ulepszony formularz postowania, z listą wordfiltrów i nie tylko");
         add_settings_checkbox("enhanced_postform_popout", "Enhanced PostForm Popout", "Dodaje opcje zastępującą fastreply do enhanced postform", true);
         add_settings_checkbox("enhanced_postform_zalgo", "Enhanced PostForm Zalgo", "Dodaje opcje pisania tekstem zalgo do enhanced postform", true);
+        add_settings_checkbox("enhanced_postform_unbind", "Enhanced PostForm Unbind Keycapture", "Wyłącza skróty klawiszowe w formularzu postowania co umożliwia używanie znaków diaktrycznych na niektórych urządzeniach", true);
         add_settings_checkbox("smart_boards", "Smart Boards", "Ukrywa /noc/ kiedy nie jest dostępna");
         add_settings_checkbox("image_preview_anti_eyestrain", "Image Preview Anti-Eyestrain", "Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy");
         add_settings_checkbox("anti_screamer", "Anti Screamer", "Obniża maksymalną głośnośc dźwięku odgrywanego przez stronę do 70dB");
@@ -99,6 +98,7 @@
         add_settings_checkbox("prev_next", "Jump To Post", "Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika");
 
         // TO-DO: fix those below
+        //add_settings_checkbox("fred_dumper", "Fred Dumper", "Pozwala zapisać obecnie otwarty fred jako jpg, dodatkowo pozwala pobrać też obrazki osobno w zipie");
         //add_settings_checkbox("blind_mode_tts", "Blind Mode (TTS)", "Dodaje obok postów opcję text to speech czyli czytania na głos");
         //add_settings_checkbox("threadwatcher_sort", "ThreadWatcher Sort", "Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku");
 
