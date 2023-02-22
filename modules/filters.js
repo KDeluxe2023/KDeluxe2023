@@ -4,7 +4,7 @@
 
     // Anti-wirówka
     localStorage.xD = 'xD';
-    
+
     // hide unwanted elements
     function addStyle(innerHTML) {
         document.head.appendChild(
@@ -23,9 +23,21 @@
     addStyle('.absBotDisclaimer { display: none !important; }');
     // kapcza w stopce
     addStyle('.grecaptcha-badge { display: none !important; }');
-    
+
     // accept TOS
     document.cookie = 'regulamin=accepted; expires=Sun, 1 Jan 2030 00:00:00 UTC; path=/';
+
+    // hide old admin message
+    const globalMessageElem = document.getElementById('globalMessage');
+    const shouldHide = globalMessageElem.textContent.includes('Wyniki Ankiety');
+
+    if (shouldHide) {
+        // get neighbor <hr> element
+        const prevHr = globalMessageElem.previousElementSibling;
+
+        globalMessageElem.style.display = 'none'; // hide the globalMessage element
+        prevHr.style.display = 'none'; // hide the previous <hr> element
+    }
 
     // remove invisible iframes
     const iframes = document.querySelectorAll('iframe');
