@@ -19,7 +19,7 @@
         let czaksy = document.getElementById('counter').innerText;
         // calculate actual online
         let online = Math.round(czaksy / 2.5) + 1;
-        // display that all
+        // display all that
         const counterElement = document.getElementById('counter');
         const parentElement = counterElement.parentNode.parentNode;
 
@@ -92,7 +92,7 @@
             });
         }
 
-        // saga checkbox
+        // create saga checkbox
         const sageCheck = `<label><input id="sagecheck" type="checkbox" name="sage" value="0">Sagunia</label>`;
         $("#nofile").parent().parent().append(sageCheck);
 
@@ -103,6 +103,11 @@
                 $(`#postForm input[name="email"]`).val("");
             }
         });
+        
+        // rename label for spoiler image
+        const labelElem = document.querySelector('label:has(#spoiler)');
+        const textNode = labelElem.childNodes[1];
+        textNode.textContent = 'Spoiler'; 
 
         // wordfilter helper
         const wordfilters = [
