@@ -5,7 +5,6 @@
     let board = window.location.toString().split("/")[3];
     let posts = document.querySelectorAll(".thread");
 
-    // TO-DO: dont store curbed threads individually, use json with curb time and id+board instead
     function getHideValue(el) {
         let threadId = el.getAttribute("id").slice(7);
         return `h_${board}_${threadId}`;
