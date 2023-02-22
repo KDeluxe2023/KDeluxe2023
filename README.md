@@ -60,6 +60,7 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|totalnie rozjebany / [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
 
 **Do zrobienia (kolejność według priorytetu)**
+* przenieść cały inline CSS ładowany przez js, do osobnego pliku CSS
 * rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
 * ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
 * content freeze - usunięte posty są zapisywane w pamięci przeglądarki i "zamrożone" oraz widoczne z niższym opacity
