@@ -44,9 +44,9 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Fred Dumper](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/fred_dumper.js)|Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie|&cross;|[#5](https://github.com/KDeluxe2023/KDeluxe2023/issues/5), [#3](https://github.com/KDeluxe2023/KDeluxe2023/issues/3)
 |[Ban Checker](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/ban_checker.js)|Pokazuje czerwony napis na górze deski kiedy dostanie się bana|&check;|
 |[External Links](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/external_links.js)|Wszystkie linki otwierają się teraz w nowym oknie|&check;|
-|[Catalog Curb](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/catalog_curb.js)|Pozwala krawężnikować tematy z poziomu katalogu|&check;|[#26](https://github.com/KDeluxe2023/KDeluxe2023/issues/26)
+|[UID Curb](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/uid_curb.js)|Pozwala krawężnikować poszczególnych postujących we fredach|&check;|
+|[Catalog Curb](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/catalog_curb.js)|Pozwala krawężnikować tematy z poziomu katalogu|&check;|
 |[Jump To Post](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/prev_next.js)|Pozwala skakać do następnego/poprzedniego postu wybranego użytkownika|&check;|
-|[UID Curb](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/uid_curb.js)|Pozwala krawężnikować poszczególnych postujących we fredach|&check;|[#20](https://github.com/KDeluxe2023/KDeluxe2023/issues/20)
 |[Password Changer](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/password_changer.js)|Zmienia hasło na losowe przy każdym załadowaniu strony|&check;|
 |[Auto Follow](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/auto_follow.js)|Automatycznie obserwuje temat, w którym napiszemy posta|&check;|[#22](https://github.com/KDeluxe2023/KDeluxe2023/issues/22)
 |[Image Preview Anti-Eyestrain](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/anti_eyestrain.js)|Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy|&check;|
@@ -60,16 +60,13 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|totalnie rozjebany / [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
 
 **Do zrobienia (kolejność według priorytetu)**
-* przenieść cały inline CSS ładowany przez js, do osobnego pliku CSS
 * rozwiązać i usunąć wszystkie [tagi w kodzie](https://github.com/KDeluxe2023/KDeluxe2023/search?q=TO-DO%3A)
-* ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
+* przenieść cały inline CSS ładowany przez js, do osobnego pliku CSS
 * content freeze - usunięte posty są zapisywane w pamięci przeglądarki i "zamrożone" oraz widoczne z niższym opacity
-* autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
-* usunąć czytanie linków i numerów postów z blind mode tts
-* standalone media player - żeby rozwiązać problem z niewidocznym suwakiem dźwięku
-* zaimplementować mutationobserver w modułach które zmieniają treści postów (dodawanych przez pageloader i autoupdater we fredzie)
 * sekret: możliwość pisania zaszyfrowanych postów z unikalną sygnaturą na końcu (np. ==SECRET) które można odszyfrować automatycznie domyślnym, publicznym hasłem. można też nadać hasło ręcznie, wtedy w polu posta zamiast tekstu pojawi się textbox z opcją wpisania hasła do sekretu
-* dodać obsługe reportów wysłanych z modala w konfident+, dodatkowo przenieść otiweranie zakładki konfident+ gdzieś indziej np. w róg ekranu (ikonka)
 * moduł do zmiany tytułu deski
+* ukrywanie postow <x odpowiedzi, x do wyboru samemu (slider)
+* autokrawężnik z warunkiem, np. (substring)nazwa obrazka, (substring)treść głównego posta
+* dodać obsługe reportów wysłanych z modala w konfident+, dodatkowo przenieść otwieranie zakładki konfident+ gdzieś indziej np. w róg ekranu (ikonka)
 * moduł do powiadomień w faviconie, [inspiracja](https://pastebin.com/NazxdcsU)
 * auto-[trójsiła](https://software.hixie.ch/utilities/cgi/unicode-decoder/character-identifier?characters=%C2%A0%C2%A0%E2%96%B2+)
