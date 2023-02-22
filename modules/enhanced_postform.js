@@ -178,6 +178,10 @@
             "transform": "scale(1.2)"
         });
 
+        // unbind keycapture events
+        if (localStorage.o_kdeluxe_enhanced_postform_unbind == 1)
+            $("body").unbind('keydown');
+        
         // add popout button to postform
         if (localStorage.o_kdeluxe_enhanced_postform_popout == 1) {
             // get the post form, button and choina elements
