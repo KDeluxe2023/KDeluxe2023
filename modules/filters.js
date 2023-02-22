@@ -2,9 +2,9 @@
     console.log(`[KDeluxe] Heuristic Filters Initiated...`);
     let performance_timer = performance.now();
 
-    // accept TOS
-    document.cookie = 'regulamin=accepted; expires=Sun, 1 Jan 2030 00:00:00 UTC; path=/';
-
+    // Anti-wirówka
+    localStorage.xD = 'xD';
+    
     // hide unwanted elements
     function addStyle(innerHTML) {
         document.head.appendChild(
@@ -14,14 +14,18 @@
             })
         );
     }
-    // wszechstronny miszcz
-    addStyle('#smok { display: none !important; }');
+
     // świnie
     addStyle('#jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo { display: none !important; }');
+    // wszechstronny miszcz
+    addStyle('#smok { display: none !important; }');
     // stopka mitsubowska
     addStyle('.absBotDisclaimer { display: none !important; }');
     // kapcza w stopce
     addStyle('.grecaptcha-badge { display: none !important; }');
+    
+    // accept TOS
+    document.cookie = 'regulamin=accepted; expires=Sun, 1 Jan 2030 00:00:00 UTC; path=/';
 
     // remove invisible iframes
     const iframes = document.querySelectorAll('iframe');
@@ -44,25 +48,6 @@
             console.log("[KDeluxe] Removed invisible iframe");
         }
     });
-
-    // Anti: Malicious CSS
-    /*
-    const style = document.createElement('style');
-    style.innerHTML = ".anti_css { transform: rotate(0deg) !important; }";
-    document.head.appendChild(style);
-
-    const revert_ele = [".board"];
-    revert_ele.forEach(function(item) {
-        const elements = document.querySelectorAll(item);
-        if (elements.length > 0) {
-            Array.prototype.forEach.call(elements, function(element) {
-                element.classList.add('anti_css');
-            });
-        }
-    });*/
-
-    // Anti-wirówka
-    localStorage.xD = 'xD';
 
     console.log(`[KDeluxe] [⏱️] Heuristic Filters loaded in ${performance.now() - performance_timer}ms`);
 }
