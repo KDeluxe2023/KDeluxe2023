@@ -16,11 +16,11 @@
         if ((currentDay == 4 && currentHour >= 22) || (currentDay == 5 && currentHour <= 5))
             return true; // info tydzień
 
-        if ((currentDay == 5 && currentHour >= 23 && currentMinutes >= 30) || (currentDay == 6 && currentHour <= 6))
+        if ((currentDay == 5 && currentHour >= 23 && currentMinutes >= 55) || (currentDay == 6 && currentHour <= 5))
             return true; // teoria chaosu
 
-        if (currentDay == 2 && currentHour >= 21)
-            return true; // radioaktywna
+        //if (currentDay == 2 && currentHour >= 21)
+        //   return true; // radioaktywna
 
         return false;
     }
