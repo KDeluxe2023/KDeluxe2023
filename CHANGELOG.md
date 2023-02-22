@@ -10,6 +10,7 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 - moduł anti_bible: działa teraz na wszystkich przeglądarkach (inna metoda)
 - moduł filters: zmieniono kolejność uruchamiania filtrów i dodano ukrywanie "ankiety anonów"
 - moduł radioradio: nie wyświetla się już we wtorki (ty zakało kurierska)
+- moduł clickable_boardname: przekierowuje teraz na zerową przeglądanej deski zamiast odświeżać strone
 
 ## Dodano
 - moduł enhanced_postform: otrzymał sub-opcje pozwalającą odbindować przechwytywanie klawiszy
