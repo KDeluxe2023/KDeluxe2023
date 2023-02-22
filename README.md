@@ -1,4 +1,4 @@
-<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.8.6</a> BETA</h1>
+<h1 align="center">Karachan Deluxe 2023 <a href='https://github.com/KDeluxe2023/KDeluxe2023/blob/main/CHANGELOG.md'>v0.8.8</a> BETA</h1>
 <p align="center"><img src="https://user-images.githubusercontent.com/119752397/210906694-ee8dccf4-f47c-472a-877b-243a740bab76.png" alt="bobraz" width="600"/></p>
 <h3 align="center">Największe, modularne rozszerzenie do forum młodzieżowo katolickiego</h3>
 <hr/>
@@ -51,11 +51,11 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Auto Follow](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/auto_follow.js)|Automatycznie obserwuje temat, w którym napiszemy posta|&check;|[#22](https://github.com/KDeluxe2023/KDeluxe2023/issues/22)
 |[Image Preview Anti-Eyestrain](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/anti_eyestrain.js)|Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy|&check;|
 |[Smart Boards](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/smart_boards.js)|Ukrywa /noc/ kiedy nie jest dostępna, zawsze ukrywa /4/|&check;|
-|[Spoiler Revealer](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/spoiler_revealer.js)|Odkrywa spoilery|&check;|
+|[Spoiler Revealer](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/spoiler_revealer.js)|Odkrywa spoilery tekstowe i obrazkowe|&check;|
 |[Lower Default Volume](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/lower_def_volume.js)|Obniża domyślną głośność w playerze video, przydatne w FF|&cross;|[#11](https://github.com/KDeluxe2023/KDeluxe2023/issues/11)
 |[Fix Thread WatchList OOB](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js#L109)|Przywraca listę obserwowanych fredów do lewego górnego rogu|&check;|
 |[New Keyframe Animations](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/new_keyframe_anims.js)|Dodaje różne nowe filtry, np. #robercik, #R, #deluxe|&cross;|
-|[Anti Bible](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/karachan_deluxe2023.user.js#L51)|Nie pozwala na załadowanie biblii|&check;|[tylko na firefox](https://developer.mozilla.org/en-US/docs/Web/API/Element/beforescriptexecute_event)
+|[Anti Bible](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/anti_bible.js)|Niweluje efekty bilbii przez requesty w tle|&check;|
 |[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|totalnie rozjebany / [#24](https://github.com/KDeluxe2023/KDeluxe2023/issues/24), [#10](https://github.com/KDeluxe2023/KDeluxe2023/issues/10)
 |[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|totalnie rozjebany / [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
 
