@@ -13,7 +13,7 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 - moduł clickable_boardname: przekierowuje teraz na zerową przeglądanej deski zamiast odświeżać strone
 
 ## Dodano
-- moduł enhanced_postform: otrzymał sub-opcje pozwalającą odbindować przechwytywanie klawiszy
+- moduł enhanced_postform: otrzymał sub-opcje pozwalającą odbindować mitsubowski keylistener
 - moduł enhanced_postform: zmienia nazwe checkboxa "Ukryj obrazek" na "Spoiler"
 - moduł spoiler_revealer: odkrywa teraz też obrazki pod spoilerem
 - moduł uid_curb: działa natychmiastowo na posty dodane przez auto-update, usuwa zamiast ukrywać
