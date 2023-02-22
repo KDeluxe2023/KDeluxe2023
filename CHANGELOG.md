@@ -3,7 +3,7 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
-## [8.8.8] - 22/02/23 09:12
+## [0.8.8] - 22/02/23 09:12
 
 ## Zmieniono
 - tryb full_compability: został usunięty bo nie jest już prawie do niczego potrzebny
