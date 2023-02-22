@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.8.7
+// @version      0.8.8
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -16,54 +16,21 @@
 // @run-at       document-start
 // @license      MIT
 // @grant        none
-// @require      https://raw.githubusercontent.com/KDeluxe2023/KDeluxe2023/main/dependencies/html2canvas.min.js
-// @require      https://raw.githubusercontent.com/KDeluxe2023/KDeluxe2023/main/dependencies/jszip.min.js
-// @require      https://raw.githubusercontent.com/KDeluxe2023/KDeluxe2023/main/dependencies/FileSaver.min.js
 // ==/UserScript==
-
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "83aa72c7d9e40dd1e79458f4b553e2edb84d384b";
+const g_last_commit = "d7786048f5b455adad747c763754c75eb1d07c3d";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader
-function load_module(module_name, t, data_pass = "") {
+function load_module(module_name, callback_fn, data_pass = "") {
     var a = document.createElement("script"),
         n = document.getElementsByTagName("script")[0];
     a.async = 1, a.onload = a.onreadystatechange = function(e, n) {
-        (n || !a.readyState || /loaded|complete/.test(a.readyState)) && (a.onload = a.onreadystatechange = null, a = void 0, !n && t && setTimeout(t, 0))
+        (n || !a.readyState || /loaded|complete/.test(a.readyState)) && (a.onload = a.onreadystatechange = null, a = void 0, !n && callback_fn && setTimeout(callback_fn, 0))
     }, a.onerror = function(error) {
         alert(`KDeluxe napotkał błąd przy ładowaniu modułu: ${error.target.src}`);
     }, a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/${module_name}.js`, a.setAttribute("data-pass", `${data_pass}`), n.parentNode.insertBefore(a, n)
 }
-
-// some modules have to be executed early
-var bsePd = window.addEventListener('beforescriptexecute', e => {
-    e.target.removeEventListener('beforescriptexecute', bsePd);
-
-    const filename_from_url = function(u) {
-        return u.split('/').pop().split('#')[0].split('?')[0];
-    };
-
-    let filename = filename_from_url(e.target.src);
-    if (!filename)
-        return true;
-
-    if (localStorage.o_kdeluxe_anti_bible == 1) {
-        if (filename == "htmlshiv.js") {
-            e.preventDefault();
-            console.log(`[KDeluxe] htmlshiv.js was unloaded because Anti-Bible is active`);
-        }
-    }
-
-    if (localStorage.o_kdeluxe_better_embed == 1) {
-        if (filename == "emblite.js") {
-            e.preventDefault();
-            console.log(`[KDeluxe] emblite.js was unloaded because Better Embeds are active`);
-        }
-    }
-
-    console.log(`[KDeluxe] Browser loaded a script: ${filename}`);
-});
 
 //// globals
 // tells us if we're on a special page like search etc
@@ -91,14 +58,6 @@ for (const special_page_indicator of special_pages) {
 if (window.location.toString().includes("/res/"))
     g_is_fred_open = true;
 
-// print them for debug purposes
-/*
-console.log(`[KDeluxe] g_special_page = ${g_special_page}`);
-console.log(`[KDeluxe] g_is_in_catalog = ${g_is_in_catalog}`);
-console.log(`[KDeluxe] g_is_fred_open = ${g_is_fred_open}`);
-console.log(`[KDeluxe] mitsuba config = %o`, config)
-*/
-
 // actual script begins here
 document.addEventListener('readystatechange', event => {
     if (event.target.readyState !== "complete")
@@ -107,29 +66,21 @@ document.addEventListener('readystatechange', event => {
     // draw version info
     document.querySelector(".group-options").insertAdjacentHTML('beforeend', `<div style="font-size: 10px;position:absolute">[KDeluxe v${g_script_version}]</div>`);
 
-    // enforce full_compatibility
-    if (localStorage.o_kdeluxe_full_compatibility == 1 && !g_special_page) {
-        localStorage.o_loader = "0"
-        localStorage.o_fastreply = "0";
-        $(".expander").hide();
-        if (g_is_fred_open) {
-            localStorage.updtchbx = "";
-            $(".updateCheck").prop("checked", false);
-            $(".updateCheck").parent().hide();
-            $(".updateLink").hide();
-        }
-    }
-
     // run filters first
     if (localStorage.o_kdeluxe_advanced_filters == 1)
         load_module("modules/filters");
+    
+    if (localStorage.o_kdeluxe_anti_bible == 1 && !g_special_page)
+        load_module("modules/anti_bible");
 
     // check for update (this is only a notification)
     load_module("modules/update_notification", null, g_script_version);
 
-    // draw settings UI
+    // draw settings UI first and then proceed with the rest
     load_module('user_interface', function() {
-        // proceed with the rest
+        if (localStorage.o_kdeluxe_smart_boards == 1)
+            load_module("modules/smart_boards");
+
         if (localStorage.o_kdeluxe_enhanced_postform == 1 && !g_special_page)
             load_module("modules/enhanced_postform");
 
@@ -139,14 +90,11 @@ document.addEventListener('readystatechange', event => {
         if (localStorage.o_kdeluxe_quick_search == 1)
             load_module("modules/quick_search");
 
-         if (localStorage.o_kdeluxe_community_styles == 1)
+        if (localStorage.o_kdeluxe_community_styles == 1)
             load_module("modules/community_styles");
 
         if (localStorage.o_kdeluxe_rich_stats == 1 && !g_special_page)
             load_module("modules/rich_stats");
-
-        if (localStorage.o_kdeluxe_fred_dumper == 1 && !g_special_page && g_is_fred_open)
-            load_module("modules/fred_dumper");
 
         if (localStorage.o_kdeluxe_prev_next == 1 && !g_special_page && g_is_fred_open)
             load_module("modules/prev_next");
@@ -176,12 +124,6 @@ document.addEventListener('readystatechange', event => {
         if (localStorage.o_kdeluxe_anti_screamer == 1 && !g_special_page)
             load_module("modules/lower_def_volume");
 
-        //if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page)
-        //    load_module("modules/blind_mode_tts");
-
-        if (localStorage.o_kdeluxe_smart_boards == 1)
-            load_module("modules/smart_boards");
-
         if (localStorage.o_kdeluxe_autoscroll == 1 && !g_special_page)
             load_module("modules/auto_scroll");
 
@@ -202,6 +144,12 @@ document.addEventListener('readystatechange', event => {
 
         if (localStorage.o_kdeluxe_crocodile_scanner == 1)
             load_module("modules/crocodile_scanner");
+
+        //if (localStorage.o_kdeluxe_fred_dumper == 1 && !g_special_page && g_is_fred_open)
+        //    load_module("modules/fred_dumper");
+
+        //if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !g_special_page)
+        //    load_module("modules/blind_mode_tts");
 
         //if (localStorage.o_kdeluxe_new_keyframes == 1 && !g_special_page)
         //    load_module("modules/new_keyframe_anims");
