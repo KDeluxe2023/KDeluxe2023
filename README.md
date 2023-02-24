@@ -36,7 +36,7 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Vocaroo Embeds](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/vocaroo_embeds.js)|Zamienia linki do vocaroo w postach na osadzony player|&check;|
 |[Autoscroll](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/auto_scroll.js)|Dodaje opcje toggle do automatycznego scrollowania freda|&check;|
 |[Teoria Chaosu™ Integration](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/radio_radio.js)|Wyświetla player radioradio podczas audycji kloda|&check;|█▬█ █ ▀█▀
-|[Konfident+](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/konfident_plus.js)|Pozwala śledzić dalsze losy zgłoszonych przez siebie postów|&cross;|kopiuj-wklejka, trzeba ją przepisać
+|[Konfident+](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/konfident_plus.js)|Pozwala śledzić dalsze losy zgłoszonych przez siebie postów|&cross;|[#43](https://github.com/KDeluxe2023/KDeluxe2023/issues/43)
 |[Advanced Filters](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/filters.js)|Inteligentne filtry à la ublock ułatwiające korzystanie ze strony|&check;|
 |[Enhanced PostForm](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/enhanced_postform.js)|Ulepszony formularz postowania, z listą wordfiltrów i nie tylko|&check;|[#23](https://github.com/KDeluxe2023/KDeluxe2023/issues/23), [#28](https://github.com/KDeluxe2023/KDeluxe2023/issues/28)
 |[Better Embeds](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/better_embeds.js)|Zamienia ciężkie jutubowe embedy na miniaturki z tytułem, które przekierowują do wideo|&check;|
@@ -54,7 +54,7 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Spoiler Revealer](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/spoiler_revealer.js)|Odkrywa spoilery tekstowe i obrazkowe|&check;|
 |[Lower Default Volume](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/lower_def_volume.js)|Obniża domyślną głośność w playerze video, przydatne w FF|&cross;|[#11](https://github.com/KDeluxe2023/KDeluxe2023/issues/11)
 |[Fix Thread WatchList OOB](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js#L109)|Przywraca listę obserwowanych fredów do lewego górnego rogu|&check;|
-|[New Keyframe Animations](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/new_keyframe_anims.js)|Dodaje różne nowe filtry, np. #robercik, #R, #deluxe|&cross;|
+|[New Keyframe Animations](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/new_keyframe_anims.js)|Dodaje różne nowe filtry, np. #robercik, #R, #deluxe|&cross;|chwilowo niedostępny
 |[Anti Bible](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/anti_bible.js)|Niweluje efekty bilbii przez requesty w tle|&check;|
 |[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|niedostępny / [#35](https://github.com/KDeluxe2023/KDeluxe2023/issues/35)
 |[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|niedostępny / [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
