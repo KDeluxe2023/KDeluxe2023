@@ -29,6 +29,8 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |---|---|---|---|
 |[Update Notification](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/update_notification.js)|Informuje o dostępności nowszej wersji|&check;|Zawsze aktywny
 |[User Interface](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js)|Rysuje okienko z ustawieniami|&check;|Zawsze aktywny / [#27](https://github.com/KDeluxe2023/KDeluxe2023/issues/27)
+|[Heuristic Filters](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/filters.js)|Inteligentne filtry à la ublock|&check;|
+|[Anti Bible](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/anti_bible.js)|Niweluje efekty bilbii przez requesty w tle|&check;|
 |[Community Styles](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/community_styles.js)|Dodaje style społeczności do wyboru w ustawieniach mitsuby|&check;|
 |[Quick Search](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/quick_search.js)|Dodaje ikonke szybkiego wyszukiwania na pasku menu, w prawym górnym rogu|&check;|
 |[Banner F5](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/clickable_boardname.js)|Pozwala odświeżyć bieżącą stronę przez kliknięcie w banner deski|&check;|
@@ -37,7 +39,6 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Autoscroll](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/auto_scroll.js)|Dodaje opcje toggle do automatycznego scrollowania freda|&check;|
 |[Teoria Chaosu™ Integration](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/radio_radio.js)|Wyświetla player radioradio podczas audycji kloda|&check;|█▬█ █ ▀█▀
 |[Konfident+](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/konfident_plus.js)|Pozwala śledzić dalsze losy zgłoszonych przez siebie postów|&cross;|[#43](https://github.com/KDeluxe2023/KDeluxe2023/issues/43)
-|[Advanced Filters](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/filters.js)|Inteligentne filtry à la ublock ułatwiające korzystanie ze strony|&check;|
 |[Enhanced PostForm](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/enhanced_postform.js)|Ulepszony formularz postowania, z listą wordfiltrów i nie tylko|&check;|[#23](https://github.com/KDeluxe2023/KDeluxe2023/issues/23), [#28](https://github.com/KDeluxe2023/KDeluxe2023/issues/28)
 |[Better Embeds](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/better_embeds.js)|Zamienia ciężkie jutubowe embedy na miniaturki z tytułem, które przekierowują do wideo|&check;|
 |[Rich Stats](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/rich_stats.js)|Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum|&check;|[#6](https://github.com/KDeluxe2023/KDeluxe2023/issues/6)
@@ -55,6 +56,5 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Lower Default Volume](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/lower_def_volume.js)|Obniża domyślną głośność w playerze video, przydatne w FF|&cross;|[#11](https://github.com/KDeluxe2023/KDeluxe2023/issues/11)
 |[Fix Thread WatchList OOB](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js#L109)|Przywraca listę obserwowanych fredów do lewego górnego rogu|&check;|
 |[New Keyframe Animations](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/new_keyframe_anims.js)|Dodaje różne nowe filtry, np. #robercik, #R, #deluxe|&cross;|chwilowo niedostępny
-|[Anti Bible](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/anti_bible.js)|Niweluje efekty bilbii przez requesty w tle|&check;|
 |[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|niedostępny / [#35](https://github.com/KDeluxe2023/KDeluxe2023/issues/35)
 |[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|niedostępny / [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
