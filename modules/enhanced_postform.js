@@ -105,9 +105,9 @@
         });
         
         // rename label for spoiler image
-        const labelElem = document.querySelector('label:has(#spoiler)');
-        const textNode = labelElem.childNodes[1];
-        textNode.textContent = 'Spoiler'; 
+        //const labelElem = document.querySelector('label:has(#spoiler)');
+        //const textNode = labelElem.childNodes[1];
+        //textNode.textContent = 'Spoiler'; 
 
         // wordfilter helper
         const wordfilters = [
