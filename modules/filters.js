@@ -3,7 +3,7 @@
     let performance_timer = performance.now();
 
     // Anti-wirówka
-    localStorage.xD = 'xD';
+    localStorage.setItem('xD', 'xD');
 
     // hide unwanted elements
     function addStyle(innerHTML) {
