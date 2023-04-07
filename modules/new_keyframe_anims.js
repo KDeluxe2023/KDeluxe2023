@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] New Keyframe Animations Loaded...`);
-    let performance_timer = performance.now()
-
     const style = document.createElement('style');
     style.type = 'text/css';
     style.innerHTML = `
@@ -60,6 +57,4 @@
         // Replace the original element with the copy, preserving its attached events
         messages[i].parentNode.replaceChild(copy, messages[i]);
     }
-
-    console.log(`[KDeluxe] [⏱️] New Keyframes loaded in ${performance.now() - performance_timer}ms`);
 }
