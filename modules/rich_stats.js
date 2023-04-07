@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Rich Stats Loaded...`);
-    let performance_rich_stats = performance.now()
-
     /// Set up storage
     const storage_vars = ["rich_stats_time", "rich_stats_posts", "rich_stats_distance", "rich_stats_thread_curbs", "rich_stats_links_opened"]
     storage_vars.forEach(function(item, index) {
@@ -282,6 +279,4 @@
     // STAT6: searches in search.php count
 
     // STAT7: /rs/ downloaded item count
-
-    console.log(`[KDeluxe] [⏱️] Rich stats loaded in ${performance.now() - performance_rich_stats}ms`);
 }
