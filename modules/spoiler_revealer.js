@@ -1,7 +1,4 @@
 {
-    let performance_timer = performance.now();
-    console.log(`[KDeluxe] Spoiler Revealer Loaded...`);
-
     document.head.appendChild(
         Object.assign(document.createElement('style'), {
             type: 'text/css',
@@ -22,6 +19,4 @@
             img.setAttribute('src', a.getAttribute('href'));
         }
     });
-
-    console.log(`[KDeluxe] [⏱️] Spoiler Revealer finished in ${performance.now() - performance_timer}ms`);
 }
