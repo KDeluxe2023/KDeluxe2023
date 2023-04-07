@@ -3,10 +3,13 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
-## [0.8.9] - 07/04/23 ??:??
+## [0.8.9] - 07/04/23 04:51
 
 ## Dodano
 - moduł ban_checker: pokazuje teraz czas do końca bana i przekierowuje po kliknięciu
+
+## Naprawiono
+- moduł anti_bible: działa teraz na overboardzie
 
 ## Zmieniono
 - timery wydajnościowe przeniesiono do funkcji load_module (z użyciem console.time)
@@ -14,9 +17,6 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 - moduł filters: optymalizacja, elementy są teraz dodatkowo całkowicie usuwane
 - moduł auto_scroll: przepisany do vanilla js
 - moduł anti_screamer: usunięto bo był bezużyteczny na większości urządzeń
-
-## Naprawiono
-- moduł anti_bible: działa teraz na overboardzie
 
 ## [0.8.8] - 22/02/23 09:12
 
