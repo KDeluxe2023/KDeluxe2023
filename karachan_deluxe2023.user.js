@@ -18,7 +18,7 @@
 // @grant        none
 // ==/UserScript==
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "c99d0cb1761d6f8fbac23538d87d6eb86844d56a";
+const g_last_commit = "693e1b09b70a5258d1b87bd8614fdf94fc9944aa";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader

@@ -1,8 +1,10 @@
 
+{
   const targetNode = document.getElementById("delform");
   const observers = [];
   const config = { attributes: false, childList: true, subtree: false };
-  const postFunction = ()=>{};
+
+  var postFunction = () => { };
   function addObserver(node, callback) {
     var observer = new MutationObserver(callback);
     observer.observe(node, config);
@@ -20,7 +22,7 @@
       }
     }
   };
-  function postCallback (mutationList, observer) {
+  function postCallback(mutationList, observer) {
     for (const mutation of mutationList) {
       if (mutation.type === "childList") {
         for (const node of mutation.addedNodes) {
@@ -51,68 +53,67 @@
   }
 
 
-const wordFilters = [];
-const wordFilterUrls = [
-  "https://api.npoint.io/575504e33d1d41f1c347",
-  "https://api.npoint.io/ad2b764218aa4c4902b9",
-];
+  const wordFilters = [];
+  const wordFilterUrls = [
+    "https://api.npoint.io/575504e33d1d41f1c347",
+    "https://api.npoint.io/ad2b764218aa4c4902b9",
+  ];
 
-async function fetchDataFromAPI(apiEndpoint) {
-  try {
-    const response = await fetch(apiEndpoint);
-    const data = await response.json();
+  async function fetchDataFromAPI(apiEndpoint) {
+    try {
+      const response = await fetch(apiEndpoint);
+      const data = await response.json();
 
-    return data;
-  } catch (e) {
-    console.log(e);
+      return data;
+    } catch (e) {
+      console.log(e);
+    }
   }
+
+  async function fetchWordFilters() {
+    const promises = wordFilterUrls.map(async (url) => {
+      const filters = await fetchDataFromAPI(url);
+      return filters;
+    });
+    const filtersArrays = await Promise.all(promises);
+
+    const filters = filtersArrays.flat();
+    wordFilters.push(...filters);
+  }
+
+  function initClasses() {
+    wordFilters.forEach((wordFilter) => {
+      if (wordFilter.cssRaw.length > 0) {
+        var style = document.createElement("style");
+
+        var css = wordFilter.cssRaw;
+        style.innerHTML = css;
+
+        document.head.appendChild(style);
+      }
+    });
+  }
+
+  function applyWordFilters(post) {
+    var postContents = post.getElementsByClassName("postMessage")[0];
+
+    wordFilters.forEach((wordFilter) => {
+      const html = postContents.innerHTML;
+      console.log(html);
+      const regExp = new RegExp(wordFilter.regexExp, wordFilter.regexFlag);
+      if (regExp.test(html)) {
+        const newHtml = html.replace(regExp, wordFilter.replaceHTML);
+        postContents.innerHTML = newHtml;
+      }
+    });
+  }
+
+  async function main() {
+    await fetchWordFilters();
+    initClasses();
+    run(applyWordFilters);
+  }
+
+  main().catch((e) => console.log(e));
+
 }
-
-async function fetchWordFilters() {
-  const promises = wordFilterUrls.map(async (url) => {
-    const filters = await fetchDataFromAPI(url);
-    return filters;
-  });
-  const filtersArrays = await Promise.all(promises);
-
-  const filters = filtersArrays.flat();
-  wordFilters.push(...filters);
-}
-
-function initClasses() {
-  wordFilters.forEach((wordFilter) => {
-    if (wordFilter.cssRaw.length > 0) {
-      var style = document.createElement("style");
-
-      var css = wordFilter.cssRaw;
-      style.innerHTML = css;
-
-      document.head.appendChild(style);
-    }
-  });
-  wordFilters.sort((x) => x.regexExp);
-}
-
-function applyWordFilters(post) {
-  var postContents = post.getElementsByClassName("postMessage")[0];
-
-  wordFilters.forEach((wordFilter) => {
-    const html = postContents.innerHTML;
-    console.log(html);
-    const regExp = new RegExp(wordFilter.regexExp, wordFilter.regexFlag);
-    if (regExp.test(html)) {
-      const newHtml = html.replace(regExp, wordFilter.replaceHTML);
-      postContents.innerHTML = newHtml;
-    }
-  });
-}
-
-async function main() {
-  await fetchWordFilters();
-  initClasses();
-  const postFinder = new PostFinder(applyWordFilters);
-  postFinder.run();
-}
-
-main().catch((e) => console.log(e));
-
