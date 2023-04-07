@@ -5,10 +5,14 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 
 ## [0.8.9] - 07/04/23 ??:??
 
+## Dodano
+- moduł ban_checker: pokazuje teraz czas do końca bana i przekierowuje po kliknięciu
+
 ## Zmieniono
-- timery wydajnościowe przeniesione do module_loadera (z użyciem console.time)
+- timery wydajnościowe przeniesiono do funkcji load_module (z użyciem console.time)
 - moduł anti_bible: refaktoring i drobne optymalizacje
 - moduł filters: optymalizacja, elementy są teraz dodatkowo całkowicie usuwane
+- moduł auto_scroll: przepisany do vanilla js
 
 ## Naprawiono
 - moduł anti_bible: działa teraz na overboardzie
