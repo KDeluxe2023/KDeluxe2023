@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Radioradio Player Loaded...`);
-    let performance_radioradio_player = performance.now();
-
     const currentDay = new Date().getDay();
     const currentHour = new Date().getHours();
     const currentMinutes = new Date().getMinutes();
@@ -146,6 +143,4 @@
         displayPlayer();
         dragElement(document.getElementById("radioradio_player"));
     }
-    
-    console.log(`[KDeluxe] [⏱️] RadioRadio Player loaded in ${performance.now() - performance_radioradio_player}ms`);
 }
