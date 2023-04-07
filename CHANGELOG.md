@@ -8,7 +8,7 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 ## Dodano
 - moduł blind_mode_tts: przepisano całkowicie od zera
 - moduł blind_mode_tts: przyczepia się do nowych postów dodanych przez pageloader/autoupdate
-- moduł prev_next: przyczepia się do nowych postów dodanych przez pageloader/autoupdate
+- moduł prev_next: dodano mutationobserver, póki co jeszcze nie ma zastosowania
 - moduł new_keyframe_anims: dostępny ponownie, będzie pisany od nowa niedługo
 
 ## Zmieniono
