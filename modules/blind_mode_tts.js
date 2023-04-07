@@ -89,7 +89,6 @@
                 if (addedNode.nodeType === Node.ELEMENT_NODE) {
                     const posterUids = addedNode.querySelectorAll('.posteruid');
                     if (posterUids.length > 0) {
-                        curb_all_blacklisted_uids();
                         for (const posterUid of posterUids) {
                             const postInfo = posterUid.closest('.postInfo');
                             if (postInfo) {
