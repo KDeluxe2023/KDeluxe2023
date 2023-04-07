@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Quick Search Loaded...`);
-    let performance_timer = performance.now();
-
     const subMenu = document.querySelector('.sub-menu');
     const groupOptions = subMenu.querySelector('.group-options');
     const aTag = document.createElement('a');
@@ -37,6 +34,4 @@
     });
 
     groupOptions.insertBefore(aTag, groupOptions.firstChild);
-
-    console.log(`[KDeluxe] [⏱️] Quick Search loaded in ${performance.now() - performance_timer}ms`);
 }
