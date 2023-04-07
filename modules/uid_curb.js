@@ -1,7 +1,4 @@
 {
-    console.log('[KDeluxe] UID Curb Initialized...');
-    const performance_timer = performance.now();
-
     document.getElementById('clear_curb_list').addEventListener('click', function(e) {
         e.preventDefault();
         localStorage.o_kdeluxe_curbed_uids = '';
@@ -95,6 +92,4 @@
         childList: true,
         subtree: true
     });
-
-    console.log(`[KDeluxe] [⏱️] UID Curb loaded in ${performance.now() - performance_timer}ms`);
 }
