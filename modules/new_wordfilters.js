@@ -52,11 +52,13 @@
     addObserver(targetNode, boardCallback, config);
   }
 
+  
 
   const wordFilters = [];
   const wordFilterUrls = [
     "https://api.npoint.io/575504e33d1d41f1c347",
     "https://api.npoint.io/ad2b764218aa4c4902b9",
+    "https://api.npoint.io/4dabc8d301cc7b6276de",
   ];
 
   async function fetchDataFromAPI(apiEndpoint) {
