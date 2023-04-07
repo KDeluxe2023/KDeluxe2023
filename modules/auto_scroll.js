@@ -1,40 +1,31 @@
 {
-    console.log(`[KDeluxe] Autoscroll Loaded...`);
-    let performance_timer = performance.now()
-
-    /*
-    PUREJS:
-    const uInfo = document.querySelectorAll('.uinfo');
-uInfo.forEach(element => {
-    element.insertAdjacentHTML('beforebegin', `[<input type="checkbox" class="as-box"/>Autoscroll]`);
-});
-
-
-input.addEventListener('change', function() {
-    if (this.checked) {
-        autoscroll = setInterval(function() {
-            const postNew = document.querySelector('.postnew:last-child');
-            if (postNew) {
-                window.scroll({
-                    top: postNew.offset().top,
-                    behavior: 'smooth'
-                });
-            }
-        }, 1000);
-    } else {
-        clearInterval(autoscroll);
-    }
-});
-    */
     var autoscroll;
-    $(".uinfo").before('[<input type="checkbox" class="as-box"/>Autoscroll] '), $(".as-box").change(function() {
-        this.checked ? autoscroll = setInterval(function() {
-            var o = $(".postnew:last");
-            o.length && $("html, body").animate({
-                scrollTop: o.offset().top
-            }, "slow")
-        }, 1e3) : clearInterval(autoscroll)
-    })
 
-    console.log(`[KDeluxe] [⏱️] Autoscroll loaded in ${performance.now() - performance_timer}ms`);
+    function onCheckboxChange(event) {
+        if (event.target.checked) {
+            autoscroll = setInterval(function() {
+                var posts = document.querySelectorAll(".postnew");
+                var lastPost = posts[posts.length - 1];
+                if (lastPost) {
+                    window.scrollTo({
+                        top: lastPost.offsetTop,
+                        behavior: "smooth",
+                    });
+                }
+            }, 1000);
+        } else {
+            clearInterval(autoscroll);
+        }
+    }
+
+    var uinfoElements = document.querySelectorAll(".uinfo");
+    uinfoElements.forEach(function(uinfoElement) {
+        var checkboxHtml = '[<input type="checkbox" class="as-box"/>Autoscroll]';
+        uinfoElement.insertAdjacentHTML('beforebegin', checkboxHtml);
+    });
+
+    var checkboxes = document.querySelectorAll(".as-box");
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener("change", onCheckboxChange);
+    });
 }
