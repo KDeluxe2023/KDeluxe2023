@@ -3,6 +3,16 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
+## [0.8.9] - 07/04/23 ??:??
+
+## Zmieniono
+- timery wydajnościowe przeniesione do module_loadera (z użyciem console.time)
+- moduł anti_bible: refaktoring i drobne optymalizacje
+- moduł filters: optymalizacja, elementy są teraz dodatkowo całkowicie usuwane
+
+## Naprawiono
+- moduł anti_bible: działa teraz na overboardzie
+
 ## [0.8.8] - 22/02/23 09:12
 
 ## Zmieniono
