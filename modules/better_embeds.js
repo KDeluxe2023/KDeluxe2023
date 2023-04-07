@@ -1,11 +1,6 @@
 {
-    let performance_better_embeds = performance.now()
-
     const embeds = document.querySelectorAll("iframe");
     if (embeds.length != 0) {
-
-        console.log(`[KDeluxe] Better Embeds Loaded...`);
-
         const fetchVideoTitle = async (id) => {
             const body = await fetch(
                 `https://youtube.com/oembed?url=https://www.youtube.com/watch?v=${id}&format=json`
@@ -134,6 +129,4 @@
         loopThroughEmbeds(embeds);
         observeIncomingEmbeds();
     }
-
-    console.log(`[KDeluxe] [⏱️] Better Embeds loaded in ${performance.now() - performance_better_embeds}ms`);
 }
