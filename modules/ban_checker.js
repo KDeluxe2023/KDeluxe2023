@@ -1,6 +1,6 @@
 {
     const postform = document.querySelector('#postform');
-    const banned = document.createElement('h3');
+    const banned = document.createElement('h5');
     banned.id = 'banned';
     postform.insertAdjacentHTML('afterend', banned.outerHTML);
 

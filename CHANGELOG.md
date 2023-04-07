@@ -3,6 +3,21 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
+## [0.9.0] - 07/04/23 19:30
+
+## Dodano
+- moduł blind_mode_tts: przepisano całkowicie od zera
+- moduł blind_mode_tts: przyczepia się do nowych postów dodanych przez pageloader/autoupdate
+- moduł prev_next: dodano mutationobserver, póki co jeszcze nie ma zastosowania
+- moduł new_keyframe_anims: dostępny ponownie, będzie pisany od nowa niedługo
+
+## Zmieniono
+- moduł blind_mode_tts: nie korzysta już z zewnętrznego API
+
+## Naprawiono
+- moduł blind_mode_tts: nie czyta linków i emotek
+- moduł prev_next: refactoring i optymalizacja, nullchecki
+
 ## [0.8.9] - 07/04/23 04:51
 
 ## Dodano
@@ -13,7 +28,7 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 
 ## Zmieniono
 - timery wydajnościowe przeniesiono do funkcji load_module (z użyciem console.time)
-- moduł anti_bible: refaktoring i drobne optymalizacje
+- moduł anti_bible: refactoring i drobne optymalizacje
 - moduł filters: optymalizacja, elementy są teraz dodatkowo całkowicie usuwane
 - moduł auto_scroll: przepisany do vanilla js
 - moduł anti_screamer: usunięto bo był bezużyteczny na większości urządzeń

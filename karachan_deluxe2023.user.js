@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.8.9
+// @version      0.9.0
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -18,7 +18,7 @@
 // @grant        none
 // ==/UserScript==
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "cd08aebf542a8e925c5ebd69ec6e69ec78534f1e";
+const g_last_commit = "6692c60aacb22bff5b55957dcec3d8bf894196fd";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader
@@ -68,6 +68,7 @@ function load_module(module_name, callback_fn, data_pass = "") {
     window.fred_opened = window.location.toString().includes("/res/") ? true : false;
     console.log(`window.fred_opened = ${window.fred_opened}`);
 }
+
 // actual script begins here
 document.addEventListener('readystatechange', event => {
     if (event.target.readyState !== "complete")
@@ -151,13 +152,14 @@ document.addEventListener('readystatechange', event => {
         if (localStorage.o_kdeluxe_crocodile_scanner == 1)
             load_module("modules/crocodile_scanner");
 
+        if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !window.page_special && 'speechSynthesis' in window)
+            load_module("modules/blind_mode_tts");
+
+        if (localStorage.o_kdeluxe_new_keyframes == 1 && !window.page_special)
+            load_module("modules/new_keyframe_anims");
+
         //if (localStorage.o_kdeluxe_fred_dumper == 1 && !window.page_special && window.fred_opened)
         //    load_module("modules/fred_dumper");
 
-        //if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !window.page_special)
-        //    load_module("modules/blind_mode_tts");
-
-        if (localStorage.o_kdeluxe_new_wordfilters == 1 && !window.page_special)
-            load_module("modules/new_wordfilters");
     });
 });
