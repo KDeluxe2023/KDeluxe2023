@@ -16,6 +16,7 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 
 ## Naprawiono
 - moduł blind_mode_tts: nie czyta linków i emotek
+- moduł prev_next: refactoring i optymalizacja, nullchecki
 
 ## [0.8.9] - 07/04/23 04:51
 
@@ -27,7 +28,7 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 
 ## Zmieniono
 - timery wydajnościowe przeniesiono do funkcji load_module (z użyciem console.time)
-- moduł anti_bible: refaktoring i drobne optymalizacje
+- moduł anti_bible: refactoring i drobne optymalizacje
 - moduł filters: optymalizacja, elementy są teraz dodatkowo całkowicie usuwane
 - moduł auto_scroll: przepisany do vanilla js
 - moduł anti_screamer: usunięto bo był bezużyteczny na większości urządzeń
