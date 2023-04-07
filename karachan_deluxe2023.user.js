@@ -32,7 +32,7 @@ function load_module(module_name, callback_fn, data_pass = "") {
         a.onerror = function(error) {
             alert(`KDeluxe napotkał błąd przy ładowaniu modułu: ${error.target.src}`);
         },
-        a.src = `https://cdn.jsdelivr.net/gh/t0m45-t3rc4/KDeluxe2023@${g_last_commit}/${module_name}.js`, a.setAttribute("data-pass", `${data_pass}`),
+        a.src = `https://cdn.jsdelivr.net/gh/KDeluxe2023/KDeluxe2023@${g_last_commit}/${module_name}.js`, a.setAttribute("data-pass", `${data_pass}`),
         n.parentNode.insertBefore(a, n);
 }
 
