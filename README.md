@@ -53,7 +53,6 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Image Preview Anti-Eyestrain](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/anti_eyestrain.js)|Dodaje przycisk do powiększonych obrazków, który pomaga oglądać je w nocy|&check;|
 |[Smart Boards](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/smart_boards.js)|Ukrywa /noc/ kiedy nie jest dostępna, zawsze ukrywa /4/|&check;|
 |[Spoiler Revealer](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/spoiler_revealer.js)|Odkrywa spoilery tekstowe i obrazkowe|&check;|
-|[Lower Default Volume](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/lower_def_volume.js)|Obniża domyślną głośność w playerze video, przydatne w FF|&cross;|[#11](https://github.com/KDeluxe2023/KDeluxe2023/issues/11)
 |[Fix Thread WatchList OOB](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js#L109)|Przywraca listę obserwowanych fredów do lewego górnego rogu|&check;|
 |[New Keyframe Animations](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/new_keyframe_anims.js)|Dodaje różne nowe filtry, np. #robercik, #R, #deluxe|&cross;|chwilowo niedostępny
 |[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|niedostępny / [#35](https://github.com/KDeluxe2023/KDeluxe2023/issues/35)
