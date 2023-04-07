@@ -52,7 +52,7 @@
 
         const ttsControls = document.createElement('span');
         ttsControls.classList.add('tts_controls');
-        ttsControls.innerHTML = '[ <a href="#tts_start"><i class="fa fa-play" aria-hidden="true"></i></a> / <a href="#pause_tts"><i class="fa fa-pause" aria-hidden="true"></i></a> / <a href="#stop_tts"><i class="fa fa-times" aria-hidden="true"></i></a> ] ';
+        ttsControls.innerHTML = ' [ <a href="#tts_start"><i class="fa fa-play" aria-hidden="true"></i></a> / <a href="#pause_tts"><i class="fa fa-pause" aria-hidden="true"></i></a> / <a href="#stop_tts"><i class="fa fa-times" aria-hidden="true"></i></a> ] ';
 
         const startBtn = ttsControls.querySelector('a[href="#tts_start"]');
         const pauseBtn = ttsControls.querySelector('a[href="#pause_tts"]');
