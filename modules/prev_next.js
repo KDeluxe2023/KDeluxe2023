@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Jump To Post Loaded...`);
-    let performance_timer = performance.now()
-
     const getPrevNext = (posts, postIndex) => {
         let prevHref = null;
         let nextHref = null;
@@ -46,6 +43,4 @@
         linkElement.innerHTML = link;
         post.appendChild(linkElement);
     });
-
-    console.log(`[KDeluxe] [⏱️] Jump To Post finished in ${performance.now() - performance_timer}ms`);
 }
