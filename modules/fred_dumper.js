@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Fred Dumper Loaded...`);
-    let performance_fred_dumper = performance.now()
-
     let bar = $('.post').first().find('.postInfo').first();
     bar.prepend(`<span id="dumper_container">[<a href="#" id="dump_thread"><i class="fa fa-download" aria-hidden="true"></i></a>]</span>`);
     $("#dumper_container").css({
@@ -85,6 +82,4 @@
 
         });
     });
-
-    console.log(`[KDeluxe] [⏱️] Fred Dumper loaded in ${performance.now() - performance_fred_dumper}ms`);
 }
