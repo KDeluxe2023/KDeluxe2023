@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] ThreadWatcher Sort Loaded...`);
-    let performance_timer = performance.now()
-
     function color_unread() {
         let watch_links = $("#watched_list").find(".watch-link");
         for (i = 0; i < watch_links.length; i++) {
@@ -54,6 +51,4 @@
             });
         });
     })();
-
-    console.log(`[KDeluxe] [⏱️] ThreadWatcher Sort loaded in ${performance.now() - performance_timer}ms`);
 }
