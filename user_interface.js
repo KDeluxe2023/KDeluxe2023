@@ -1,6 +1,4 @@
 {
-    let performance_timer = performance.now()
-
     // mitsuba func used to switch tabs
     const openTab = function(a) {
         if (!a.hasClass("tab-opened")) {
@@ -117,6 +115,4 @@
     // add button used to clear curbed uids
     if (localStorage.o_kdeluxe_uid_curb == 1)
         document.getElementById("kdeluxe_button_container").innerHTML += "<input type='button' style='margin-right: 5px;' value='Clear Curbed UIDs' id='clear_curb_list' />";
-
-    console.log(`[KDeluxe] [⏱️] Interface created in ${performance.now() - performance_timer}ms`);
 }
