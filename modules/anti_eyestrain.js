@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Image Preview Anti-Eyestrain Loaded...`);
-    let performance_anti_eyestrain = performance.now()
-
     let toggle = false;
     let preview_container = $("#imagePreview");
     preview_container.append(`<a href="#" id="anti-eyestrain"><i class="fa fa-eye-slash" aria-hidden="true"></i></a>`);
@@ -28,6 +25,4 @@
 
         toggle = !toggle;
     });
-
-    console.log(`[KDeluxe] [⏱️] Image Preview Anti-Eyestrain loaded in ${performance.now() - performance_anti_eyestrain}ms`);
 }
