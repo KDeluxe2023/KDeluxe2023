@@ -42,7 +42,6 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Enhanced PostForm](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/enhanced_postform.js)|Ulepszony formularz postowania, z listą wordfiltrów i nie tylko|&check;|[#28](https://github.com/KDeluxe2023/KDeluxe2023/issues/28)
 |[Better Embeds](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/better_embeds.js)|Zamienia ciężkie jutubowe embedy na miniaturki z tytułem, które przekierowują do wideo|&check;|
 |[Rich Stats](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/rich_stats.js)|Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum|&check;|[#6](https://github.com/KDeluxe2023/KDeluxe2023/issues/6)
-|[Fred Dumper](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/fred_dumper.js)|Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie|&cross;|niedostępny / [#3](https://github.com/KDeluxe2023/KDeluxe2023/issues/3)
 |[Ban Checker](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/ban_checker.js)|Pokazuje czerwony napis na górze deski kiedy dostanie się bana|&check;|
 |[External Links](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/external_links.js)|Wszystkie linki otwierają się teraz w nowym oknie|&check;|
 |[UID Curb](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/uid_curb.js)|Pozwala krawężnikować poszczególnych postujących we fredach (tylko na /b/)|&check;|
@@ -55,5 +54,6 @@ Ustawienia modułów są tam gdzie ustawienia mitsuby (trybik). Gdy jakaś nowa 
 |[Spoiler Revealer](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/spoiler_revealer.js)|Odkrywa spoilery tekstowe i obrazkowe|&check;|
 |[Fix Thread WatchList OOB](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/user_interface.js#L109)|Przywraca listę obserwowanych fredów do lewego górnego rogu|&check;|
 |[New Keyframe Animations](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/new_keyframe_anims.js)|Dodaje różne nowe filtry, np. #robercik, #R, #deluxe|&cross;|chwilowo niedostępny
-|[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|niedostępny / [#35](https://github.com/KDeluxe2023/KDeluxe2023/issues/35)
+|[Blind Mode (TTS)](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/blind_mode_tts.js)|Dodaje obok postów opcję text to speech czyli czytania na głos (męski/żeński)|&cross;|
+|[Fred Dumper](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/fred_dumper.js)|Pozwala zapisać obecnie otwarty fred jako jpg, pozwala pobrać też obrazki osobno w zipie|&cross;|niedostępny / [#3](https://github.com/KDeluxe2023/KDeluxe2023/issues/3)
 |[ThreadWatcher Sort](https://github.com/KDeluxe2023/KDeluxe2023/blob/main/modules/threadwatcher_sort.js)|Sortuje obserwowane fredy tak, że te z nowymi odpowiedziami są na początku|&cross;|niedostępny / [#12](https://github.com/KDeluxe2023/KDeluxe2023/issues/12)
