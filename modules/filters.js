@@ -1,43 +1,26 @@
 {
-    console.log(`[KDeluxe] Heuristic Filters Initiated...`);
-    let performance_timer = performance.now();
-
     // Anti-wirówka
     localStorage.setItem('xD', 'xD');
 
-    // hide unwanted elements
-    function addStyle(innerHTML) {
-        document.head.appendChild(
-            Object.assign(document.createElement('style'), {
-                type: 'text/css',
-                innerHTML: innerHTML
-            })
-        );
-    }
+    // Define the selectors for the elements to hide
+    const selectors = [
+        '#jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo',
+        '#smok',
+        '.absBotDisclaimer',
+        '.grecaptcha-badge'
+    ].join(', ');
 
-    // świnie
-    addStyle('#jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo { display: none !important; }');
-    // wszechstronny miszcz
-    addStyle('#smok { display: none !important; }');
-    // stopka mitsubowska
-    addStyle('.absBotDisclaimer { display: none !important; }');
-    // kapcza w stopce
-    addStyle('.grecaptcha-badge { display: none !important; }');
+    // Define the styles to hide the elements
+    const styles = `${selectors} { display: none !important; }`;
+
+    // Add the styles to the head of the document
+    document.head.insertAdjacentHTML('beforeend', `<style type="text/css">${styles}</style>`);
+
+    // Remove the elements from the DOM after hiding them
+    document.querySelectorAll(selectors).forEach(el => el.remove());
 
     // accept TOS
     document.cookie = 'regulamin=accepted; expires=Sun, 1 Jan 2030 00:00:00 UTC; path=/';
-
-    // hide old admin message
-    const globalMessageElem = document.getElementById('globalMessage');
-    const shouldHide = globalMessageElem.textContent.includes('Wyniki Ankiety');
-
-    if (shouldHide) {
-        // get neighbor <hr> element
-        const prevHr = globalMessageElem.previousElementSibling;
-
-        globalMessageElem.style.display = 'none'; // hide the globalMessage element
-        prevHr.style.display = 'none'; // hide the previous <hr> element
-    }
 
     // remove invisible iframes
     const iframes = document.querySelectorAll('iframe');
@@ -60,6 +43,4 @@
             console.log("[KDeluxe] Removed invisible iframe");
         }
     });
-
-    console.log(`[KDeluxe] [⏱️] Heuristic Filters loaded in ${performance.now() - performance_timer}ms`);
 }
