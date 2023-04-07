@@ -6,10 +6,10 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 ## [0.9.0] - 07/04/23 19:30
 
 ## Dodano
-- moduł blind_mode_tts: przepisano całkowicie od zera
-- moduł blind_mode_tts: przyczepia się do nowych postów dodanych przez pageloader/autoupdate
-- moduł prev_next: dodano mutationobserver, póki co jeszcze nie ma zastosowania
-- moduł new_keyframe_anims: dostępny ponownie, będzie pisany od nowa niedługo
+- moduł blind_mode_tts: przepisano całkowicie od zera https://github.com/KDeluxe2023/KDeluxe2023/issues/35
+- moduł blind_mode_tts: przyczepia się do nowych postów dodanych przez pageloader/autoupdate https://github.com/KDeluxe2023/KDeluxe2023/issues/35
+- moduł prev_next: dodano mutationobserver, póki co jeszcze nie ma zastosowania https://github.com/KDeluxe2023/KDeluxe2023/issues/46
+- moduł new_keyframe_anims: dostępny ponownie, będzie pisany od nowa niedługo https://github.com/KDeluxe2023/KDeluxe2023/issues/45
 
 ## Zmieniono
 - moduł blind_mode_tts: nie korzysta już z zewnętrznego API
@@ -24,7 +24,7 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 - moduł ban_checker: pokazuje teraz czas do końca bana i przekierowuje po kliknięciu
 
 ## Naprawiono
-- moduł anti_bible: działa teraz na overboardzie
+- moduł anti_bible: działa teraz na overboardzie https://github.com/KDeluxe2023/KDeluxe2023/issues/36
 
 ## Zmieniono
 - timery wydajnościowe przeniesiono do funkcji load_module (z użyciem console.time)
@@ -55,7 +55,7 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 - moduł uid_curb: przepisano cały moduł, jest bardziej czytelny i zwięzły
 
 ## Naprawiono
-- moduł uid_curb: nie pokazuje się już na postach systemowych [#20](https://github.com/KDeluxe2023/KDeluxe2023/issues/20)
+- moduł uid_curb: nie pokazuje się już na postach systemowych https://github.com/KDeluxe2023/KDeluxe2023/issues/20
 - moduł spoiler_reaveler: omyłkowo usunięte w ostatniej aktualizacji, teraz przywrócony
 
 ## Dodano
