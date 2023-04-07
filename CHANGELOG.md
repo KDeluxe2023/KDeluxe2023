@@ -13,6 +13,7 @@ Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera n
 - moduł anti_bible: refaktoring i drobne optymalizacje
 - moduł filters: optymalizacja, elementy są teraz dodatkowo całkowicie usuwane
 - moduł auto_scroll: przepisany do vanilla js
+- moduł anti_screamer: usunięto bo był bezużyteczny na większości urządzeń
 
 ## Naprawiono
 - moduł anti_bible: działa teraz na overboardzie
