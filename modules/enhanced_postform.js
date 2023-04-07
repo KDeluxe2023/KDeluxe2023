@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Enhanced PostForm Loaded...`);
-    let performance_timer = performance.now()
-
     if (document.getElementById('postForm')) {
         let tarea = document.querySelector('#postForm textarea');
 
@@ -252,6 +249,4 @@
             });
         }
     }
-
-    console.log(`[KDeluxe] [⏱️] Enhanced PostForm loaded in ${performance.now() - performance_timer}ms`);
 }
