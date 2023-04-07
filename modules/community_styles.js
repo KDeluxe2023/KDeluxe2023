@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Community Styles Loaded...`);
-    let performance_timer = performance.now()
-
     // append custom styles to engine config
     config.styles.push({
         name: "Blackroach",
@@ -49,7 +46,4 @@
     
     // manually refresh selected style
     combobox.dispatchEvent(new Event("change"));
-
-    
-    console.log(`[KDeluxe] [⏱️] Community styles loaded in ${performance.now() - performance_timer}ms`);
 }
