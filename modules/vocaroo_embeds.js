@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Vocaroo Embeds Loaded...`);
-    let performance_timer = performance.now()
-
     function get_domain(full_url) {
         var matches = full_url.match(/^https?\:\/\/([^\/?#]+)(?:[\/?#]|$)/i);
         return matches && matches[1];
@@ -18,5 +15,4 @@
         </div>`);
         }
     });
-    console.log(`[KDeluxe] [⏱️] Vocaroo Embeds loaded in ${performance.now() - performance_timer}ms`);
 }
