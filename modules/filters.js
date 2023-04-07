@@ -6,8 +6,7 @@
     const selectors = [
         '#jesli-zablokujesz-tego-diva-ukraina-odniesie-zwyciestwo',
         '#smok',
-        '.absBotDisclaimer',
-        '.grecaptcha-badge'
+        '.absBotDisclaimer'
     ].join(', ');
 
     // Define the styles to hide the elements
