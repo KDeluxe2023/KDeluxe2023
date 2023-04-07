@@ -1,7 +1,4 @@
 {
-    console.log(`[KDeluxe] Catalog Curb Loaded...`);
-    let performance_catalog_curb = performance.now()
-
     let board = window.location.toString().split("/")[3];
     let posts = document.querySelectorAll(".thread");
 
@@ -29,6 +26,4 @@
             el.parentElement.parentElement.remove();
         });
     });
-
-    console.log(`[KDeluxe] [⏱️] Catalog Curb loaded in ${performance.now() - performance_catalog_curb}ms`);
 }
