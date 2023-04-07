@@ -1,8 +1,5 @@
 
 {
-    console.log(`[KDeluxe] Smart Boards Loaded...`);
-    let performance_smart_boards = performance.now()
-
    let board_ele = document.querySelector("#tab-boardlink");
    board_ele.querySelector(`[data-short='4']`).remove();
 
@@ -31,6 +28,4 @@
     insert_new_boardlink("test", "/test/");
     insert_new_boardlink("элита", "/элита/");
     insert_new_boardlink("wykop", "/wykop/");
-
-    console.log(`[KDeluxe] [⏱️] Smart Boards loaded in ${performance.now() - performance_smart_boards}ms`);
 }
