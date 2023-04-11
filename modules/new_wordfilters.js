@@ -22,7 +22,7 @@
       }
     }
   };
-  function postCallback(mutationList, observer) {
+  function postCallback(mutationList) {
     for (const mutation of mutationList) {
       if (mutation.type === "childList") {
         for (const node of mutation.addedNodes) {
@@ -37,13 +37,14 @@
   };
 
   function observeThreads(page) {
-    const threads = page.querySelectorAll(".thread");
-    for (const thread of threads) {
-      const posts = thread.querySelectorAll(".postContainer");
-      for (const post of posts) postFunction(post);
+    const threads = page.getElementsByClassName("thread");
+    Array.from(threads).forEach(thread=>{
+      const posts = thread.getElementsByClassName("postMessage");
+
+      Array.from(posts).forEach(post=>postFunction(post));
 
       addObserver(thread, postCallback, config);
-    }
+    });
   }
 
   function run(inputFunction) {
@@ -52,13 +53,10 @@
     addObserver(targetNode, boardCallback, config);
   }
 
-  
-
-  const wordFilters = [];
+  const wordFilters=[];
   const wordFilterUrls = [
-    "https://api.npoint.io/575504e33d1d41f1c347",
-    "https://api.npoint.io/ad2b764218aa4c4902b9",
-    "https://api.npoint.io/4dabc8d301cc7b6276de",
+    "https://kdeluxe2023.github.io/KDeluxe2023/wordfilters/kdeluxe.json",
+    "https://kdeluxe2023.github.io/KDeluxe2023/wordfilters/gg.json",
   ];
 
   async function fetchDataFromAPI(apiEndpoint) {
@@ -88,26 +86,64 @@
       if (wordFilter.cssRaw.length > 0) {
         var style = document.createElement("style");
 
-        var css = wordFilter.cssRaw;
         style.innerHTML = css;
+        var css = wordFilter.cssRaw;
 
         document.head.appendChild(style);
       }
     });
   }
 
-  function applyWordFilters(post) {
-    var postContents = post.getElementsByClassName("postMessage")[0];
-
+  function replaceText(post) {
+    let res = post;
     wordFilters.forEach((wordFilter) => {
-      const html = postContents.innerHTML;
-      console.log(html);
       const regExp = new RegExp(wordFilter.regexExp, wordFilter.regexFlag);
-      if (regExp.test(html)) {
-        const newHtml = html.replace(regExp, wordFilter.replaceHTML);
-        postContents.innerHTML = newHtml;
+      if (regExp.test(res)) {
+        res = res.replace(regExp, wordFilter.replaceHTML);
+      }
+    }
+    );
+    return res;
+  }
+
+  function wrapNonAnchorElements(parentElement, tag) {
+    const childNodes = parentElement.childNodes;
+  
+    // Create a new array to store non-anchor elements and text nodes
+    const nonAnchorElements = [];
+  
+    // Iterate over all child nodes and add non-anchor elements and text nodes to the array
+    childNodes.forEach(node => {
+      if (node.nodeType === Node.ELEMENT_NODE && node.tagName !== 'A' && node.tagName !== 'BR') {
+        nonAnchorElements.push(node);
+      } else if (node.nodeType === Node.TEXT_NODE && node.textContent.trim() !== '') {
+        nonAnchorElements.push(node);
       }
     });
+  
+    // Wrap non-anchor elements and text nodes in divs with the specified tag
+    nonAnchorElements.forEach(node => {
+      const wrapper = document.createElement(tag);
+      wrapper.className="wrapper-span";
+      parentElement.insertBefore(wrapper, node);
+      wrapper.appendChild(node);
+    });
+  }
+  function applyWordFilters(post) {
+    wrapNonAnchorElements(post,'span');
+    const posts = post.getElementsByClassName('wrapper-span');
+
+    Array.from(posts).forEach(post=>{
+      // Create a copy of the element
+      const copy = post.cloneNode(true);
+      
+      // Replace the text of the copy
+      copy.innerHTML = replaceText(copy.innerHTML);
+    
+      // Replace the original element with the copy, preserving its attached events
+      post.parentNode.replaceChild(copy,post);
+    })
+
   }
 
   async function main() {
@@ -115,7 +151,6 @@
     initClasses();
     run(applyWordFilters);
   }
-
-  main().catch((e) => console.log(e));
-
+  
+  main();
 }
