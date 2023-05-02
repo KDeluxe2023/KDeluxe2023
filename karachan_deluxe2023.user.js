@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Karachan Deluxe 2023
 // @namespace    karachan.org
-// @version      0.9.0
+// @version      0.9.1
 // @updateURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 // @downloadURL https://github.com/KDeluxe2023/KDeluxe2023/raw/main/karachan_deluxe2023.user.js
 
@@ -18,7 +18,7 @@
 // @grant        none
 // ==/UserScript==
 // modules will be loaded at this commit in github repo via jsdelivr
-const g_last_commit = "6692c60aacb22bff5b55957dcec3d8bf894196fd";
+const g_last_commit = "4a53abcff103499062165c6b5e1e37aa18021ea5";
 const g_script_version = GM.info.script.version;
 
 // dynamic module loader
@@ -93,6 +93,9 @@ document.addEventListener('readystatechange', event => {
 
         if (localStorage.o_kdeluxe_enhanced_postform == 1 && !window.page_special)
             load_module("modules/enhanced_postform");
+        
+        if (localStorage.o_kdeluxe_extended_img_support == 1 && !window.page_special)
+            load_module("modules/extended_img_support");
 
         if (localStorage.o_kdeluxe_clickable_boardname == 1 && !window.page_special)
             load_module("modules/clickable_boardname");
@@ -155,8 +158,8 @@ document.addEventListener('readystatechange', event => {
         if (localStorage.o_kdeluxe_blind_mode_tts == 1 && !window.page_special && 'speechSynthesis' in window)
             load_module("modules/blind_mode_tts");
 
-        if (localStorage.o_kdeluxe_new_keyframes == 1 && !window.page_special)
-            load_module("modules/new_keyframe_anims");
+        //if (localStorage.o_kdeluxe_new_wordfilters== 1 && !window.page_special)
+         //   load_module("modules/new_wordfilters");
 
         //if (localStorage.o_kdeluxe_fred_dumper == 1 && !window.page_special && window.fred_opened)
         //    load_module("modules/fred_dumper");
