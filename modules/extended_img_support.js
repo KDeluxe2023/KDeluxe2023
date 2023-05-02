@@ -30,5 +30,6 @@
         }
     }
 
-    file_input.forEach(input => input.addEventListener("change", () => convertToJPEG(input.files.item(0))));
+    if (file_input.length)
+        file_input.forEach(input => input.addEventListener("change", () => convertToJPEG(input.files.item(0))));
 }
