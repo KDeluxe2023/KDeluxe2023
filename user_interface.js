@@ -85,6 +85,7 @@
         add_settings_checkbox("rich_stats", "Rich Statistics", "Dodaje okienko z różnymi statystykami odnośnie twojej aktywności na forum");
         add_settings_checkbox("external_links", "External Links", "Wszystkie linki otwierają się teraz w nowym oknie");
         add_settings_checkbox("konfident_plus", "Konfident+", "Pozwala śledzić dalsze losy zgłoszonych przez siebie postów");
+        add_settings_checkbox("extended_img_support", "Extended Image Support", "Automatycznie konwertuje .webp i .avif do .jpg żeby ominąć ograniczenia mitsuby");
         add_settings_checkbox("enhanced_postform", "Enhanced PostForm", "Ulepszony formularz postowania, z listą wordfiltrów i nie tylko");
         add_settings_checkbox("enhanced_postform_popout", "Enhanced PostForm Popout", "Dodaje opcje zastępującą fastreply do enhanced postform", true);
         add_settings_checkbox("enhanced_postform_zalgo", "Enhanced PostForm Zalgo", "Dodaje opcje pisania tekstem zalgo do enhanced postform", true);
