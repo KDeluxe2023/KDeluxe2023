@@ -3,6 +3,11 @@ Wszystkie warte uwagi zmiany w tym projekcie są udokumentowane w tym pliku
 
 Jeśli aktualizacja nie jest wspomniana na liście oznacza to, że nie zawiera nic ważnego
 
+## [0.9.1] - 02/05/23 14:15
+
+## Dodano
+- moduł extended_img_support: pozwala na wrzucanie plików .webp i .avif mimo ograniczeń mitsuby
+
 ## [0.9.0] - 07/04/23 19:30
 
 ## Dodano
