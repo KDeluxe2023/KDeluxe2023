@@ -5,6 +5,10 @@
         // constrain file picker to permitted formats
         document.querySelector("input[name='upfile']").setAttribute("accept", ".jpg,.jpeg,.jfif,.pjpeg,.pjp,.gif,.mp3,.mp4,.png,.webm");
 
+        // override new file types if extended support module is enabled
+        if (localStorage.o_kdeluxe_extended_img_support == 1)
+            document.querySelector("input[name='upfile']").setAttribute("accept", ".jpg,.jpeg,.jfif,.pjpeg,.pjp,.webp,.avif,.gif,.mp3,.mp4,.png,.webm");
+
         // hide email field
         document.querySelector("#postForm tbody tr:nth-child(1)").style.display = "none";
 
@@ -51,9 +55,9 @@
                 dialogBox("UWAGA", "Ta opcja nie była testowana i prawdopodobnie będzie skutkować auto-banem", ["Rozumiem"]);
                 var Z = {
                     chars: {
-                        0: ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗", "͑", "̇", "̈", "̊", "͂", "̓", "̈́", "͊", "͋", "͌", "̃", "̂", "̌", "͐", "̀", "́", "̋", "̏", "̒", "̓", "̔", "̽", "̉", "ͣ", "ͤ", "ͥ", "ͦ", "ͧ", "ͨ", "ͩ", "ͪ", "ͫ", "ͬ", "ͭ", "ͮ", "ͯ", "̾", "͛", "͆", "̚"],
+                        0: ["̍", "̎", "̄", "̅", "̿", "̑", "̆", "̐", "͒", "͗", "͑", "̇", "̈", "̊", "͂", "̓", "̈́", "͊", "͋", "͌", "̃", "̂", "̌", "͐", "̀", "́", "̋", "̏", "̒", "̓", "̔", "̽", "̉", "ͣ", "ͤ", "ͥ", "ͦ", "ͧ", "ͨ", "ͩ", "ͪ", "ͫ", "ͬ", "ͭ", "ͮ", "ͯ", "̾", "͛", "͆", "̚"],
                         1: ["̖", "̗", "̘", "̙", "̜", "̝", "̞", "̟", "̠", "̤", "̥", "̦", "̩", "̪", "̫", "̬", "̭", "̮", "̯", "̰", "̱", "̲", "̳", "̹", "̺", "̻", "̼", "ͅ", "͇", "͈", "͉", "͍", "͎", "͓", "͔", "͕", "͖", "͙", "͚", "̣"],
-                        2: ["̕", "̛", "̀", "́", "͘", "̡", "̢", "̧", "̨", "̴", "̵", "̶", "͏", "͜", "͝", "͞", "͟", "͠", "͢", "̸", "̷", "͡", "҉"]
+                        2: ["̕", "̛", "̀", "́", "͘", "̡", "̢", "̧", "̨", "̴", "̵", "̶", "͏", "͜", "͝", "͞", "͟", "͠", "͢", "̸", "̷", "͡", "҉"]
                     },
                     random: function(r) {
                         return 1 == r ? 0 : r ? Math.floor(Math.random() * r + 1) - 1 : Math.random()
@@ -100,7 +104,7 @@
                 $(`#postForm input[name="email"]`).val("");
             }
         });
-        
+
         // rename label for spoiler image
         //const labelElem = document.querySelector('label:has(#spoiler)');
         //const textNode = labelElem.childNodes[1];
@@ -183,7 +187,7 @@
         // unbind keycapture events
         if (localStorage.o_kdeluxe_enhanced_postform_unbind == 1)
             $("body").unbind('keydown');
-        
+
         // add popout button to postform
         if (localStorage.o_kdeluxe_enhanced_postform_popout == 1) {
             // get the post form, button and choina elements
